@@ -17,6 +17,10 @@ No build step, no server, no dependencies to install. It is one HTML file.
 which explains the board and the tailoring logic in plain language with a diagram.
 This README is the technical reference.
 
+The guide prints as a clean six-page document. Open it and use your browser's
+print dialog, choosing Save as PDF; it switches to a light theme automatically,
+so leave Background graphics on but expect paper-friendly colors.
+
 ## Contents
 
 - [Quick start](#quick-start)

@@ -86,6 +86,49 @@
   footer { border-top: 1px solid var(--border); margin-top: 60px; padding: 26px 48px;
     color: var(--text-dim); font-size: 13px; text-align: center; }
 
+  /* Printing and PDF export: a document on paper, not a dark screen. */
+  @media print {
+    @page { margin: 16mm 15mm; }
+    *, *::before, *::after { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    html, body { background: #fff !important; color: #111 !important; font-size: 10.5pt; line-height: 1.5; }
+    a { color: #1a4fa0 !important; }
+    header { background: none !important; border-bottom: 1px solid #ccc; padding: 0 0 12px; }
+    header h1 { color: #111 !important; font-size: 21pt; }
+    header .sub, h2 + .lede, figcaption, nav.toc strong { color: #555 !important; }
+    .backlink, footer { display: none !important; }
+    main { padding: 0; max-width: none; }
+    nav.toc { background: #f4f5fa !important; border-color: #dcdce6 !important; break-inside: avoid; margin: 20px 0 6px; }
+    h2 { color: #111 !important; margin-top: 24px; break-after: avoid; page-break-after: avoid; }
+    h2 .num { color: #5b3fd6 !important; }
+    h3 { color: #111 !important; break-after: avoid; page-break-after: avoid; }
+    .card { background: #f7f8fc !important; border-color: #dcdce6 !important; box-shadow: none !important; break-inside: avoid; }
+    .note { background: #f1ecff !important; border-left-color: #5b3fd6 !important; }
+    .note strong:first-child { color: #4527a8 !important; }
+    .note.warn { background: #fff7e3 !important; border-left-color: #b07d0a !important; }
+    .note.warn strong:first-child { color: #8a6100 !important; }
+    .scroller { overflow: visible !important; }
+    /* let a long table flow, but repeat its header row on the next page */
+    table { break-inside: auto; }
+    thead { display: table-header-group; }
+    tr { break-inside: avoid; page-break-inside: avoid; }
+    th { color: #555 !important; border-bottom-color: #bbb !important; }
+    td { border-bottom-color: #e4e4ec !important; }
+    code { background: #f0f0f4 !important; border-color: #dcdce6 !important; color: #262626 !important; }
+    pre { background: #f7f8fc !important; border-color: #dcdce6 !important; color: #262626 !important; }
+    figure { break-inside: avoid; page-break-inside: avoid; }
+    ul, ol.steps { break-inside: auto; }
+    li { break-inside: avoid; }
+    /* the flow diagram is drawn for a dark page, so repaint it for paper */
+    .bx { fill: #ffffff !important; stroke: #c3c3d0 !important; }
+    .bx-hi { fill: #f1ecff !important; stroke: #5b3fd6 !important; }
+    .bx-out { fill: #edfaf4 !important; stroke: #2f9c73 !important; }
+    .t { fill: #111111 !important; }
+    .s { fill: #555555 !important; }
+    .lbl { fill: #4527a8 !important; }
+    .ln { stroke: #8a8a99 !important; }
+    marker path { fill: #8a8a99 !important; }
+  }
+
   @media (max-width: 720px) {
     header, main, footer { padding-left: 20px; padding-right: 20px; }
     header h1 { font-size: 24px; }
@@ -168,11 +211,15 @@
     <h3>What it costs</h3>
     <div class="scroller">
     <table>
+      <thead>
       <tr><th>Model and effort</th><th>Per run</th><th>Time</th><th>When to pick it</th></tr>
+      </thead>
+      <tbody>
       <tr><td>Sonnet 5, medium</td><td>about $0.15</td><td>about a minute</td><td>The default, and the right answer almost always.</td></tr>
       <tr><td>Sonnet 5, low</td><td>under $0.10</td><td>well under a minute</td><td>A quick pass when you just want the shape of it.</td></tr>
       <tr><td>Opus 5, high</td><td>$0.50 to $1.50</td><td>several minutes</td><td>An unusual resume or a career change.</td></tr>
       <tr><td>Fable 5.1</td><td>$1.00 to $3.00</td><td>slowest</td><td>Only when Opus 5 got something wrong.</td></tr>
+      </tbody>
     </table>
     </div>
     <p>Effort is the bigger lever, not the model. Thinking is billed as output, so a high-effort
@@ -283,13 +330,17 @@
 
   <div class="scroller">
   <table>
+      <thead>
     <tr><th>Score</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
     <tr><td>95 to 100</td><td>Bullseye. Field, city, tools and hiring pipeline all line up.</td></tr>
     <tr><td>85 to 94</td><td>Strong. A clear case with one soft spot.</td></tr>
     <tr><td>75 to 84</td><td>Solid. Worth applying, not a standout.</td></tr>
     <tr><td>65 to 74</td><td>Stretch. Needs a good cover letter or a referral.</td></tr>
     <tr><td>60 to 64</td><td>Weak. Listed so you know it was considered and why it lost.</td></tr>
-  </table>
+      </tbody>
+    </table>
   </div>
 
   <p>Scores are deliberately spread. A board where everything scores in the high eighties tells you nothing,
@@ -314,12 +365,16 @@
 
   <div class="scroller">
   <table>
+      <thead>
     <tr><th>Label</th><th>What it means for this person</th></tr>
+      </thead>
+      <tbody>
     <tr><td>Local</td><td>Headquarters or a major hub in their metro.</td></tr>
     <tr><td>Has an office</td><td>A smaller office there.</td></tr>
     <tr><td>Remote</td><td>Hires this kind of role remotely from where they live.</td></tr>
     <tr><td>Needs relocation</td><td>Would require a move. Hidden when nothing qualifies.</td></tr>
-  </table>
+      </tbody>
+    </table>
   </div>
 
   <p>The filter labels rename themselves to the person's city, so an Austin candidate sees "Austin Area" and
@@ -353,13 +408,17 @@
 
   <div class="scroller">
   <table>
+      <thead>
     <tr><th>Thing</th><th>How much to trust it</th></tr>
+      </thead>
+      <tbody>
     <tr><td>The 60 employers</td><td>Hand researched. Real companies with real early-career hiring.</td></tr>
     <tr><td>Openings and links</td><td>Checked against each company's hiring system on the date in the footer. Jobs close, so recheck.</td></tr>
     <tr><td>Timing status</td><td>Verified on that same date.</td></tr>
     <tr><td>Scores and explanations</td><td>Claude's judgment about you. Useful, arguable, not fact.</td></tr>
     <tr><td>Suggested employers</td><td>Unverified leads. Confirm each one yourself.</td></tr>
-  </table>
+      </tbody>
+    </table>
   </div>
 
   <div class="note warn"><strong>A tailoring run does not re-check the job market.</strong> It re-scores and
@@ -388,7 +447,10 @@
 
   <div class="scroller">
   <table>
+      <thead>
     <tr><th>What you see</th><th>What to do</th></tr>
+      </thead>
+      <tbody>
     <tr><td>Rejected that API key</td><td>The key is wrong or was revoked. Make a new one.</td></tr>
     <tr><td>Not allowed to use this model</td><td>That account cannot reach that model. Try Sonnet 5.</td></tr>
     <tr><td>Rate limited</td><td>Wait a minute and run it again.</td></tr>
@@ -398,7 +460,8 @@
     <tr><td>Only returned N of 60</td><td>Claude stopped early. Run it again.</td></tr>
     <tr><td>Could not be saved</td><td>Browser storage is full. Delete an old profile.</td></tr>
     <tr><td>Nothing happens at all</td><td>Serve the folder over http rather than opening the file directly.</td></tr>
-  </table>
+      </tbody>
+    </table>
   </div>
 
   <p>If the button itself is missing or dead, the most likely cause is an extension blocking the code library
