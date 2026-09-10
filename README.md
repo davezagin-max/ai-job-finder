@@ -5,7 +5,9 @@ button that re-tailors the entire board to any resume you upload.
 
 The board itself is hand-researched: about 60 employers, each with a verified
 hiring status and, where they exist, links to openings that were confirmed live
-on a stated date. The tailoring button sends a resume to Claude, which re-scores
+on a stated date. As shipped it is curated for new-grad data, AI and fintech
+roles around Salt Lake City, which is the starting point every uploaded resume
+gets re-scored against. The tailoring button sends a resume to Claude, which re-scores
 every employer for that person, rewrites the reasoning on each card, and for a
 candidate outside Salt Lake City adds employers in their own city.
 
@@ -25,6 +27,11 @@ No build step, no server, no dependencies to install. It is one HTML file.
 - [Testing](#testing)
 - [Deploying](#deploying)
 - [Limitations](#limitations)
+
+The default board is a template. It carries no one's personal details: the
+header describes who the list was curated for, and every card explains the
+employer rather than any particular candidate. Upload a resume and the whole
+thing rewrites itself around that person, in that person's browser only.
 
 ## Quick start
 
@@ -243,16 +250,12 @@ git push -u origin main
 Then in the repository settings, enable Pages from the `main` branch. The site
 appears at `https://<you>.github.io/<repo>/`.
 
-Two things to decide before making the repository public:
+No license file is included, which means default copyright applies and nobody
+else may reuse the code. Add one if you want them to.
 
-1. **The board carries the owner's name, LinkedIn and career details.** That is
-   fine for a personal dashboard, less so if you would rather not publish it.
-   Edit the header block and the footer in `index.html` first.
-2. **No license file is included**, which means default copyright applies and
-   nobody else may reuse it. Add one if you want people to.
-
-Nothing in the repository contains an API key, and `.gitignore` excludes local
-Claude Code settings and the generated refresh state and reports.
+Nothing in the repository contains an API key or personal contact details, and
+`.gitignore` excludes local Claude Code settings and the generated refresh state
+and reports.
 
 ## Limitations
 
