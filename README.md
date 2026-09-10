@@ -236,7 +236,10 @@ reload, hostile model output, mobile layout, and the print stylesheet.
 
 ## Deploying
 
-The page is static, so any static host works. For GitHub Pages:
+**Live at https://davezagin-max.github.io/ai-job-finder/**
+
+The page is static, so any static host works. This copy is served from GitHub
+Pages off the `main` branch. To deploy your own fork:
 
 ```bash
 git init
