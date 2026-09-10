@@ -149,7 +149,7 @@
   land on an empty board. Search covers company names, cities, the explanation text and job titles.</p>
 
   <h2 id="upload"><span class="num">2</span>Uploading a resume</h2>
-  <p class="lede">Five steps, one to three minutes, under a dollar.</p>
+  <p class="lede">Five steps, about a minute, usually under twenty cents.</p>
 
   <ol class="steps">
     <li>Click <strong>Upload a resume</strong>.</li>
@@ -168,14 +168,18 @@
     <h3>What it costs</h3>
     <div class="scroller">
     <table>
-      <tr><th>Model</th><th>Per run</th><th>Time</th><th>When to pick it</th></tr>
-      <tr><td>Claude Opus 5</td><td>$0.45 to $1.50</td><td>1 to 3 min</td><td>The default. Best quality per dollar.</td></tr>
-      <tr><td>Claude Fable 5.1</td><td>$1.00 to $3.00</td><td>3 to 6 min</td><td>Hardest cases, deepest reasoning.</td></tr>
-      <tr><td>Claude Sonnet 5</td><td>$0.15 to $0.40</td><td>under 1 min</td><td>Quick pass, shallower explanations.</td></tr>
+      <tr><th>Model and effort</th><th>Per run</th><th>Time</th><th>When to pick it</th></tr>
+      <tr><td>Sonnet 5, medium</td><td>about $0.15</td><td>about a minute</td><td>The default, and the right answer almost always.</td></tr>
+      <tr><td>Sonnet 5, low</td><td>under $0.10</td><td>well under a minute</td><td>A quick pass when you just want the shape of it.</td></tr>
+      <tr><td>Opus 5, high</td><td>$0.50 to $1.50</td><td>several minutes</td><td>An unusual resume or a career change.</td></tr>
+      <tr><td>Fable 5.1</td><td>$1.00 to $3.00</td><td>slowest</td><td>Only when Opus 5 got something wrong.</td></tr>
     </table>
     </div>
-    <p style="margin-bottom:0">Effort raises quality and cost together, because thinking is billed as output.
-    The toast at the end reports what the run actually cost.</p>
+    <p>Effort is the bigger lever, not the model. Thinking is billed as output, so a high-effort
+    run on a big model spends most of its money reasoning rather than writing. Opus 5 at high effort was
+    only a third of the way through the board after four minutes in testing, which is why the defaults
+    are Sonnet 5 at medium.</p>
+    <p style="margin-bottom:0">The toast at the end reports what the run actually cost.</p>
   </div>
 
   <h3>Saved profiles</h3>
@@ -291,11 +295,13 @@
   <p>Scores are deliberately spread. A board where everything scores in the high eighties tells you nothing,
   so the rules require using the full range and being explicit when a role is a reach.</p>
 
-  <h3>Badges</h3>
-  <p>Badges are relative to the person, not absolute facts about the company. <strong>Your city</strong> means
-  an office within commuting distance of where they want to be. <strong>Fintech</strong> and
-  <strong>AI-native</strong> describe the product. <strong>Your tools</strong> means the company's stack
-  overlaps tools listed on the resume.</p>
+  <h3>Badges and tiers are worked out here, not by Claude</h3>
+  <p>Claude supplies one score per employer and a single yes-or-no on whether its stack overlaps tools named
+  on the resume. Everything else follows automatically. The location badge comes from where the employer sits
+  relative to the candidate. Fintech and AI-native come from the researched board, because they describe the
+  company and do not change with who is applying. Tier one is simply the eight highest scores.</p>
+  <p>This is deliberate. Asking a model to decide sixty tiers and badge sets costs real money in reasoning and
+  produces answers that drift between runs. Deriving them is free, instant and identical every time.</p>
 
   <h3>Timing is separate from fit</h3>
   <p>Geography never changes whether a role is live. If a company has a real opening today, it stays in the

@@ -105,14 +105,21 @@ already correct for those candidates.
 
 Each run bills the API key you paste. Rough cost per run:
 
-| Model | Typical cost | Typical time |
+| Model and effort | Typical cost | Typical time |
 | --- | --- | --- |
-| Claude Opus 5 (default) | $0.45 to $1.50 | 1 to 3 minutes |
-| Claude Fable 5.1 | $1.00 to $3.00 | 3 to 6 minutes |
-| Claude Sonnet 5 | $0.15 to $0.40 | under 1 minute |
+| Sonnet 5, medium (default) | about $0.15 | about a minute |
+| Sonnet 5, low | under $0.10 | well under a minute |
+| Opus 5, high | $0.50 to $1.50 | several minutes |
+| Fable 5.1 | $1.00 to $3.00 | slowest |
 
-Thinking tokens are billed as output, so a higher effort setting costs more than
-the response length alone suggests.
+Effort matters more than the model. Thinking is billed as output, so most of the
+cost of a high-effort run is reasoning rather than the answer. Opus 5 at high
+effort was only a third of the way through the board after four minutes, which is
+why the defaults are Sonnet 5 at medium effort.
+
+The model is asked for one score and one boolean per employer. Tiers and badges
+are derived in the page from those scores and the board's own data, which removes
+the most expensive per-company deliberation and makes the results reproducible.
 
 The board data is sent with a cache marker, so repeated runs in the same session
 cost noticeably less on input tokens. The completion toast reports the actual

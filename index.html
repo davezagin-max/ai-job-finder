@@ -2138,11 +2138,11 @@ render();
   const JSZIP_URL = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
   const LS = { key: 'jf.apiKey', model: 'jf.model', effort: 'jf.effort', profiles: 'jf.profiles', active: 'jf.activeProfile' };
   const MODELS = {
-    'claude-opus-5':    { label: 'Claude Opus 5',    price: [5, 25],  hint: 'Recommended. Adaptive extended thinking; roughly $0.50–1 and 1–3 minutes per run.' },
-    'claude-fable-5-1': { label: 'Claude Fable 5.1', price: [10, 50], hint: 'Anthropic’s most capable model. Deepest reasoning, several minutes, about 2× the cost of Opus 5.' },
-    'claude-sonnet-5':  { label: 'Claude Sonnet 5',  price: [2, 10],  hint: 'Fast and cheap (under $0.30 per run). Shallower match notes.' },
+    'claude-sonnet-5':  { label: 'Claude Sonnet 5',  price: [2, 10],  hint: 'Recommended. About a minute and well under $0.20 at medium effort. The board only needs judgment, not deep reasoning.' },
+    'claude-opus-5':    { label: 'Claude Opus 5',    price: [5, 25],  hint: 'Deeper judgment for an unusual resume or a career change. Budget 3–6 minutes and $0.50–1.50 at high effort; drop the effort to cut both.' },
+    'claude-fable-5-1': { label: 'Claude Fable 5.1', price: [10, 50], hint: 'The most capable model and the slowest. Several minutes and roughly twice Opus 5. Worth it only when Opus 5 misjudged something.' },
   };
-  const EFFORTS = { medium: 'Medium · quicker', high: 'High · recommended', xhigh: 'Extra high · deepest practical', max: 'Max · slowest, most thorough' };
+  const EFFORTS = { low: 'Low · cheapest', medium: 'Medium · recommended', high: 'High · more deliberation', xhigh: 'Extra high', max: 'Max · slowest' };
   const $ = id => document.getElementById(id);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
   const rich = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
@@ -2305,15 +2305,15 @@ render();
 
 The board data (JSON) follows in the next block. Its "about" and "timing.note" text was written for the board's original owner: a University of Utah Information Systems senior graduating December 2026, targeting data, AI and fintech roles around Salt Lake City. Treat any second-person language there as describing that person, not this candidate; keep only the company facts. You cannot browse, so never invent openings, programs, or company facts beyond the input, though general knowledge of well-known companies is fine.
 
-Scores (60-100) measure how well THIS candidate fits THIS employer for an entry-level or new-grad hire: 95-100 bullseye (domain, geography, stack and hiring pipeline all line up), 85-94 strong, 75-84 solid, 65-74 stretch, 60-64 weak. Use the whole range and spread the scores; a board where everything is 85+ is useless. If the candidate's home base is far from Utah and they are not relocating, Utah-only employers lose points unless they hire remote, and the why should say so (why is the main per-company text you write). If the candidate's field is far from what an employer hires for, score low and say what would have to be true to fit. The board covers AI/ML, software, data and product roles; if the candidate's field is outside that (nursing, law, accounting...), say so plainly in the summary, keep suggested employers to ones that hire in the candidate's real field, and set roles to [] where none of the four apply. Tier 1 is the 6 to 9 best matches across board and suggested employers combined; everything else is tier 2.
+Scores (60-100) measure how well THIS candidate fits THIS employer for an entry-level or new-grad hire: 95-100 bullseye (domain, geography, stack and hiring pipeline all line up), 85-94 strong, 75-84 solid, 65-74 stretch, 60-64 weak. Use the whole range and spread the scores; a board where everything is 85+ is useless. If the candidate's home base is far from Utah and they are not relocating, Utah-only employers lose points unless they hire remote, and the why should say so (why is the main per-company text you write). If the candidate's field is far from what an employer hires for, score low and say what would have to be true to fit. The board covers AI/ML, software, data and product roles; if the candidate's field is outside that (nursing, law, accounting...), say so plainly in the summary, keep suggested employers to ones that hire in the candidate's real field, and set roles to [] where none of the four apply.
 
-Badges are relative to this candidate: "local" = the employer has an office in the candidate's home-base metro (the same metro behind city, geoLabel and locType), so give it only to companies whose locType is local or hybrid; "fintech" = the employer is fintech; "ai-native" = AI is the core of the product; "tools-match" = the employer's stack overlaps tools on the resume.
+Do not rank or categorise the board yourself beyond the score: tiers and badges are derived from your scores and the board's own data, so there is nothing to decide there. The one exception is toolsMatch, a simple true or false per employer: true only when that employer's stack clearly overlaps a tool named on the resume, false otherwise. Do not deliberate over it; if you are unsure, it is false.
 
-Each "why" is 1-3 sentences (about 30-60 words), second person, specific. Lead with the strongest reason and wrap that lead phrase in **double asterisks**, tie it to a concrete resume item, and be honest when a role is a reach or the geography is a stretch. Match the tone of these examples: "**Bullseye match.** Fintech and AI 20 minutes from your front door, hiring data analysts who work in exactly the SQL and Python stack you used all summer." and "**Reach role, competitive.** Maker of Claude, and you use Claude Code daily, so you can speak to the product as a real user rather than an applicant."
+Each "why" is 1-2 sentences (about 25-45 words), second person, specific. Keep them tight; this is the bulk of what you write. Lead with the strongest reason and wrap that lead phrase in **double asterisks**, tie it to a concrete resume item, and be honest when a role is a reach or the geography is a stretch. Match the tone of these examples: "**Bullseye match.** Fintech and AI 20 minutes from your front door, hiring data analysts who work in exactly the SQL and Python stack you used all summer." and "**Reach role, competitive.** Maker of Claude, and you use Claude Code daily, so you can speak to the product as a real user rather than an applicant."
 
 Timing: each company's "timing.status" (open-now, opens-later, watch, wrong-cohort) and "timing.note" were assessed on the verification date for a December 2026 graduate. Return status "keep" unless this candidate's graduation timing or level clearly changes the verdict (for example a "wrong-cohort" 2027 program that fits a May 2027 graduate). Never move a company to open-now unless the listed openings or note show live roles that fit this candidate. Geography never changes status (a live role is still live); when a company's only live openings are on-site in Utah and the candidate is far and not relocating, keep the status, score it as a stretch, and say in the why that the role is on-site in Utah. The timing note is shown to the candidate verbatim, so return "note" as a rewrite of it for this candidate (same facts, 1-2 sentences, second person, nothing invented) whenever the original mentions the owner's background, school, campus events or graduation date; return an empty string to keep the original when it contains nothing person-specific.
 
-Geography. Home base is the metro the candidate wants to work in after graduation when the resume states one (an objective line, "relocating to X", "open to Y"); otherwise the city on the resume; otherwise infer it from the most recent school or employer city and say so in the summary. If even that is unclear, treat the candidate as Salt Lake based and say in the summary that the board assumes Salt Lake City. The board was curated around Salt Lake City, so each existing company's locType (local = based in or a major hub in SLC, hybrid = has an SLC office, remote = hires remote) is SLC-relative. If the home base is anywhere on the Wasatch Front (Salt Lake, Utah, Davis or Weber county: Salt Lake City, Provo, Orem, Lehi, Ogden, Park City...) or the candidate says they are moving to or targeting Salt Lake City, treat them as SLC-based: geoLabel "SLC Area", city "Salt Lake City, UT" (or their own Wasatch Front town), locType "keep" for every company and an empty suggested list; if they are relocating, say in the summary that the board assumes the move. Otherwise do two things. (1) Re-map every existing company's locType relative to the candidate: local = headquartered or a major hub in the candidate's metro, hybrid = a smaller office there, remote = hires this kind of role remotely from where the candidate lives, far = would require relocation. (2) Add up to 15 suggested employers in the candidate's metro that you are confident exist and hire entry-level talent in the candidate's field: a mix of large employers with known early-career programs and notable local tech, fintech, AI, health or security firms, never duplicating a board company. Fewer than 8 is fine; a short list you are sure of beats a padded one, and omit anything you are not sure exists. You cannot verify openings, so each note says how they hire: name a program only when you are certain of its exact name, otherwise give typical entry titles and what to search for ("early career", "new grad") on their careers site. Suggested employers get the same score, tier, badges and why treatment as board companies, and their locType is relative to the candidate (local, hybrid or remote). A remote-first candidate with no metro gets geoLabel "Remote" and an empty city; every board company is then "remote" if it hires this kind of role remotely from the candidate's country, otherwise "far", never local or hybrid and never the "local" badge; suggested employers must be remote-friendly with locType "remote" and location as the HQ city followed by " (remote)". If the resume names two or more target metros, use the current residence (or the first listed) for city and geoLabel, mention the other in target and summary, split suggested employers between them with each entry's location naming its own city, and add one searchLinks entry per metro.
+Geography. Home base is the metro the candidate wants to work in after graduation when the resume states one (an objective line, "relocating to X", "open to Y"); otherwise the city on the resume; otherwise infer it from the most recent school or employer city and say so in the summary. If even that is unclear, treat the candidate as Salt Lake based and say in the summary that the board assumes Salt Lake City. The board was curated around Salt Lake City, so each existing company's locType (local = based in or a major hub in SLC, hybrid = has an SLC office, remote = hires remote) is SLC-relative. If the home base is anywhere on the Wasatch Front (Salt Lake, Utah, Davis or Weber county: Salt Lake City, Provo, Orem, Lehi, Ogden, Park City...) or the candidate says they are moving to or targeting Salt Lake City, treat them as SLC-based: geoLabel "SLC Area", city "Salt Lake City, UT" (or their own Wasatch Front town), locType "keep" for every company and an empty suggested list; if they are relocating, say in the summary that the board assumes the move. Otherwise do two things. (1) Re-map every existing company's locType relative to the candidate: local = headquartered or a major hub in the candidate's metro, hybrid = a smaller office there, remote = hires this kind of role remotely from where the candidate lives, far = would require relocation. (2) Add up to 15 suggested employers in the candidate's metro that you are confident exist and hire entry-level talent in the candidate's field: a mix of large employers with known early-career programs and notable local tech, fintech, AI, health or security firms, never duplicating a board company. Fewer than 8 is fine; a short list you are sure of beats a padded one, and omit anything you are not sure exists. You cannot verify openings, so each note says how they hire: name a program only when you are certain of its exact name, otherwise give typical entry titles and what to search for ("early career", "new grad") on their careers site. Suggested employers get the same score and why treatment as board companies, their locType is relative to the candidate (local, hybrid or remote), and their badges list only fintech, ai-native or tools-match where each genuinely applies. A remote-first candidate with no metro gets geoLabel "Remote" and an empty city; every board company is then "remote" if it hires this kind of role remotely from the candidate's country, otherwise "far", never local or hybrid and never the "local" badge; suggested employers must be remote-friendly with locType "remote" and location as the HQ city followed by " (remote)". If the resume names two or more target metros, use the current residence (or the first listed) for city and geoLabel, mention the other in target and summary, split suggested employers between them with each entry's location naming its own city, and add one searchLinks entry per metro.
 
 Header fields follow the original board's style: status like "Senior · Grad May 2027" or "Recent grad · Available now"; recentRole like "Northwestern Mutual — Data Analytics Intern (2 summers)"; stack = the 5-7 most marketable tools, comma-separated; target like "New Grad FT · Chicago / Remote · Fintech + AI"; subline like "New-grad AI roles for a May 2027 graduate · Tailored to your September 2026 resume"; cohortLabel like "Dec 2026 grad" or "May 2027 grad"; city is the home-base metro as "City, ST" or "City, Country" (empty only for a remote-first candidate); geoLabel is a short badge label for that home base, like "SLC Area" or "Austin Area"; uofu is true only if the candidate studies or studied at the University of Utah. searchLinks are 3-5 LinkedIn job searches worth bookmarking (label, keywords, a location spelled the way LinkedIn does such as "Austin, Texas" or "London, England, United Kingdom", or empty for remote-only, remoteOnly, entryLevel). summary is 2-3 sentences on how to position this candidate. applyNow names which of the currently live roles on the board to apply to first and why; watchLater says what to watch for later in the season. Return exactly one companies entry per input company using the exact input name.`;
 
@@ -2366,14 +2366,13 @@ Header fields follow the original board's style: status like "Senior · Grad May
             properties: {
               name: { type: 'string', description: 'Exact company name from the input' },
               score: { type: 'integer', description: '60-100' },
-              tier: { type: 'integer', enum: [1, 2] },
-              badges: { type: 'array', items: { type: 'string', enum: ['local', 'fintech', 'ai-native', 'tools-match'] } },
+              toolsMatch: { type: 'boolean', description: 'true only if this employer\'s stack clearly overlaps tools named on the resume' },
               status: { type: 'string', enum: ['keep', 'open-now', 'opens-later', 'watch', 'wrong-cohort'] },
               locType: { type: 'string', enum: ['keep', 'local', 'hybrid', 'remote', 'far'], description: 'Relative to the candidate; "keep" when the candidate is SLC-based' },
               note: { type: 'string', description: 'timing.note rewritten for this candidate (same facts, 1-2 sentences, second person), or empty string to keep the original' },
               why: { type: 'string' },
             },
-            required: ['name', 'score', 'tier', 'badges', 'status', 'locType', 'note', 'why'],
+            required: ['name', 'score', 'toolsMatch', 'status', 'locType', 'note', 'why'],
             additionalProperties: false,
           },
         },
@@ -2389,13 +2388,12 @@ Header fields follow the original board's style: status like "Senior · Grad May
               industry: { type: 'array', items: { type: 'string', enum: ['fintech', 'data', 'ai-lab', 'health', 'cyber', 'other'] }, description: 'Board taxonomy: fintech = financial products; data = data/BI/analytics tooling vendor; ai-lab = AI research lab or AI-native product company; health = healthcare or biotech; cyber = security; other = none of these' },
               roles: { type: 'array', items: { type: 'string', enum: ['ml', 'swe', 'data', 'product'] }, description: 'Which of the board role families this employer hires new grads into; [] if none apply' },
               score: { type: 'integer', description: '60-100' },
-              tier: { type: 'integer', enum: [1, 2] },
-              badges: { type: 'array', items: { type: 'string', enum: ['local', 'fintech', 'ai-native', 'tools-match'] } },
+              badges: { type: 'array', items: { type: 'string', enum: ['fintech', 'ai-native', 'tools-match'] }, description: 'Only these three; the location badge is added automatically' },
               why: { type: 'string' },
               note: { type: 'string', description: 'How they hire entry-level: program name, typical titles, what to search for' },
               confidence: { type: 'string', enum: ['high', 'medium'], description: 'high = certain the company exists, has a presence in this metro and hires entry-level in this field; medium = certain it exists but unsure about the office or the entry-level pipeline' },
             },
-            required: ['name', 'location', 'locType', 'industry', 'roles', 'score', 'tier', 'badges', 'why', 'note', 'confidence'],
+            required: ['name', 'location', 'locType', 'industry', 'roles', 'score', 'badges', 'why', 'note', 'confidence'],
             additionalProperties: false,
           },
         },
@@ -2455,12 +2453,18 @@ Header fields follow the original board's style: status like "Senior · Grad May
       const key = exact.get(row.name) || loose.get(norm(row.name));
       if (!key || companies[key]) return;
       matched++;
+      const base = BASE[key];
+      const locType = ['local', 'hybrid', 'remote', 'far'].includes(row.locType) ? row.locType : 'keep';
+      const effective = locType === 'keep' ? base.locType : locType;
       companies[key] = {
         score: clamp(Math.round(Number(row.score) || 60), 60, 100),
-        tier: Number(row.tier) === 1 ? 1 : 2,
-        badges: (Array.isArray(row.badges) ? row.badges : []).filter(b => BADGE_LABEL[b]),
+        // Tier and badges are derived, not asked for: the model only supplies the score and toolsMatch.
+        // 'fintech' and 'ai-native' are facts about the company, so they come from the researched board.
+        badges: (effective === 'local' || effective === 'hybrid' ? ['local'] : [])
+          .concat(base.badges.filter(b => b === 'fintech' || b === 'ai-native'))
+          .concat(row.toolsMatch ? ['tools-match'] : []),
         status: STATUS_ORDER.includes(row.status) && row.status !== 'suggested' ? row.status : 'keep',
-        locType: ['local', 'hybrid', 'remote', 'far'].includes(row.locType) ? row.locType : 'keep',
+        locType,
         note: String(row.note || ''),
         why: String(row.why || ''),
       };
@@ -2473,15 +2477,16 @@ Header fields follow the original board's style: status like "Senior · Grad May
       const key = norm(sg.name);
       if (!key || taken.has(key)) return;
       taken.add(key);
+      const sgLoc = ['local', 'hybrid', 'remote'].includes(sg.locType) ? sg.locType : 'local';
       suggested.push({
         name: sg.name.trim().slice(0, 80),
         location: String(sg.location || '').slice(0, 60),
-        locType: ['local', 'hybrid', 'remote'].includes(sg.locType) ? sg.locType : 'local',
+        locType: sgLoc,
         industry: (Array.isArray(sg.industry) ? sg.industry : []).filter(x => IND.includes(x)),
         roles: (Array.isArray(sg.roles) ? sg.roles : []).filter(x => ROLES.includes(x)),
         score: clamp(Math.round(Number(sg.score) || 60), 60, 100),
-        tier: Number(sg.tier) === 1 ? 1 : 2,
-        badges: (Array.isArray(sg.badges) ? sg.badges : []).filter(b => BADGE_LABEL[b]),
+        badges: (sgLoc === 'local' || sgLoc === 'hybrid' ? ['local'] : [])
+          .concat((Array.isArray(sg.badges) ? sg.badges : []).filter(b => b === 'fintech' || b === 'ai-native' || b === 'tools-match')),
         why: String(sg.why || ''),
         note: String(sg.note || ''),
         confidence: sg.confidence === 'high' ? 'high' : 'medium',
@@ -2490,6 +2495,10 @@ Header fields follow the original board's style: status like "Senior · Grad May
     if (matched < Math.ceil(COMPANIES.length * 0.8)) {
       throw new Error(`Claude only returned ${matched} of ${COMPANIES.length} companies. Try running it again.`);
     }
+    // Tier 1 is simply the eight strongest scores across everything shown.
+    const ranked = Object.values(companies).concat(suggested).sort((a, b) => b.score - a.score);
+    ranked.forEach((entry, i) => { entry.tier = i < 8 ? 1 : 2; });
+
     const name = String(p.name || '').trim() || 'Uploaded resume';
     const first = name.split(/\s+/)[0];
     const linkedin = /^https?:\/\/([a-z0-9-]+\.)?linkedin\.com\//i.test(p.linkedin || '') ? p.linkedin : '';
@@ -2579,8 +2588,8 @@ Header fields follow the original board's style: status like "Senior · Grad May
   $('company-count').textContent = COMPANIES.length;
   $('model-select').innerHTML = Object.entries(MODELS).map(([id, m]) => `<option value="${id}">${m.label}</option>`).join('');
   $('effort-select').innerHTML = Object.entries(EFFORTS).map(([id, label]) => `<option value="${id}">${label}</option>`).join('');
-  $('model-select').value = MODELS[store.get(LS.model, '')] ? store.get(LS.model, '') : 'claude-opus-5';
-  $('effort-select').value = EFFORTS[store.get(LS.effort, '')] ? store.get(LS.effort, '') : 'high';
+  $('model-select').value = MODELS[store.get(LS.model, '')] ? store.get(LS.model, '') : 'claude-sonnet-5';
+  $('effort-select').value = EFFORTS[store.get(LS.effort, '')] ? store.get(LS.effort, '') : 'medium';
   $('api-key').value = store.get(LS.key, '');
   const updateHint = () => { $('model-hint').textContent = MODELS[$('model-select').value].hint; };
   updateHint();
