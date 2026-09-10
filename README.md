@@ -91,11 +91,17 @@ native documents, so layout and columns are read correctly.
 | Every company card | New match score, tier, badges, and a rewritten explanation tied to the person's real experience |
 | Timing notes | Rewritten wherever the original referenced the board owner's school or graduation date |
 | Where filters | Relabeled to the candidate's metro, with a "Needs relocation" filter for employers that would require a move |
-| Suggested employers | For a candidate outside Salt Lake City, up to fifteen employers in their own metro |
+| Suggested employers | Up to fifteen in the candidate's own metro and field, whenever the board's geography or its subject matter does not fit them |
 | Footer | Which live roles to apply to first, and what to watch for later in the season |
 | Career fair strip | Hidden by default; appears only for a University of Utah student |
 
 ### About the suggested employers
+
+They appear whenever this board is the wrong board for the person: they live
+somewhere else, or they work in a field it does not cover. Since 57 of the 60
+employers hire data, analytics or software people, a candidate in another
+profession gets suggestions even if they live in Salt Lake City, and those
+suggestions lead the page while the board drops below them.
 
 These come from Claude's own knowledge, not from the researched board. They are
 drawn as dashed purple cards under a heading that names the city, each labeled
