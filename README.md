@@ -13,6 +13,10 @@ candidate outside Salt Lake City adds employers in their own city.
 
 No build step, no server, no dependencies to install. It is one HTML file.
 
+**New here? Read the [visual guide](guide.html)** ([live version](https://davezagin-max.github.io/ai-job-finder/guide.html)),
+which explains the board and the tailoring logic in plain language with a diagram.
+This README is the technical reference.
+
 ## Contents
 
 - [Quick start](#quick-start)

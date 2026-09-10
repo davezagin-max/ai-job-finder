@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How the AI Job Finder works</title>
+<style>
+  :root {
+    --bg: #0b1020; --bg-soft: #131a33; --bg-card: #161e3d; --border: #283261;
+    --text: #e6e9f5; --text-dim: #9aa3c7; --accent: #7c5cff; --accent-2: #22d3ee;
+    --gold: #fbbf24; --green: #34d399; --red: #f87171;
+    --shadow: 0 10px 30px rgba(0,0,0,0.35); --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: radial-gradient(1200px 800px at 80% -10%, #1f2a55 0%, transparent 60%),
+                radial-gradient(900px 600px at -10% 110%, #2b1a55 0%, transparent 50%), var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  header { padding: 40px 48px 28px; border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(124,92,255,0.10), transparent); }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  header h1 { margin: 0 0 6px; font-size: 30px; letter-spacing: -0.02em; }
+  header .sub { color: var(--text-dim); font-size: 15px; margin: 0; }
+  .backlink { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 18px;
+    padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border);
+    background: rgba(255,255,255,0.03); color: var(--text); font-size: 13px; }
+  .backlink:hover { border-color: var(--accent); background: rgba(124,92,255,0.15); text-decoration: none; }
+
+  main { max-width: 860px; margin: 0 auto; padding: 8px 48px 90px; }
+  nav.toc { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px 20px; margin: 28px 0 8px; }
+  nav.toc strong { font-size: 11px; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-dim);
+    display: block; margin-bottom: 8px; font-weight: 600; }
+  nav.toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 28px; font-size: 14px; }
+  nav.toc li { margin-bottom: 3px; break-inside: avoid; }
+
+  h2 { font-size: 22px; margin: 46px 0 4px; letter-spacing: -0.01em; scroll-margin-top: 20px; }
+  h2 .num { color: var(--accent); font-variant-numeric: tabular-nums; margin-right: 10px; }
+  h2 + .lede { color: var(--text-dim); margin: 0 0 18px; font-size: 15px; }
+  h3 { font-size: 16px; margin: 26px 0 8px; }
+  p { margin: 0 0 14px; }
+  ul, ol.steps { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 7px; }
+
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 18px 22px; margin: 18px 0; box-shadow: var(--shadow); }
+  .card h3 { margin-top: 0; }
+  .note { border-left: 3px solid var(--accent); background: rgba(124,92,255,0.07);
+    border-radius: 0 10px 10px 0; padding: 12px 16px; margin: 18px 0; font-size: 14.5px; }
+  .warn { border-left: 3px solid var(--gold); background: rgba(251,191,36,0.07); }
+  .warn strong:first-child { color: var(--gold); }
+  .note strong:first-child { color: var(--accent-2); }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-dim); font-weight: 600; }
+  td:first-child { white-space: nowrap; }
+  .scroller { overflow-x: auto; }
+
+  code { background: rgba(255,255,255,0.07); border: 1px solid var(--border); border-radius: 5px;
+    padding: 1px 6px; font-size: 13px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  pre { background: #0d1226; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;
+    overflow-x: auto; font-size: 13px; line-height: 1.5; }
+  pre code { background: none; border: none; padding: 0; }
+
+  .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; flex-shrink: 0; }
+  .d-green { background: var(--green); box-shadow: 0 0 9px var(--green); }
+  .d-gold { background: var(--gold); box-shadow: 0 0 9px var(--gold); }
+  .d-cyan { background: var(--accent-2); }
+  .d-red { background: var(--red); }
+  .d-purple { background: var(--accent); box-shadow: 0 0 9px var(--accent); }
+  .statuses li { padding-left: 0; }
+  .statuses .dot { vertical-align: middle; position: relative; top: -1px; }
+
+  figure { margin: 22px 0; }
+  figure svg { width: 100%; height: auto; display: block; }
+  figcaption { color: var(--text-dim); font-size: 13px; margin-top: 10px; text-align: center; }
+
+  footer { border-top: 1px solid var(--border); margin-top: 60px; padding: 26px 48px;
+    color: var(--text-dim); font-size: 13px; text-align: center; }
+
+  @media (max-width: 720px) {
+    header, main, footer { padding-left: 20px; padding-right: 20px; }
+    header h1 { font-size: 24px; }
+    nav.toc ol { columns: 1; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="backlink" href="index.html">&larr; Back to the board</a>
+    <h1>How the AI Job Finder works</h1>
+    <p class="sub">A plain guide to using the board, and to what actually happens when you upload a resume.</p>
+  </div>
+</header>
+
+<main>
+  <nav class="toc">
+    <strong>On this page</strong>
+    <ol>
+      <li><a href="#board">Reading the board</a></li>
+      <li><a href="#upload">Uploading a resume</a></li>
+      <li><a href="#pipeline">What happens on a run</a></li>
+      <li><a href="#scoring">How scoring works</a></li>
+      <li><a href="#location">How location works</a></li>
+      <li><a href="#suggested">Suggested employers</a></li>
+      <li><a href="#trust">What is verified, what is not</a></li>
+      <li><a href="#privacy">Where your data goes</a></li>
+      <li><a href="#trouble">When something goes wrong</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="board"><span class="num">1</span>Reading the board</h2>
+  <p class="lede">Sixty employers, sorted by whether you can act on them today.</p>
+
+  <p>The board opens with no filters applied, so you see everything at once. Cards are grouped by
+  timing first and by match score second, which means the roles you can apply to this week sit at the top.</p>
+
+  <ul class="statuses">
+    <li><span class="dot d-green"></span><strong>Live roles right now.</strong> A real opening was confirmed
+      open on the date in the footer. Apply this week.</li>
+    <li><span class="dot d-purple"></span><strong>Suggested for your city.</strong> Only appears after you
+      upload a resume from outside Salt Lake. These come from Claude's knowledge and are not verified.</li>
+    <li><span class="dot d-gold"></span><strong>Opens later this fall.</strong> The program is real and dated,
+      but applications are not open yet. Set a reminder.</li>
+    <li><span class="dot d-cyan"></span><strong>Watch list.</strong> The company hires, and their board is live,
+      but nothing entry level was posted on the check date.</li>
+    <li><span class="dot d-red"></span><strong>Wrong cohort.</strong> The timing does not fit the graduation
+      window. This group is hidden when it is empty.</li>
+  </ul>
+
+  <h3>The number on each card</h3>
+  <p>That circle is a match score from 60 to 100. On the default board it rates fit for a new grad
+  targeting data, AI and fintech work around Salt Lake City. After you upload a resume it rates fit for
+  that person instead. Higher means a stronger case, not a better company.</p>
+
+  <h3>Filters</h3>
+  <p>Filters combine, so picking a role and a city narrows to cards matching both. Picking a second chip in
+  the same row swaps rather than stacks. Any filter that would return nothing is hidden, so you can never
+  land on an empty board. Search covers company names, cities, the explanation text and job titles.</p>
+
+  <h2 id="upload"><span class="num">2</span>Uploading a resume</h2>
+  <p class="lede">Five steps, one to three minutes, under a dollar.</p>
+
+  <ol class="steps">
+    <li>Click <strong>Upload a resume</strong>.</li>
+    <li>Paste an Anthropic API key. Get one at
+      <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a>.
+      It is saved in your browser so you only do this once.</li>
+    <li>Pick a model and effort level, or keep the defaults.</li>
+    <li>Drop in a PDF, a Word file or a text file. You can also paste the text.</li>
+    <li>Click <strong>Tailor the board</strong> and watch it think.</li>
+  </ol>
+
+  <p>Claude's reasoning streams into the panel while it works, and a counter tracks how many companies it
+  has written. Stop cancels at any point and leaves the board untouched.</p>
+
+  <div class="card">
+    <h3>What it costs</h3>
+    <div class="scroller">
+    <table>
+      <tr><th>Model</th><th>Per run</th><th>Time</th><th>When to pick it</th></tr>
+      <tr><td>Claude Opus 5</td><td>$0.45 to $1.50</td><td>1 to 3 min</td><td>The default. Best quality per dollar.</td></tr>
+      <tr><td>Claude Fable 5.1</td><td>$1.00 to $3.00</td><td>3 to 6 min</td><td>Hardest cases, deepest reasoning.</td></tr>
+      <tr><td>Claude Sonnet 5</td><td>$0.15 to $0.40</td><td>under 1 min</td><td>Quick pass, shallower explanations.</td></tr>
+    </table>
+    </div>
+    <p style="margin-bottom:0">Effort raises quality and cost together, because thinking is billed as output.
+    The toast at the end reports what the run actually cost.</p>
+  </div>
+
+  <h3>Saved profiles</h3>
+  <p>Every finished run is saved as a profile and a dropdown appears in the header. Switch between people
+  freely, or pick <strong>Original board</strong> to go back to the untouched version. Profiles live in that one
+  browser and never sync anywhere.</p>
+
+  <h2 id="pipeline"><span class="num">3</span>What happens on a run</h2>
+  <p class="lede">One request, sent straight from your browser to Anthropic. There is no server in the middle.</p>
+
+  <figure>
+    <svg viewBox="0 0 860 430" xmlns="http://www.w3.org/2000/svg" role="img"
+         aria-label="Flow diagram: the resume is read in the browser, combined with the board data and rules into one API request, Claude returns JSON, the page validates it and re-renders, and the result is saved locally.">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#9aa3c7"/>
+        </marker>
+        <style>
+          .bx { fill: #161e3d; stroke: #283261; stroke-width: 1.5; rx: 10; }
+          .bx-hi { fill: rgba(124,92,255,0.14); stroke: #7c5cff; }
+          .bx-out { fill: rgba(52,211,153,0.10); stroke: rgba(52,211,153,0.5); }
+          .t { fill: #e6e9f5; font: 600 13px -apple-system, "Segoe UI", Roboto, sans-serif; }
+          .s { fill: #9aa3c7; font: 11.5px -apple-system, "Segoe UI", Roboto, sans-serif; }
+          .lbl { fill: #22d3ee; font: 600 10px -apple-system, "Segoe UI", Roboto, sans-serif;
+                 letter-spacing: 0.08em; text-transform: uppercase; }
+          .ln { stroke: #9aa3c7; stroke-width: 1.5; fill: none; marker-end: url(#ar); }
+        </style>
+      </defs>
+
+      <text class="lbl" x="20" y="24">In your browser</text>
+      <rect class="bx" x="20" y="36" width="180" height="70"/>
+      <text class="t" x="36" y="62">Your resume</text>
+      <text class="s" x="36" y="82">PDF, Word, text or</text>
+      <text class="s" x="36" y="97">pasted. Read locally.</text>
+
+      <rect class="bx" x="20" y="126" width="180" height="70"/>
+      <text class="t" x="36" y="152">The board data</text>
+      <text class="s" x="36" y="172">60 employers, their</text>
+      <text class="s" x="36" y="187">openings and timing.</text>
+
+      <rect class="bx" x="20" y="216" width="180" height="70"/>
+      <text class="t" x="36" y="242">The rules</text>
+      <text class="s" x="36" y="262">How to score, badge</text>
+      <text class="s" x="36" y="277">and place employers.</text>
+
+      <path class="ln" d="M200,71 L245,71 L245,180 L288,180"/>
+      <path class="ln" d="M200,161 L288,161"/>
+      <path class="ln" d="M200,251 L245,251 L245,196 L288,196"/>
+
+      <rect class="bx bx-hi" x="292" y="126" width="176" height="90"/>
+      <text class="t" x="308" y="152">One API request</text>
+      <text class="s" x="308" y="172">Sent directly to</text>
+      <text class="s" x="308" y="187">Anthropic with your</text>
+      <text class="s" x="308" y="202">key. No middleman.</text>
+
+      <path class="ln" d="M468,171 L516,171"/>
+
+      <text class="lbl" x="520" y="24">At Anthropic</text>
+      <rect class="bx" x="520" y="126" width="150" height="90"/>
+      <text class="t" x="536" y="152">Claude thinks</text>
+      <text class="s" x="536" y="172">Then answers in a</text>
+      <text class="s" x="536" y="187">fixed JSON shape</text>
+      <text class="s" x="536" y="202">it cannot deviate from.</text>
+
+      <path class="ln" d="M670,171 L718,171"/>
+
+      <text class="lbl" x="722" y="24">Back in the browser</text>
+      <rect class="bx" x="722" y="126" width="118" height="90"/>
+      <text class="t" x="738" y="152">Checked</text>
+      <text class="s" x="738" y="172">Scores clamped,</text>
+      <text class="s" x="738" y="187">junk dropped, text</text>
+      <text class="s" x="738" y="202">escaped.</text>
+
+      <path class="ln" d="M781,216 L781,262"/>
+      <rect class="bx bx-out" x="600" y="266" width="240" height="66"/>
+      <text class="t" x="616" y="292">The board re-renders</text>
+      <text class="s" x="616" y="312">New scores, new explanations,</text>
+      <text class="s" x="616" y="327">new header and filters.</text>
+
+      <path class="ln" d="M600,299 L556,299"/>
+      <rect class="bx bx-out" x="380" y="266" width="172" height="66"/>
+      <text class="t" x="396" y="292">Saved locally</text>
+      <text class="s" x="396" y="312">As a profile in this</text>
+      <text class="s" x="396" y="327">browser only.</text>
+
+      <rect class="bx" x="20" y="352" width="820" height="56"/>
+      <text class="t" x="36" y="376">The resume itself is never stored.</text>
+      <text class="s" x="36" y="396">It is read, sent once, and discarded. Only Claude's answer is saved, and only on your machine.</text>
+    </svg>
+    <figcaption>One round trip. Nothing is uploaded to any server belonging to this project, because there isn't one.</figcaption>
+  </figure>
+
+  <h3>Why the answer is always the right shape</h3>
+  <p>The request pins Claude to a JSON schema, so it cannot reply with prose or invent extra fields. The page
+  then treats that answer as untrusted anyway: scores outside 60 to 100 are clamped, unknown categories are
+  dropped, companies that are not on the board are ignored, duplicates are removed, and anything shown as text
+  is escaped. A reply covering fewer than 80% of the companies is rejected rather than half applied.</p>
+
+  <h2 id="scoring"><span class="num">4</span>How scoring works</h2>
+  <p class="lede">A score answers one question: how strong is this person's case for an entry-level hire here?</p>
+
+  <div class="scroller">
+  <table>
+    <tr><th>Score</th><th>Meaning</th></tr>
+    <tr><td>95 to 100</td><td>Bullseye. Field, city, tools and hiring pipeline all line up.</td></tr>
+    <tr><td>85 to 94</td><td>Strong. A clear case with one soft spot.</td></tr>
+    <tr><td>75 to 84</td><td>Solid. Worth applying, not a standout.</td></tr>
+    <tr><td>65 to 74</td><td>Stretch. Needs a good cover letter or a referral.</td></tr>
+    <tr><td>60 to 64</td><td>Weak. Listed so you know it was considered and why it lost.</td></tr>
+  </table>
+  </div>
+
+  <p>Scores are deliberately spread. A board where everything scores in the high eighties tells you nothing,
+  so the rules require using the full range and being explicit when a role is a reach.</p>
+
+  <h3>Badges</h3>
+  <p>Badges are relative to the person, not absolute facts about the company. <strong>Your city</strong> means
+  an office within commuting distance of where they want to be. <strong>Fintech</strong> and
+  <strong>AI-native</strong> describe the product. <strong>Your tools</strong> means the company's stack
+  overlaps tools listed on the resume.</p>
+
+  <h3>Timing is separate from fit</h3>
+  <p>Geography never changes whether a role is live. If a company has a real opening today, it stays in the
+  live group even for someone across the country. The score drops instead, and the explanation says the role
+  is on site. Timing only moves when graduation dates genuinely conflict, such as a program that starts before
+  the person finishes school.</p>
+
+  <h2 id="location"><span class="num">5</span>How location works</h2>
+  <p class="lede">The board was built around Salt Lake City, so every location is re-read relative to whoever uploaded a resume.</p>
+
+  <div class="scroller">
+  <table>
+    <tr><th>Label</th><th>What it means for this person</th></tr>
+    <tr><td>Local</td><td>Headquarters or a major hub in their metro.</td></tr>
+    <tr><td>Has an office</td><td>A smaller office there.</td></tr>
+    <tr><td>Remote</td><td>Hires this kind of role remotely from where they live.</td></tr>
+    <tr><td>Needs relocation</td><td>Would require a move. Hidden when nothing qualifies.</td></tr>
+  </table>
+  </div>
+
+  <p>The filter labels rename themselves to the person's city, so an Austin candidate sees "Austin Area" and
+  "Has Austin office". A remote-only candidate sees neither, because those categories would be empty.</p>
+
+  <div class="note"><strong>The Salt Lake exception.</strong> If the resume shows a home base anywhere on the
+  Wasatch Front, or says the person is moving to Salt Lake, the board stays exactly as it is. No relabeling, no
+  suggested employers, and the career fair strip stays visible. The researched board is already correct for
+  those candidates, so rewriting it would only lose information.</div>
+
+  <h2 id="suggested"><span class="num">6</span>Suggested employers</h2>
+  <p class="lede">For anyone outside Salt Lake, a curated list of sixty Utah-centric companies is not much use on its own.</p>
+
+  <p>So Claude adds employers in the person's own city: up to fifteen, drawn from its own knowledge, mixing
+  large employers that run early-career programs with notable local firms in the right field. They appear as
+  dashed purple cards under a heading naming the city.</p>
+
+  <p>They are handled differently from the researched board in three ways, all deliberate:</p>
+  <ul>
+    <li>They are labeled <strong>not verified</strong> on every card.</li>
+    <li>Their button runs a web search for the company's careers page instead of linking to a job posting that
+      may not exist.</li>
+    <li>Each carries a confidence level, and lower-confidence entries say so.</li>
+  </ul>
+
+  <p>The rules tell Claude to name a hiring program only when it is certain of the exact name, and otherwise to
+  describe what to search for. Fewer good suggestions beat a padded list.</p>
+
+  <h2 id="trust"><span class="num">7</span>What is verified, what is not</h2>
+  <p class="lede">The single most important distinction on the page.</p>
+
+  <div class="scroller">
+  <table>
+    <tr><th>Thing</th><th>How much to trust it</th></tr>
+    <tr><td>The 60 employers</td><td>Hand researched. Real companies with real early-career hiring.</td></tr>
+    <tr><td>Openings and links</td><td>Checked against each company's hiring system on the date in the footer. Jobs close, so recheck.</td></tr>
+    <tr><td>Timing status</td><td>Verified on that same date.</td></tr>
+    <tr><td>Scores and explanations</td><td>Claude's judgment about you. Useful, arguable, not fact.</td></tr>
+    <tr><td>Suggested employers</td><td>Unverified leads. Confirm each one yourself.</td></tr>
+  </table>
+  </div>
+
+  <div class="note warn"><strong>A tailoring run does not re-check the job market.</strong> It re-scores and
+  re-explains the existing research. It cannot tell you a job closed yesterday. To actually refresh the
+  openings, run <code>refresh.py</code>, which queries every company's hiring system directly.</div>
+
+  <h2 id="privacy"><span class="num">8</span>Where your data goes</h2>
+  <p class="lede">Short version: your resume goes to Anthropic once and nowhere else, and nothing reaches this project's author.</p>
+
+  <ul>
+    <li><strong>The resume is never stored.</strong> It is read in your browser, included in one request, and
+      discarded. Only Claude's answer is kept.</li>
+    <li><strong>Your API key</strong> is stored in your browser and sent only to Anthropic. This project has no
+      server that could receive it.</li>
+    <li><strong>Saved profiles</strong> stay in that one browser. They do not sync, and clearing site data
+      deletes them.</li>
+    <li><strong>Each person pays their own way.</strong> Runs bill the key that was pasted in, so sharing the
+      link costs you nothing.</li>
+  </ul>
+
+  <p>The tradeoff for having no server is that your key sits in your browser. Only paste it on a machine you
+  trust, and remember that anyone using your computer could open the page.</p>
+
+  <h2 id="trouble"><span class="num">9</span>When something goes wrong</h2>
+  <p class="lede">Errors appear in the panel rather than the console, and each one names its own fix.</p>
+
+  <div class="scroller">
+  <table>
+    <tr><th>What you see</th><th>What to do</th></tr>
+    <tr><td>Rejected that API key</td><td>The key is wrong or was revoked. Make a new one.</td></tr>
+    <tr><td>Not allowed to use this model</td><td>That account cannot reach that model. Try Sonnet 5.</td></tr>
+    <tr><td>Rate limited</td><td>Wait a minute and run it again.</td></tr>
+    <tr><td>Could not reach Anthropic</td><td>Usually a VPN, an ad blocker or an offline connection.</td></tr>
+    <tr><td>Ran out of output room</td><td>Thinking used the budget. Rerun at a lower effort.</td></tr>
+    <tr><td>Not valid JSON</td><td>A rare bad reply. Just run it again.</td></tr>
+    <tr><td>Only returned N of 60</td><td>Claude stopped early. Run it again.</td></tr>
+    <tr><td>Could not be saved</td><td>Browser storage is full. Delete an old profile.</td></tr>
+    <tr><td>Nothing happens at all</td><td>Serve the folder over http rather than opening the file directly.</td></tr>
+  </table>
+  </div>
+
+  <p>If the button itself is missing or dead, the most likely cause is an extension blocking the code library
+  the page loads on first use. The full technical write-up lives in the
+  <a href="https://github.com/davezagin-max/ai-job-finder#readme">project README</a>.</p>
+</main>
+
+<footer>
+  <a href="index.html">Back to the board</a> &middot;
+  <a href="https://github.com/davezagin-max/ai-job-finder">Source on GitHub</a>
+</footer>
+
+</body>
+</html>
