@@ -1,0 +1,954 @@
+{
+  "profile": {
+    "name": "Priya Natarajan",
+    "initials": "PN",
+    "subline": "New-grad fintech and data roles for a May 2027 graduate · Tailored to your September 2026 resume",
+    "status": "Senior · Grad May 2027",
+    "recentRole": "Dell — Business Intelligence Intern",
+    "stack": "SQL, Python, Power BI, dbt, Snowflake, Excel",
+    "target": "New Grad FT · Austin / Remote · Fintech + Data",
+    "uofu": false,
+    "city": "Austin, TX",
+    "geoLabel": "Austin Area",
+    "cohortLabel": "May 2027 grad",
+    "linkedin": "",
+    "summary": "Lead with the dbt models you shipped on Snowflake at Dell and the Power BI dashboards sales ops actually used; that combination of modeling and stakeholder delivery is rarer than either alone. Your finance minor is what makes the fintech employers on this list a natural fit rather than a stretch. Because you are staying in Austin, treat the Utah half of this board as reference only.",
+    "searchLinks": [
+      {
+        "label": "New Grad Data - Austin",
+        "keywords": "new grad data analyst",
+        "location": "Austin, Texas",
+        "remoteOnly": false,
+        "entryLevel": true
+      },
+      {
+        "label": "Fintech Analyst - Austin",
+        "keywords": "fintech data analyst",
+        "location": "Austin, Texas",
+        "remoteOnly": false,
+        "entryLevel": true
+      },
+      {
+        "label": "Remote New Grad Data",
+        "keywords": "new grad data analyst",
+        "location": "",
+        "remoteOnly": true,
+        "entryLevel": true
+      }
+    ],
+    "applyNow": "**Stripe New Grad Software Engineer** and the **Databricks 2027 Associate Product Manager** program are the two live board roles that actually hire remotely into Austin. Everything else live on this board is seated in Utah.",
+    "watchLater": "Q2 and Charles Schwab post their Austin analyst reqs through the fall, and Dell's full-time analyst openings follow the intern conversion cycle in the spring."
+  },
+  "companies": [
+    {
+      "name": "MX Technologies",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** MX Technologies does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Goldman Sachs (SLC Campus)",
+      "score": 73,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "The 2027 New Analyst reqs are live but seated in Salt Lake City; you would be applying as a relocation candidate.",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Goldman Sachs (SLC Campus) does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Recursion Pharmaceuticals",
+      "score": 71,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Recursion Pharmaceuticals does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Domo",
+      "score": 69,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Domo does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Qualtrics",
+      "score": 67,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Qualtrics does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Ataccama",
+      "score": 86,
+      "tier": 1,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Ataccama hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Sigma Computing",
+      "score": 86,
+      "tier": 1,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Sigma Computing hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Adobe (Lehi Campus)",
+      "score": 61,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Adobe (Lehi Campus) does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Ancestry",
+      "score": 74,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Ancestry does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Pluralsight",
+      "score": 72,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Pluralsight does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Health Catalyst",
+      "score": 70,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Health Catalyst does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Galileo Financial Technologies",
+      "score": 68,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Galileo Financial Technologies does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Lucid Software",
+      "score": 66,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Lucid Software does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Weave",
+      "score": 64,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Weave does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Podium",
+      "score": 62,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Podium does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Snowflake",
+      "score": 86,
+      "tier": 1,
+      "badges": [
+        "local",
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "hybrid",
+      "note": "",
+      "why": "**Has an Austin presence and a strong data culture.** Snowflake would want to see the Snowflake modeling from your Dell internship; treat their new-grad reqs as competitive and apply the week they post."
+    },
+    {
+      "name": "Databricks",
+      "score": 86,
+      "tier": 1,
+      "badges": [
+        "local",
+        "ai-native",
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "hybrid",
+      "note": "The 2027 Associate Product Manager program is open and Databricks recruits nationally, so Austin is workable.",
+      "why": "**Has an Austin presence and a strong data culture.** Databricks would want to see the Snowflake modeling from your Dell internship; treat their new-grad reqs as competitive and apply the week they post."
+    },
+    {
+      "name": "Plaid",
+      "score": 67,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Plaid hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Stripe",
+      "score": 80,
+      "tier": 2,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "hybrid",
+      "note": "New Grad Software Engineer is open and Stripe hires remotely, which works from Austin.",
+      "why": "**Has an Austin presence and a strong data culture.** Stripe would want to see the Snowflake modeling from your Dell internship; treat their new-grad reqs as competitive and apply the week they post."
+    },
+    {
+      "name": "Brex",
+      "score": 67,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Brex does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "SoFi",
+      "score": 65,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** SoFi does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Instructure (Canvas)",
+      "score": 63,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Instructure (Canvas) does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Filevine",
+      "score": 61,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Filevine does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "BambooHR",
+      "score": 74,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** BambooHR does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Vivint Smart Home",
+      "score": 72,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Vivint Smart Home does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Pattern",
+      "score": 70,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Pattern does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Entrata",
+      "score": 68,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Entrata does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Nav Technologies",
+      "score": 66,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Nav Technologies does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Cotiviti",
+      "score": 64,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Cotiviti does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "JPMorgan Chase",
+      "score": 62,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "The 2027 programs close November 5; JPMorgan has no Austin technology hub, so target their Plano or New York seats.",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** JPMorgan Chase does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Capital One",
+      "score": 74,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "The Technology Development Program is open with a February 2027 start, which is before your May 2027 graduation.",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Capital One hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Mastercard",
+      "score": 73,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Launch 2027 is open, but the seat tied to this listing is in Salt Lake City.",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Mastercard does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Bloomberg",
+      "score": 73,
+      "tier": 2,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "hybrid",
+      "note": "",
+      "why": "**Has an Austin presence and a strong data culture.** Bloomberg would want to see the Snowflake modeling from your Dell internship; treat their new-grad reqs as competitive and apply the week they post."
+    },
+    {
+      "name": "OpenAI",
+      "score": 86,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** OpenAI hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Anthropic",
+      "score": 72,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Anthropic hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Scale AI",
+      "score": 85,
+      "tier": 2,
+      "badges": [
+        "ai-native",
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Scale AI hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Robinhood",
+      "score": 71,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Robinhood hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Ramp",
+      "score": 84,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Ramp hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Hugging Face",
+      "score": 70,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Hugging Face hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Perplexity AI",
+      "score": 83,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Perplexity AI hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "DigiCert",
+      "score": 70,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** DigiCert does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Ivanti",
+      "score": 68,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Ivanti does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Proofpoint",
+      "score": 66,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Proofpoint does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "SecurityMetrics",
+      "score": 64,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** SecurityMetrics does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Arctic Wolf",
+      "score": 62,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Arctic Wolf does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "CrowdStrike",
+      "score": 80,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** CrowdStrike hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Palo Alto Networks",
+      "score": 73,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Palo Alto Networks does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Okta",
+      "score": 79,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Okta hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Cloudflare",
+      "score": 65,
+      "tier": 2,
+      "badges": [
+        "local"
+      ],
+      "status": "keep",
+      "locType": "local",
+      "note": "",
+      "why": "**Austin office, so this is a real commute-distance option.** Cloudflare hires early-career analysts and engineers, and your Power BI and dbt work on Snowflake at Dell maps onto the data side of their stack."
+    },
+    {
+      "name": "Datadog",
+      "score": 78,
+      "tier": 2,
+      "badges": [
+        "local",
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "hybrid",
+      "note": "",
+      "why": "**Has an Austin presence and a strong data culture.** Datadog would want to see the Snowflake modeling from your Dell internship; treat their new-grad reqs as competitive and apply the week they post."
+    },
+    {
+      "name": "Vanta",
+      "score": 64,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Vanta hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Coalition",
+      "score": 77,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Coalition hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Sardine",
+      "score": 63,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Sardine hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Wiz",
+      "score": 76,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Wiz hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Abnormal AI",
+      "score": 62,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Remote-friendly, so Austin is not a barrier.** Abnormal AI hires entry-level data and analytics people nationally, and your dbt-on-Snowflake pipeline is the kind of concrete project their screens reward."
+    },
+    {
+      "name": "Zions Bancorporation",
+      "score": 70,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "A Utah bank that recruits on the University of Utah campus, so as an Austin candidate you would be applying cold through their site.",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** Zions Bancorporation does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "America First Credit Union",
+      "score": 68,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah credit union that hires in person at Utah career fairs; there is no Austin path here.",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** America First Credit Union does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "Verkada",
+      "score": 74,
+      "tier": 2,
+      "badges": [
+        "local"
+      ],
+      "status": "keep",
+      "locType": "local",
+      "note": "",
+      "why": "**Austin office, so this is a real commute-distance option.** Verkada hires early-career analysts and engineers, and your Power BI and dbt work on Snowflake at Dell maps onto the data side of their stack."
+    },
+    {
+      "name": "iCapital",
+      "score": 64,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Salt Lake City roles; iCapital does hire analysts, but not in Austin.",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** iCapital does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    },
+    {
+      "name": "WGU (Western Governors University)",
+      "score": 62,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Salt Lake City postings only, so this is a relocation-or-nothing option.",
+      "why": "**Utah-only, so this one needs a move you said you do not want.** WGU (Western Governors University) does its entry-level hiring on-site in Utah. Keep it on the list only if you change your mind about relocating; the fit itself is decent."
+    }
+  ],
+  "suggested": [
+    {
+      "name": "Dell Technologies",
+      "location": "Round Rock, TX",
+      "locType": "local",
+      "industry": [
+        "data"
+      ],
+      "roles": [
+        "data",
+        "swe"
+      ],
+      "score": 94,
+      "tier": 1,
+      "badges": [
+        "local",
+        "tools-match"
+      ],
+      "why": "**Your current employer, and the shortest path you have.** You already shipped Power BI dashboards on their data; ask your BI manager to refer you into a full-time analyst req before it posts publicly.",
+      "note": "Hires new grads into analyst and engineer roles posted on jobs.dell.com; search 'associate' or 'early career' and set an alert for Round Rock.",
+      "confidence": "high"
+    },
+    {
+      "name": "Q2 Holdings",
+      "location": "Austin, TX",
+      "locType": "local",
+      "industry": [
+        "fintech"
+      ],
+      "roles": [
+        "data",
+        "swe",
+        "product"
+      ],
+      "score": 92,
+      "tier": 1,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "why": "**The clearest Austin fintech match on this list.** Q2 builds digital banking software, so your finance minor plus SQL and dbt work reads as directly relevant rather than as a career change.",
+      "note": "Posts associate and entry-level analyst roles on their careers site through the fall; search 'associate' and watch their Austin listings.",
+      "confidence": "high"
+    },
+    {
+      "name": "Charles Schwab",
+      "location": "Austin, TX",
+      "locType": "local",
+      "industry": [
+        "fintech"
+      ],
+      "roles": [
+        "data"
+      ],
+      "score": 88,
+      "tier": 1,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "why": "**Large Austin campus with a real early-career pipeline.** Schwab hires finance-plus-data analysts, which is exactly the blend of your MIS degree and finance minor.",
+      "note": "Runs a formal early-career program with fall application windows; look for 'Associate' and rotational analyst titles on their Austin campus.",
+      "confidence": "high"
+    },
+    {
+      "name": "Indeed",
+      "location": "Austin, TX",
+      "locType": "local",
+      "industry": [
+        "data"
+      ],
+      "roles": [
+        "data",
+        "swe"
+      ],
+      "score": 86,
+      "tier": 2,
+      "badges": [
+        "local"
+      ],
+      "why": "**Austin's biggest homegrown tech data org.** They hire entry-level data scientists and analysts, and your dashboard-to-decision work is the sort of applied evidence they screen for.",
+      "note": "Hires new grads into data science and analyst roles; search their careers site for titles ending in 'I' and for university recruiting postings.",
+      "confidence": "high"
+    },
+    {
+      "name": "Oracle",
+      "location": "Austin, TX",
+      "locType": "local",
+      "industry": [
+        "data"
+      ],
+      "roles": [
+        "data",
+        "swe"
+      ],
+      "score": 82,
+      "tier": 2,
+      "badges": [
+        "local"
+      ],
+      "why": "**Austin headquarters with a volume new-grad pipeline.** Oracle hires broadly into cloud and data roles, so this is a reliable application even if it is not the most exciting one on your list.",
+      "note": "Recruits new grads year-round into cloud and data roles; search 'Business Analyst' and 'Data Engineer' on oracle.com/careers filtered to Austin.",
+      "confidence": "high"
+    },
+    {
+      "name": "Visa",
+      "location": "Austin, TX",
+      "locType": "local",
+      "industry": [
+        "fintech"
+      ],
+      "roles": [
+        "data"
+      ],
+      "score": 84,
+      "tier": 2,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "why": "**Payments fintech with an Austin technology hub.** The finance minor plus SQL is a good fit for their analytics and risk teams.",
+      "note": "Runs a university program with fall deadlines; look for 'Analyst' and 'Data Analyst' roles tagged to Austin.",
+      "confidence": "high"
+    },
+    {
+      "name": "Self Financial",
+      "location": "Austin, TX",
+      "locType": "local",
+      "industry": [
+        "fintech"
+      ],
+      "roles": [
+        "data",
+        "product"
+      ],
+      "score": 78,
+      "tier": 2,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "why": "**Small Austin fintech where a generalist analyst matters more.** Credit-building products mean the data work is close to the business, which suits your finance background.",
+      "note": "Small team, so postings are sporadic; check their careers page directly and search 'analyst'.",
+      "confidence": "medium"
+    },
+    {
+      "name": "USAA",
+      "location": "San Antonio, TX",
+      "locType": "hybrid",
+      "industry": [
+        "fintech"
+      ],
+      "roles": [
+        "data"
+      ],
+      "score": 76,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "why": "**A short drive south, and a heavy hirer of finance analysts.** Worth an application if you would consider San Antonio or a hybrid arrangement.",
+      "note": "Large early-career program with structured fall hiring; search 'Decision Science Analyst' and 'Data Analyst' on their careers site.",
+      "confidence": "high"
+    },
+    {
+      "name": "Bumble",
+      "location": "Austin, TX",
+      "locType": "local",
+      "industry": [
+        "data"
+      ],
+      "roles": [
+        "data",
+        "product"
+      ],
+      "score": 74,
+      "tier": 2,
+      "badges": [
+        "local"
+      ],
+      "why": "**Austin consumer tech with a real analytics function.** Fewer entry-level seats than the big employers, so treat it as an opportunistic application.",
+      "note": "Occasional analyst openings; watch their careers page rather than waiting for a program.",
+      "confidence": "medium"
+    },
+    {
+      "name": "Netspend (Global Payments)",
+      "location": "Austin, TX",
+      "locType": "local",
+      "industry": [
+        "fintech"
+      ],
+      "roles": [
+        "data"
+      ],
+      "score": 72,
+      "tier": 2,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "why": "**Payments processing in Austin.** Less glamorous than Q2, but the analyst work is genuinely finance-adjacent and the local pipeline is steady.",
+      "note": "Search Global Payments' careers site for Austin analyst roles; entry titles are usually 'Analyst I'.",
+      "confidence": "medium"
+    }
+  ]
+}

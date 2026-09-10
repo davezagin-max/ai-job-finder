@@ -1,0 +1,27 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "job-finder",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "exec python3 -m http.server \"${PORT:-8765}\""
+      ],
+      "port": 8765,
+      "autoPort": true
+    },
+    {
+      "name": "merch-preview",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8766",
+        "--directory",
+        "/private/tmp/claude-501/-Users-davidzagin-Desktop-Claude----Job-Finder/a11297e9-0963-45ef-9673-c0bab14929f7/scratchpad/preview"
+      ],
+      "port": 8766
+    }
+  ]
+}

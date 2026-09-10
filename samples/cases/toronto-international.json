@@ -1,0 +1,1000 @@
+{
+  "profile": {
+    "name": "Mei-Ling Chao",
+    "initials": "MC",
+    "subline": "New-grad fintech and data science roles for a June 2027 graduate · Tailored to your September 2026 resume",
+    "status": "Senior · Grad June 2027",
+    "recentRole": "RBC Capital Markets — Quant Strategies Intern",
+    "stack": "Python, SQL, R, Excel, Bloomberg Terminal",
+    "target": "New Grad FT · Toronto / Remote-Canada · Fintech + Data",
+    "uofu": false,
+    "city": "Toronto, ON",
+    "geoLabel": "Toronto Area",
+    "cohortLabel": "June 2027 grad",
+    "linkedin": "",
+    "summary": "Two brand-name Canadian internships, RBC on the quant side and Shopify on the data side, put you ahead of most commerce graduates; lead with the Python strategy work rather than the coursework. The important constraint on this board is legal, not technical: most of these employers hire into the United States and would need to sponsor you, so the Canadian employers in the suggested list are the realistic core of your search.",
+    "searchLinks": [
+      {
+        "label": "New Grad Data - Toronto",
+        "keywords": "new grad data analyst",
+        "location": "Toronto, Ontario, Canada",
+        "remoteOnly": false,
+        "entryLevel": true
+      },
+      {
+        "label": "Fintech Analyst - Toronto",
+        "keywords": "fintech analyst",
+        "location": "Toronto, Ontario, Canada",
+        "remoteOnly": false,
+        "entryLevel": true
+      },
+      {
+        "label": "Remote Canada Data",
+        "keywords": "data analyst remote canada",
+        "location": "Canada",
+        "remoteOnly": true,
+        "entryLevel": true
+      }
+    ],
+    "applyNow": "None of the live roles on this board hire into Canada without sponsorship. Start with **RBC's graduate program** and **Shopify**, where you already have internal history.",
+    "watchLater": "The Big Five bank campus programs all open their fall windows between September and November; Wealthsimple and Cohere post irregularly, so set alerts rather than waiting."
+  },
+  "companies": [
+    {
+      "name": "MX Technologies",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** MX Technologies does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Goldman Sachs (SLC Campus)",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Goldman Sachs (SLC Campus) does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Recursion Pharmaceuticals",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Recursion Pharmaceuticals does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Domo",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Domo does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Qualtrics",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Qualtrics does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Ataccama",
+      "score": 72,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, though usually into the United States.** Check whether Ataccama employs in Canada before investing time; if they do, the RBC and Shopify combination is a strong application."
+    },
+    {
+      "name": "Sigma Computing",
+      "score": 66,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, though usually into the United States.** Check whether Sigma Computing employs in Canada before investing time; if they do, the RBC and Shopify combination is a strong application."
+    },
+    {
+      "name": "Adobe (Lehi Campus)",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Adobe (Lehi Campus) does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Ancestry",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Ancestry does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Pluralsight",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Pluralsight does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Health Catalyst",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Health Catalyst does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Galileo Financial Technologies",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Galileo Financial Technologies does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Lucid Software",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Lucid Software does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Weave",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Weave does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Podium",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Podium does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Snowflake",
+      "score": 69,
+      "tier": 2,
+      "badges": [
+        "local",
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "hybrid",
+      "note": "",
+      "why": "**Has a Toronto office, so no sponsorship question.** Snowflake would value the RBC quant work; this is one of the few board employers you can apply to as a Canadian citizen without a visa conversation."
+    },
+    {
+      "name": "Databricks",
+      "score": 82,
+      "tier": 2,
+      "badges": [
+        "local",
+        "ai-native",
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "hybrid",
+      "note": "",
+      "why": "**Has a Toronto office, so no sponsorship question.** Databricks would value the RBC quant work; this is one of the few board employers you can apply to as a Canadian citizen without a visa conversation."
+    },
+    {
+      "name": "Plaid",
+      "score": 76,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, though usually into the United States.** Check whether Plaid employs in Canada before investing time; if they do, the RBC and Shopify combination is a strong application."
+    },
+    {
+      "name": "Stripe",
+      "score": 70,
+      "tier": 2,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "hybrid",
+      "note": "",
+      "why": "**Has a Toronto office, so no sponsorship question.** Stripe would value the RBC quant work; this is one of the few board employers you can apply to as a Canadian citizen without a visa conversation."
+    },
+    {
+      "name": "Brex",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Brex does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "SoFi",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** SoFi does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Instructure (Canvas)",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Instructure (Canvas) does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Filevine",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Filevine does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "BambooHR",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** BambooHR does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Vivint Smart Home",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Vivint Smart Home does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Pattern",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Pattern does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Entrata",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Entrata does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Nav Technologies",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Nav Technologies does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Cotiviti",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Cotiviti does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "JPMorgan Chase",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** JPMorgan Chase does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Capital One",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Capital One does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Mastercard",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Mastercard does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Bloomberg",
+      "score": 81,
+      "tier": 2,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "hybrid",
+      "note": "",
+      "why": "**Has a Toronto office, so no sponsorship question.** Bloomberg would value the RBC quant work; this is one of the few board employers you can apply to as a Canadian citizen without a visa conversation."
+    },
+    {
+      "name": "OpenAI",
+      "score": 75,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, though usually into the United States.** Check whether OpenAI employs in Canada before investing time; if they do, the RBC and Shopify combination is a strong application."
+    },
+    {
+      "name": "Anthropic",
+      "score": 69,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, though usually into the United States.** Check whether Anthropic employs in Canada before investing time; if they do, the RBC and Shopify combination is a strong application."
+    },
+    {
+      "name": "Scale AI",
+      "score": 82,
+      "tier": 2,
+      "badges": [
+        "local",
+        "ai-native",
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "hybrid",
+      "note": "",
+      "why": "**Has a Toronto office, so no sponsorship question.** Scale AI would value the RBC quant work; this is one of the few board employers you can apply to as a Canadian citizen without a visa conversation."
+    },
+    {
+      "name": "Robinhood",
+      "score": 76,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, though usually into the United States.** Check whether Robinhood employs in Canada before investing time; if they do, the RBC and Shopify combination is a strong application."
+    },
+    {
+      "name": "Ramp",
+      "score": 70,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, though usually into the United States.** Check whether Ramp employs in Canada before investing time; if they do, the RBC and Shopify combination is a strong application."
+    },
+    {
+      "name": "Hugging Face",
+      "score": 64,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, though usually into the United States.** Check whether Hugging Face employs in Canada before investing time; if they do, the RBC and Shopify combination is a strong application."
+    },
+    {
+      "name": "Perplexity AI",
+      "score": 77,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, though usually into the United States.** Check whether Perplexity AI employs in Canada before investing time; if they do, the RBC and Shopify combination is a strong application."
+    },
+    {
+      "name": "DigiCert",
+      "score": 60,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** DigiCert does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Ivanti",
+      "score": 60,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Ivanti does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Proofpoint",
+      "score": 60,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Proofpoint does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "SecurityMetrics",
+      "score": 60,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** SecurityMetrics does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Arctic Wolf",
+      "score": 60,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Arctic Wolf does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "CrowdStrike",
+      "score": 60,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** CrowdStrike does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Palo Alto Networks",
+      "score": 60,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Palo Alto Networks does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Okta",
+      "score": 60,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Okta does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Cloudflare",
+      "score": 80,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, though usually into the United States.** Check whether Cloudflare employs in Canada before investing time; if they do, the RBC and Shopify combination is a strong application."
+    },
+    {
+      "name": "Datadog",
+      "score": 74,
+      "tier": 2,
+      "badges": [
+        "local",
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "hybrid",
+      "note": "",
+      "why": "**Has a Toronto office, so no sponsorship question.** Datadog would value the RBC quant work; this is one of the few board employers you can apply to as a Canadian citizen without a visa conversation."
+    },
+    {
+      "name": "Vanta",
+      "score": 60,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Vanta does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Coalition",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Coalition does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Sardine",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Sardine does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Wiz",
+      "score": 69,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, though usually into the United States.** Check whether Wiz employs in Canada before investing time; if they do, the RBC and Shopify combination is a strong application."
+    },
+    {
+      "name": "Abnormal AI",
+      "score": 60,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Abnormal AI does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Zions Bancorporation",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Zions Bancorporation does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "America First Credit Union",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** America First Credit Union does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "Verkada",
+      "score": 60,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** Verkada does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "iCapital",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** iCapital does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    },
+    {
+      "name": "WGU (Western Governors University)",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "US-only hiring, so this would require sponsorship you do not have yet.",
+      "why": "**US-based hiring, so this needs sponsorship.** WGU (Western Governors University) does its entry-level hiring in the United States. Realistic only if you later target a US move with an employer willing to sponsor."
+    }
+  ],
+  "suggested": [
+    {
+      "name": "RBC (Royal Bank of Canada)",
+      "location": "Toronto, ON",
+      "locType": "local",
+      "industry": [
+        "fintech"
+      ],
+      "roles": [
+        "data",
+        "swe"
+      ],
+      "score": 95,
+      "tier": 1,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "why": "**You already interned here, which beats every other advantage on this board.** The quant strategies work in Python is exactly what RBC's graduate analytics programs recruit for; ask your manager about the return-offer path first.",
+      "note": "Runs a formal Graduate Program and Amplify internship with fall application windows; apply through jobs.rbc.com.",
+      "confidence": "high"
+    },
+    {
+      "name": "Shopify",
+      "location": "Toronto, ON",
+      "locType": "local",
+      "industry": [
+        "data"
+      ],
+      "roles": [
+        "data",
+        "swe",
+        "product"
+      ],
+      "score": 92,
+      "tier": 1,
+      "badges": [
+        "local",
+        "tools-match"
+      ],
+      "why": "**Your second internship, and a rare Canadian company with genuine data scale.** Reconnect with the data team you worked with before their Dev Degree and new-grad cycles open.",
+      "note": "Hires new grads into data and engineering roles; watch shopify.com/careers for 'Data Scientist' and early-career postings.",
+      "confidence": "high"
+    },
+    {
+      "name": "Cohere",
+      "location": "Toronto, ON",
+      "locType": "local",
+      "industry": [
+        "ai-lab"
+      ],
+      "roles": [
+        "ml",
+        "swe",
+        "data"
+      ],
+      "score": 88,
+      "tier": 1,
+      "badges": [
+        "local",
+        "ai-native"
+      ],
+      "why": "**Toronto's flagship AI lab.** A finance-and-economics background is unusual there, so lead with the Python quant work rather than the commerce degree.",
+      "note": "Small and competitive; postings appear on cohere.com/careers with occasional new-grad and residency openings.",
+      "confidence": "high"
+    },
+    {
+      "name": "Wealthsimple",
+      "location": "Toronto, ON",
+      "locType": "local",
+      "industry": [
+        "fintech"
+      ],
+      "roles": [
+        "data",
+        "product",
+        "swe"
+      ],
+      "score": 90,
+      "tier": 1,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "why": "**The Canadian fintech that best matches your RBC quant experience.** Investing products mean the data work stays close to markets.",
+      "note": "Posts analyst and associate roles on wealthsimple.com/careers; hiring is Toronto-centric with hybrid arrangements.",
+      "confidence": "high"
+    },
+    {
+      "name": "TD Bank Group",
+      "location": "Toronto, ON",
+      "locType": "local",
+      "industry": [
+        "fintech"
+      ],
+      "roles": [
+        "data",
+        "swe"
+      ],
+      "score": 86,
+      "tier": 2,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "why": "**Large Toronto bank with a structured graduate intake.** Reliable rather than exciting, and a strong fallback next to RBC.",
+      "note": "Runs a Graduate Leadership Program with fall deadlines; apply at td.com/careers.",
+      "confidence": "high"
+    },
+    {
+      "name": "Scotiabank",
+      "location": "Toronto, ON",
+      "locType": "local",
+      "industry": [
+        "fintech"
+      ],
+      "roles": [
+        "data"
+      ],
+      "score": 84,
+      "tier": 2,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "why": "**Another Big Five bank hiring finance-plus-data analysts.** Their analytics teams take commerce grads who can code, which describes you.",
+      "note": "Hires through a Campus Program with fall application windows; search 'Analyst' on scotiabank.com/careers.",
+      "confidence": "high"
+    },
+    {
+      "name": "BMO",
+      "location": "Toronto, ON",
+      "locType": "local",
+      "industry": [
+        "fintech"
+      ],
+      "roles": [
+        "data"
+      ],
+      "score": 82,
+      "tier": 2,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "why": "**Standard Big Five graduate pipeline.** Worth an application in the same batch as TD and Scotiabank.",
+      "note": "Campus recruitment runs in the fall; look for 'Analyst, Capital Markets' and data analyst postings.",
+      "confidence": "high"
+    },
+    {
+      "name": "CIBC",
+      "location": "Toronto, ON",
+      "locType": "local",
+      "industry": [
+        "fintech"
+      ],
+      "roles": [
+        "data"
+      ],
+      "score": 80,
+      "tier": 2,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "why": "**Completes the Big Five set.** Applying to all of them in one sitting costs you little and raises your odds materially.",
+      "note": "Fall campus program with rotational analyst roles; apply at cibc.com/campus.",
+      "confidence": "high"
+    },
+    {
+      "name": "Manulife",
+      "location": "Toronto, ON",
+      "locType": "local",
+      "industry": [
+        "fintech",
+        "health"
+      ],
+      "roles": [
+        "data"
+      ],
+      "score": 78,
+      "tier": 2,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "why": "**Insurance analytics, which is closer to your risk coursework than it sounds.** Less competitive than the banks.",
+      "note": "Runs a Global Analyst Program; search manulife.com/careers for early-career postings.",
+      "confidence": "high"
+    },
+    {
+      "name": "Sun Life",
+      "location": "Toronto, ON",
+      "locType": "local",
+      "industry": [
+        "fintech",
+        "health"
+      ],
+      "roles": [
+        "data"
+      ],
+      "score": 76,
+      "tier": 2,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "why": "**Another insurer with a real actuarial and analytics pipeline.** A sensible diversification away from banking.",
+      "note": "Hires new grads into analyst roles; check sunlife.com/careers in the fall.",
+      "confidence": "high"
+    },
+    {
+      "name": "Questrade",
+      "location": "Toronto, ON",
+      "locType": "local",
+      "industry": [
+        "fintech"
+      ],
+      "roles": [
+        "data",
+        "swe"
+      ],
+      "score": 74,
+      "tier": 2,
+      "badges": [
+        "local",
+        "fintech"
+      ],
+      "why": "**Smaller Canadian brokerage.** Fewer seats, but the work is closer to markets than a bank's back office.",
+      "note": "Occasional analyst postings on questrade.com/careers; no formal program.",
+      "confidence": "medium"
+    },
+    {
+      "name": "Vector Institute",
+      "location": "Toronto, ON",
+      "locType": "local",
+      "industry": [
+        "ai-lab"
+      ],
+      "roles": [
+        "ml",
+        "data"
+      ],
+      "score": 72,
+      "tier": 2,
+      "badges": [
+        "local",
+        "ai-native"
+      ],
+      "why": "**Toronto's AI research institute.** Mostly a route to research-adjacent roles and a network rather than a direct new-grad employer.",
+      "note": "Runs internships and a postgraduate affiliate program; see vectorinstitute.ai/careers.",
+      "confidence": "medium"
+    }
+  ]
+}

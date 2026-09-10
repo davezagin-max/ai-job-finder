@@ -1,0 +1,5 @@
+CASEY LIN
+Seattle, WA - casey.lin.sample@example.com
+EDUCATION: University of Washington, BS Informatics, June 2027
+EXPERIENCE: Amazon - Business Intelligence Intern (2026): SQL, QuickSight, Redshift dashboards for retail ops.
+SKILLS: SQL, Python, Tableau, Redshift, Excel

@@ -1,0 +1,930 @@
+{
+  "profile": {
+    "name": "Sam Rivera",
+    "initials": "SR",
+    "subline": "Fully remote data and analytics roles for a 2026 graduate · Tailored to your September 2026 resume",
+    "status": "Recent grad · Available now",
+    "recentRole": "Freelance — Tableau dashboard consultant",
+    "stack": "SQL, Tableau, Excel, Python, Google Sheets",
+    "target": "Full-time remote · Data / Analytics",
+    "uofu": false,
+    "city": "",
+    "geoLabel": "Remote",
+    "cohortLabel": "recent grad",
+    "linkedin": "",
+    "summary": "You have two strengths that most 2026 analytics grads do not: two years of real operations experience and paying clients for your dashboard work. Lead with the freelance business, because it proves delivery without supervision, which is the main thing remote employers screen for. Since you want remote only, the Utah half of this board is shown as needing relocation rather than removed.",
+    "searchLinks": [
+      {
+        "label": "Remote New Grad Data",
+        "keywords": "new grad data analyst",
+        "location": "",
+        "remoteOnly": true,
+        "entryLevel": true
+      },
+      {
+        "label": "Remote Tableau Analyst",
+        "keywords": "tableau analyst",
+        "location": "",
+        "remoteOnly": true,
+        "entryLevel": true
+      },
+      {
+        "label": "Remote Analytics Associate",
+        "keywords": "analytics associate",
+        "location": "",
+        "remoteOnly": true,
+        "entryLevel": true
+      }
+    ],
+    "applyNow": "**Stripe New Grad Software Engineer** and **Capital One's Technology Development Program** are the live board roles that hire remotely; both are a stretch for an analytics profile, so lead with the remote-native employers in the suggested list.",
+    "watchLater": "Snowflake, Datadog and Okta all post remote analyst reqs in the September-to-November window."
+  },
+  "companies": [
+    {
+      "name": "MX Technologies",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** MX Technologies does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Goldman Sachs (SLC Campus)",
+      "score": 62,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Goldman Sachs (SLC Campus) does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Recursion Pharmaceuticals",
+      "score": 64,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Recursion Pharmaceuticals does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Domo",
+      "score": 66,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Domo does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Qualtrics",
+      "score": 68,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Qualtrics does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Ataccama",
+      "score": 84,
+      "tier": 1,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Ataccama runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Sigma Computing",
+      "score": 84,
+      "tier": 1,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Sigma Computing runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Adobe (Lehi Campus)",
+      "score": 63,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Adobe (Lehi Campus) does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Ancestry",
+      "score": 65,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Ancestry does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Pluralsight",
+      "score": 67,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Pluralsight does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Health Catalyst",
+      "score": 69,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Health Catalyst does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Galileo Financial Technologies",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Galileo Financial Technologies does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Lucid Software",
+      "score": 62,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Lucid Software does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Weave",
+      "score": 64,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Weave does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Podium",
+      "score": 66,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Podium does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Snowflake",
+      "score": 84,
+      "tier": 1,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Snowflake runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Databricks",
+      "score": 85,
+      "tier": 1,
+      "badges": [
+        "ai-native",
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Databricks runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Plaid",
+      "score": 77,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Plaid runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Stripe",
+      "score": 69,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Stripe runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Brex",
+      "score": 82,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Brex runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "SoFi",
+      "score": 67,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** SoFi does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Instructure (Canvas)",
+      "score": 69,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Instructure (Canvas) does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Filevine",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Filevine does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "BambooHR",
+      "score": 62,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** BambooHR does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Vivint Smart Home",
+      "score": 64,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Vivint Smart Home does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Pattern",
+      "score": 66,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Pattern does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Entrata",
+      "score": 68,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Entrata does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Nav Technologies",
+      "score": 70,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Nav Technologies does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Cotiviti",
+      "score": 61,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Cotiviti does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "JPMorgan Chase",
+      "score": 63,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** JPMorgan Chase does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Capital One",
+      "score": 78,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Capital One runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Mastercard",
+      "score": 67,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Mastercard does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Bloomberg",
+      "score": 83,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Bloomberg runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "OpenAI",
+      "score": 75,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** OpenAI runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Anthropic",
+      "score": 67,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Anthropic runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Scale AI",
+      "score": 80,
+      "tier": 2,
+      "badges": [
+        "ai-native",
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Scale AI runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Robinhood",
+      "score": 72,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Robinhood runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Ramp",
+      "score": 85,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Ramp runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Hugging Face",
+      "score": 77,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Hugging Face runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Perplexity AI",
+      "score": 69,
+      "tier": 2,
+      "badges": [
+        "ai-native"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Perplexity AI runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "DigiCert",
+      "score": 63,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** DigiCert does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Ivanti",
+      "score": 65,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Ivanti does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Proofpoint",
+      "score": 67,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Proofpoint does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "SecurityMetrics",
+      "score": 69,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** SecurityMetrics does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Arctic Wolf",
+      "score": 60,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Arctic Wolf does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "CrowdStrike",
+      "score": 84,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** CrowdStrike runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Palo Alto Networks",
+      "score": 64,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Palo Alto Networks does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Okta",
+      "score": 68,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Okta runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Cloudflare",
+      "score": 81,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Cloudflare runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Datadog",
+      "score": 73,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Datadog runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Vanta",
+      "score": 86,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Vanta runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Coalition",
+      "score": 78,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Coalition runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Sardine",
+      "score": 70,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Sardine runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Wiz",
+      "score": 83,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Wiz runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Abnormal AI",
+      "score": 75,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Abnormal AI runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "Zions Bancorporation",
+      "score": 60,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** Zions Bancorporation does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "America First Credit Union",
+      "score": 62,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** America First Credit Union does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "Verkada",
+      "score": 72,
+      "tier": 2,
+      "badges": [],
+      "status": "keep",
+      "locType": "remote",
+      "note": "",
+      "why": "**Hires remotely, so this is genuinely open to you.** Verkada runs entry-level data and analytics hiring nationally; lead with the client dashboards rather than the coursework."
+    },
+    {
+      "name": "iCapital",
+      "score": 66,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** iCapital does its early-career hiring in person. Listed for completeness only."
+    },
+    {
+      "name": "WGU (Western Governors University)",
+      "score": 68,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "status": "keep",
+      "locType": "far",
+      "note": "Utah on-site hiring, so this one is outside a remote-only search.",
+      "why": "**On-site in Utah, which rules it out for a remote-only search.** WGU (Western Governors University) does its early-career hiring in person. Listed for completeness only."
+    }
+  ],
+  "suggested": [
+    {
+      "name": "GitLab",
+      "location": "San Francisco (remote)",
+      "locType": "remote",
+      "industry": [
+        "data"
+      ],
+      "roles": [
+        "data",
+        "swe"
+      ],
+      "score": 90,
+      "tier": 1,
+      "badges": [
+        "tools-match"
+      ],
+      "why": "**All-remote by design, not by concession.** GitLab has run fully distributed since founding, so a candidate with no fixed metro is not an exception here; your freelance dashboard work also shows you can operate without supervision.",
+      "note": "Hires globally into data and analytics roles; search 'Data Analyst' and look for their entry-level 'Associate' postings on about.gitlab.com/jobs.",
+      "confidence": "high"
+    },
+    {
+      "name": "Zapier",
+      "location": "Sunnyvale (remote)",
+      "locType": "remote",
+      "industry": [
+        "data"
+      ],
+      "roles": [
+        "data",
+        "swe",
+        "product"
+      ],
+      "score": 88,
+      "tier": 1,
+      "badges": [],
+      "why": "**Fully distributed with a strong analytics function.** Automation is their product, and your operations-coordinator background plus Tableau work reads as someone who automates their own job.",
+      "note": "All roles are remote; check zapier.com/jobs and search 'Data Analyst' and 'Analytics'.",
+      "confidence": "high"
+    },
+    {
+      "name": "Automattic",
+      "location": "San Francisco (remote)",
+      "locType": "remote",
+      "industry": [
+        "data"
+      ],
+      "roles": [
+        "data",
+        "swe"
+      ],
+      "score": 84,
+      "tier": 2,
+      "badges": [],
+      "why": "**One of the oldest all-remote companies.** Hiring is project-based rather than program-based, which suits a candidate whose strongest evidence is a portfolio.",
+      "note": "Applies through automattic.com/work-with-us; expect a paid trial project rather than a standard interview loop.",
+      "confidence": "high"
+    },
+    {
+      "name": "Coinbase",
+      "location": "Remote-first (remote)",
+      "locType": "remote",
+      "industry": [
+        "fintech"
+      ],
+      "roles": [
+        "data",
+        "swe"
+      ],
+      "score": 82,
+      "tier": 2,
+      "badges": [
+        "fintech"
+      ],
+      "why": "**Remote-first fintech.** Their analytics teams hire entry-level, and crypto data work is unusually SQL-heavy, which plays to your strength.",
+      "note": "Officially remote-first; search coinbase.com/careers for 'Data Analyst' and 'Associate'.",
+      "confidence": "high"
+    },
+    {
+      "name": "Dropbox",
+      "location": "San Francisco (remote)",
+      "locType": "remote",
+      "industry": [
+        "data"
+      ],
+      "roles": [
+        "data",
+        "swe",
+        "product"
+      ],
+      "score": 80,
+      "tier": 2,
+      "badges": [],
+      "why": "**Virtual First policy makes remote the default.** Fewer entry-level analytics seats than the bigger names, so apply early when they open.",
+      "note": "Their Virtual First policy covers most roles; watch dropbox.com/jobs for analyst openings.",
+      "confidence": "high"
+    },
+    {
+      "name": "Atlassian",
+      "location": "Sydney (remote)",
+      "locType": "remote",
+      "industry": [
+        "data"
+      ],
+      "roles": [
+        "data",
+        "swe",
+        "product"
+      ],
+      "score": 80,
+      "tier": 2,
+      "badges": [
+        "tools-match"
+      ],
+      "why": "**TEAM Anywhere means location genuinely does not gate hiring.** Their data roles want SQL plus a dashboarding tool, which is exactly your stack.",
+      "note": "Runs a graduate program plus rolling analyst roles; search atlassian.com/company/careers for 'Data Analyst'.",
+      "confidence": "high"
+    },
+    {
+      "name": "Twilio",
+      "location": "San Francisco (remote)",
+      "locType": "remote",
+      "industry": [
+        "data"
+      ],
+      "roles": [
+        "data",
+        "swe"
+      ],
+      "score": 78,
+      "tier": 2,
+      "badges": [],
+      "why": "**Remote-first since 2020.** Analytics roles here sit close to customer data, which suits an operations background.",
+      "note": "Search twilio.com/company/jobs for 'Analyst'; most postings list remote eligibility by country.",
+      "confidence": "high"
+    },
+    {
+      "name": "DuckDuckGo",
+      "location": "Remote (remote)",
+      "locType": "remote",
+      "industry": [
+        "data"
+      ],
+      "roles": [
+        "data",
+        "swe"
+      ],
+      "score": 74,
+      "tier": 2,
+      "badges": [],
+      "why": "**Fully remote and deliberately small.** Very few openings, so this is a watch-and-pounce employer rather than a reliable application.",
+      "note": "All roles remote; check duckduckgo.com/hiring occasionally.",
+      "confidence": "medium"
+    },
+    {
+      "name": "Remote.com",
+      "location": "Remote (remote)",
+      "locType": "remote",
+      "industry": [
+        "data"
+      ],
+      "roles": [
+        "data",
+        "product"
+      ],
+      "score": 72,
+      "tier": 2,
+      "badges": [],
+      "why": "**A company whose product is remote employment.** Entry-level analytics openings appear irregularly but the culture fit argument writes itself.",
+      "note": "Search remote.com/careers for 'Analyst'; hiring is global.",
+      "confidence": "medium"
+    },
+    {
+      "name": "Toptal",
+      "location": "Remote (remote)",
+      "locType": "remote",
+      "industry": [
+        "data"
+      ],
+      "roles": [
+        "data"
+      ],
+      "score": 70,
+      "tier": 2,
+      "badges": [],
+      "why": "**Fully distributed, and a plausible bridge from freelancing.** Your existing Tableau client work is directly relevant to how they staff projects.",
+      "note": "Both internal roles and network placement are remote; start at toptal.com/careers.",
+      "confidence": "medium"
+    }
+  ]
+}

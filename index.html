@@ -1,0 +1,2748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>David's AI Job Finder</title>
+<style>
+  :root {
+    --bg: #0b1020;
+    --bg-soft: #131a33;
+    --bg-card: #161e3d;
+    --border: #283261;
+    --text: #e6e9f5;
+    --text-dim: #9aa3c7;
+    --accent: #7c5cff;
+    --accent-2: #22d3ee;
+    --gold: #fbbf24;
+    --green: #34d399;
+    --red: #f87171;
+    --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: radial-gradient(1200px 800px at 80% -10%, #1f2a55 0%, transparent 60%),
+                radial-gradient(900px 600px at -10% 110%, #2b1a55 0%, transparent 50%),
+                var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  header {
+    padding: 32px 48px 24px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(124,92,255,0.10), transparent);
+  }
+  .header-row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap; max-width: 1400px; margin: 0 auto;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 16px;
+  }
+  .avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 20px; color: white;
+    box-shadow: 0 6px 18px rgba(124,92,255,0.4);
+  }
+  .brand h1 {
+    margin: 0; font-size: 22px; font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .brand .sub {
+    margin: 2px 0 0; font-size: 13px; color: var(--text-dim);
+  }
+  .header-links {
+    display: flex; gap: 10px; flex-wrap: wrap;
+  }
+  .pill-link {
+    padding: 8px 14px; border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.03);
+    color: var(--text); font-size: 13px;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all 0.15s ease;
+  }
+  .pill-link:hover {
+    background: rgba(124,92,255,0.15);
+    border-color: var(--accent);
+    text-decoration: none;
+  }
+
+  .profile-strip {
+    max-width: 1400px; margin: 18px auto 0;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  }
+  .stat {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+  }
+  .stat .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); }
+  .stat .val { font-size: 18px; font-weight: 600; margin-top: 4px; }
+
+  main {
+    max-width: 1400px; margin: 0 auto; padding: 28px 48px 80px;
+  }
+
+  .toolbar {
+    display: grid; grid-template-columns: 1fr auto; gap: 16px;
+    align-items: center; margin-bottom: 22px;
+  }
+  .search {
+    position: relative;
+  }
+  .search input {
+    width: 100%;
+    padding: 12px 16px 12px 42px;
+    background: var(--bg-card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .search input:focus { border-color: var(--accent); }
+  .search svg {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--text-dim);
+  }
+
+  .results-count {
+    color: var(--text-dim); font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .filters {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 22px;
+  }
+  .filter-group {
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px 10px 6px 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .filter-group .label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-dim); margin-right: 4px;
+  }
+  .chip {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: rgba(255,255,255,0.04);
+    color: var(--text-dim);
+    font-size: 12px;
+    user-select: none;
+    transition: all 0.12s;
+  }
+  .chip:hover { color: var(--text); background: rgba(255,255,255,0.08); }
+  .chip.active {
+    background: rgba(124,92,255,0.18);
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+    display: flex; flex-direction: column;
+    transition: transform 0.15s, border-color 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(124,92,255,0.5);
+  }
+  .card.tier-1::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--accent));
+  }
+  .card.tier-2::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent-2), var(--accent));
+  }
+
+  .card-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 12px; margin-bottom: 10px;
+  }
+  .card h3 {
+    margin: 0; font-size: 17px; font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .location {
+    font-size: 12px; color: var(--text-dim); margin-top: 2px;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  .score {
+    flex-shrink: 0;
+    width: 48px; height: 48px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px;
+    background: conic-gradient(var(--accent) 0%, var(--accent-2) var(--p), rgba(255,255,255,0.06) var(--p));
+    position: relative;
+  }
+  .score::before {
+    content: ""; position: absolute; inset: 4px; border-radius: 50%;
+    background: var(--bg-card);
+  }
+  .score span { position: relative; z-index: 1; }
+
+  .badges {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin: 8px 0 12px;
+  }
+  .badge {
+    font-size: 11px; padding: 3px 8px; border-radius: 6px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.04);
+    color: var(--text-dim);
+  }
+  .badge.fintech { color: #fbbf24; border-color: rgba(251,191,36,0.3); background: rgba(251,191,36,0.08); }
+  .badge.local { color: #34d399; border-color: rgba(52,211,153,0.3); background: rgba(52,211,153,0.08); }
+  .badge.ai-native { color: #c084fc; border-color: rgba(192,132,252,0.3); background: rgba(192,132,252,0.08); }
+  .badge.tools-match { color: #22d3ee; border-color: rgba(34,211,238,0.3); background: rgba(34,211,238,0.08); }
+  .badge.alumni { color: #f87171; border-color: rgba(248,113,113,0.35); background: rgba(248,113,113,0.08); }
+  .badge.alumni-some { color: #fca5a5; border-color: rgba(248,113,113,0.2); background: rgba(248,113,113,0.05); }
+
+  .apply-strip {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    margin: 0 0 12px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .apply-strip.open-now { background: rgba(52,211,153,0.10); border: 1px solid rgba(52,211,153,0.35); color: #a7f3d0; }
+  .apply-strip.opens-later { background: rgba(251,191,36,0.10); border: 1px solid rgba(251,191,36,0.35); color: #fde68a; }
+  .apply-strip.wrong-cohort { background: rgba(248,113,113,0.10); border: 1px solid rgba(248,113,113,0.35); color: #fecaca; }
+  .apply-strip.watch { background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.30); color: #a5f3fc; }
+  .apply-strip .dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .apply-strip.open-now .dot { background: var(--green); box-shadow: 0 0 10px var(--green); }
+  .apply-strip.opens-later .dot { background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+  .apply-strip.wrong-cohort .dot { background: var(--red); }
+  .apply-strip.watch .dot { background: var(--accent-2); }
+
+  .openings {
+    list-style: none; margin: 0 0 12px; padding: 0;
+    display: flex; flex-direction: column; gap: 4px;
+    font-size: 12px;
+  }
+  .openings-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-dim); margin: 0 0 4px;
+  }
+  .openings li {
+    display: flex; justify-content: space-between; align-items: center; gap: 8px;
+    padding: 5px 9px; border-radius: 6px;
+    background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  }
+  .openings li a { color: var(--text); font-weight: 500; }
+  .openings .oloc { color: var(--text-dim); white-space: nowrap; font-size: 11px; }
+
+  .why {
+    font-size: 13px; color: var(--text-dim); line-height: 1.55;
+    margin: 0 0 14px;
+    flex-grow: 1;
+  }
+  .why strong { color: var(--text); font-weight: 600; }
+
+  .role-tags {
+    display: flex; flex-wrap: wrap; gap: 4px;
+    margin-bottom: 14px;
+  }
+  .role-tag {
+    font-size: 10px; padding: 2px 6px; border-radius: 4px;
+    background: rgba(124,92,255,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(124,92,255,0.25);
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+
+  .actions {
+    display: flex; gap: 8px;
+    margin-top: auto;
+  }
+  .btn {
+    flex: 1; padding: 9px 12px;
+    text-align: center; font-size: 13px; font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+    transition: all 0.12s;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .btn:hover {
+    background: rgba(124,92,255,0.18);
+    border-color: var(--accent);
+    text-decoration: none;
+  }
+  .btn.primary {
+    background: linear-gradient(135deg, var(--accent), #5e3fd6);
+    border-color: transparent;
+  }
+  .btn.primary:hover { filter: brightness(1.15); }
+
+  .group-head {
+    grid-column: 1 / -1;
+    display: flex; align-items: center; gap: 9px;
+    margin: 20px 0 0; padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px; font-weight: 600; letter-spacing: 0.07em;
+    text-transform: uppercase; color: var(--text-dim);
+  }
+  .group-head:first-child { margin-top: 0; }
+  .group-head .gdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .group-head.open-now .gdot { background: var(--green); box-shadow: 0 0 10px var(--green); }
+  .group-head.opens-later .gdot { background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+  .group-head.watch .gdot { background: var(--accent-2); }
+  .group-head.wrong-cohort .gdot { background: var(--red); }
+  .group-head .gcount {
+    color: var(--text); background: rgba(255,255,255,0.07);
+    border-radius: 999px; padding: 1px 9px;
+    font-size: 11px; letter-spacing: 0; text-transform: none;
+  }
+  .group-head .ghint {
+    margin-left: auto; font-size: 11px; font-weight: 400;
+    letter-spacing: 0; text-transform: none; color: var(--text-dim);
+  }
+
+  .empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-dim);
+  }
+
+  footer {
+    max-width: 1400px; margin: 0 auto; padding: 30px 48px;
+    color: var(--text-dim); font-size: 12px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .fairs { max-width: 1400px; margin: 22px auto 0; padding: 0 48px; }
+  .fairs-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+  .fairs-head h2 { font-size: 14px; margin: 0; font-weight: 600; letter-spacing: -0.01em; }
+  .fairs-head .sub { font-size: 12px; color: var(--text-dim); }
+  .fair-list { display: flex; gap: 10px; flex-wrap: wrap; }
+  .fair {
+    display: flex; align-items: center; gap: 10px;
+    border: 1px solid var(--border); background: var(--bg-card);
+    border-radius: 10px; padding: 8px 12px;
+  }
+  .fair.key { border-color: rgba(251,191,36,0.45); background: rgba(251,191,36,0.07); }
+  .fair.past { opacity: 0.45; }
+  .fair .d { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+  .fair .n { font-size: 12px; color: var(--text); }
+  .fair .who { font-size: 11px; color: var(--accent-2); white-space: nowrap; }
+  .fair .cd { font-size: 11px; color: var(--text-dim); white-space: nowrap; }
+
+  /* ===== Resume upload / tailoring ===== */
+  [hidden] { display: none !important; }
+  .quick-links { display: contents; }
+  .tailor-btn {
+    cursor: pointer; font-family: inherit; font-weight: 600; color: #fff;
+    background: linear-gradient(135deg, var(--accent), #5e3fd6);
+    border-color: transparent;
+  }
+  .tailor-btn:hover { filter: brightness(1.12); background: linear-gradient(135deg, var(--accent), #5e3fd6); border-color: transparent; }
+  .profile-switch { display: inline-flex; align-items: center; gap: 6px; }
+  .profile-switch select {
+    appearance: none; -webkit-appearance: none;
+    padding: 8px 30px 8px 14px; border-radius: 999px;
+    border: 1px solid var(--accent);
+    background: rgba(124,92,255,0.15) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23e6e9f5' stroke-width='1.5' fill='none'/></svg>") no-repeat right 12px center;
+    color: var(--text); font-size: 13px; font-family: inherit; cursor: pointer; max-width: 260px;
+  }
+  .profile-switch button {
+    width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
+    border: 1px solid var(--border); background: rgba(255,255,255,0.03);
+    color: var(--text-dim); font-size: 16px; line-height: 1;
+  }
+  .profile-switch button:hover { border-color: var(--red); color: var(--red); }
+  .positioning {
+    max-width: 1400px; margin: 12px auto 0;
+    font-size: 13px; color: var(--text-dim); line-height: 1.55;
+    padding: 10px 14px; border-left: 3px solid var(--accent);
+    background: rgba(124,92,255,0.06); border-radius: 0 10px 10px 0;
+  }
+
+  .modal-backdrop {
+    position: fixed; inset: 0; z-index: 50;
+    background: rgba(5,8,20,0.72); backdrop-filter: blur(4px);
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 6vh 16px 40px; overflow-y: auto;
+  }
+  .modal {
+    width: min(680px, 100%);
+    background: var(--bg-soft); border: 1px solid var(--border);
+    border-radius: 18px; box-shadow: var(--shadow);
+    padding: 22px 24px 20px;
+  }
+  .modal-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+  .modal h2 { margin: 0; font-size: 18px; letter-spacing: -0.01em; }
+  .mhint { font-size: 12px; color: var(--text-dim); margin-top: 6px; line-height: 1.5; }
+  .mclose {
+    flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; cursor: pointer;
+    background: none; border: 1px solid var(--border); color: var(--text-dim); font-size: 18px; line-height: 1;
+  }
+  .mclose:hover { border-color: var(--accent); color: var(--text); }
+  .mrow { margin-bottom: 16px; }
+  .mrow.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .mrow.two .mhint { grid-column: 1 / -1; margin-top: 0; }
+  .mlabel { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 6px; }
+  .modal input[type="password"], .modal input[type="text"], .modal select, .modal textarea {
+    width: 100%; padding: 10px 12px;
+    background: var(--bg-card); color: var(--text);
+    border: 1px solid var(--border); border-radius: 10px;
+    font-size: 14px; font-family: inherit; outline: none;
+  }
+  .modal input:focus, .modal select:focus, .modal textarea:focus { border-color: var(--accent); }
+  .keyrow { display: flex; gap: 8px; }
+  .mini {
+    padding: 0 12px; border-radius: 10px; cursor: pointer; white-space: nowrap;
+    border: 1px solid var(--border); background: rgba(255,255,255,0.04);
+    color: var(--text); font-size: 12px; font-family: inherit;
+  }
+  .mini:hover { border-color: var(--accent); }
+  .drop {
+    border: 1px dashed var(--border); border-radius: 12px;
+    padding: 22px 16px; text-align: center; font-size: 13px; color: var(--text-dim);
+    background: rgba(255,255,255,0.02); transition: all 0.15s;
+  }
+  .drop.over { border-color: var(--accent); background: rgba(124,92,255,0.10); color: var(--text); }
+  .drop.has { border-style: solid; border-color: rgba(52,211,153,0.5); color: var(--text); }
+  .linkish { background: none; border: none; padding: 0; color: var(--accent-2); cursor: pointer; font: inherit; }
+  .linkish:hover { text-decoration: underline; }
+  .modal textarea { margin-top: 10px; resize: vertical; min-height: 130px; font-size: 13px; line-height: 1.45; }
+  .mactions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .mactions .btn { flex: 0 0 auto; padding: 10px 18px; cursor: pointer; font-family: inherit; font-size: 14px; }
+  .mactions .btn[disabled] { opacity: 0.45; cursor: not-allowed; filter: none; }
+  .progress {
+    margin-top: 16px; padding: 12px 14px;
+    border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.02);
+  }
+  .prow { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .prow .mono { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--text-dim); font-size: 12px; }
+  .spin {
+    width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.15); border-top-color: var(--accent-2);
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .think {
+    margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border);
+    max-height: 200px; overflow-y: auto;
+    font-size: 12px; line-height: 1.5; color: var(--text-dim); white-space: pre-wrap;
+  }
+  .think::before {
+    content: "Claude's reasoning (summarized, streaming)";
+    display: block; margin-bottom: 4px;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-2);
+  }
+  .merror {
+    margin-top: 14px; padding: 10px 12px; border-radius: 10px;
+    background: rgba(248,113,113,0.10); border: 1px solid rgba(248,113,113,0.35);
+    color: #fecaca; font-size: 13px; line-height: 1.5;
+  }
+  .toast {
+    position: fixed; right: 20px; bottom: 20px; z-index: 60; max-width: 440px;
+    background: var(--bg-soft); border: 1px solid rgba(52,211,153,0.5); border-radius: 12px;
+    padding: 12px 16px; font-size: 13px; line-height: 1.5; box-shadow: var(--shadow);
+  }
+  .toast.err { border-color: rgba(248,113,113,0.5); }
+  .apply-strip.suggested { background: rgba(124,92,255,0.10); border: 1px solid rgba(124,92,255,0.40); color: #d9d0ff; }
+  .apply-strip.suggested .dot { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+  .group-head.suggested .gdot { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+  .card.suggested { border-style: dashed; border-color: rgba(124,92,255,0.45); }
+  @media (max-width: 720px) {
+    .mrow.two { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    /* keep the dark theme and every colored accent when printing */
+    *, *::before, *::after { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    @page { margin: 10mm; }
+    html, body {
+      background: var(--bg) !important;
+      font-size: 11px;
+    }
+    header { padding: 0 0 14px; }
+    .fairs { margin-top: 14px; padding: 0; }
+    main { padding: 14px 0 0; }
+    footer { padding: 14px 0 0; }
+    .header-links { display: none; }
+    .tailor-btn, .profile-switch, .modal-backdrop, .toast { display: none !important; }
+    .search input { color: var(--text-dim); }
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .card {
+      padding: 11px;
+      box-shadow: none;
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    /* tighten every vertical rhythm so more cards fit per page */
+    .card-head { margin-bottom: 6px; }
+    .badges { margin: 5px 0 7px; }
+    .apply-strip { padding: 6px 8px; margin-bottom: 8px; line-height: 1.35; }
+    .openings { gap: 3px; margin-bottom: 8px; }
+    .openings li { padding: 3px 7px; }
+    .openings-label { margin-bottom: 3px; }
+    .why { margin-bottom: 8px; line-height: 1.45; }
+    .role-tags { margin-bottom: 8px; }
+    .actions { gap: 6px; }
+    .btn { padding: 6px 8px; }
+    .score { width: 40px; height: 40px; font-size: 12px; }
+    .card:hover { transform: none; }
+    .group-head {
+      break-inside: avoid;
+      break-after: avoid; page-break-after: avoid;
+      margin-top: 0;
+    }
+    /* start every timing section on a fresh page so no heading straddles a break */
+    .group-head { break-before: page; page-break-before: always; padding-top: 2px; }
+    .fair { break-inside: avoid; }
+    .btn, .pill-link { border-color: var(--border); }
+    a { text-decoration: none; }
+  }
+
+  @media (max-width: 720px) {
+    header, main, footer, .fairs { padding-left: 20px; padding-right: 20px; }
+    .profile-strip { grid-template-columns: repeat(2, 1fr); }
+    .toolbar { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-row">
+    <div class="brand">
+      <div class="avatar">DZ</div>
+      <div>
+        <h1>David's AI Job Finder</h1>
+        <div class="sub">New-grad AI roles for a December 2026 graduate &middot; Tailored to your August 2026 resume</div>
+      </div>
+    </div>
+    <div class="header-links">
+      <button class="pill-link tailor-btn" id="open-tailor" type="button" title="Upload someone's resume and let Claude re-score every company for them">&#x2B06;&#xFE0E; Upload a resume</button>
+      <span class="profile-switch" id="profile-switch" hidden>
+        <select id="profile-select" aria-label="Choose which resume the board is tailored to"></select>
+        <button type="button" id="profile-delete" title="Remove this saved profile" aria-label="Remove this saved profile" hidden>&times;</button>
+      </span>
+      <span class="quick-links" id="quick-links">
+      <a class="pill-link" href="https://www.linkedin.com/in/dzagin/" target="_blank">LinkedIn Profile</a>
+      <a class="pill-link" href="https://www.linkedin.com/jobs/search/?keywords=new%20grad%20AI%20data&location=Salt%20Lake%20City%2C%20Utah" target="_blank">New Grad Jobs - SLC</a>
+      <a class="pill-link" href="https://www.linkedin.com/jobs/search/?keywords=new%20grad%20data%20analyst%20AI&f_WT=2" target="_blank">Remote New Grad Data+AI</a>
+      <a class="pill-link" href="https://www.linkedin.com/jobs/search/?keywords=2027%20new%20grad%20fintech" target="_blank">Fintech New Grad 2027</a>
+      <a class="pill-link" href="https://www.linkedin.com/jobs/search/?keywords=entry%20level%20security%20analyst%20GRC&location=Salt%20Lake%20City%2C%20Utah&f_E=2" target="_blank">Cyber Entry - SLC</a>
+      </span>
+    </div>
+  </div>
+
+  <div class="profile-strip">
+    <div class="stat">
+      <div class="label">Status</div>
+      <div class="val">Senior &middot; Grad Dec 2026</div>
+    </div>
+    <div class="stat">
+      <div class="label">Most Recent Role</div>
+      <div class="val">Enact Mortgage &mdash; Enterprise Data Intern (3 rotations)</div>
+    </div>
+    <div class="stat">
+      <div class="label">Stack</div>
+      <div class="val">SQL, Python, Snowflake Cortex, Sigma, Tableau, Ataccama</div>
+    </div>
+    <div class="stat">
+      <div class="label">Target</div>
+      <div class="val">New Grad FT &middot; SLC / Remote &middot; Fintech + AI</div>
+    </div>
+  </div>
+  <div class="positioning" id="positioning" hidden></div>
+</header>
+
+<section class="fairs" id="fairs">
+  <div class="fairs-head">
+    <h2>&#x1F393; U of U career fairs this fall</h2>
+    <span class="sub">These employers come to campus to hire you &mdash; register through
+      <a href="https://careers.utah.edu/events/" target="_blank" rel="noopener">U Career Success</a>.</span>
+  </div>
+  <div class="fair-list" id="fair-list"></div>
+</section>
+
+<main>
+  <div class="toolbar">
+    <div class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input id="search" type="text" placeholder="Search by company, skill, or industry..." />
+    </div>
+    <div class="results-count" id="results-count"></div>
+  </div>
+
+  <div class="filters" id="filters">
+    <div class="filter-group">
+      <span class="label">Timing</span>
+      <span class="chip" data-filter="apply" data-value="open-now">&#x1F7E2; Live role now</span>
+      <span class="chip" data-filter="apply" data-value="opens-later">&#x1F7E1; Opens later this fall</span>
+      <span class="chip" data-filter="apply" data-value="watch">&#x1F535; Watch list</span>
+      <span class="chip" data-filter="apply" data-value="wrong-cohort">&#x1F534; Wrong cohort</span>
+      <span class="chip" data-filter="apply" data-value="suggested" hidden>&#x1F7E3; Suggested by Claude</span>
+    </div>
+    <div class="filter-group">
+      <span class="label">Role</span>
+      <span class="chip" data-filter="role" data-value="ml">AI/ML Eng</span>
+      <span class="chip" data-filter="role" data-value="swe">SWE+AI</span>
+      <span class="chip" data-filter="role" data-value="data">Data/Analytics</span>
+      <span class="chip" data-filter="role" data-value="product">Product/Design</span>
+    </div>
+    <div class="filter-group">
+      <span class="label">Where</span>
+      <span class="chip" data-filter="loc" data-value="local">SLC Area</span>
+      <span class="chip" data-filter="loc" data-value="hybrid">Has SLC Office</span>
+      <span class="chip" data-filter="loc" data-value="remote">Remote</span>
+      <span class="chip" data-filter="loc" data-value="far" hidden title="No office near this candidate and no remote hiring for this kind of role">Needs relocation</span>
+    </div>
+    <div class="filter-group">
+      <span class="label">Industry</span>
+      <span class="chip" data-filter="ind" data-value="fintech">Fintech</span>
+      <span class="chip" data-filter="ind" data-value="data">Data/BI Tools</span>
+      <span class="chip" data-filter="ind" data-value="ai-lab">AI Labs</span>
+      <span class="chip" data-filter="ind" data-value="health">Health/Bio</span>
+      <span class="chip" data-filter="ind" data-value="cyber">Cybersecurity</span>
+    </div>
+    <div class="filter-group">
+      <span class="label">Utes</span>
+      <span class="chip" data-filter="alumni" data-value="any" title="Public evidence the company recruits at or hires from the University of Utah">&#x1F534; Hires from the U</span>
+    </div>
+    <div class="filter-group">
+      <span class="label">Tier</span>
+      <span class="chip" data-filter="tier" data-value="1">Top Picks Only</span>
+    </div>
+    <div class="filter-group">
+      <span class="chip" id="reset" style="border-color: var(--red); color: var(--red);">Reset</span>
+    </div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+</main>
+
+<div class="modal-backdrop" id="tailor-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="tailor-title">
+    <div class="modal-head">
+      <div>
+        <h2 id="tailor-title">Tailor this board to a resume</h2>
+        <div class="mhint">Claude reads the resume, re-scores all <span id="company-count"></span> companies for that person with extended thinking, rewrites every match note and the header, then saves the result as a switchable profile. For a candidate outside the Salt Lake area it also re-maps the Where filters to their metro and adds a short list of suggested local employers from Claude's own knowledge, marked unverified. The resume itself is never stored.</div>
+      </div>
+      <button class="mclose" id="tailor-close" type="button" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="mrow">
+      <label class="mlabel" for="api-key">Anthropic API key</label>
+      <div class="keyrow">
+        <input id="api-key" type="password" placeholder="sk-ant-api03-..." autocomplete="off" spellcheck="false" />
+        <button type="button" class="mini" id="key-toggle">Show</button>
+      </div>
+      <div class="mhint">Saved only in this browser's localStorage and sent only to api.anthropic.com. Create one at
+        <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a>. Each run bills that account.</div>
+    </div>
+
+    <div class="mrow two">
+      <div>
+        <label class="mlabel" for="model-select">Model</label>
+        <select id="model-select"></select>
+      </div>
+      <div>
+        <label class="mlabel" for="effort-select">Thinking effort</label>
+        <select id="effort-select"></select>
+      </div>
+      <div class="mhint" id="model-hint"></div>
+    </div>
+
+    <div class="mrow">
+      <label class="mlabel">Resume</label>
+      <div class="drop" id="drop">
+        <input type="file" id="resume-file" accept=".pdf,.docx,.txt,.md,application/pdf" hidden />
+        <div id="drop-empty">Drop a PDF, DOCX, or TXT here, or
+          <button type="button" class="linkish" id="pick-file">choose a file</button> &middot;
+          <button type="button" class="linkish" id="paste-toggle">paste text instead</button></div>
+        <div id="drop-file" hidden><strong id="drop-name"></strong> &middot; <button type="button" class="linkish" id="drop-clear">remove</button></div>
+      </div>
+      <textarea id="resume-text" placeholder="Paste the full resume text here..." hidden></textarea>
+    </div>
+
+    <div class="mactions">
+      <button type="button" class="btn primary" id="tailor-run" disabled>Tailor the board &rarr;</button>
+      <span class="mhint" id="tailor-status" style="margin-top:0"></span>
+    </div>
+
+    <div class="progress" id="progress" hidden>
+      <div class="prow">
+        <span class="spin"></span>
+        <span id="phase">Reading the resume&hellip;</span>
+        <span id="elapsed" class="mono">0:00</span>
+        <button type="button" class="mini" id="tailor-stop">Stop</button>
+      </div>
+      <div class="think" id="think" hidden></div>
+    </div>
+    <div class="merror" id="tailor-error" hidden></div>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<footer>
+  Built for David Zagin &middot; Last refreshed 2026-09-01 &middot;
+  Class of Fall 2026
+  <br>
+  <strong style="color: var(--gold);">Apply now:</strong>
+  Goldman Sachs 2027 SLC New Analyst, Mastercard Launch 2027 (SLC seat), Capital One TDP (Feb 2027 start),
+  JPMorgan's two 2027 programs (deadline Nov 5), Stripe New Grad SWE and Databricks' 2027 APM are all open
+  right now, and all of them accept December 2026 graduates.
+  <br>
+  <strong style="color: var(--accent-2);">Watch in October:</strong>
+  Adobe, Snowflake, Qualtrics, Okta, Datadog, Lucid and Plaid all post their new-grad reqs in the Sept&ndash;Nov window.
+  <br>
+  Match scores reflect resume alignment (data tools, fintech interest, SLC proximity, new-grad pipelines).
+</footer>
+
+<script>
+const FAIRS = [
+  { date: "2026-09-10", name: "Finance, Fintech &amp; Accounting Expo", key: true, who: "Goldman, Zions, America First, Addepar" },
+  { date: "2026-09-17", name: "Business Career Expo", key: true, who: "Goldman, Lucid, Podium, Zions, Verkada" },
+  { date: "2026-09-22", name: "STEM Internship &amp; Career Fair", key: true, who: "Goldman, Proofpoint, Lucid, Micron" },
+  { date: "2026-09-24", name: "Pathways Computing Expo", key: true, who: "Lucid, Podium, BambooHR, Zions, Cisco" },
+  { date: "2026-10-06", name: "Internship &amp; Career Fair", who: "America First, Credit One, Epic" },
+  { date: "2026-10-08", name: "Meet the TEKs" },
+  { date: "2026-10-20", name: "QAMO Networking Night" },
+  { date: "2026-10-28", name: "Marketing &amp; Comms Expo" }
+];
+
+const REFRESH_DATE = "2026-09-01";
+const COMPANIES = [
+  // ===== TIER 1 PERFECT MATCHES =====
+  {
+    name: "MX Technologies",
+    location: "Lehi, UT",
+    locType: "local",
+    industry: ["fintech"],
+    roles: ["data", "swe", "product"],
+    score: 98,
+    tier: 1,
+    alumni: "some",
+    alumniNote: "Named a Utah fintech leader in U of U's new MS in Financial Technology program materials.",
+    badges: ["local", "fintech", "tools-match"],
+    why: "<strong>Bullseye match.</strong> Fintech + AI in Lehi (15 min from campus). Builds the 'Money Experience' platform with AI-powered financial insights. Hires data analysts & SWE interns who use SQL/Python &mdash; exactly your stack.",
+    careers: "https://job-boards.greenhouse.io/mxtechnologiesinc",
+    linkedin: "https://www.linkedin.com/company/mxenabled/jobs/"
+  },
+  {
+    name: "Goldman Sachs (SLC Campus)",
+    location: "Salt Lake City, UT",
+    locType: "local",
+    industry: ["fintech"],
+    roles: ["data", "swe"],
+    score: 97,
+    tier: 1,
+    alumni: "strong",
+    alumniNote: "On THREE U of U fall 2026 fair rosters (Finance/Fintech Sep 10, Business Sep 17, STEM Sep 22) and an Eccles MSBA top hiring partner.",
+    badges: ["local", "fintech"],
+    why: "<strong>Their #2 US hub is in SLC.</strong> Heavy AI investment (GS AI Platform, Marquee). Strong intern-to-FT pipeline for IS/Business majors. Matches your 'financial markets' objective verbatim.",
+    careers: "https://www.goldmansachs.com/careers/students/programs-and-internships/americas/new-analyst-program",
+    linkedin: "https://www.linkedin.com/company/goldman-sachs/jobs/"
+  },
+  {
+    name: "Recursion Pharmaceuticals",
+    location: "Salt Lake City, UT",
+    locType: "local",
+    industry: ["health", "ai-lab"],
+    roles: ["data", "ml", "swe"],
+    score: 94,
+    tier: 1,
+    alumni: "some",
+    alumniNote: "SLC-headquartered; multiple U of U alumni found in data science and research roles.",
+    badges: ["local", "ai-native"],
+    why: "<strong>SLC's flagship AI company.</strong> Uses ML to discover drugs &mdash; one of the largest AI/biotech firms in the world. Hires data engineers & analysts. Headquarters walking distance from U of U.",
+    careers: "https://www.recursion.com/careers",
+    linkedin: "https://www.linkedin.com/company/recursion-pharmaceuticals/jobs/"
+  },
+  {
+    name: "Domo",
+    location: "American Fork, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data", "swe", "product"],
+    score: 85,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "American Fork HQ; multiple U of U alumni found across engineering and leadership.",
+    badges: ["local", "tools-match"],
+    why: "<strong>BI platform with AI agents</strong> &mdash; literally what you do at Enact, but as a vendor. SLC area HQ. Domo.AI features make it directly relevant to your dashboard portfolio.",
+    careers: "https://www.domo.com/company/careers",
+    linkedin: "https://www.linkedin.com/company/domo-inc-/jobs/"
+  },
+  {
+    name: "Qualtrics",
+    location: "Provo / Seattle (hybrid)",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data", "swe", "product"],
+    score: 92,
+    tier: 1,
+    alumni: "some",
+    alumniNote: "Provo HQ; multiple U of U alumni, and a Qualtrics recruiter who sources from the university.",
+    badges: ["local", "ai-native"],
+    why: "<strong>Provo HQ.</strong> Experience Management platform with deep AI (text/sentiment analysis, predictive insights). Robust new-grad and intern programs. Native SLC-area culture.",
+    careers: "https://www.qualtrics.com/careers/us/en/Students",
+    linkedin: "https://www.linkedin.com/company/qualtrics/jobs/"
+  },
+  {
+    name: "Ataccama",
+    location: "Remote (used at Enact!)",
+    locType: "remote",
+    industry: ["data"],
+    roles: ["data", "swe"],
+    score: 92,
+    tier: 1,
+    badges: ["tools-match", "ai-native"],
+    why: "<strong>You spent a year maintaining enterprise data in Ataccama at Enact.</strong> Their AI-powered data quality platform &mdash; you'd be a uniquely qualified entry hire. Cite the quality checks, metadata audits, and real-time anomaly flagging in the cover letter.",
+    careers: "https://jobs.ataccama.com/open-positions",
+    linkedin: "https://www.linkedin.com/company/ataccama/jobs/"
+  },
+  {
+    name: "Sigma Computing",
+    location: "Remote / SF",
+    locType: "remote",
+    industry: ["data"],
+    roles: ["data", "swe", "product"],
+    score: 91,
+    tier: 1,
+    badges: ["tools-match", "ai-native"],
+    why: "<strong>You built dashboards in Sigma at Enact.</strong> Cloud BI tool with AI input/copilot. Lead with that &mdash; few applicants have shipped Sigma dashboards in production.",
+    careers: "https://www.sigmacomputing.com/company/careers",
+    linkedin: "https://www.linkedin.com/company/sigmacomputing/jobs/"
+  },
+  {
+    name: "Adobe (Lehi Campus)",
+    location: "Lehi, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["swe", "product", "data"],
+    score: 90,
+    tier: 1,
+    alumni: "some",
+    alumniNote: "An Adobe Lehi recruiter states the University Talent team connects with U of U students.",
+    badges: ["local", "ai-native"],
+    why: "<strong>Lehi is one of Adobe's largest US offices.</strong> Firefly AI, Sensei, Acrobat AI, plus a large data/analytics org behind Adobe Experience Platform. Strong intern + new-grad funnel.",
+    careers: "https://careers.adobe.com/us/en/university",
+    linkedin: "https://www.linkedin.com/company/adobe/jobs/"
+  },
+
+  // ===== TIER 2 STRONG MATCHES =====
+  {
+    name: "Ancestry",
+    location: "Lehi, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data", "swe", "ml"],
+    score: 88,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Lehi HQ; multiple U of U alumni found across engineering and QA roles.",
+    badges: ["local", "ai-native"],
+    why: "AI/ML for genealogy matching at scale (one of the largest consumer ML problems anywhere). Lehi HQ. Hires data analysts and entry SWE consistently.",
+    careers: "https://careers.ancestry.com/",
+    linkedin: "https://www.linkedin.com/company/ancestry/jobs/"
+  },
+  {
+    name: "Pluralsight",
+    location: "Draper, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data", "swe", "product"],
+    score: 87,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Draper HQ; U of U alumni found in engineering and talent-acquisition roles.",
+    badges: ["local"],
+    why: "Tech learning platform with AI Skills (skill IQ). Draper HQ. Strong on early-career hiring &mdash; fits your IS major and learning-mindset profile.",
+    careers: "https://pluralsight.wd1.myworkdayjobs.com/en-US/Careers/",
+    linkedin: "https://www.linkedin.com/company/pluralsight/jobs/"
+  },
+  {
+    name: "Health Catalyst",
+    location: "South Jordan, UT",
+    locType: "local",
+    industry: ["health", "data"],
+    roles: ["data", "swe"],
+    score: 86,
+    tier: 2,
+    alumni: "strong",
+    alumniNote: "Official internship partner for the Eccles School's Master of Healthcare Administration program.",
+    badges: ["local"],
+    why: "Healthcare data + AI analytics platform. SLC area. Good entry data analyst openings &mdash; your data governance + dashboards experience is a direct hit.",
+    careers: "https://www.healthcatalyst.com/who-we-are/careers",
+    linkedin: "https://www.linkedin.com/company/health-catalyst/jobs/"
+  },
+  {
+    name: "Galileo Financial Technologies",
+    location: "Salt Lake City, UT",
+    locType: "local",
+    industry: ["fintech"],
+    roles: ["swe", "data", "product"],
+    score: 86,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Named a Utah fintech leader in U of U's new MS in Financial Technology program materials.",
+    badges: ["local", "fintech"],
+    why: "Fintech APIs (powers Chime, SoFi, etc.). SLC HQ. Owned by SoFi. Direct match for fintech + data interest.",
+    careers: "https://tech.sofi.com/careers/",
+    linkedin: "https://www.linkedin.com/company/galileo-financial-technologies/jobs/"
+  },
+  {
+    name: "Lucid Software",
+    location: "South Jordan, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["swe", "product", "data"],
+    score: 85,
+    tier: 2,
+    alumni: "strong",
+    alumniNote: "On three U of U fall 2026 fair rosters: Business Career Expo, STEM Career Fair and Pathways Computing Expo.",
+    badges: ["local", "ai-native"],
+    why: "Lucidchart/Lucidspark with AI diagram generation. South Jordan HQ. Big new-grad SWE program. Solid fit for IS majors who want product polish.",
+    careers: "https://lucid.co/careers",
+    linkedin: "https://www.linkedin.com/company/lucidchart/jobs/"
+  },
+  {
+    name: "Weave",
+    location: "Lehi, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data", "swe", "product"],
+    score: 84,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Lehi HQ; U of U alumni confirmed on staff.",
+    badges: ["local", "ai-native", "tools-match"],
+    why: "AI-powered customer communication for SMBs. Lehi public co. Their analyst reqs ask for SQL + Snowflake + Sigma &mdash; your exact Enact stack.",
+    careers: "https://www.getweave.com/careers/",
+    linkedin: "https://www.linkedin.com/company/weave-communications/jobs/"
+  },
+  {
+    name: "Podium",
+    location: "Lehi, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data", "swe", "product"],
+    score: 84,
+    tier: 2,
+    alumni: "strong",
+    alumniNote: "On two U of U fall 2026 fair rosters: Business Career Expo (Sep 17) and Pathways Computing Expo (Sep 24).",
+    badges: ["local", "ai-native"],
+    why: "AI lead-conversion platform for local businesses. Lehi unicorn. Generative AI is core to product. Great fit for your business + AI minor.",
+    careers: "https://job-boards.greenhouse.io/podium81",
+    linkedin: "https://www.linkedin.com/company/podiumcorp/jobs/"
+  },
+  {
+    name: "Snowflake",
+    location: "Bozeman / Remote",
+    locType: "remote",
+    industry: ["data"],
+    roles: ["data", "swe"],
+    score: 84,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Several U of U alumni found, though no Utah office or campus recruiting link.",
+    badges: ["ai-native", "tools-match"],
+    why: "<strong>Snowflake Cortex is on your resume.</strong> You built the Enact mapping agent on Snowflake and your Sigma dashboards run on it. Lead with the Snowflake-to-SAS migration work &mdash; few new grads have shipped on Cortex.",
+    careers: "https://careers.snowflake.com/us/en/generalsoftwareengineeringprogram",
+    linkedin: "https://www.linkedin.com/company/snowflake-computing/jobs/"
+  },
+  {
+    name: "Databricks",
+    location: "Remote / SF",
+    locType: "remote",
+    industry: ["data", "ai-lab"],
+    roles: ["data", "ml", "swe"],
+    score: 83,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Multiple U of U alumni found, though no confirmed campus recruiting link.",
+    badges: ["ai-native"],
+    why: "Lakehouse + Mosaic AI. The 2027 APM cohort wants SQL/Python plus hands-on AI tooling &mdash; your Copilot mapping agent with human-in-the-loop review is exactly that story. Competitive, but a real shot.",
+    careers: "https://www.databricks.com/company/careers",
+    linkedin: "https://www.linkedin.com/company/databricks/jobs/"
+  },
+  {
+    name: "Plaid",
+    location: "Remote / SF",
+    locType: "remote",
+    industry: ["fintech"],
+    roles: ["swe", "data", "product"],
+    score: 83,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Named among fintech leaders in U of U's new MS in Financial Technology program materials.",
+    badges: ["fintech", "ai-native"],
+    why: "Fintech infra (bank data). Uses AI for fraud detection & income verification. Aligns with mortgage data work at Enact.",
+    careers: "https://plaid.com/careers/",
+    linkedin: "https://www.linkedin.com/company/plaid-/jobs/"
+  },
+  {
+    name: "Stripe",
+    location: "Remote",
+    locType: "remote",
+    industry: ["fintech"],
+    roles: ["swe", "data", "product", "ml"],
+    score: 82,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "One confirmed U of U alumnus found; no campus recruiting link.",
+    badges: ["fintech", "ai-native"],
+    why: "Payments + Radar (AI fraud). Has 'University' new-grad track. Highly selective but worth a shot &mdash; aligns with your finance objective.",
+    careers: "https://stripe.com/jobs/search?teams=University",
+    linkedin: "https://www.linkedin.com/company/stripe/jobs/"
+  },
+  {
+    name: "Brex",
+    location: "Remote / SLC office",
+    locType: "hybrid",
+    industry: ["fintech"],
+    roles: ["data", "swe", "product"],
+    score: 82,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Several U of U alumni found, though no confirmed campus recruiting relationship.",
+    badges: ["fintech", "ai-native"],
+    why: "Fintech corporate cards w/ AI expense agents. Has SLC presence. Smart entry data hires.",
+    careers: "https://www.brex.com/careers",
+    linkedin: "https://www.linkedin.com/company/brex/jobs/"
+  },
+  {
+    name: "SoFi",
+    location: "Cottonwood Heights, UT",
+    locType: "local",
+    industry: ["fintech"],
+    roles: ["data", "swe", "product"],
+    score: 82,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Listed as a potential hiring company on the Eccles MS in Financial Technology careers page.",
+    badges: ["local", "fintech"],
+    why: "Owns Galileo. SLC presence (Cottonwood Heights). Lending + investing fintech with AI underwriting. Matches your mortgage-data background.",
+    careers: "https://www.sofi.com/careers/university-recruiting/",
+    linkedin: "https://www.linkedin.com/company/sofi/jobs/"
+  },
+  {
+    name: "Instructure (Canvas)",
+    location: "Salt Lake City, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data", "swe", "product"],
+    score: 80,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Salt Lake City HQ; multiple U of U alumni found on staff.",
+    badges: ["local"],
+    why: "EdTech (Canvas LMS) adding AI features. SLC HQ. The platform you used through college &mdash; built right at home.",
+    careers: "https://www.instructure.com/about/careers",
+    linkedin: "https://www.linkedin.com/company/instructure/jobs/"
+  },
+  {
+    name: "Filevine",
+    location: "Salt Lake City, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data", "swe", "product"],
+    score: 80,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Salt Lake City HQ; numerous U of U alumni found across departments.",
+    badges: ["local", "ai-native"],
+    why: "AI legal-ops platform. Downtown SLC. Heavy on product &amp; analytics roles &mdash; emerging unicorn.",
+    careers: "https://www.filevine.com/jobs/",
+    linkedin: "https://www.linkedin.com/company/filevine/jobs/"
+  },
+  {
+    name: "BambooHR",
+    location: "Lindon, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data", "swe", "product"],
+    score: 79,
+    tier: 2,
+    alumni: "strong",
+    alumniNote: "Registered employer at the U of U Pathways Computing Career Expo, Sep 24 2026.",
+    badges: ["local"],
+    why: "HR platform with AI assistants. Lindon HQ. Friendly to early-career hires; great for IS majors.",
+    careers: "https://job-boards.greenhouse.io/bamboohr17",
+    linkedin: "https://www.linkedin.com/company/bamboohr/jobs/"
+  },
+  {
+    name: "Vivint Smart Home",
+    location: "Provo, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data", "swe", "product"],
+    score: 78,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Provo HQ; numerous U of U alumni across engineering and sales roles.",
+    badges: ["local"],
+    why: "Smart home + AI security analytics. Provo HQ. Owned by NRG. Strong intern programs in data analytics.",
+    careers: "https://careers.nrgenergy.com/SMARTHOMES/",
+    linkedin: "https://www.linkedin.com/company/vivint/jobs/"
+  },
+  {
+    name: "Pattern",
+    location: "Lehi, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data", "product", "swe"],
+    score: 78,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Lehi HQ; multiple U of U alumni found on staff.",
+    badges: ["local", "ai-native"],
+    why: "AI-driven ecommerce accelerator (D2C). Lehi unicorn. Hires lots of data analysts.",
+    careers: "https://www.pattern.com/careers",
+    linkedin: "https://www.linkedin.com/company/pattern-/jobs/"
+  },
+  {
+    name: "Entrata",
+    location: "Lehi, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data", "swe", "product"],
+    score: 77,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Lehi HQ; a senior engineering director there is a U of U alumnus.",
+    badges: ["local"],
+    why: "Real estate property mgmt SaaS with AI features. Lehi HQ.",
+    careers: "https://www.entrata.com/careers",
+    linkedin: "https://www.linkedin.com/company/entrata/jobs/"
+  },
+  {
+    name: "Nav Technologies",
+    location: "SLC / Remote",
+    locType: "local",
+    industry: ["fintech"],
+    roles: ["data", "swe", "product"],
+    score: 77,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Draper HQ; one U of U alumnus confirmed on staff.",
+    badges: ["local", "fintech"],
+    why: "SMB fintech (credit data). SLC roots. AI-driven lending matching. Direct fit for your data-governance + finance combo.",
+    careers: "https://www.nav.com/careers/",
+    linkedin: "https://www.linkedin.com/company/nav.com/jobs/"
+  },
+  {
+    name: "Cotiviti",
+    location: "South Jordan, UT",
+    locType: "local",
+    industry: ["health", "data"],
+    roles: ["data"],
+    score: 84,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Major South Jordan office; multiple alumni including a VP-level U of U grad.",
+    badges: ["local"],
+    why: "Healthcare payment integrity with AI/analytics. South Jordan HQ. Strong analyst pipelines.",
+    careers: "https://careers-cotiviti.icims.com/jobs/intro",
+    linkedin: "https://www.linkedin.com/company/cotiviti/jobs/"
+  },
+
+  // ===== TIER 3 RANGE =====
+  {
+    name: "JPMorgan Chase",
+    location: "Salt Lake City office",
+    locType: "hybrid",
+    industry: ["fintech"],
+    roles: ["data", "swe", "product"],
+    score: 84,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Multiple U of U alumni found in Utah banking roles; no official campus recruiting list.",
+    badges: ["fintech"],
+    why: "Has SLC tech center. JP Morgan AI Research is one of the largest financial-AI groups in the world. Apply to their Software Engineer Program / DSAI Associate.",
+    careers: "https://www.jpmorganchase.com/careers/explore-opportunities/programs/software-engineer-fulltime",
+    linkedin: "https://www.linkedin.com/company/jpmorganchase/jobs/"
+  },
+  {
+    name: "Capital One",
+    location: "Remote (UT-friendly)",
+    locType: "remote",
+    industry: ["fintech"],
+    roles: ["data", "swe", "ml"],
+    score: 86,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "A U of U alumnus leads Capital One's Students and Grads recruiting strategy program.",
+    badges: ["fintech", "ai-native"],
+    why: "Heavy investment in AI/ML. TDP (Tech Development Program) is one of the best new-grad pipelines in fintech.",
+    careers: "https://www.capitalonecareers.com/full-time-programs",
+    linkedin: "https://www.linkedin.com/company/capital-one/jobs/"
+  },
+  {
+    name: "Mastercard",
+    location: "Salt Lake City office",
+    locType: "hybrid",
+    industry: ["fintech"],
+    roles: ["data", "swe"],
+    score: 89,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "A 2024 U of U graduate joined Mastercard as an Associate Product Manager.",
+    badges: ["fintech", "local"],
+    why: "AI fraud detection at scale with a real Salt Lake City office. Their Launch program puts new grads through 18-month rotations, and this year's cohort has an SLC seat at $100K.",
+    careers: "https://careers.mastercard.com/us/en/early-careers/launch",
+    linkedin: "https://www.linkedin.com/company/mastercard/jobs/"
+  },
+  {
+    name: "Bloomberg",
+    location: "Remote / NYC",
+    locType: "remote",
+    industry: ["fintech"],
+    roles: ["data", "swe"],
+    score: 75,
+    tier: 2,
+    badges: ["fintech", "ai-native"],
+    why: "Bloomberg GPT for finance. Strong analyst-program for IS majors. The classic 'cutting-edge global finance org' from your resume objective.",
+    careers: "https://bloomberg.avature.net/careers",
+    linkedin: "https://www.linkedin.com/company/bloomberg-lp/jobs/"
+  },
+  {
+    name: "OpenAI",
+    location: "Remote / SF",
+    locType: "remote",
+    industry: ["ai-lab"],
+    roles: ["ml", "swe", "data", "product"],
+    score: 78,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "One U of U alumnus found as a Member of Technical Staff.",
+    badges: ["ai-native"],
+    why: "Reach role &mdash; very competitive. New-grad SWE openings appear periodically. Apply to 'University Recruiting' track.",
+    careers: "https://openai.com/careers/",
+    linkedin: "https://www.linkedin.com/company/openai/jobs/"
+  },
+  {
+    name: "Anthropic",
+    location: "Remote / SF",
+    locType: "remote",
+    industry: ["ai-lab"],
+    roles: ["ml", "swe", "product"],
+    score: 76,
+    tier: 2,
+    badges: ["ai-native"],
+    why: "Reach role &mdash; competitive. Maker of Claude; Claude Code is on your resume, so you can speak to the product as a daily user. New-grad SWE & residency programs open periodically.",
+    careers: "https://www.anthropic.com/careers",
+    linkedin: "https://www.linkedin.com/company/anthropicresearch/jobs/"
+  },
+  {
+    name: "Scale AI",
+    location: "Remote / SF",
+    locType: "remote",
+    industry: ["ai-lab", "data"],
+    roles: ["data", "swe", "product"],
+    score: 76,
+    tier: 2,
+    badges: ["ai-native"],
+    why: "Powers training data for OpenAI/Meta/etc. Hires entry data ops + analysts at scale.",
+    careers: "https://scale.com/careers",
+    linkedin: "https://www.linkedin.com/company/scaleai/jobs/"
+  },
+  {
+    name: "Robinhood",
+    location: "Remote",
+    locType: "remote",
+    industry: ["fintech"],
+    roles: ["data", "swe", "product"],
+    score: 75,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Named among fintech leaders in U of U's new MS in Financial Technology program materials.",
+    badges: ["fintech", "ai-native"],
+    why: "Investing platform with AI features (Robinhood AI / Cortex). Fits your investing interest verbatim.",
+    careers: "https://careers.robinhood.com/",
+    linkedin: "https://www.linkedin.com/company/robinhood/jobs/"
+  },
+  {
+    name: "Ramp",
+    location: "Remote / NYC",
+    locType: "remote",
+    industry: ["fintech"],
+    roles: ["data", "swe", "product"],
+    score: 75,
+    tier: 2,
+    badges: ["fintech", "ai-native"],
+    why: "Spend platform with AI accountants. Hires entry analysts & SWEs. Fast-growing, AI-native fintech.",
+    careers: "https://ramp.com/careers",
+    linkedin: "https://www.linkedin.com/company/ramp-financial/jobs/"
+  },
+  {
+    name: "Hugging Face",
+    location: "Remote",
+    locType: "remote",
+    industry: ["ai-lab"],
+    roles: ["ml", "swe", "product"],
+    score: 72,
+    tier: 2,
+    badges: ["ai-native"],
+    why: "Open-source ML hub. Smaller team but excellent learning. Apply if you start posting Python ML projects to GitHub.",
+    careers: "https://apply.workable.com/huggingface/",
+    linkedin: "https://www.linkedin.com/company/huggingface/jobs/"
+  },
+  {
+    name: "Perplexity AI",
+    location: "Remote / SF",
+    locType: "remote",
+    industry: ["ai-lab"],
+    roles: ["ml", "swe", "product"],
+    score: 70,
+    tier: 2,
+    badges: ["ai-native"],
+    why: "AI-native search. Small team, fast-moving. Better fit later, but worth tracking.",
+    careers: "https://www.perplexity.ai/hub/careers",
+    linkedin: "https://www.linkedin.com/company/perplexity-ai/jobs/"
+  },
+
+  // ===== CYBERSECURITY (added 2026-09-01) =====
+  {
+    name: "DigiCert",
+    location: "Lehi, UT",
+    locType: "local",
+    industry: ["cyber"],
+    roles: ["data", "swe", "product"],
+    score: 80,
+    tier: 2,
+    alumni: "strong",
+    alumniNote: "Named a top hiring partner on the Eccles School's MSBA employment-success page.",
+    badges: ["local"],
+    why: "<strong>Lehi HQ, PKI/TLS security at global scale.</strong> Large data and product org; entry analyst roles post regularly. A security employer 15 minutes from campus.",
+    careers: "https://www.digicert.com/careers/",
+    linkedin: "https://www.linkedin.com/company/digicert-inc-/jobs/"
+  },
+  {
+    name: "Ivanti",
+    location: "South Jordan, UT",
+    locType: "local",
+    industry: ["cyber"],
+    roles: ["data", "swe", "product"],
+    score: 78,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "South Jordan HQ; multiple U of U alumni on staff, including its CISO.",
+    badges: ["local"],
+    why: "<strong>South Jordan HQ.</strong> Endpoint security + IT service management with Ivanti Neurons AI. One of Utah's largest security employers; data/analytics and product roles.",
+    careers: "https://www.ivanti.com/company/careers/find",
+    linkedin: "https://www.linkedin.com/company/ivanti/jobs/"
+  },
+  {
+    name: "Proofpoint",
+    location: "Draper, UT",
+    locType: "local",
+    industry: ["cyber"],
+    roles: ["data", "swe", "product"],
+    score: 77,
+    tier: 2,
+    alumni: "strong",
+    alumniNote: "Registered employer at the U of U STEM Internship and Career Fair, Sep 22 2026.",
+    badges: ["local", "ai-native"],
+    why: "<strong>Big Draper office.</strong> Email security with ML threat detection (Nexus AI). The Utah site is sales/support-heavy, but engineering and analyst reqs do appear.",
+    careers: "https://www.proofpoint.com/us/company/careers",
+    linkedin: "https://www.linkedin.com/company/proofpoint/jobs/"
+  },
+  {
+    name: "SecurityMetrics",
+    location: "Orem, UT",
+    locType: "local",
+    industry: ["cyber"],
+    roles: ["data", "product"],
+    score: 76,
+    tier: 2,
+    badges: ["local"],
+    why: "<strong>Orem HQ, PCI/HIPAA compliance and security testing.</strong> Historically one of Utah's most entry-level-friendly security employers (auditors, analysts, support-to-security ladders).",
+    careers: "https://securitymetrics.bamboohr.com/careers",
+    linkedin: "https://www.linkedin.com/company/securitymetrics/jobs/"
+  },
+  {
+    name: "Arctic Wolf",
+    location: "Pleasant Grove, UT / Eden Prairie, MN",
+    locType: "hybrid",
+    industry: ["cyber"],
+    roles: ["data", "swe"],
+    score: 79,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Multiple U of U alumni found including a Utah-based analyst, though HQ is Minnesota.",
+    badges: ["ai-native"],
+    why: "<strong>Has a Utah office (Pleasant Grove).</strong> Managed detection & response; famous for hiring new grads into Security Developer / Concierge Security tracks with paid training.",
+    careers: "https://arcticwolf.com/company/careers/",
+    linkedin: "https://www.linkedin.com/company/arctic-wolf-networks/jobs/"
+  },
+  {
+    name: "CrowdStrike",
+    location: "Remote (US)",
+    locType: "remote",
+    industry: ["cyber"],
+    roles: ["data", "ml", "swe"],
+    score: 77,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "One U of U alumnus, a former campus security-office staffer, found on staff.",
+    badges: ["ai-native"],
+    why: "Falcon platform, AI-native detection. Remote-first with an 'Analyst I' entry ladder and a University Program. Their threat-data scale is a great place to grow data skills.",
+    careers: "https://www.crowdstrike.com/en-us/careers/",
+    linkedin: "https://www.linkedin.com/company/crowdstrike/jobs/"
+  },
+  {
+    name: "Palo Alto Networks",
+    location: "Salt Lake City (Venafi) / Santa Clara",
+    locType: "hybrid",
+    industry: ["cyber"],
+    roles: ["data", "swe", "product"],
+    score: 78,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "A couple of U of U alumni found; no official recruiting link.",
+    badges: ["ai-native", "local"],
+    why: "<strong>Completed its CyberArk acquisition in Feb 2026</strong>, and CyberArk owns Venafi &mdash; whose Salt Lake City office makes Palo Alto a local employer. Precision AI runs across the whole platform.",
+    careers: "https://jobs.paloaltonetworks.com/",
+    linkedin: "https://www.linkedin.com/company/palo-alto-networks/jobs/"
+  },
+  {
+    name: "Okta",
+    location: "Remote (US)",
+    locType: "remote",
+    industry: ["cyber"],
+    roles: ["data", "swe", "product"],
+    score: 72,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "One current U of U student found interning in developer support.",
+    badges: ["ai-native"],
+    why: "Identity security, remote-first ('Dynamic Work'). New-grad program and Business Analyst reqs; identity governance overlaps your data-governance work.",
+    careers: "https://www.okta.com/company/careers/",
+    linkedin: "https://www.linkedin.com/company/okta-inc-/jobs/"
+  },
+  {
+    name: "Cloudflare",
+    location: "Remote / Austin",
+    locType: "remote",
+    industry: ["cyber"],
+    roles: ["swe", "data", "product"],
+    score: 72,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "A few U of U alumni found in HR and strategy roles; no formal recruiting link.",
+    badges: ["ai-native"],
+    why: "Security + edge network + Workers AI. Distributed-first; runs a new-grad SWE program and hires analysts into Austin.",
+    careers: "https://www.cloudflare.com/careers/",
+    linkedin: "https://www.linkedin.com/company/cloudflare/jobs/"
+  },
+  {
+    name: "Datadog",
+    location: "NYC / Denver / Remote",
+    locType: "remote",
+    industry: ["cyber", "data"],
+    roles: ["data", "swe", "product"],
+    score: 74,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Limited evidence of U of U alumni on staff.",
+    badges: ["ai-native"],
+    why: "Observability + Cloud Security platform. Hires new grads into GTM Strategy & Operations Associate and analyst tracks (SQL-heavy); big Denver office.",
+    careers: "https://careers.datadoghq.com/early-careers/",
+    linkedin: "https://www.linkedin.com/company/datadog/jobs/"
+  },
+  {
+    name: "Vanta",
+    location: "Remote (US)",
+    locType: "remote",
+    industry: ["cyber"],
+    roles: ["data", "product", "swe"],
+    score: 77,
+    tier: 2,
+    badges: ["ai-native"],
+    why: "<strong>GRC automation = your data-governance work, productized.</strong> SOC 2 / ISO compliance with AI agents. Remote-US analyst and ops roles; strong new-grad-friendly culture.",
+    careers: "https://www.vanta.com/careers",
+    linkedin: "https://www.linkedin.com/company/vanta-security/jobs/"
+  },
+  {
+    name: "Coalition",
+    location: "Remote (US)",
+    locType: "remote",
+    industry: ["cyber", "fintech"],
+    roles: ["data", "swe", "product"],
+    score: 79,
+    tier: 2,
+    badges: ["fintech", "ai-native"],
+    why: "<strong>Cyber insurance = insurance data + security.</strong> Your Enact mortgage-insurance analytics is unusually relevant. Remote-first; data engineering and underwriting-analytics roles.",
+    careers: "https://www.coalitioninc.com/careers",
+    linkedin: "https://www.linkedin.com/company/coalitioninc/jobs/"
+  },
+  {
+    name: "Sardine",
+    location: "Remote (US)",
+    locType: "remote",
+    industry: ["cyber", "fintech"],
+    roles: ["data", "ml", "product"],
+    score: 76,
+    tier: 2,
+    badges: ["fintech", "ai-native"],
+    why: "Fraud + AML platform using device/behavior ML. Fintech-fraud analytics is the exact overlap of your finance interest and data skills.",
+    careers: "https://www.sardine.ai/careers",
+    linkedin: "https://www.linkedin.com/company/sardine-ai/jobs/"
+  },
+  {
+    name: "Wiz",
+    location: "Remote / DC / NYC",
+    locType: "remote",
+    industry: ["cyber"],
+    roles: ["data", "swe", "product"],
+    score: 70,
+    tier: 2,
+    badges: ["ai-native"],
+    why: "Fastest-growing cloud-security company (now part of Google). Threat-intel and analyst reqs in DC; competitive but a name that opens doors.",
+    careers: "https://www.wiz.io/careers",
+    linkedin: "https://www.linkedin.com/company/wizsecurity/jobs/"
+  },
+  {
+    name: "Abnormal AI",
+    location: "Remote (US)",
+    locType: "remote",
+    industry: ["cyber"],
+    roles: ["data", "swe", "product"],
+    score: 72,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "One U of U alumnus with over five years at Abnormal.",
+    badges: ["ai-native"],
+    why: "AI-native email security, remote-first. Regular remote analyst/ops reqs (compliance, sales ops); fast growth means new roles weekly.",
+    careers: "https://abnormal.ai/careers",
+    linkedin: "https://www.linkedin.com/company/abnormal-ai/jobs/"
+  },
+
+  // ===== UTAH BANKS & CREDIT UNIONS (added 2026-09-01) =====
+  {
+    name: "Zions Bancorporation",
+    location: "Salt Lake City, UT",
+    locType: "local",
+    industry: ["fintech"],
+    roles: ["data", "swe", "product"],
+    score: 84,
+    tier: 2,
+    alumni: "strong",
+    alumniNote: "On four U of U fall 2026 fair rosters, an Eccles MSBA top hiring partner, and named on the Eccles FinTech program's hiring list.",
+    badges: ["local", "fintech"],
+    why: "<strong>SLC-headquartered bank that runs its own technology org.</strong> An Emerging Leaders Program for Technology and a rotational Banker Development Program for recent grads, plus real data and analytics teams downtown.",
+    careers: "https://careers.zionsbancorp.com/jobs/search/",
+    linkedin: "https://www.linkedin.com/company/zions-bancorporation/jobs/"
+  },
+  {
+    name: "America First Credit Union",
+    location: "Riverdale, UT",
+    locType: "local",
+    industry: ["fintech"],
+    roles: ["data", "swe"],
+    score: 76,
+    tier: 2,
+    alumni: "strong",
+    alumniNote: "On four U of U fall 2026 fair rosters: Finance/Fintech, Business, Pathways Computing and the October Internship fair.",
+    badges: ["local", "fintech"],
+    why: "Utah's largest credit union and one of the ten largest in the country, hiring data analysts and IT staff in Riverdale. A lower ceiling than a startup, but a stable local data job with a real fintech surface.",
+    careers: "https://www.americafirst.com/about/careers.html",
+    linkedin: "https://www.linkedin.com/company/america-first-credit-union/jobs/"
+  },
+
+  // ===== MET AT U OF U CAREER FAIRS (added 2026-09-01) =====
+  {
+    name: "Verkada",
+    location: "San Mateo, CA / Austin",
+    locType: "remote",
+    industry: ["cyber"],
+    roles: ["data", "swe", "product"],
+    score: 75,
+    tier: 2,
+    alumni: "strong",
+    alumniNote: "Registered employer at the U of U Business Career Expo, Sep 17 2026.",
+    badges: ["ai-native"],
+    why: "Cloud physical-security platform (cameras, access control, alarms) with a large AI/vision surface. <strong>Recruits at the U of U Business Career Expo</strong> and runs an explicit University Graduate track.",
+    careers: "https://www.verkada.com/careers/",
+    linkedin: "https://www.linkedin.com/company/verkada/jobs/"
+  },
+
+  // ===== FOUND BY COVERAGE CROSS-CHECK (added 2026-09-01) =====
+  {
+    name: "iCapital",
+    location: "Salt Lake City, UT",
+    locType: "local",
+    industry: ["fintech"],
+    roles: ["data", "swe", "product"],
+    score: 87,
+    tier: 2,
+    badges: ["local", "fintech"],
+    why: "<strong>Alternative-investments fintech running a 53-role Salt Lake City office.</strong> Analyst and Associate titles across master data, data operations and platform support &mdash; the closest thing on this board to your Enact data-governance work, in your own city.",
+    careers: "https://job-boards.greenhouse.io/icapitalnetwork",
+    linkedin: "https://www.linkedin.com/company/icapital-network/jobs/"
+  },
+  {
+    name: "WGU (Western Governors University)",
+    location: "Salt Lake City, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data", "swe"],
+    score: 85,
+    tier: 2,
+    badges: ["local"],
+    why: "<strong>Salt Lake City HQ with 96 open roles and a real data org.</strong> Non-profit online university; their data team hires at the associate level and publishes salaries, which most Utah employers do not.",
+    careers: "https://jobs.wgu.edu/jobs",
+    linkedin: "https://www.linkedin.com/company/western-governors-university/jobs/"
+  }
+];
+
+// === APPLY STATUS (Dec 2026 grad, verified against live job boards on 2026-09-01) ===
+// status: open-now | opens-later | watch | wrong-cohort
+const APPLY_STATUS = {
+  "MX Technologies": {
+    status: "watch",
+    note: "Board is live (16 Lehi reqs, on Greenhouse under 'mxtechnologiesinc') but every eng/product/data req is Senior/Staff and the rest is sales. No new-grad program. Set a Greenhouse alert; nothing to apply to this week.",
+    openings: []
+  },
+  "Goldman Sachs (SLC Campus)": {
+    status: "open-now",
+    note: "<strong>Apply this week.</strong> The 2027 New Analyst reqs for the Salt Lake City campus are live in Engineering and Operations, and eligibility is stated as graduating December 2026 through July 2027. Rolling fill.",
+    openings: [{ title: "2027 SLC Engineering | New Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/171570" }, { title: "2027 SLC Operations | New Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/169826" }]
+  },
+  "Recursion Pharmaceuticals": {
+    status: "watch",
+    note: "All 14 live reqs are senior/director computational biology. Submit the general application and watch for their data/engineering intern-to-FT pipeline.",
+    openings: [{ title: "General application (\"Don't see what you're looking for?\")", loc: "Salt Lake City", url: "https://job-boards.greenhouse.io/recursionpharmaceuticals/jobs/3955652" }]
+  },
+  "Domo": {
+    status: "watch",
+    note: "Domo's Workday board has exactly one open req company-wide (Senior CloudOps Engineer). Nothing entry-level. Set a job alert and network locally rather than spending application time here.",
+    openings: []
+  },
+  "Qualtrics": {
+    status: "opens-later",
+    note: "Nothing entry-level in Provo right now &mdash; the four live Provo reqs are account executives and a controller. Sign up for Qualtrics Life Insider and re-check in October for SWE I and Product Specialist.",
+    openings: []
+  },
+  "Ataccama": {
+    status: "watch",
+    note: "17 live reqs (jobs.ataccama.com), all Prague/Toronto/London or senior/sales US. Nothing entry-level in the US today. Still worth a cold note to their Boston team citing your year of Ataccama data-quality work at Enact.",
+    openings: []
+  },
+  "Sigma Computing": {
+    status: "opens-later",
+    note: "New Grad Program is live but requires graduation within the past 12 months and is on-site SF/NYC (12-week trial, $65/hr). Apply the week you graduate in Dec. Other live roles (Data Engineer, FDE) are NYC mid-level.",
+    openings: [{ title: "Software Engineer (New Grad Program)", loc: "SF / NYC on-site", url: "https://job-boards.greenhouse.io/sigmacomputing/jobs/7690411003" }]
+  },
+  "Adobe (Lehi Campus)": {
+    status: "opens-later",
+    note: "2027 University Graduate reqs are not posted yet; the 2026 cycle covered Dec&ndash;Jun grads, so expect Oct&ndash;Nov. Two Lehi analyst reqs are live now, and the other 47 Lehi jobs are senior.",
+    openings: [{ title: "Deal Desk Analyst", loc: "Lehi, UT", url: "https://careers.adobe.com/us/en/job/R163166/Deal-Desk-Analyst" }, { title: "Technology Asset Planning Analyst", loc: "Lehi, UT", url: "https://careers.adobe.com/us/en/job/R170317/Technology-Asset-Planning-Analyst" }]
+  },
+  "Ancestry": {
+    status: "open-now",
+    note: "The Content Analyst req has closed. Associate Software Engineer is still live but reads like a green-card PERM posting, so treat the odds as low. An Imaging Data Technician in Draper is open too.",
+    openings: [{ title: "Associate Software Engineer", loc: "Draper, UT", url: "https://careers.ancestry.com/jobs/pcpL25174456" }, { title: "Associate Pricing and Packaging Specialist", loc: "US remote", url: "https://careers.ancestry.com/jobs/associate-pricing-and-packaging-specialist" }]
+  },
+  "Pluralsight": {
+    status: "watch",
+    note: "Workday board has 21 reqs: zero in Utah, none entry-level (sales, marketing, directors). Skip this month; re-check in October for intern/new-grad reqs.",
+    openings: []
+  },
+  "Health Catalyst": {
+    status: "open-now",
+    note: "Jr DevOps Engineer, Interoperability in SLC (posted Aug 19) takes 1&ndash;3 yrs with internships counting &mdash; the only US junior req among their 15. Their data-analyst hiring has shifted to India.",
+    openings: [{ title: "Jr DevOps Engineer - Interoperability", loc: "Salt Lake City, UT", url: "https://healthcatalyst.wd5.myworkdayjobs.com/en-US/healthcatalystcareers/job/Salt-Lake-City-UT/Jr-DevOps-Engineer--Interoperability_REQ-3280" }]
+  },
+  "Galileo Financial Technologies": {
+    status: "watch",
+    note: "Galileo now posts through SoFi's 'sofitechsolutions' board: seven reqs, the nearest being a finance manager in Sandy, UT. Nothing entry-level in tech.",
+    openings: []
+  },
+  "Lucid Software": {
+    status: "open-now",
+    note: "Strategic Finance Analyst I is explicitly 0&ndash;1 yrs (internships count), SQL/Snowflake preferred, hybrid South Jordan. The New College Grad SWE req is not live yet &mdash; historically drops in fall, check weekly.",
+    openings: [{ title: "Strategic Finance Analyst I", loc: "South Jordan, UT hybrid", url: "https://job-boards.greenhouse.io/lucidsoftware/jobs/6148651004" }]
+  },
+  "Weave": {
+    status: "open-now",
+    note: "Fraud Analyst at Lehi HQ asks for beginner&ndash;intermediate SQL plus Snowflake and <strong>Sigma</strong> reporting &mdash; lead with your production Sigma dashboards. Posted Jul 22, still live.",
+    openings: [{ title: "Fraud Analyst", loc: "Lehi, UT", url: "https://jobs.ashbyhq.com/weave/8170350e-1a7c-47ec-87d9-1121e037a4b2" }]
+  },
+  "Podium": {
+    status: "watch",
+    note: "55 live reqs (Greenhouse 'podium81'), but engineering is all Senior/Staff (7+ yrs) and PM wants 2&ndash;7 yrs. Nothing entry-level. Watch the board for Analytics Engineer / SWE I reqs.",
+    openings: []
+  },
+  "Snowflake": {
+    status: "opens-later",
+    note: "No 2027 University Graduate req yet, and live SWE reqs want 2+ yrs in Menlo Park or Bellevue. Their General Software Engineering match program does take applications year round &mdash; get in that pool now.",
+    openings: []
+  },
+  "Databricks": {
+    status: "open-now",
+    note: "Associate Product Manager, New Grad (2027 Start) is written for you: 'graduate in Fall 2026 or Spring 2027', SQL/Python, AI tooling. $133&ndash;150K, Bellevue/Mountain View/SF. New-grad SWE reqs not posted yet.",
+    openings: [{ title: "Associate Product Manager, New Grad (2027 Start)", loc: "Bellevue / MV / SF", url: "https://job-boards.greenhouse.io/databricks/jobs/7586263002" }]
+  },
+  "Plaid": {
+    status: "opens-later",
+    note: "No new-grad req on Plaid's board as of Sep 1. Their university recruiting runs each fall (2027 SWE new-grad typically appears Sep&ndash;Oct). Bookmark the board and check weekly.",
+    openings: []
+  },
+  "Stripe": {
+    status: "open-now",
+    note: "New Grad SWE req posted Sep 1 &mdash; eligibility is a degree by summer 2027, so a Dec 2026 grad qualifies. Hybrid SF/Seattle/NYC. Apply this week; Stripe fills cohorts fast.",
+    openings: [{ title: "Software Engineer, New Grad", loc: "SF / Seattle / NYC", url: "https://job-boards.greenhouse.io/stripe/jobs/8128744" }, { title: "Fraud Patterns Analyst", loc: "US-Remote", url: "https://job-boards.greenhouse.io/stripe/jobs/7913410" }, { title: "Risk Operations Analyst", loc: "Remote", url: "https://job-boards.greenhouse.io/stripe/jobs/7230921" }]
+  },
+  "Brex": {
+    status: "watch",
+    note: "SLC office is real (two live SLC reqs) but they are support/collections. Data Engineer and AI Engineer reqs are SF/Seattle mid-level. Set a Greenhouse alert; nothing to apply to today.",
+    openings: []
+  },
+  "SoFi": {
+    status: "opens-later",
+    note: "No new-grad req on SoFi's board today and the Cottonwood Heights reqs want 5+ yrs. Join SoFi's University Recruiting talent community and re-check monthly.",
+    openings: []
+  },
+  "Instructure (Canvas)": {
+    status: "watch",
+    note: "Live SLC reqs are accounting and SDR; engineering and ML hiring is in Budapest. Low priority this month.",
+    openings: []
+  },
+  "Filevine": {
+    status: "open-now",
+    note: "Associate Product Manager on LOIS (their legal-AI product) is live, US remote, full-time. A Data Analytics Manager req in SLC shows the analytics team is growing &mdash; ask about analyst openings.",
+    openings: [{ title: "Associate Product Manager - LOIS", loc: "US remote", url: "https://jobs.lever.co/filevine/ed65234c-4916-4adc-9c31-a41df8022e88" }]
+  },
+  "BambooHR": {
+    status: "watch",
+    note: "34 reqs (Greenhouse 'bamboohr17'); all data/eng roles are Sr/Staff (4&ndash;5+ yrs), no internships flagged. Skip; re-check in October for a BI Analyst intern or new-grad req.",
+    openings: []
+  },
+  "Vivint Smart Home": {
+    status: "watch",
+    note: "The Provo Data Analyst req is filled, and the 29 live Lehi/Provo reqs are ops, sales, or 3+ yrs engineering. Hiring runs through NRG's board now.",
+    openings: []
+  },
+  "Pattern": {
+    status: "watch",
+    note: "Lehi board is live but nothing entry-level in data (Sr. Financial Analyst, Technical PM AI). The Data Engineer req dates from 2025 and looks stale.",
+    openings: []
+  },
+  "Entrata": {
+    status: "watch",
+    note: "Lever board is mostly sales and senior; the SWE and Data Scientist reqs are years old. Low priority this month.",
+    openings: []
+  },
+  "Nav Technologies": {
+    status: "watch",
+    note: "Careers page embeds a Greenhouse board that currently says 'There are no current openings.' Set the board's job alert and move on.",
+    openings: []
+  },
+  "Cotiviti": {
+    status: "open-now",
+    note: "<strong>Payment Insight Analyst I is genuinely entry-level and remote-US</strong> &mdash; bachelor's preferred, data coursework a plus. Client Service Analyst is open as well. The South Jordan engineering reqs want 5+ yrs.",
+    openings: [{ title: "Payment Insight Analyst I", loc: "US remote", url: "https://careers-cotiviti.icims.com/jobs/20222/payment-insight-analyst-i/job" }, { title: "Client Service Analyst - PPM", loc: "US remote", url: "https://careers-cotiviti.icims.com/jobs/20144/client-service-analyst---ppm/job" }]
+  },
+  "JPMorgan Chase": {
+    status: "open-now",
+    note: "Both 2027 programs are open with a November 5 deadline and rolling fill. The Data &amp; AI Analyst track takes Dec 2026&ndash;Aug 2027 grads and says no prior experience is required. No SLC seat, so pick Plano or Chicago.",
+    openings: [{ title: "2027 Software Engineer Program (July start)", loc: "8 US cities", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210774111" }, { title: "2027 Data &amp; AI Program, Analyst", loc: "8 US cities", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210773954" }]
+  },
+  "Capital One": {
+    status: "open-now",
+    note: "Technology Development Program Associate, February 2027 is open and asks for a degree finished by December 2026 &mdash; that is exactly you. McLean, Richmond or Plano, no remote. A Cyber Security Development Program runs the same cycle.",
+    openings: [{ title: "Technology Development Program Associate (Feb 2027)", loc: "McLean / Richmond / Plano", url: "https://www.capitalonecareers.com/job/mclean/technology-development-program-associate-february-2027/31238/99973065696" }]
+  },
+  "Mastercard": {
+    status: "open-now",
+    note: "<strong>Best big-company path that keeps you in Utah.</strong> Launch 2027 Software Engineer lists a Salt Lake City seat at $100K for Dec 2026&ndash;Jun 2027 grads. Bring an unofficial transcript. Data Scientist I in SLC is live too.",
+    openings: [{ title: "Software Engineer, Launch Program 2027", loc: "Salt Lake City + 5 cities", url: "https://careers.mastercard.com/us/en/job/R-288578/Software-Engineer-Launch-Program-2027-United-States" }, { title: "Data Scientist I", loc: "Salt Lake City, UT", url: "https://careers.mastercard.com/us/en/job/R-286655" }]
+  },
+  "Bloomberg": {
+    status: "opens-later",
+    note: "No 2027 US new-grad Engineering, Analytics or Data req is live on their Avature board yet, and the Data Quality Analyst req has since closed. Join the talent community and re-check weekly through October. New York only, no Utah.",
+    openings: []
+  },
+  "OpenAI": {
+    status: "watch",
+    note: "767 live reqs, no new-grad track. Analytics Engineer (GTM / Safety Systems) in SF are the nearest fits but mid-level. Reach only.",
+    openings: []
+  },
+  "Anthropic": {
+    status: "watch",
+    note: "570 live reqs, none entry-level (Business Systems Analyst wants 5+ yrs). Fellows Program is research-track. Reach only &mdash; watch for a new-grad SWE post.",
+    openings: []
+  },
+  "Scale AI": {
+    status: "watch",
+    note: "SWE reqs are SF/NYC mid-level; no new-grad SWE or analyst posting. Their 'ICML 2026 University Recruiting' talent-pool form is open if you want to be in the system.",
+    openings: []
+  },
+  "Robinhood": {
+    status: "open-now",
+    note: "Business Analyst (New Grad) posted Aug 25 &mdash; SQL-heavy, quant modeling, $110K, Washington DC hybrid (3 days). Your Enact predictive-analysis work is the story to tell.",
+    openings: [{ title: "Business Analyst (New Grad)", loc: "Washington, DC hybrid", url: "https://job-boards.greenhouse.io/robinhood/jobs/8123231" }]
+  },
+  "Ramp": {
+    status: "watch",
+    note: "Associate-level Strategic Finance and Credit Risk roles are live but NYC HQ in-office. No remote data/SWE entry roles. Apply only if NYC is on the table.",
+    openings: [{ title: "Associate, Strategic Finance", loc: "NYC HQ", url: "https://jobs.ashbyhq.com/ramp/606475af-b74f-42c4-978a-dde138a86ac7" }, { title: "Credit Risk Associate", loc: "NYC HQ", url: "https://jobs.ashbyhq.com/ramp/4745807e-82f4-4b1a-857c-dc8dadc73076" }]
+  },
+  "Hugging Face": {
+    status: "watch",
+    note: "Only 5 live reqs, all senior ML/infra. The open 'Wild Card' application is the only door right now.",
+    openings: [{ title: "Wild Card (open application)", loc: "US remote", url: "https://apply.workable.com/j/0BD8C06DB3" }]
+  },
+  "Perplexity AI": {
+    status: "watch",
+    note: "99 live reqs; nothing entry-level in data/SWE. Revenue Operations Analyst (SF) is the nearest. Reach only.",
+    openings: []
+  },
+  "DigiCert": {
+    status: "open-now",
+    note: "Associate Authentication Analyst (Lehi, posted Aug 31) is a true entry door but junior &mdash; validation/customer-facing, HS diploma + 1 yr service. Worth applying to get inside; ask about analytics teams.",
+    openings: [{ title: "Associate Authentication Analyst", loc: "Lehi, UT", url: "https://job-boards.greenhouse.io/digicert/jobs/8752868002" }, { title: "Deal Desk Analyst", loc: "Lehi, UT", url: "https://job-boards.greenhouse.io/digicert/jobs/8659394002" }]
+  },
+  "Ivanti": {
+    status: "watch",
+    note: "Their Greenhouse-backed board is tiny right now &mdash; the only US req is a night-shift SRE and nothing is posted in South Jordan. Set an alert and check back in October.",
+    openings: []
+  },
+  "Proofpoint": {
+    status: "watch",
+    note: "144 live reqs; the only Draper ones are Business Development Rep and IT Support Specialist. Engineering hiring is in India/remote. Watch for Draper analyst reqs.",
+    openings: []
+  },
+  "SecurityMetrics": {
+    status: "watch",
+    note: "Only five openings, all in Orem and all sales, support or QA. Their analyst and auditor reqs come in waves, and they hire heavily from Utah County schools &mdash; worth a direct email to their recruiting team.",
+    openings: []
+  },
+  "Arctic Wolf": {
+    status: "watch",
+    note: "<strong>Utah office confirmed</strong> at Pleasant Grove, but zero entry-level US reqs are live today. Set a Workday alert for Triage Security Analyst and Concierge Security &mdash; those are their classic new-grad doors.",
+    openings: []
+  },
+  "CrowdStrike": {
+    status: "open-now",
+    note: "Analyst I, Falcon Complete (remote, MST shift) is the entry SOC ladder but expects incident-response exposure &mdash; pair with Security+ and a home lab. New Grad Data Scientist req requires MS/PhD.",
+    openings: [{ title: "Analyst I, Falcon Complete (Remote, PST/MST)", loc: "US remote", url: "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote/Analyst-I--Falcon-Complete--Remote-_R29479" }, { title: "Third Party Risk Management Analyst (Remote)", loc: "US remote", url: "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote/Third-Party-Risk-Management--TPRM--Analyst--Remote-_R28654" }]
+  },
+  "Palo Alto Networks": {
+    status: "watch",
+    note: "1,445 live reqs but only two in Utah, both experienced. The Associate Systems Engineer track is APAC and Texas only, and no US new-grad SWE req is posted. Watch for SLC reqs on the Venafi side.",
+    openings: []
+  },
+  "Okta": {
+    status: "watch",
+    note: "No 2027 new-grad req live. Okta's Software Engineer I (New Grad) historically drops Sept&ndash;Nov in SF, Chicago, Bellevue and DC. The live Chicago Business Analyst reqs want 3&ndash;8 yrs. No Utah office.",
+    openings: []
+  },
+  "Cloudflare": {
+    status: "watch",
+    note: "No 2027 new-grad req yet. Closest live fit is Systems Engineer on the Data Intelligence &amp; Analytics team &mdash; Austin hybrid, Python and SQL, no years-of-experience listed. Apply to that one now.",
+    openings: [{ title: "Systems Engineer, Data Intelligence &amp; Analytics", loc: "Austin, TX hybrid", url: "https://job-boards.greenhouse.io/cloudflare/jobs/8050813" }]
+  },
+  "Datadog": {
+    status: "opens-later",
+    note: "Datadog states early-career full-time reqs post in September and fill rolling, and their spring start class fits a December grad. Denver is the nearest hub. Watch the early-careers page daily this month.",
+    openings: [{ title: "GTM Strategy/Operations Associate", loc: "New York, NY", url: "https://job-boards.greenhouse.io/datadog/jobs/8171303" }]
+  },
+  "Vanta": {
+    status: "open-now",
+    note: "GTM Strategy & Operations Analyst (remote US, posted Aug 28) is an analyst role at a GRC company &mdash; pitch your enterprise data-standards work as compliance-adjacent.",
+    openings: [{ title: "GTM Strategy & Operations Analyst, Account Management", loc: "Remote US", url: "https://jobs.ashbyhq.com/vanta/0e82974a-0023-49a2-b1ec-a0fa89636dd5" }]
+  },
+  "Coalition": {
+    status: "watch",
+    note: "Data Engineer, Security (remote, $111&ndash;163K) wants Looker + Cursor + cyber/insurance exposure &mdash; a stretch, not entry. Underwriter needs 3+ yrs. Watch for underwriting-analyst reqs.",
+    openings: []
+  },
+  "Sardine": {
+    status: "watch",
+    note: "Data Analyst &ndash; Fraud Intelligence (remote) is the dream title but asks for 3&ndash;5 yrs. Watch for an associate-level fraud analyst req.",
+    openings: []
+  },
+  "Wiz": {
+    status: "watch",
+    note: "Cyber Threat Intel Analyst (Washington DC, posted Aug 28) is the nearest entry req; no new-grad track. Reach only.",
+    openings: [{ title: "Cyber Threat Intel Analyst", loc: "Washington, DC", url: "https://job-boards.greenhouse.io/wizinc/jobs/4705367006" }]
+  },
+  "Abnormal AI": {
+    status: "watch",
+    note: "FedRAMP Compliance Analyst and Sales Ops Analyst are live remote-US (posted Sep 1) but priced for experienced hires ($115K+). Watch for associate-level GRC reqs.",
+    openings: []
+  },
+  "Zions Bancorporation": {
+    status: "opens-later",
+    note: "<strong>Their STEM applications are accepted mid-September through November</strong> &mdash; that window opens in about two weeks. The Banker Development Program is a rotational track built for recent grads, and they will be on campus Sept 24.",
+    openings: []
+  },
+  "America First Credit Union": {
+    status: "watch",
+    note: "Recruits at both U of U fall fairs and hires data analysts in Riverdale. Their postings are not on a public API, so check the careers page directly &mdash; or just talk to them in person at the Sept 24 expo.",
+    openings: []
+  },
+  "Verkada": {
+    status: "open-now",
+    note: "<strong>They will be on campus Sept 17.</strong> A Technical Support Engineer - University Graduate 2026 req is live, plus several Associate-level operations roles. Nearly everything is San Mateo in-office, so plan on relocating.",
+    openings: [{ title: "Technical Support Engineer - University Graduate 2026", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4715534007" }, { title: "Associate, Pricing &amp; Commercial Operations", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4945957007" }, { title: "Sales Strategy and Operations Associate", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4086576007" }]
+  },
+  "iCapital": {
+    status: "open-now",
+    note: "53 Utah roles live. <strong>Master Data Management Analyst</strong> ($60&ndash;75K) wants SQL plus data governance and data quality &mdash; that is your Ataccama year. It asks 2+ yrs, so pitch the three Enact rotations as the experience.",
+    openings: [{ title: "Master Data Management Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8646158002" }, { title: "Strategic Transformation, Data Operations - Associate", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8606952002" }, { title: "Platform Support - Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8344081002" }]
+  },
+  "WGU (Western Governors University)": {
+    status: "open-now",
+    note: "<strong>Associate Data Engineer, $81,300, posted Aug 25.</strong> Wants SQL, Python, ETL and Spark, and states one year of education counts as one year of experience &mdash; a genuine new-grad door. A Data Analyst role is open too.",
+    openings: [{ title: "Associate Data Engineer", loc: "Salt Lake City, UT", url: "https://jobs.wgu.edu/associate-data-engineer/job/P1-6566704-0" }, { title: "Data Analyst - Institutional Research &amp; Analytics", loc: "Salt Lake City, UT", url: "https://jobs.wgu.edu/data-analyst-institutional-research-and-analytics-iar/job/P1-6550248-0" }, { title: "Software Engineer", loc: "Salt Lake City, UT", url: "https://jobs.wgu.edu/software-engineer/job/P1-5760450-0" }]
+  }
+};
+
+const STATUS_ORDER = ["open-now", "suggested", "opens-later", "watch", "wrong-cohort"];
+const GROUP_HEADING = {
+  "open-now":     ["Live roles right now", "apply this week"],
+  "suggested":    ["Suggested for you", "from Claude’s knowledge, not verified &mdash; check each careers page"],
+  "opens-later":  ["Opens later this fall", "get on the list, set a reminder"],
+  "watch":        ["Watch list", "board is live, nothing entry-level today"],
+  "wrong-cohort": ["Wrong cohort", "timing does not fit a Dec 2026 grad"]
+};
+
+const APPLY_LABEL = {
+  "open-now":     "Live role now &middot; apply this week",
+  "suggested":    "Suggested by Claude &middot; not verified",
+  "opens-later":  "Opens later this fall",
+  "watch":        "Watch list &middot; nothing entry-level posted today",
+  "wrong-cohort": "Wrong cohort for a Dec 2026 grad"
+};
+
+COMPANIES.forEach(c => {
+  c.apply = APPLY_STATUS[c.name] || { status: "watch", note: "Not re-verified this refresh &mdash; check the board." };
+  c.apply.openings = c.apply.openings || [];
+});
+
+// === CAREER FAIRS ===
+(function renderFairs() {
+  const el = document.getElementById('fair-list');
+  if (!el) return;
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  el.innerHTML = FAIRS.map(f => {
+    const d = new Date(f.date + 'T00:00:00');
+    const days = Math.round((d - today) / 86400000);
+    const when = days < 0 ? 'passed' : days === 0 ? 'today' : days === 1 ? 'tomorrow' : `in ${days} days`;
+    const label = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    return `<div class="fair ${f.key ? 'key' : ''} ${days < 0 ? 'past' : ''}">
+      <span class="d">${label}</span>
+      <span class="n">${f.name}</span>
+      ${f.who ? `<span class="who">${f.who}</span>` : ''}
+      <span class="cd">${when}</span>
+    </div>`;
+  }).join('');
+})();
+
+// === RENDER ===
+const grid = document.getElementById('grid');
+const search = document.getElementById('search');
+const resultsCount = document.getElementById('results-count');
+const resetBtn = document.getElementById('reset');
+const filterChips = document.querySelectorAll('#filters .chip[data-filter]');
+
+const state = { search: '', role: null, loc: null, ind: null, tier: null, apply: null, alumni: null };
+const ALUMNI_BONUS = { strong: 3, some: 1 };
+// Which resume the board is currently tailored to. The built-in board is David's; the
+// tailoring module at the bottom of this script swaps in uploaded profiles.
+let PROFILE = { id: 'david', uofu: true, geoLabel: 'SLC Area', cohortLabel: 'Dec 2026 grad', city: 'Salt Lake City, UT' };
+let SUGGESTED = []; // extra employers Claude proposes when the candidate's home base is outside the Salt Lake area
+const cohort = s => s.replace('Dec 2026 grad', () => escHtml(PROFILE.cohortLabel));
+const escHtml = s => String(s ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+const shownScore = c => Math.min(100, c.score + (PROFILE.uofu ? (ALUMNI_BONUS[c.alumni] || 0) : 0));
+
+const ROLE_LABEL = { ml: 'AI/ML', swe: 'SWE', data: 'Data', product: 'Product' };
+const BADGE_LABEL = {
+  local: 'SLC Area',
+  fintech: 'Fintech',
+  'ai-native': 'AI-Native',
+  'tools-match': 'Your Tools'
+};
+
+// Hide any Timing/Where chip nothing can match, so no filter ever leads to an empty board.
+function syncChips() {
+  const shown = COMPANIES.concat(SUGGESTED);
+  document.querySelectorAll('.chip[data-filter="apply"], .chip[data-filter="loc"]').forEach(chip => {
+    const f = chip.dataset.filter, v = chip.dataset.value;
+    const has = shown.some(c => f === 'apply' ? c.apply.status === v : c.locType === v);
+    chip.hidden = !has;
+    if (!has && state[f] === v) { state[f] = null; chip.classList.remove('active'); }
+  });
+  // Collapse a group only when this function owns every chip in it (the Utes group is managed by applyProfile).
+  document.querySelectorAll('.filter-group').forEach(g => {
+    const chips = Array.from(g.querySelectorAll('.chip[data-filter]'));
+    if (chips.length && chips.every(c => c.dataset.filter === 'apply' || c.dataset.filter === 'loc')) {
+      g.hidden = chips.every(c => c.hidden);
+    }
+  });
+}
+
+function render() {
+  const q = state.search.trim().toLowerCase();
+  const ALL = COMPANIES.concat(SUGGESTED);
+  const filtered = ALL
+    .filter(c => {
+      if (state.role && !c.roles.includes(state.role)) return false;
+      if (state.loc && c.locType !== state.loc) return false;
+      if (state.ind && !c.industry.includes(state.ind)) return false;
+      if (state.tier && c.tier !== Number(state.tier)) return false;
+      if (state.apply && c.apply.status !== state.apply) return false;
+      if (state.alumni && !c.alumni) return false;
+      if (q && !(`${c.name} ${c.location} ${c.why} ${c.industry.join(' ')} ${c.apply.openings.map(o => o.title).join(' ')}`.toLowerCase().includes(q))) return false;
+      return true;
+    })
+    .sort((a, b) =>
+      (STATUS_ORDER.indexOf(a.apply.status) - STATUS_ORDER.indexOf(b.apply.status)) ||
+      (shownScore(b) - shownScore(a)));
+
+  resultsCount.textContent = `${filtered.length} of ${ALL.length} companies`;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="empty">No matches. Try the Reset button or broaden your filters.</div>';
+    return;
+  }
+
+  const cardHtml = c => `
+    <div class="card tier-${c.tier}${c.suggested ? ' suggested' : ''}">
+      <div class="card-head">
+        <div>
+          <h3>${c.suggested ? escHtml(c.name) : c.name}</h3>
+          <div class="location">${c.suggested ? escHtml(c.location) : c.location}</div>
+        </div>
+        <div class="score" style="--p: ${shownScore(c)}%" title="${PROFILE.uofu && c.alumni ? 'Includes +' + ALUMNI_BONUS[c.alumni] + ' for a verified University of Utah hiring pipeline' : 'Resume-alignment score'}"><span>${shownScore(c)}</span></div>
+      </div>
+      <div class="badges">
+        ${c.badges.map(b => `<span class="badge ${b}">${b === 'local' ? escHtml(PROFILE.geoLabel) : (BADGE_LABEL[b] || b)}</span>`).join('')}
+        ${PROFILE.uofu && c.alumni === 'strong' ? `<span class="badge alumni" title="${c.alumniNote || ''}">Hires Utes</span>` : PROFILE.uofu && c.alumni === 'some' ? `<span class="badge alumni-some" title="${c.alumniNote || ''}">Some Utes</span>` : ''}
+      </div>
+      <div class="apply-strip ${c.apply.status}">
+        <div class="dot"></div>
+        <div><strong>${cohort(APPLY_LABEL[c.apply.status])}</strong> &middot; ${c.apply.note}</div>
+      </div>
+      ${c.apply.openings.length ? `
+      <div class="openings-label">Verified live ${REFRESH_DATE}</div>
+      <ul class="openings">
+        ${c.apply.openings.map(o => `<li><a href="${o.url}" target="_blank" rel="noopener">${o.title}</a><span class="oloc">${o.loc}</span></li>`).join('')}
+      </ul>` : ''}
+      <p class="why">${c.why}</p>
+      <div class="role-tags">
+        ${c.roles.map(r => `<span class="role-tag">${ROLE_LABEL[r]}</span>`).join('')}
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="${c.careers}" target="_blank" rel="noopener">${c.suggested ? 'Find careers page' : 'Apply'} &rarr;</a>
+        <a class="btn" href="https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(c.name.replace(/\s*\(.*?\)\s*/g, '').trim() + ' new grad')}&f_E=2%2C3" target="_blank" rel="noopener" title="LinkedIn search filtered for new-grad / entry-level roles at this company">New Grad Jobs</a>
+        <a class="btn" href="https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(c.name.replace(/\s*\(.*?\)\s*/g, '').trim())}" target="_blank" rel="noopener" title="Every job at this company on LinkedIn (search by name, so it cannot 404 on a stale company slug)">All Jobs</a>
+      </div>
+    </div>
+  `;
+
+  const counts = {};
+  filtered.forEach(c => { counts[c.apply.status] = (counts[c.apply.status] || 0) + 1; });
+
+  let seen = null;
+  grid.innerHTML = filtered.map(c => {
+    let head = '';
+    if (c.apply.status !== seen) {
+      seen = c.apply.status;
+      let [title, hint] = GROUP_HEADING[seen] || [seen, ''];
+      if (seen === 'suggested') title = PROFILE.city ? `Suggested for ${escHtml(PROFILE.city)}` : (/remote/i.test(PROFILE.geoLabel) ? 'Suggested remote-friendly employers' : 'Suggested near you');
+      head = `<h2 class="group-head ${seen}">
+        <span class="gdot"></span>${title}
+        <span class="gcount">${counts[seen]}</span>
+        <span class="ghint">${cohort(hint)}</span>
+      </h2>`;
+    }
+    return head + cardHtml(c);
+  }).join('');
+}
+
+filterChips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    const f = chip.dataset.filter;
+    const v = chip.dataset.value;
+    if (state[f] === v) {
+      state[f] = null;
+      chip.classList.remove('active');
+    } else {
+      document.querySelectorAll(`#filters .chip[data-filter="${f}"]`).forEach(c => c.classList.remove('active'));
+      state[f] = v;
+      chip.classList.add('active');
+    }
+    render();
+  });
+});
+
+search.addEventListener('input', e => {
+  state.search = e.target.value;
+  render();
+});
+
+resetBtn.addEventListener('click', () => {
+  state.search = '';
+  state.role = state.loc = state.ind = state.tier = state.apply = state.alumni = null;
+  search.value = '';
+  document.querySelectorAll('#filters .chip.active').forEach(c => c.classList.remove('active'));
+  render();
+});
+
+syncChips();
+render();
+
+// === RESUME TAILORING ===
+// "Upload a resume" runs Claude in the browser against api.anthropic.com with the
+// key you paste (stored in localStorage only). Claude reads the resume, re-scores every
+// company for that person, rewrites the match notes and header, and the result is saved
+// as a switchable profile. The resume itself is never stored anywhere.
+(function tailoring() {
+  const SDK_URL = 'https://cdn.jsdelivr.net/npm/@anthropic-ai/sdk@0.124.0/+esm';
+  const JSZIP_URL = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+  const LS = { key: 'jf.apiKey', model: 'jf.model', effort: 'jf.effort', profiles: 'jf.profiles', active: 'jf.activeProfile' };
+  const MODELS = {
+    'claude-opus-5':    { label: 'Claude Opus 5',    price: [5, 25],  hint: 'Recommended. Adaptive extended thinking; roughly $0.50–1 and 1–3 minutes per run.' },
+    'claude-fable-5-1': { label: 'Claude Fable 5.1', price: [10, 50], hint: 'Anthropic’s most capable model. Deepest reasoning, several minutes, about 2× the cost of Opus 5.' },
+    'claude-sonnet-5':  { label: 'Claude Sonnet 5',  price: [2, 10],  hint: 'Fast and cheap (under $0.30 per run). Shallower match notes.' },
+  };
+  const EFFORTS = { medium: 'Medium · quicker', high: 'High · recommended', xhigh: 'Extra high · deepest practical', max: 'Max · slowest, most thorough' };
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+  const rich = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  const stripHtml = s => String(s || '').replace(/<[^>]+>/g, '')
+    .replace(/&mdash;/g, '—').replace(/&ndash;/g, '–').replace(/&middot;/g, '·')
+    .replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/&rarr;/g, '→').replace(/&hellip;/g, '…');
+  const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
+  const norm = s => String(s || '').toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+
+  // --- snapshot of the built-in (David) board so profiles can be swapped in and out ---
+  const BASE = {};
+  COMPANIES.forEach(c => { BASE[c.name] = { score: c.score, tier: c.tier, badges: c.badges.slice(), why: c.why, status: c.apply.status, note: c.apply.note, locType: c.locType }; });
+  const HEAD = {
+    avatar: document.querySelector('.avatar'),
+    h1: document.querySelector('.brand h1'),
+    sub: document.querySelector('.brand .sub'),
+    links: $('quick-links'),
+    vals: Array.from(document.querySelectorAll('.profile-strip .stat .val')),
+    positioning: $('positioning'),
+    footer: document.querySelector('footer'),
+    fairs: $('fairs'),
+    utesChip: document.querySelector('.chip[data-filter="alumni"]'),
+    sugChip: document.querySelector('.chip[data-filter="apply"][data-value="suggested"]'),
+    where: { local: document.querySelector('.chip[data-filter="loc"][data-value="local"]'), hybrid: document.querySelector('.chip[data-filter="loc"][data-value="hybrid"]'), far: document.querySelector('.chip[data-filter="loc"][data-value="far"]') },
+  };
+  HEAD.utes = HEAD.utesChip.closest('.filter-group');
+  const BASE_HEAD = {
+    avatar: HEAD.avatar.textContent, h1: HEAD.h1.textContent, sub: HEAD.sub.innerHTML,
+    links: HEAD.links.innerHTML, vals: HEAD.vals.map(v => v.innerHTML),
+    footer: HEAD.footer.innerHTML, title: document.title,
+    where: { local: HEAD.where.local.textContent, hybrid: HEAD.where.hybrid.textContent },
+  };
+
+  // --- storage (localStorage can throw in private windows; never let that break the page) ---
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : v; } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } },
+  };
+  const wellFormed = p => p && typeof p.id === 'string' && typeof p.name === 'string' && p.companies && typeof p.companies === 'object' && p.strip && typeof p.strip === 'object';
+  const loadProfiles = () => { try { const p = JSON.parse(store.get(LS.profiles, '[]')); return Array.isArray(p) ? p.filter(wellFormed) : []; } catch (e) { return []; } };
+  const saveProfiles = list => store.set(LS.profiles, JSON.stringify(list));
+  let profiles = loadProfiles();
+
+  // --- apply a profile (or null for the built-in board) to the page ---
+  function linkedinSearch(l) {
+    const u = new URL('https://www.linkedin.com/jobs/search/');
+    u.searchParams.set('keywords', l.keywords || '');
+    if (l.location) u.searchParams.set('location', l.location);
+    if (l.remoteOnly) u.searchParams.set('f_WT', '2');
+    if (l.entryLevel) u.searchParams.set('f_E', '2');
+    return u.toString();
+  }
+  function linksHtml(p) {
+    const out = [];
+    if (p.linkedin) out.push(`<a class="pill-link" href="${esc(p.linkedin)}" target="_blank" rel="noopener">LinkedIn Profile</a>`);
+    (p.searchLinks || []).slice(0, 5).forEach(l => {
+      out.push(`<a class="pill-link" href="${esc(linkedinSearch(l))}" target="_blank" rel="noopener">${esc(l.label)}</a>`);
+    });
+    return out.join('');
+  }
+  function footerHtml(p) {
+    const when = new Date(p.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    const model = (MODELS[p.model] || {}).label || p.model;
+    return `Built for ${esc(p.name)} &middot; Tailored ${esc(when)} with ${esc(model)} &middot; Board data verified ${REFRESH_DATE}
+      <br><strong style="color: var(--gold);">Apply now:</strong> ${rich(p.applyNow)}
+      <br><strong style="color: var(--accent-2);">Watch later:</strong> ${rich(p.watchLater)}
+      <br>Match scores reflect resume alignment (skills, domain, geography, new-grad pipelines). Openings and timing were verified for the board on ${REFRESH_DATE}, not re-checked per resume.`;
+  }
+  function suggestedToCompany(sg) {
+    return {
+      name: sg.name, location: sg.location, locType: sg.locType, industry: sg.industry || [], roles: sg.roles || [],
+      score: sg.score, tier: sg.tier, badges: (sg.badges || []).slice(), why: rich(sg.why), suggested: true, confidence: sg.confidence,
+      careers: 'https://www.google.com/search?q=' + encodeURIComponent(sg.name + ' careers'),
+      apply: { status: 'suggested', note: rich(sg.note) + (sg.confidence === 'medium' ? ' <em>(medium confidence)</em>' : ''), openings: [] },
+    };
+  }
+  function applyProfile(p) {
+    const custom = !!p;
+    PROFILE = custom
+      ? { id: p.id, uofu: !!p.uofu, geoLabel: p.geoLabel || 'Near you', cohortLabel: p.cohortLabel || 'this candidate', city: p.city || '' }
+      : { id: 'david', uofu: true, geoLabel: 'SLC Area', cohortLabel: 'Dec 2026 grad', city: 'Salt Lake City, UT' };
+    COMPANIES.forEach(c => {
+      const b = BASE[c.name];
+      const t = custom ? p.companies[c.name] : null;
+      c.score = t ? t.score : b.score;
+      c.tier = t ? t.tier : b.tier;
+      c.badges = (t ? t.badges : b.badges).slice();
+      c.why = t ? rich(t.why) : b.why;
+      c.apply.status = (t && t.status && t.status !== 'keep') ? t.status : b.status;
+      c.locType = (t && t.locType && t.locType !== 'keep') ? t.locType : b.locType;
+      c.apply.note = (t && t.note) ? rich(t.note) : b.note;
+    });
+    SUGGESTED = custom ? (p.suggested || []).map(suggestedToCompany) : [];
+    // Where-filter chips are SLC-relative on the built-in board; relabel them for the candidate's metro.
+    const cityShort = (PROFILE.city || '').split(',')[0].trim();
+    // Relabel only when Claude actually re-mapped the board; otherwise locTypes are still SLC-relative and the base labels are the truth.
+    const remapped = custom && (COMPANIES.some(c => c.locType !== BASE[c.name].locType) || SUGGESTED.length > 0);
+    const slc = !remapped;
+    const remoteFirst = custom && !cityShort && /remote/i.test(PROFILE.geoLabel);
+    HEAD.where.local.textContent = slc ? BASE_HEAD.where.local : (remoteFirst || !PROFILE.geoLabel ? 'Near you' : PROFILE.geoLabel);
+    HEAD.where.hybrid.textContent = slc ? BASE_HEAD.where.hybrid : (cityShort ? `Has ${cityShort} office` : 'Office near you');
+    syncChips();
+    // Where semantics change with the home base, so drop an active Where filter instead of silently re-interpreting it.
+    if (state.loc) { state.loc = null; document.querySelectorAll('.chip[data-filter="loc"].active').forEach(ch => ch.classList.remove('active')); }
+    if (custom) {
+      const first = (p.name || 'Your').trim().split(/\s+/)[0];
+      HEAD.avatar.textContent = p.initials || first.slice(0, 2).toUpperCase();
+      HEAD.h1.textContent = `${first}'s AI Job Finder`;
+      HEAD.sub.textContent = p.subline || '';
+      const strip = p.strip || {};
+      HEAD.vals[0].textContent = strip.status || '';
+      HEAD.vals[1].textContent = strip.recentRole || '';
+      HEAD.vals[2].textContent = strip.stack || '';
+      HEAD.vals[3].textContent = strip.target || '';
+      HEAD.links.innerHTML = linksHtml(p);
+      HEAD.positioning.textContent = p.summary || '';
+      HEAD.positioning.hidden = !p.summary;
+      HEAD.footer.innerHTML = footerHtml(p);
+      document.title = `${first}'s AI Job Finder`;
+    } else {
+      HEAD.avatar.textContent = BASE_HEAD.avatar;
+      HEAD.h1.textContent = BASE_HEAD.h1;
+      HEAD.sub.innerHTML = BASE_HEAD.sub;
+      HEAD.vals.forEach((v, i) => { v.innerHTML = BASE_HEAD.vals[i]; });
+      HEAD.links.innerHTML = BASE_HEAD.links;
+      HEAD.positioning.hidden = true;
+      HEAD.footer.innerHTML = BASE_HEAD.footer;
+      document.title = BASE_HEAD.title;
+    }
+    HEAD.fairs.hidden = !PROFILE.uofu;
+    HEAD.utes.hidden = !PROFILE.uofu;
+    if (!PROFILE.uofu && state.alumni) { state.alumni = null; HEAD.utesChip.classList.remove('active'); }
+    store.set(LS.active, PROFILE.id);
+    refreshSwitch();
+    render();
+  }
+  function refreshSwitch() {
+    const sel = $('profile-select');
+    $('profile-switch').hidden = profiles.length === 0;
+    sel.innerHTML = '<option value="david">David (built-in)</option>' +
+      profiles.map(p => `<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('');
+    sel.value = PROFILE.id;
+    if (sel.value !== PROFILE.id) sel.value = 'david';
+    $('profile-delete').hidden = PROFILE.id === 'david';
+  }
+  $('profile-select').addEventListener('change', e => applyProfile(profiles.find(x => x.id === e.target.value) || null));
+  $('profile-delete').addEventListener('click', () => {
+    const p = profiles.find(x => x.id === PROFILE.id);
+    if (!p || !confirm(`Remove the saved profile for ${p.name}?`)) return;
+    profiles = profiles.filter(x => x.id !== p.id);
+    saveProfiles(profiles);
+    applyProfile(null);
+  });
+
+  // --- the prompt ---
+  const SYSTEM_PROMPT = `You are the matching engine behind a personal job-search dashboard. The board lists a fixed, hand-researched set of employers with openings that were verified on a known date. Your job: read one candidate's resume and re-tailor the whole board to that person: a profile header, a fit score and explanation for every company, a rewritten timing note wherever the original is person-specific, and short apply-strategy notes. Think it through carefully; the candidate will act on this.
+
+The board data (JSON) follows in the next block. Its "about" and "timing.note" text was written for the board's original owner: a University of Utah Information Systems senior graduating December 2026, targeting data, AI and fintech roles around Salt Lake City. Treat any second-person language there as describing that person, not this candidate; keep only the company facts. You cannot browse, so never invent openings, programs, or company facts beyond the input, though general knowledge of well-known companies is fine.
+
+Scores (60-100) measure how well THIS candidate fits THIS employer for an entry-level or new-grad hire: 95-100 bullseye (domain, geography, stack and hiring pipeline all line up), 85-94 strong, 75-84 solid, 65-74 stretch, 60-64 weak. Use the whole range and spread the scores; a board where everything is 85+ is useless. If the candidate's home base is far from Utah and they are not relocating, Utah-only employers lose points unless they hire remote, and the why should say so (why is the main per-company text you write). If the candidate's field is far from what an employer hires for, score low and say what would have to be true to fit. The board covers AI/ML, software, data and product roles; if the candidate's field is outside that (nursing, law, accounting...), say so plainly in the summary, keep suggested employers to ones that hire in the candidate's real field, and set roles to [] where none of the four apply. Tier 1 is the 6 to 9 best matches across board and suggested employers combined; everything else is tier 2.
+
+Badges are relative to this candidate: "local" = the employer has an office in the candidate's home-base metro (the same metro behind city, geoLabel and locType), so give it only to companies whose locType is local or hybrid; "fintech" = the employer is fintech; "ai-native" = AI is the core of the product; "tools-match" = the employer's stack overlaps tools on the resume.
+
+Each "why" is 1-3 sentences (about 30-60 words), second person, specific. Lead with the strongest reason and wrap that lead phrase in **double asterisks**, tie it to a concrete resume item, and be honest when a role is a reach or the geography is a stretch. Match the tone of these examples from the original board: "**Bullseye match.** Fintech + AI in Lehi (15 min from campus). Hires data analysts & SWE interns who use SQL/Python, exactly your stack." and "**Reach role, competitive.** Maker of Claude; Claude Code is on your resume, so you can speak to the product as a daily user."
+
+Timing: each company's "timing.status" (open-now, opens-later, watch, wrong-cohort) and "timing.note" were assessed on the verification date for a December 2026 graduate. Return status "keep" unless this candidate's graduation timing or level clearly changes the verdict (for example a "wrong-cohort" 2027 program that fits a May 2027 graduate). Never move a company to open-now unless the listed openings or note show live roles that fit this candidate. Geography never changes status (a live role is still live); when a company's only live openings are on-site in Utah and the candidate is far and not relocating, keep the status, score it as a stretch, and say in the why that the role is on-site in Utah. The timing note is shown to the candidate verbatim, so return "note" as a rewrite of it for this candidate (same facts, 1-2 sentences, second person, nothing invented) whenever the original mentions the owner's background, school, campus events or graduation date; return an empty string to keep the original when it contains nothing person-specific.
+
+Geography. Home base is the metro the candidate wants to work in after graduation when the resume states one (an objective line, "relocating to X", "open to Y"); otherwise the city on the resume; otherwise infer it from the most recent school or employer city and say so in the summary. If even that is unclear, treat the candidate as Salt Lake based and say in the summary that the board assumes Salt Lake City. The board was curated around Salt Lake City, so each existing company's locType (local = based in or a major hub in SLC, hybrid = has an SLC office, remote = hires remote) is SLC-relative. If the home base is anywhere on the Wasatch Front (Salt Lake, Utah, Davis or Weber county: Salt Lake City, Provo, Orem, Lehi, Ogden, Park City...) or the candidate says they are moving to or targeting Salt Lake City, treat them as SLC-based: geoLabel "SLC Area", city "Salt Lake City, UT" (or their own Wasatch Front town), locType "keep" for every company and an empty suggested list; if they are relocating, say in the summary that the board assumes the move. Otherwise do two things. (1) Re-map every existing company's locType relative to the candidate: local = headquartered or a major hub in the candidate's metro, hybrid = a smaller office there, remote = hires this kind of role remotely from where the candidate lives, far = would require relocation. (2) Add up to 15 suggested employers in the candidate's metro that you are confident exist and hire entry-level talent in the candidate's field: a mix of large employers with known early-career programs and notable local tech, fintech, AI, health or security firms, never duplicating a board company. Fewer than 8 is fine; a short list you are sure of beats a padded one, and omit anything you are not sure exists. You cannot verify openings, so each note says how they hire: name a program only when you are certain of its exact name, otherwise give typical entry titles and what to search for ("early career", "new grad") on their careers site. Suggested employers get the same score, tier, badges and why treatment as board companies, and their locType is relative to the candidate (local, hybrid or remote). A remote-first candidate with no metro gets geoLabel "Remote" and an empty city; every board company is then "remote" if it hires this kind of role remotely from the candidate's country, otherwise "far", never local or hybrid and never the "local" badge; suggested employers must be remote-friendly with locType "remote" and location as the HQ city followed by " (remote)". If the resume names two or more target metros, use the current residence (or the first listed) for city and geoLabel, mention the other in target and summary, split suggested employers between them with each entry's location naming its own city, and add one searchLinks entry per metro.
+
+Header fields follow the original board's style: status like "Senior · Grad Dec 2026" or "Recent grad · Available now"; recentRole like "Enact Mortgage — Enterprise Data Intern (3 rotations)"; stack = the 5-7 most marketable tools, comma-separated; target like "New Grad FT · SLC / Remote · Fintech + AI"; subline like "New-grad AI roles for a December 2026 graduate · Tailored to your August 2026 resume"; cohortLabel like "Dec 2026 grad" or "May 2027 grad"; city is the home-base metro as "City, ST" or "City, Country" (empty only for a remote-first candidate); geoLabel is a short badge label for that home base, like "SLC Area" or "Austin Area"; uofu is true only if the candidate studies or studied at the University of Utah. searchLinks are 3-5 LinkedIn job searches worth bookmarking (label, keywords, a location spelled the way LinkedIn does such as "Austin, Texas" or "London, England, United Kingdom", or empty for remote-only, remoteOnly, entryLevel). summary is 2-3 sentences on how to position this candidate. applyNow names which of the currently live roles on the board to apply to first and why; watchLater says what to watch for later in the season. Return exactly one companies entry per input company using the exact input name.`;
+
+  const OUTPUT_FORMAT = {
+    type: 'json_schema',
+    schema: {
+      type: 'object',
+      properties: {
+        profile: {
+          type: 'object',
+          properties: {
+            name: { type: 'string', description: "Candidate's full name as written on the resume" },
+            initials: { type: 'string', description: 'Two uppercase initials' },
+            subline: { type: 'string' },
+            status: { type: 'string' },
+            recentRole: { type: 'string' },
+            stack: { type: 'string' },
+            target: { type: 'string' },
+            uofu: { type: 'boolean' },
+            city: { type: 'string', description: 'Home-base metro as "City, ST" or "City, Country"; empty if remote-first or unclear' },
+            geoLabel: { type: 'string' },
+            cohortLabel: { type: 'string' },
+            linkedin: { type: 'string', description: "The candidate's LinkedIn profile URL if the resume has one, else empty string" },
+            summary: { type: 'string' },
+            searchLinks: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  label: { type: 'string' },
+                  keywords: { type: 'string' },
+                  location: { type: 'string', description: 'Spelled the way LinkedIn does, e.g. "Austin, Texas" or "London, England, United Kingdom"; empty string for remote-only' },
+                  remoteOnly: { type: 'boolean' },
+                  entryLevel: { type: 'boolean' },
+                },
+                required: ['label', 'keywords', 'location', 'remoteOnly', 'entryLevel'],
+                additionalProperties: false,
+              },
+            },
+            applyNow: { type: 'string', description: 'Plain text, 1-3 sentences; **bold** allowed' },
+            watchLater: { type: 'string', description: 'Plain text, 1-2 sentences' },
+          },
+          required: ['name', 'initials', 'subline', 'status', 'recentRole', 'stack', 'target', 'uofu', 'city', 'geoLabel', 'cohortLabel', 'linkedin', 'summary', 'searchLinks', 'applyNow', 'watchLater'],
+          additionalProperties: false,
+        },
+        companies: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              name: { type: 'string', description: 'Exact company name from the input' },
+              score: { type: 'integer', description: '60-100' },
+              tier: { type: 'integer', enum: [1, 2] },
+              badges: { type: 'array', items: { type: 'string', enum: ['local', 'fintech', 'ai-native', 'tools-match'] } },
+              status: { type: 'string', enum: ['keep', 'open-now', 'opens-later', 'watch', 'wrong-cohort'] },
+              locType: { type: 'string', enum: ['keep', 'local', 'hybrid', 'remote', 'far'], description: 'Relative to the candidate; "keep" when the candidate is SLC-based' },
+              note: { type: 'string', description: 'timing.note rewritten for this candidate (same facts, 1-2 sentences, second person), or empty string to keep the original' },
+              why: { type: 'string' },
+            },
+            required: ['name', 'score', 'tier', 'badges', 'status', 'locType', 'note', 'why'],
+            additionalProperties: false,
+          },
+        },
+        suggested: {
+          type: 'array',
+          description: 'Extra employers in the candidate\'s metro; empty when the candidate is SLC-based',
+          items: {
+            type: 'object',
+            properties: {
+              name: { type: 'string' },
+              location: { type: 'string', description: '"City, ST" or "City, Country" of the office nearest the candidate, or "HQ city (remote)" for a remote-first candidate' },
+              locType: { type: 'string', enum: ['local', 'hybrid', 'remote'], description: 'Relative to the candidate' },
+              industry: { type: 'array', items: { type: 'string', enum: ['fintech', 'data', 'ai-lab', 'health', 'cyber', 'other'] }, description: 'Board taxonomy: fintech = financial products; data = data/BI/analytics tooling vendor; ai-lab = AI research lab or AI-native product company; health = healthcare or biotech; cyber = security; other = none of these' },
+              roles: { type: 'array', items: { type: 'string', enum: ['ml', 'swe', 'data', 'product'] }, description: 'Which of the board role families this employer hires new grads into; [] if none apply' },
+              score: { type: 'integer', description: '60-100' },
+              tier: { type: 'integer', enum: [1, 2] },
+              badges: { type: 'array', items: { type: 'string', enum: ['local', 'fintech', 'ai-native', 'tools-match'] } },
+              why: { type: 'string' },
+              note: { type: 'string', description: 'How they hire entry-level: program name, typical titles, what to search for' },
+              confidence: { type: 'string', enum: ['high', 'medium'], description: 'high = certain the company exists, has a presence in this metro and hires entry-level in this field; medium = certain it exists but unsure about the office or the entry-level pipeline' },
+            },
+            required: ['name', 'location', 'locType', 'industry', 'roles', 'score', 'tier', 'badges', 'why', 'note', 'confidence'],
+            additionalProperties: false,
+          },
+        },
+      },
+      required: ['profile', 'companies', 'suggested'],
+      additionalProperties: false,
+    },
+  };
+
+  function companiesForPrompt() {
+    return COMPANIES.map(c => {
+      const b = BASE[c.name];
+      return {
+        name: c.name, location: c.location, locType: b.locType, industry: c.industry, roles: c.roles,
+        about: stripHtml(b.why),
+        uofuHiringNote: c.alumniNote ? stripHtml(c.alumniNote) : undefined,
+        timing: { status: b.status, note: stripHtml(c.apply.note) },
+        openings: c.apply.openings.map(o => ({ title: stripHtml(o.title), loc: o.loc })),
+      };
+    });
+  }
+  function buildParams(model, effort, resumeBlock) {
+    const params = {
+      model,
+      max_tokens: 128000,
+      thinking: { type: 'adaptive', display: 'summarized' },
+      output_config: { effort, format: OUTPUT_FORMAT },
+      system: [
+        { type: 'text', text: SYSTEM_PROMPT },
+        { type: 'text', text: `Board data (JSON, verified ${REFRESH_DATE}):\n${JSON.stringify(companiesForPrompt())}`, cache_control: { type: 'ephemeral' } },
+      ],
+      messages: [{
+        role: 'user',
+        content: [
+          resumeBlock,
+          { type: 'text', text: `Today is ${new Date().toISOString().slice(0, 10)}. The resume is above. Tailor the whole board to this candidate and return the JSON.` },
+        ],
+      }],
+    };
+    if (model === 'claude-opus-5' || model === 'claude-fable-5-1') {
+      // Server-side refusal fallback: if a safety classifier declines, the API re-runs on Anthropic's recommended substitute.
+      params.betas = ['server-side-fallback-2026-07-01'];
+      params.fallbacks = 'default';
+    }
+    return params;
+  }
+
+  // --- turn Claude's JSON into a saved profile ---
+  function buildProfile(data, meta) {
+    const p = data.profile || {};
+    const list = Array.isArray(data.companies) ? data.companies : [];
+    const exact = new Map(COMPANIES.map(c => [c.name, c.name]));
+    const loose = new Map(COMPANIES.map(c => [norm(c.name), c.name]));
+    const companies = {};
+    let matched = 0;
+    list.forEach(row => {
+      const key = exact.get(row.name) || loose.get(norm(row.name));
+      if (!key || companies[key]) return;
+      matched++;
+      companies[key] = {
+        score: clamp(Math.round(Number(row.score) || 60), 60, 100),
+        tier: Number(row.tier) === 1 ? 1 : 2,
+        badges: (Array.isArray(row.badges) ? row.badges : []).filter(b => BADGE_LABEL[b]),
+        status: STATUS_ORDER.includes(row.status) && row.status !== 'suggested' ? row.status : 'keep',
+        locType: ['local', 'hybrid', 'remote', 'far'].includes(row.locType) ? row.locType : 'keep',
+        note: String(row.note || ''),
+        why: String(row.why || ''),
+      };
+    });
+    const IND = ['fintech', 'data', 'ai-lab', 'health', 'cyber'], ROLES = ['ml', 'swe', 'data', 'product'];
+    const taken = new Set(COMPANIES.map(c => norm(c.name)));
+    const suggested = [];
+    (Array.isArray(data.suggested) ? data.suggested : []).forEach(sg => {
+      if (!sg || typeof sg.name !== 'string' || !sg.name.trim() || suggested.length >= 20) return;
+      const key = norm(sg.name);
+      if (!key || taken.has(key)) return;
+      taken.add(key);
+      suggested.push({
+        name: sg.name.trim().slice(0, 80),
+        location: String(sg.location || '').slice(0, 60),
+        locType: ['local', 'hybrid', 'remote'].includes(sg.locType) ? sg.locType : 'local',
+        industry: (Array.isArray(sg.industry) ? sg.industry : []).filter(x => IND.includes(x)),
+        roles: (Array.isArray(sg.roles) ? sg.roles : []).filter(x => ROLES.includes(x)),
+        score: clamp(Math.round(Number(sg.score) || 60), 60, 100),
+        tier: Number(sg.tier) === 1 ? 1 : 2,
+        badges: (Array.isArray(sg.badges) ? sg.badges : []).filter(b => BADGE_LABEL[b]),
+        why: String(sg.why || ''),
+        note: String(sg.note || ''),
+        confidence: sg.confidence === 'high' ? 'high' : 'medium',
+      });
+    });
+    if (matched < Math.ceil(COMPANIES.length * 0.8)) {
+      throw new Error(`Claude only returned ${matched} of ${COMPANIES.length} companies. Try running it again.`);
+    }
+    const name = String(p.name || '').trim() || 'Uploaded resume';
+    const first = name.split(/\s+/)[0];
+    const linkedin = /^https?:\/\/([a-z0-9-]+\.)?linkedin\.com\//i.test(p.linkedin || '') ? p.linkedin : '';
+    return {
+      id: 'p_' + Date.now().toString(36),
+      createdAt: Date.now(),
+      model: meta.model, effort: meta.effort, servedBy: meta.servedBy,
+      usage: meta.usage,
+      name,
+      initials: String(p.initials || first.slice(0, 2)).toUpperCase().slice(0, 3),
+      subline: String(p.subline || ''),
+      strip: { status: String(p.status || ''), recentRole: String(p.recentRole || ''), stack: String(p.stack || ''), target: String(p.target || '') },
+      linkedin,
+      searchLinks: (Array.isArray(p.searchLinks) ? p.searchLinks : []).filter(l => l && l.label && l.keywords).slice(0, 5),
+      uofu: !!p.uofu,
+      city: String(p.city || '').slice(0, 60),
+      geoLabel: String(p.geoLabel || 'Near you').slice(0, 40),
+      cohortLabel: String(p.cohortLabel || 'this candidate').slice(0, 40),
+      summary: String(p.summary || ''),
+      applyNow: String(p.applyNow || ''),
+      watchLater: String(p.watchLater || ''),
+      companies,
+      suggested,
+      matched,
+    };
+  }
+  function estimateCost(model, u) {
+    const [pin, pout] = (MODELS[model] || {}).price || [0, 0];
+    if (!u) return 0;
+    const inTok = (u.input_tokens || 0) + (u.cache_creation_input_tokens || 0) * 1.25 + (u.cache_read_input_tokens || 0) * 0.1;
+    return inTok * pin / 1e6 + (u.output_tokens || 0) * pout / 1e6;
+  }
+
+  // --- reading the resume file ---
+  const loadScript = src => new Promise((resolve, reject) => {
+    if (document.querySelector(`script[src="${src}"]`)) return resolve();
+    const s = document.createElement('script');
+    s.src = src; s.onload = resolve;
+    s.onerror = () => reject(new Error('Could not load ' + src + '. Check your connection or ad blocker.'));
+    document.head.appendChild(s);
+  });
+  const readAsBase64 = f => new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(String(r.result).split(',')[1] || '');
+    r.onerror = () => reject(new Error('Could not read the file.'));
+    r.readAsDataURL(f);
+  });
+  function docxToText(xml) {
+    return xml
+      .replace(/<w:tab\/>/g, '\t')
+      .replace(/<w:br\/>|<w:cr\/>/g, '\n')
+      .replace(/<\/w:p>/g, '\n')
+      .replace(/<[^>]+>/g, '')
+      .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'")
+      .replace(/&#(\d+);/g, (m, n) => String.fromCharCode(Number(n)))
+      .replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+  }
+  async function resumeContent() {
+    if (!pasteMode && file) {
+      const ext = file.name.toLowerCase().split('.').pop();
+      if (file.size > 20 * 1024 * 1024) throw new Error('That file is over 20 MB. Resumes should be well under 5 MB.');
+      if (ext === 'pdf' || file.type === 'application/pdf') {
+        return { type: 'document', source: { type: 'base64', media_type: 'application/pdf', data: await readAsBase64(file) }, title: file.name };
+      }
+      if (ext === 'docx') {
+        await loadScript(JSZIP_URL);
+        const zip = await window.JSZip.loadAsync(file);
+        const doc = zip.file('word/document.xml');
+        if (!doc) throw new Error('That .docx has no document.xml inside. Is it really a Word file?');
+        const text = docxToText(await doc.async('string'));
+        if (text.length < 50) throw new Error('Could not find any text in that .docx. Try saving it as PDF.');
+        return { type: 'text', text: `Resume (extracted from ${file.name}):\n\n${text}` };
+      }
+      if (ext === 'doc') throw new Error('Old .doc files are not supported. Save it as PDF or .docx first.');
+      const text = (await file.text()).trim();
+      if (text.length < 50) throw new Error('That file has almost no text in it.');
+      return { type: 'text', text: `Resume:\n\n${text}` };
+    }
+    const text = $('resume-text').value.trim();
+    if (text.length < 50) throw new Error('Paste the full resume text first.');
+    return { type: 'text', text: `Resume:\n\n${text}` };
+  }
+
+  // --- modal wiring ---
+  const modal = $('tailor-modal');
+  let file = null, pasteMode = false, running = false, currentStream = null, timer = null, t0 = 0;
+  $('company-count').textContent = COMPANIES.length;
+  $('model-select').innerHTML = Object.entries(MODELS).map(([id, m]) => `<option value="${id}">${m.label}</option>`).join('');
+  $('effort-select').innerHTML = Object.entries(EFFORTS).map(([id, label]) => `<option value="${id}">${label}</option>`).join('');
+  $('model-select').value = MODELS[store.get(LS.model, '')] ? store.get(LS.model, '') : 'claude-opus-5';
+  $('effort-select').value = EFFORTS[store.get(LS.effort, '')] ? store.get(LS.effort, '') : 'high';
+  $('api-key').value = store.get(LS.key, '');
+  const updateHint = () => { $('model-hint').textContent = MODELS[$('model-select').value].hint; };
+  updateHint();
+  $('model-select').addEventListener('change', e => { store.set(LS.model, e.target.value); updateHint(); });
+  $('effort-select').addEventListener('change', e => store.set(LS.effort, e.target.value));
+  $('api-key').addEventListener('input', () => { store.set(LS.key, $('api-key').value.trim()); updateRunState(); });
+  $('key-toggle').addEventListener('click', () => {
+    const k = $('api-key');
+    k.type = k.type === 'password' ? 'text' : 'password';
+    $('key-toggle').textContent = k.type === 'password' ? 'Show' : 'Hide';
+  });
+  function updateRunState() {
+    const hasKey = $('api-key').value.trim().length > 10;
+    const hasResume = pasteMode ? $('resume-text').value.trim().length >= 50 : !!file;
+    $('tailor-run').disabled = running || !hasKey || !hasResume;
+    $('tailor-status').textContent = running ? '' : !hasKey ? 'Paste an API key to start.' : !hasResume ? 'Add a resume to start.' : '';
+  }
+  function setFile(f) {
+    file = f || null;
+    const drop = $('drop');
+    drop.classList.toggle('has', !!file);
+    $('drop-empty').hidden = !!file;
+    $('drop-file').hidden = !file;
+    if (file) { $('drop-name').textContent = `${file.name} (${(file.size / 1024).toFixed(0)} KB)`; pasteMode = false; $('resume-text').hidden = true; }
+    updateRunState();
+  }
+  $('pick-file').addEventListener('click', () => $('resume-file').click());
+  $('resume-file').addEventListener('change', e => setFile(e.target.files[0]));
+  $('drop-clear').addEventListener('click', () => { $('resume-file').value = ''; setFile(null); });
+  $('paste-toggle').addEventListener('click', () => {
+    pasteMode = true; setFile(null);
+    $('resume-text').hidden = false; $('resume-text').focus();
+    updateRunState();
+  });
+  $('resume-text').addEventListener('input', updateRunState);
+  ['dragenter', 'dragover'].forEach(ev => $('drop').addEventListener(ev, e => { e.preventDefault(); $('drop').classList.add('over'); }));
+  ['dragleave', 'drop'].forEach(ev => $('drop').addEventListener(ev, e => { e.preventDefault(); $('drop').classList.remove('over'); }));
+  $('drop').addEventListener('drop', e => { const f = e.dataTransfer.files && e.dataTransfer.files[0]; if (f) setFile(f); });
+
+  function openModal() {
+    modal.hidden = false;
+    showError('');
+    updateRunState();
+    if (!$('api-key').value) $('api-key').focus();
+  }
+  function closeModal(force) {
+    if (running && !force) return;
+    modal.hidden = true;
+  }
+  $('open-tailor').addEventListener('click', openModal);
+  $('tailor-close').addEventListener('click', () => closeModal());
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+
+  function showError(msg) { $('tailor-error').hidden = !msg; $('tailor-error').textContent = msg || ''; }
+  function phase(msg) { $('phase').textContent = msg; }
+  function showThinking(text) {
+    const box = $('think');
+    box.hidden = false;
+    box.textContent = text.length > 6000 ? '…' + text.slice(-6000) : text;
+    box.scrollTop = box.scrollHeight;
+  }
+  function startTimer() {
+    t0 = Date.now();
+    const tick = () => { const s = Math.floor((Date.now() - t0) / 1000); $('elapsed').textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+    tick(); timer = setInterval(tick, 1000);
+  }
+  function stopTimer() { clearInterval(timer); timer = null; }
+  let toastTimer = null;
+  function toast(html, isErr) {
+    const t = $('toast');
+    t.innerHTML = html; t.classList.toggle('err', !!isErr); t.hidden = false;
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 12000);
+  }
+
+  // --- the run ---
+  async function run() {
+    const apiKey = $('api-key').value.trim();
+    const model = $('model-select').value;
+    const effort = $('effort-select').value;
+    running = true; updateRunState(); showError('');
+    $('progress').hidden = false; $('think').hidden = true; $('think').textContent = '';
+    phase('Reading the resume…'); startTimer();
+    let sdk = null;
+    try {
+      const resumeBlock = await resumeContent();
+      phase('Loading the Anthropic SDK…');
+      try { sdk = await import(SDK_URL); }
+      catch (e) { throw new Error('Could not load the Anthropic SDK from cdn.jsdelivr.net. Check your connection or ad blocker, then try again.'); }
+      const Anthropic = sdk.default;
+      const client = new Anthropic({ apiKey, dangerouslyAllowBrowser: true, timeout: 20 * 60 * 1000, maxRetries: 2 });
+      const params = buildParams(model, effort, resumeBlock);
+      phase(`${MODELS[model].label} is thinking…`);
+      const stream = client.beta.messages.stream(params);
+      currentStream = stream;
+      let thinking = '', text = '';
+      for await (const ev of stream) {
+        if (ev.type === 'content_block_delta') {
+          if (ev.delta.type === 'thinking_delta' && ev.delta.thinking) { thinking += ev.delta.thinking; showThinking(thinking); }
+          else if (ev.delta.type === 'text_delta') {
+            text += ev.delta.text;
+            const inSug = /"suggested"\s*:/.test(text);
+            const n = Math.min(COMPANIES.length, Math.max(0, (text.match(/"name"\s*:/g) || []).length - 1));
+            phase(inSug ? 'Suggesting employers for this candidate…' : `Writing matches… ${n} of ${COMPANIES.length} companies`);
+          }
+        } else if (ev.type === 'content_block_start' && ev.content_block.type === 'text') {
+          phase('Writing matches…');
+        }
+      }
+      const final = await stream.finalMessage();
+      currentStream = null;
+      if (final.stop_reason === 'refusal') {
+        const why = final.stop_details && final.stop_details.explanation;
+        throw new Error('Claude declined this request' + (why ? `: ${why}` : '.'));
+      }
+      if (final.stop_reason === 'max_tokens') throw new Error('Claude ran out of output room before finishing (thinking used most of the budget). Try again with a lower effort setting.');
+      const raw = final.content.filter(b => b.type === 'text').map(b => b.text).join('');
+      let data;
+      try { data = JSON.parse(raw); } catch (e) { throw new Error('Claude returned something that was not valid JSON. Try again.'); }
+      const profile = buildProfile(data, { model, effort, usage: final.usage, servedBy: final.model });
+      profiles = profiles.filter(p => p.name.toLowerCase() !== profile.name.toLowerCase());
+      profiles.unshift(profile);
+      const saved = saveProfiles(profiles);
+      applyProfile(profile);
+      closeModal(true);
+      $('progress').hidden = true;
+      const secs = Math.round((Date.now() - t0) / 1000);
+      const fell = (final.content || []).some(b => b.type === 'fallback');
+      if (!saved) toast(`<strong>Board tailored to ${esc(profile.name)}, but it could not be saved.</strong> Browser storage is full or disabled, so this profile will disappear on reload. Delete an old profile and run again to keep it.`, true);
+      else toast(`<strong>Board tailored to ${esc(profile.name)}.</strong> ${profile.matched} of ${COMPANIES.length} companies re-scored by ${esc(MODELS[model].label)}` +
+        (fell ? ` (served by fallback model ${esc(final.model)})` : '') +
+        ` in ${Math.floor(secs / 60)}m ${secs % 60}s, about $${estimateCost(model, final.usage).toFixed(2)}.` +
+        (profile.suggested.length ? ` Plus ${profile.suggested.length} unverified suggested employers ${profile.city ? 'near ' + esc(profile.city) : (/remote/i.test(profile.geoLabel) ? 'that hire remotely' : 'near you')}.` : '') +
+        ' Use the profile menu in the header to switch back.');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) {
+      const A = sdk || {};
+      let msg;
+      if (A.APIUserAbortError && e instanceof A.APIUserAbortError) msg = 'Stopped.';
+      else if (A.AuthenticationError && e instanceof A.AuthenticationError) msg = 'Anthropic rejected that API key (401). Check it and try again.';
+      else if (A.PermissionDeniedError && e instanceof A.PermissionDeniedError) msg = `That key is not allowed to use this model (403): ${e.message}`;
+      else if (A.RateLimitError && e instanceof A.RateLimitError) msg = 'Rate limited (429). Wait a minute and try again.';
+      else if (A.BadRequestError && e instanceof A.BadRequestError) msg = `The API rejected the request (400): ${e.message}`;
+      else if (A.APIConnectionError && e instanceof A.APIConnectionError) msg = 'Could not reach api.anthropic.com. Check your connection, VPN, or ad blocker.';
+      else if (A.APIError && e instanceof A.APIError) msg = `API error${e.status ? ' ' + e.status : ''}: ${e.message}`;
+      else msg = e && e.message ? e.message : String(e);
+      showError(msg);
+      $('progress').hidden = true;
+    } finally {
+      running = false; currentStream = null; stopTimer(); updateRunState();
+    }
+  }
+  $('tailor-run').addEventListener('click', run);
+  $('tailor-stop').addEventListener('click', () => { if (currentStream) currentStream.abort(); });
+
+  // --- restore the last active profile on load ---
+  const activeId = store.get(LS.active, 'david');
+  const p0 = profiles.find(p => p.id === activeId);
+  try { if (p0) applyProfile(p0); else refreshSwitch(); } catch (e) { console.error('Could not restore the saved profile', e); applyProfile(null); }
+
+  // Exposed for testing and for other tools that want to drive this from the console.
+  window.JobFinderTailor = { applyProfile, buildProfile, buildParams, profiles: () => profiles, OUTPUT_FORMAT };
+})();
+</script>
+
+</body>
+</html>
