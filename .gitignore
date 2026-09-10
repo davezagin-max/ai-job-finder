@@ -5,6 +5,8 @@ refresh-report.txt
 # Generated print artifacts
 *.pdf
 !samples/sample-resume-*.pdf
+# The guide PDF is committed on purpose; regenerate it with ./make-guide-pdf.sh
+!AI-Job-Finder-Guide.pdf
 
 # Local Claude Code settings (may contain machine-specific permissions)
 .claude/settings.local.json
