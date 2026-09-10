@@ -587,7 +587,8 @@
   <div class="positioning" id="positioning" hidden></div>
 </header>
 
-<section class="fairs" id="fairs">
+<!-- University of Utah content: hidden until an uploaded resume shows the candidate goes there. -->
+<section class="fairs" id="fairs" hidden>
   <div class="fairs-head">
     <h2>&#x1F393; U of U career fairs this fall</h2>
     <span class="sub">These employers come to campus to hire you &mdash; register through
@@ -636,7 +637,7 @@
       <span class="chip" data-filter="ind" data-value="health">Health/Bio</span>
       <span class="chip" data-filter="ind" data-value="cyber">Cybersecurity</span>
     </div>
-    <div class="filter-group">
+    <div class="filter-group" hidden>
       <span class="label">Utes</span>
       <span class="chip" data-filter="alumni" data-value="any" title="Public evidence the company recruits at or hires from the University of Utah">&#x1F534; Hires from the U</span>
     </div>
@@ -785,7 +786,7 @@ const COMPANIES = [
     alumni: "some",
     alumniNote: "SLC-headquartered; multiple U of U alumni found in data science and research roles.",
     badges: ["local", "ai-native"],
-    why: "<strong>SLC's flagship AI company.</strong> Uses ML to discover drugs &mdash; one of the largest AI/biotech firms in the world. Hires data engineers & analysts. Headquarters walking distance from U of U.",
+    why: "<strong>SLC's flagship AI company.</strong> Uses ML to discover drugs &mdash; one of the largest AI/biotech firms in the world. Hires data engineers &amp; analysts. Headquarters in downtown Salt Lake City.",
     careers: "https://www.recursion.com/careers",
     linkedin: "https://www.linkedin.com/company/recursion-pharmaceuticals/jobs/"
   },
@@ -1594,7 +1595,7 @@ const COMPANIES = [
     alumni: "strong",
     alumniNote: "Registered employer at the U of U Business Career Expo, Sep 17 2026.",
     badges: ["ai-native"],
-    why: "Cloud physical-security platform (cameras, access control, alarms) with a large AI/vision surface. <strong>Recruits at the U of U Business Career Expo</strong> and runs an explicit University Graduate track.",
+    why: "Cloud physical-security platform (cameras, access control, alarms) with a large AI/vision surface. <strong>Recruits at University of Utah career fairs</strong> and runs an explicit University Graduate track.",
     careers: "https://www.verkada.com/careers/",
     linkedin: "https://www.linkedin.com/company/verkada/jobs/"
   },
@@ -1908,17 +1909,17 @@ const APPLY_STATUS = {
   },
   "Zions Bancorporation": {
     status: "opens-later",
-    note: "<strong>Their STEM applications are accepted mid-September through November</strong> &mdash; that window opens in about two weeks. The Banker Development Program is a rotational track built for recent grads, and they will be on campus Sept 24.",
+    note: "<strong>Their STEM applications are accepted mid-September through November</strong> &mdash; that window opens in about two weeks. The Banker Development Program is a rotational track built for recent grads, and they attend the University of Utah Pathways Computing Expo on Sept 24.",
     openings: []
   },
   "America First Credit Union": {
     status: "watch",
-    note: "Recruits at both U of U fall fairs and hires data analysts in Riverdale. Their postings are not on a public API, so check the careers page directly &mdash; or just talk to them in person at the Sept 24 expo.",
+    note: "Recruits at both University of Utah fall career fairs and hires data analysts in Riverdale. Their postings are not on a public API, so check the careers page directly, or meet them at the University of Utah expo on Sept 24.",
     openings: []
   },
   "Verkada": {
     status: "open-now",
-    note: "<strong>They will be on campus Sept 17.</strong> A Technical Support Engineer - University Graduate 2026 req is live, plus several Associate-level operations roles. Nearly everything is San Mateo in-office, so plan on relocating.",
+    note: "<strong>They attend the University of Utah Business Career Expo on Sept 17.</strong> A Technical Support Engineer - University Graduate 2026 req is live, plus several Associate-level operations roles. Nearly everything is San Mateo in-office, so plan on relocating.",
     openings: [{ title: "Technical Support Engineer - University Graduate 2026", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4715534007" }, { title: "Associate, Pricing &amp; Commercial Operations", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4945957007" }, { title: "Sales Strategy and Operations Associate", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4086576007" }]
   },
   "iCapital": {
@@ -1985,7 +1986,7 @@ const state = { search: '', role: null, loc: null, ind: null, tier: null, apply:
 const ALUMNI_BONUS = { strong: 3, some: 1 };
 // Which resume the board is currently tailored to. The built-in board is the curated default; the
 // tailoring module at the bottom of this script swaps in uploaded profiles.
-let PROFILE = { id: 'david', uofu: true, geoLabel: 'SLC Area', cohortLabel: 'Dec 2026 grad', city: 'Salt Lake City, UT' };
+let PROFILE = { id: 'default', uofu: false, geoLabel: 'SLC Area', cohortLabel: 'new grad', city: 'Salt Lake City, UT' };
 let SUGGESTED = []; // extra employers Claude proposes when the candidate's home base is outside the Salt Lake area
 const cohort = s => s.replace('Dec 2026 grad', () => escHtml(PROFILE.cohortLabel));
 const escHtml = s => String(s ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -2224,7 +2225,7 @@ render();
     const custom = !!p;
     PROFILE = custom
       ? { id: p.id, uofu: !!p.uofu, geoLabel: p.geoLabel || 'Near you', cohortLabel: p.cohortLabel || 'this candidate', city: p.city || '' }
-      : { id: 'david', uofu: true, geoLabel: 'SLC Area', cohortLabel: 'Dec 2026 grad', city: 'Salt Lake City, UT' };
+      : { id: 'default', uofu: false, geoLabel: 'SLC Area', cohortLabel: 'new grad', city: 'Salt Lake City, UT' };
     COMPANIES.forEach(c => {
       const b = BASE[c.name];
       const t = custom ? p.companies[c.name] : null;
@@ -2285,11 +2286,11 @@ render();
   function refreshSwitch() {
     const sel = $('profile-select');
     $('profile-switch').hidden = profiles.length === 0;
-    sel.innerHTML = '<option value="david">Original board</option>' +
+    sel.innerHTML = '<option value="default">Original board</option>' +
       profiles.map(p => `<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('');
     sel.value = PROFILE.id;
-    if (sel.value !== PROFILE.id) sel.value = 'david';
-    $('profile-delete').hidden = PROFILE.id === 'david';
+    if (sel.value !== PROFILE.id) sel.value = 'default';
+    $('profile-delete').hidden = PROFILE.id === 'default';
   }
   $('profile-select').addEventListener('change', e => applyProfile(profiles.find(x => x.id === e.target.value) || null));
   $('profile-delete').addEventListener('click', () => {
@@ -2746,7 +2747,7 @@ Header fields follow the original board's style: status like "Senior · Grad May
   $('tailor-stop').addEventListener('click', () => { if (currentStream) currentStream.abort(); });
 
   // --- restore the last active profile on load ---
-  const activeId = store.get(LS.active, 'david');
+  const activeId = store.get(LS.active, 'default');
   const p0 = profiles.find(p => p.id === activeId);
   try { if (p0) applyProfile(p0); else refreshSwitch(); } catch (e) { console.error('Could not restore the saved profile', e); applyProfile(null); }
 

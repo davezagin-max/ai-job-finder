@@ -85,7 +85,7 @@ native documents, so layout and columns are read correctly.
 | Where filters | Relabeled to the candidate's metro, with a "Needs relocation" filter for employers that would require a move |
 | Suggested employers | For a candidate outside Salt Lake City, up to fifteen employers in their own metro |
 | Footer | Which live roles to apply to first, and what to watch for later in the season |
-| Career fair strip | Hidden unless the candidate attends the University of Utah |
+| Career fair strip | Hidden by default; appears only for a University of Utah student |
 
 ### About the suggested employers
 
@@ -101,9 +101,12 @@ original board was verified by hand on the date shown in the footer.
 
 If the resume shows a home base anywhere on the Wasatch Front, or says the
 person is moving to Salt Lake City, the board stays in local mode: the location
-filters keep their original meaning, no suggested employers are added, and the
-career fair strip stays visible. This is deliberate. The researched board is
-already correct for those candidates.
+filters keep their original meaning and no suggested employers are added. This is
+deliberate. The researched board is already correct for those candidates.
+
+The career fair strip and the alumni filter are gated on the school rather than
+the city, so they never appear on the default board and show up only when a
+resume identifies a University of Utah student.
 
 ## Cost
 
