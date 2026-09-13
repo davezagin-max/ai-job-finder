@@ -263,6 +263,10 @@
     background: rgba(255,255,255,0.03); border: 1px solid var(--border);
   }
   .openings li a { color: var(--text); font-weight: 500; }
+  .openings .oyrs {
+    font-size: 10px; padding: 1px 6px; border-radius: 4px; white-space: nowrap;
+    color: #fca5a5; background: rgba(248,113,113,0.12); border: 1px solid rgba(248,113,113,0.35);
+  }
   .openings .oloc { color: var(--text-dim); white-space: nowrap; font-size: 11px; }
 
   .why {
@@ -1699,9 +1703,9 @@ const APPLY_STATUS = {
     openings: [{ title: "Strategic Finance Analyst I", loc: "South Jordan, UT hybrid", url: "https://job-boards.greenhouse.io/lucidsoftware/jobs/6148651004" }]
   },
   "Weave": {
-    status: "open-now",
-    note: "Fraud Analyst at Lehi HQ asks for beginner&ndash;intermediate SQL plus Snowflake and <strong>Sigma</strong> reporting, so production Sigma dashboards are the thing to lead with. Posted Jul 22, still live.",
-    openings: [{ title: "Fraud Analyst", loc: "Lehi, UT", url: "https://jobs.ashbyhq.com/weave/8170350e-1a7c-47ec-87d9-1121e037a4b2" }]
+    status: "watch",
+    note: "<strong>Not entry-level after all.</strong> The Fraud Analyst req states that 3&ndash;5 years in financial investigations or payment fraud is <em>required</em>, even though it only asks for beginner&ndash;intermediate SQL. Nothing else on their board is open to a new graduate, so watch for an associate-level req.",
+    openings: [{ title: "Fraud Analyst", loc: "Lehi, UT", url: "https://jobs.ashbyhq.com/weave/8170350e-1a7c-47ec-87d9-1121e037a4b2" , yrs: 3 }]
   },
   "Podium": {
     status: "watch",
@@ -1726,7 +1730,7 @@ const APPLY_STATUS = {
   "Stripe": {
     status: "open-now",
     note: "New Grad SWE req posted Sep 1 &mdash; eligibility is a degree by summer 2027, so December 2026 through spring 2027 grads qualify. Hybrid SF/Seattle/NYC. Apply this week; Stripe fills cohorts fast.",
-    openings: [{ title: "Software Engineer, New Grad", loc: "SF / Seattle / NYC", url: "https://job-boards.greenhouse.io/stripe/jobs/8128744" }, { title: "Fraud Patterns Analyst", loc: "US-Remote", url: "https://job-boards.greenhouse.io/stripe/jobs/7913410" }, { title: "Risk Operations Analyst", loc: "Remote", url: "https://job-boards.greenhouse.io/stripe/jobs/7230921" }]
+    openings: [{ title: "Software Engineer, New Grad", loc: "SF / Seattle / NYC", url: "https://job-boards.greenhouse.io/stripe/jobs/8128744" }, { title: "Fraud Patterns Analyst", loc: "US-Remote", url: "https://job-boards.greenhouse.io/stripe/jobs/7913410" }, { title: "Risk Operations Analyst", loc: "Remote", url: "https://job-boards.greenhouse.io/stripe/jobs/7230921" , yrs: 5 }]
   },
   "Brex": {
     status: "watch",
@@ -1821,7 +1825,7 @@ const APPLY_STATUS = {
   "Ramp": {
     status: "watch",
     note: "Associate-level Strategic Finance and Credit Risk roles are live but NYC HQ in-office. No remote data/SWE entry roles. Apply only if NYC is on the table.",
-    openings: [{ title: "Associate, Strategic Finance", loc: "NYC HQ", url: "https://jobs.ashbyhq.com/ramp/606475af-b74f-42c4-978a-dde138a86ac7" }, { title: "Credit Risk Associate", loc: "NYC HQ", url: "https://jobs.ashbyhq.com/ramp/4745807e-82f4-4b1a-857c-dc8dadc73076" }]
+    openings: [{ title: "Associate, Strategic Finance", loc: "NYC HQ", url: "https://jobs.ashbyhq.com/ramp/606475af-b74f-42c4-978a-dde138a86ac7" }, { title: "Credit Risk Associate", loc: "NYC HQ", url: "https://jobs.ashbyhq.com/ramp/4745807e-82f4-4b1a-857c-dc8dadc73076" , yrs: 2 }]
   },
   "Hugging Face": {
     status: "watch",
@@ -1836,7 +1840,7 @@ const APPLY_STATUS = {
   "DigiCert": {
     status: "open-now",
     note: "Associate Authentication Analyst (Lehi, posted Aug 31) is a true entry door but junior &mdash; validation/customer-facing, HS diploma + 1 yr service. Worth applying to get inside; ask about analytics teams.",
-    openings: [{ title: "Associate Authentication Analyst", loc: "Lehi, UT", url: "https://job-boards.greenhouse.io/digicert/jobs/8752868002" }, { title: "Deal Desk Analyst", loc: "Lehi, UT", url: "https://job-boards.greenhouse.io/digicert/jobs/8659394002" }]
+    openings: [{ title: "Associate Authentication Analyst", loc: "Lehi, UT", url: "https://job-boards.greenhouse.io/digicert/jobs/8752868002" , yrs: 1 }, { title: "Deal Desk Analyst", loc: "Lehi, UT", url: "https://job-boards.greenhouse.io/digicert/jobs/8659394002" , yrs: 3 }]
   },
   "Ivanti": {
     status: "watch",
@@ -1881,7 +1885,7 @@ const APPLY_STATUS = {
   "Datadog": {
     status: "opens-later",
     note: "Datadog states early-career full-time reqs post in September and fill rolling, and their spring start class fits a December grad. Denver is the nearest hub. Watch the early-careers page daily this month.",
-    openings: [{ title: "GTM Strategy/Operations Associate", loc: "New York, NY", url: "https://job-boards.greenhouse.io/datadog/jobs/8171303" }]
+    openings: [{ title: "GTM Strategy/Operations Associate", loc: "New York, NY", url: "https://job-boards.greenhouse.io/datadog/jobs/8171303" , yrs: 2 }]
   },
   "Vanta": {
     status: "open-now",
@@ -1921,12 +1925,12 @@ const APPLY_STATUS = {
   "Verkada": {
     status: "open-now",
     note: "<strong>They attend the University of Utah Business Career Expo on Sept 17.</strong> A Technical Support Engineer - University Graduate 2026 req is live, plus several Associate-level operations roles. Nearly everything is San Mateo in-office, so plan on relocating.",
-    openings: [{ title: "Technical Support Engineer - University Graduate 2026", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4715534007" }, { title: "Associate, Pricing &amp; Commercial Operations", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4945957007" }, { title: "Sales Strategy and Operations Associate", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4086576007" }]
+    openings: [{ title: "Technical Support Engineer - University Graduate 2026", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4715534007" }, { title: "Associate, Pricing &amp; Commercial Operations", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4945957007" , yrs: 2 }, { title: "Sales Strategy and Operations Associate", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4086576007" , yrs: 3 }]
   },
   "iCapital": {
     status: "open-now",
     note: "53 Utah roles live. <strong>Master Data Management Analyst</strong> ($60&ndash;75K) wants SQL plus data governance and data quality. It asks for 2+ years, so data-governance internship rotations are the experience to pitch.",
-    openings: [{ title: "Master Data Management Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8646158002" }, { title: "Strategic Transformation, Data Operations - Associate", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8606952002" }, { title: "Platform Support - Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8344081002" }]
+    openings: [{ title: "Master Data Management Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8646158002" , yrs: 2 }, { title: "Strategic Transformation, Data Operations - Associate", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8606952002" , yrs: 2 }, { title: "Platform Support - Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8344081002" , yrs: 1 }]
   },
   "WGU (Western Governors University)": {
     status: "open-now",
@@ -2072,7 +2076,7 @@ function render() {
       ${c.apply.openings.length ? `
       <div class="openings-label">Verified live ${REFRESH_DATE}</div>
       <ul class="openings">
-        ${c.apply.openings.map(o => `<li><a href="${o.url}" target="_blank" rel="noopener">${o.title}</a><span class="oloc">${o.loc}</span></li>`).join('')}
+        ${c.apply.openings.map(o => `<li><a href="${o.url}" target="_blank" rel="noopener">${o.title}</a>${o.yrs >= 2 ? `<span class="oyrs" title="This posting asks for ${o.yrs}+ years of experience, so it is not an entry-level opening">${o.yrs}+ yrs</span>` : ''}<span class="oloc">${o.loc}</span></li>`).join('')}
       </ul>` : ''}
       <p class="why">${c.why}</p>
       <div class="role-tags">
@@ -2169,7 +2173,7 @@ render();
 
   // --- snapshot of the built-in board so uploaded profiles can be swapped in and out ---
   const BASE = {};
-  COMPANIES.forEach(c => { BASE[c.name] = { score: c.score, tier: c.tier, badges: c.badges.slice(), why: c.why, status: c.apply.status, note: c.apply.note, locType: c.locType }; });
+  COMPANIES.forEach(c => { BASE[c.name] = { score: c.score, tier: c.tier, badges: c.badges.slice(), why: c.why, status: c.apply.status, note: c.apply.note, locType: c.locType, openings: c.apply.openings }; });
   const HEAD = {
     avatar: document.querySelector('.avatar'),
     h1: document.querySelector('.brand h1'),
@@ -2324,19 +2328,21 @@ The board data (JSON) follows in the next block. Its "about" and "timing.note" t
 
 Scores (60-100) measure how well THIS candidate fits THIS employer for an entry-level or new-grad hire: 95-100 bullseye (domain, geography, stack and hiring pipeline all line up), 85-94 strong, 75-84 solid, 65-74 stretch, 60-64 weak. Use the whole range and spread the scores; a board where everything is 85+ is useless. If the candidate's home base is far from Utah and they are not relocating, Utah-only employers lose points unless they hire remote, and the why should say so (why is the main per-company text you write). If the candidate's field is far from what an employer hires for, score low and say what would have to be true to fit.
 
+Seniority is a gate, not a tiebreaker, and it outranks every other factor including domain and geography. First work out how much full-time professional experience this person will actually have on a realistic start date. For someone finishing an undergraduate degree that is normally none; internships, part-time jobs and coursework are not full-time years, however good they are. Then check what each employer is asking for. Some openings carry a "yearsRequired" number that was read off the live posting, and the timing notes often state it in words, so the evidence is usually there: use it. An opening asking three or more years cannot be a strong match for a new graduate no matter how perfectly the domain lines up. Cap that employer at 70 and let the why name the gap in the first clause. Two years caps it at 80. Only give 85 or more when there is a genuine route in at this person's level, meaning a new-grad or graduate programme, an internship-to-full-time pipeline, or a posting that says zero to one years or that internships count, and only give 95 to 100 when such a route is open right now and the domain and geography line up too. Titles are weak evidence: "Analyst I", "Associate" and "New Grad" usually mean entry-level, while "Senior", "Staff", "Lead", "Principal" and anything numbered II or higher do not. When a listed opening is out of reach on experience, say so plainly rather than suggesting they apply anyway.
+
 This board is narrow on purpose. Every employer on it hires into four role families and no others: AI and machine learning, software engineering, data and analytics, and product. So the question to settle first is not what industry the candidate is in, it is whether a recruiter would plausibly put this person in one of those four seats for an entry-level hire. Judge that on the evidence in the resume, not on the prestige of the degree. A chemistry or biology major with no programming, no SQL and no analytics projects does not belong in a data seat just because a couple of these employers work on health problems, and a business major whose experience is all retail shifts does not belong in a product seat. If the answer is no, do not stretch these companies to fit them. Score the board low and honestly, let each why name the gap in plain words rather than hunting for a tenuous link, open the summary by saying the board is aimed at data and AI work and this candidate is not, and put the real recommendations in the suggested list instead. A short board of honest 62s with twelve genuinely relevant suggested employers is a far better answer than sixty forced 80s. Never describe someone as a data candidate because the board is a data board.
 
 Do not rank or categorise the board yourself beyond the score: tiers and badges are derived from your scores and the board's own data, so there is nothing to decide there. The one exception is toolsMatch, a simple true or false per employer: true only when that employer's stack clearly overlaps a tool named on the resume, false otherwise. Do not deliberate over it; if you are unsure, it is false.
 
 Each "why" is 1-2 sentences (about 25-45 words), second person, specific. Keep them tight; this is the bulk of what you write. Lead with the strongest reason and wrap that lead phrase in **double asterisks**, tie it to a concrete resume item, and be honest when a role is a reach or the geography is a stretch. Match the tone of these examples. They come from different fields on purpose, because the right answer depends on the resume rather than on what this board happens to contain: "**Bullseye match.** Fintech and AI 20 minutes from your front door, hiring data analysts who work in exactly the SQL and Python stack you used all summer." and "**Reach role, competitive.** Maker of Claude, and you use Claude Code daily, so you can speak to the product as a real user rather than an applicant." and "**Hires software engineers, not chemists.** Nothing here touches your lab coursework, and no amount of framing changes that, so treat it as background and spend your time on the labs above." and "**Your service record is the argument, not the degree.** Four years of front-of-house work under pressure is what they screen for, and the coursework is a bonus on top."
 
-Timing: each company's "timing.status" (open-now, opens-later, watch, wrong-cohort) and "timing.note" were assessed on the verification date for a December 2026 graduate. Return status "keep" unless this candidate's graduation timing or level clearly changes the verdict (for example a "wrong-cohort" 2027 program that fits a May 2027 graduate). Never move a company to open-now unless the listed openings or note show live roles that fit this candidate. Geography never changes status (a live role is still live); when a company's only live openings are on-site in Utah and the candidate is far and not relocating, keep the status, score it as a stretch, and say in the why that the role is on-site in Utah. The timing note is shown to the candidate verbatim, so return "note" as a rewrite of it for this candidate (same facts, 1-2 sentences, second person, nothing invented) whenever the original mentions the owner's background, school, campus events or graduation date; return an empty string to keep the original when it contains nothing person-specific.
+Timing: each company's "timing.status" (open-now, opens-later, watch, wrong-cohort) and "timing.note" were assessed on the verification date for a December 2026 graduate. Return status "keep" unless this candidate's graduation timing or level clearly changes the verdict (for example a "wrong-cohort" 2027 program that fits a May 2027 graduate). Experience counts as level: if every opening listed for a company asks for more years than this candidate will have, that company is a "watch" for them rather than a live role, however genuinely open those postings are, and the note should say the live reqs are above their level. A company with no listed openings at all is never open-now. Never move a company to open-now unless the listed openings or note show live roles that fit this candidate. Geography never changes status (a live role is still live); when a company's only live openings are on-site in Utah and the candidate is far and not relocating, keep the status, score it as a stretch, and say in the why that the role is on-site in Utah. The timing note is shown to the candidate verbatim, so return "note" as a rewrite of it for this candidate (same facts, 1-2 sentences, second person, nothing invented) whenever the original mentions the owner's background, school, campus events or graduation date; return an empty string to keep the original when it contains nothing person-specific.
 
 Geography. Home base is the metro the candidate wants to work in after graduation when the resume states one (an objective line, "relocating to X", "open to Y"); otherwise the city on the resume; otherwise infer it from the most recent school or employer city and say so in the summary. If even that is unclear, treat the candidate as Salt Lake based and say in the summary that the board assumes Salt Lake City. The board was curated around Salt Lake City, so each existing company's locType (local = based in or a major hub in SLC, hybrid = has an SLC office, remote = hires remote) is SLC-relative. If the home base is anywhere on the Wasatch Front (Salt Lake, Utah, Davis or Weber county: Salt Lake City, Provo, Orem, Lehi, Ogden, Park City...) or the candidate says they are moving to or targeting Salt Lake City, treat them as SLC-based: geoLabel "SLC Area", city "Salt Lake City, UT" (or their own Wasatch Front town) and locType "keep" for every company; if they are relocating, say in the summary that the board assumes the move. Otherwise do two things. (1) Re-map every existing company's locType relative to the candidate: local = headquartered or a major hub in the candidate's metro, hybrid = a smaller office there, remote = hires this kind of role remotely from where the candidate lives, far = would require relocation. (2) Add suggested employers, per the rule below.
 
 Suggested employers are the board's escape hatch, and they are needed whenever the researched list does not serve this person. Add them when the candidate lives outside the Salt Lake area, OR when the resume does not support hiring them into AI/ML, software, data or product work, or both. Only a candidate who is both in the Salt Lake area and a credible entry-level hire for one of those four role families gets an empty suggested list, because for them the researched board is already the right answer. When in doubt, add the suggestions: an extra list of relevant employers costs the reader nothing, while a board of sixty employers that will not interview them is worthless. Add up to 15 employers in the candidate's own metro and own field that you are confident exist and hire entry-level talent: a mix of large employers with known early-career programs and notable local tech, fintech, AI, health or security firms, never duplicating a board company. Fewer than 8 is fine; a short list you are sure of beats a padded one, and omit anything you are not sure exists. When the field is the mismatch, these should be employers in the candidate's real profession, even in Salt Lake City: hospitals and clinics for a nurse, school districts for a teacher, accounting firms for an accountant, and for a science major the analytical and clinical labs, hospital systems, diagnostics companies, pharmaceutical manufacturers and university research groups that actually hire bench scientists. Where the strongest evidence is service or hospitality experience rather than the degree, say so and include employers who hire for those strengths too. That list is the useful half of the answer for them, so make it the strongest part. You cannot verify openings, so each note says how they hire: name a program only when you are certain of its exact name, otherwise give typical entry titles and what to search for ("early career", "new grad") on their careers site. Suggested employers get the same score and why treatment as board companies, their locType is relative to the candidate (local, hybrid or remote), and their badges list only fintech, ai-native or tools-match where each genuinely applies. A remote-first candidate with no metro gets geoLabel "Remote" and an empty city; every board company is then "remote" if it hires this kind of role remotely from the candidate's country, otherwise "far", never local or hybrid and never the "local" badge; suggested employers must be remote-friendly with locType "remote" and location as the HQ city followed by " (remote)". If the resume names two or more target metros, use the current residence (or the first listed) for city and geoLabel, mention the other in target and summary, split suggested employers between them with each entry's location naming its own city, and add one searchLinks entry per metro.
 
-Header fields describe the CANDIDATE, so take their vocabulary from the resume and never from this board. The examples below come from different fields on purpose; do not carry data or AI wording into a resume that has none. status like "Senior · Grad May 2027" or "Recent grad · Available now"; recentRole names their most recent real job, whatever it is, like "Northwestern Mutual — Data Analytics Intern (2 summers)" or "Wagner Community Center — Member Services" or "Mercy Hospital — Student Nurse Extern"; stack = the 5-7 most marketable skills, tools, techniques or certifications on the resume, comma-separated, so a lab candidate might read "Titration, HPLC, GC-MS, lab safety, technical writing" and a service candidate "Customer service, POS systems, opening and closing, staff training"; target like "New Grad FT · Chicago / Remote · Fintech + AI" or "Lab technician roles · Salt Lake City" or "Nurse residency · Denver"; subline like "New-grad AI roles for a May 2027 graduate · Tailored to your September 2026 resume" or "Entry-level lab roles for a June 2027 chemistry graduate · Tailored to your September 2026 resume"; cohortLabel like "Dec 2026 grad" or "May 2027 grad"; city is the home-base metro as "City, ST" or "City, Country" (empty only for a remote-first candidate); geoLabel is a short badge label for that home base, like "SLC Area" or "Austin Area"; uofu is true only if the candidate studies or studied at the University of Utah. searchLinks are 3-5 LinkedIn job searches worth bookmarking (label, keywords, a location spelled the way LinkedIn does such as "Austin, Texas" or "London, England, United Kingdom", or empty for remote-only, remoteOnly, entryLevel). summary is 2-3 sentences on how to position this candidate. applyNow names which of the currently live roles on the board to apply to first and why; watchLater says what to watch for later in the season. Return exactly one companies entry per input company using the exact input name.`;
+Header fields describe the CANDIDATE, so take their vocabulary from the resume and never from this board. The examples below come from different fields on purpose; do not carry data or AI wording into a resume that has none. status like "Senior · Grad May 2027" or "Recent grad · Available now"; recentRole names their most recent real job, whatever it is, like "Northwestern Mutual — Data Analytics Intern (2 summers)" or "Wagner Community Center — Member Services" or "Mercy Hospital — Student Nurse Extern"; stack = the 5-7 most marketable skills, tools, techniques or certifications on the resume, comma-separated, so a lab candidate might read "Titration, HPLC, GC-MS, lab safety, technical writing" and a service candidate "Customer service, POS systems, opening and closing, staff training"; target like "New Grad FT · Chicago / Remote · Fintech + AI" or "Lab technician roles · Salt Lake City" or "Nurse residency · Denver"; subline like "New-grad AI roles for a May 2027 graduate · Tailored to your September 2026 resume" or "Entry-level lab roles for a June 2027 chemistry graduate · Tailored to your September 2026 resume"; cohortLabel like "Dec 2026 grad" or "May 2027 grad"; city is the home-base metro as "City, ST" or "City, Country" (empty only for a remote-first candidate); geoLabel is a short badge label for that home base, like "SLC Area" or "Austin Area"; yearsExperience is the count you worked out above, normally 0 for a graduating undergraduate; uofu is true only if the candidate studies or studied at the University of Utah. searchLinks are 3-5 LinkedIn job searches worth bookmarking (label, keywords, a location spelled the way LinkedIn does such as "Austin, Texas" or "London, England, United Kingdom", or empty for remote-only, remoteOnly, entryLevel). summary is 2-3 sentences on how to position this candidate. applyNow names which of the currently live roles on the board to apply to first and why; watchLater says what to watch for later in the season. Return exactly one companies entry per input company using the exact input name.`;
 
   const OUTPUT_FORMAT = {
     type: 'json_schema',
@@ -2353,6 +2359,7 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
             recentRole: { type: 'string' },
             stack: { type: 'string', description: 'The 5-7 most marketable skills, tools, techniques or certifications from this resume' },
             target: { type: 'string' },
+            yearsExperience: { type: 'integer', description: 'Full-time professional years this candidate will have on a realistic start date. Internships, part-time and campus jobs do not count, so a graduating undergraduate is normally 0.' },
             uofu: { type: 'boolean' },
             city: { type: 'string', description: 'Home-base metro as "City, ST" or "City, Country"; empty if remote-first or unclear' },
             geoLabel: { type: 'string' },
@@ -2377,7 +2384,7 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
             applyNow: { type: 'string', description: 'Plain text, 1-3 sentences; **bold** allowed' },
             watchLater: { type: 'string', description: 'Plain text, 1-2 sentences' },
           },
-          required: ['name', 'initials', 'subline', 'status', 'recentRole', 'stack', 'target', 'uofu', 'city', 'geoLabel', 'cohortLabel', 'linkedin', 'summary', 'searchLinks', 'applyNow', 'watchLater'],
+          required: ['name', 'initials', 'subline', 'status', 'recentRole', 'stack', 'target', 'yearsExperience', 'uofu', 'city', 'geoLabel', 'cohortLabel', 'linkedin', 'summary', 'searchLinks', 'applyNow', 'watchLater'],
           additionalProperties: false,
         },
         companies: {
@@ -2432,7 +2439,7 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
         about: stripHtml(b.why),
         uofuHiringNote: c.alumniNote ? stripHtml(c.alumniNote) : undefined,
         timing: { status: b.status, note: stripHtml(c.apply.note) },
-        openings: c.apply.openings.map(o => ({ title: stripHtml(o.title), loc: o.loc })),
+        openings: c.apply.openings.map(o => ({ title: stripHtml(o.title), loc: o.loc, yearsRequired: o.yrs })),
       };
     });
   }
@@ -2516,6 +2523,24 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
     if (matched < Math.ceil(COMPANIES.length * 0.8)) {
       throw new Error(`Claude only returned ${matched} of ${COMPANIES.length} companies. Try running it again.`);
     }
+    // The model is inconsistent about seniority: in testing it scored a role requiring 3-5 years
+    // at 94 for a graduating undergraduate while correctly demoting a comparable one. So the cap is
+    // applied here from the years read off the live postings, where the evidence is not open to debate.
+    const candidateYears = Math.max(0, Math.round(Number(p.yearsExperience) || 0));
+    let capped = 0;
+    Object.entries(companies).forEach(([key, entry]) => {
+      const opens = BASE[key].openings || [];
+      if (!opens.length) return;
+      // An opening with no stated requirement is reachable, so it counts as zero years rather
+      // than being skipped. Taking the minimum means one genuine new-grad role rescues the company.
+      const easiest = Math.min(...opens.map(o => (typeof o.yrs === 'number' ? o.yrs : 0)));
+      const gap = easiest - candidateYears;
+      const ceiling = gap >= 3 ? 70 : gap >= 2 ? 80 : 100;
+      if (entry.score > ceiling) { entry.score = ceiling; entry.capped = gap; capped++; }
+      // If even the easiest listed opening is out of reach, this is something to watch.
+      if (gap >= 2 && entry.status === 'open-now') entry.status = 'watch';
+    });
+
     // Tier 1 is simply the eight strongest scores across everything shown.
     const ranked = Object.values(companies).concat(suggested).sort((a, b) => b.score - a.score);
     ranked.forEach((entry, i) => { entry.tier = i < 8 ? 1 : 2; });
@@ -2535,6 +2560,7 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
       linkedin,
       searchLinks: (Array.isArray(p.searchLinks) ? p.searchLinks : []).filter(l => l && l.label && l.keywords).slice(0, 5),
       uofu: !!p.uofu,
+      yearsExperience: candidateYears,
       city: String(p.city || '').slice(0, 60),
       geoLabel: String(p.geoLabel || 'Near you').slice(0, 40),
       cohortLabel: String(p.cohortLabel || 'this candidate').slice(0, 40),

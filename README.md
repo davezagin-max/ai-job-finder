@@ -194,6 +194,18 @@ current board comes to about eighteen pages.
 Everything lives in `index.html`: markup, styles and script in one file, with no
 framework and no build step.
 
+### Seniority caps
+
+Each listed opening carries the years of experience its live posting demands,
+read from the employer's own hiring system. The page enforces the ceiling in
+code rather than trusting the model, which proved inconsistent about it: a role
+requiring three to five years was scored 94 for a graduating undergraduate in
+testing, while a comparable one was correctly demoted. A gap of three years or
+more caps an employer at 70, two years caps it at 80, and a company whose
+easiest opening is still out of reach drops to the watch list. Openings with no
+stated requirement count as reachable, so one genuine new-grad role keeps the
+employer scoring on its merits.
+
 ### Data model
 
 ```js
