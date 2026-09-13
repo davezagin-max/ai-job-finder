@@ -722,12 +722,12 @@
 <div class="toast" id="toast" hidden></div>
 
 <footer>
-  Openings verified 2026-09-01 &middot; curated for new-grad data, AI and fintech roles around Salt Lake City
+  Openings verified 2026-09-13 &middot; curated for new-grad data, AI and fintech roles around Salt Lake City
   <br>
   <strong style="color: var(--gold);">Apply now:</strong>
-  Goldman Sachs 2027 SLC New Analyst, Mastercard Launch 2027 (SLC seat), Capital One TDP (Feb 2027 start),
-  JPMorgan's two 2027 programs (deadline Nov 5), Stripe New Grad SWE and Databricks' 2027 APM are all open
-  right now, and all of them accept December 2026 graduates.
+  Goldman Sachs 2027 SLC New Analyst, JPMorgan's two 2027 programs (deadline Nov 5), Stripe New Grad SWE
+  and Databricks' 2027 APM are open right now and accept December 2026 graduates. Mastercard Launch and
+  Capital One's TDP were open on the last check and have since been pulled, so watch for them to repost.
   <br>
   <strong style="color: var(--accent-2);">Watch in October:</strong>
   Adobe, Snowflake, Qualtrics, Okta, Datadog, Lucid and Plaid all post their new-grad reqs in the Sept&ndash;Nov window.
@@ -747,7 +747,7 @@ const FAIRS = [
   { date: "2026-10-28", name: "Marketing &amp; Comms Expo" }
 ];
 
-const REFRESH_DATE = "2026-09-01";
+const REFRESH_DATE = "2026-09-13";
 const COMPANIES = [
   // ===== TIER 1 PERFECT MATCHES =====
   {
@@ -1675,7 +1675,7 @@ const APPLY_STATUS = {
   "Adobe (Lehi Campus)": {
     status: "opens-later",
     note: "2027 University Graduate reqs are not posted yet; the 2026 cycle covered Dec&ndash;Jun grads, so expect Oct&ndash;Nov. Two Lehi analyst reqs are live now, and the other 47 Lehi jobs are senior.",
-    openings: [{ title: "Deal Desk Analyst", loc: "Lehi, UT", url: "https://careers.adobe.com/us/en/job/R163166/Deal-Desk-Analyst" }, { title: "Technology Asset Planning Analyst", loc: "Lehi, UT", url: "https://careers.adobe.com/us/en/job/R170317/Technology-Asset-Planning-Analyst" }]
+    openings: [{ title: "Technology Asset Planning Analyst", loc: "Lehi, UT", url: "https://careers.adobe.com/us/en/job/R170317/Technology-Asset-Planning-Analyst" }]
   },
   "Ancestry": {
     status: "open-now",
@@ -1698,9 +1698,9 @@ const APPLY_STATUS = {
     openings: []
   },
   "Lucid Software": {
-    status: "open-now",
-    note: "Strategic Finance Analyst I is explicitly 0&ndash;1 yrs (internships count), SQL/Snowflake preferred, hybrid South Jordan. The New College Grad SWE req is not live yet &mdash; historically drops in fall, check weekly.",
-    openings: [{ title: "Strategic Finance Analyst I", loc: "South Jordan, UT hybrid", url: "https://job-boards.greenhouse.io/lucidsoftware/jobs/6148651004" }]
+    status: "watch",
+    note: "<strong>The Strategic Finance Analyst I req has been taken down since the last check.</strong> It was the one genuinely 0&ndash;1 year opening here. Their New College Grad software roles historically post in the Sept&ndash;Nov window, so watch the board.",
+    openings: []
   },
   "Weave": {
     status: "watch",
@@ -1780,7 +1780,7 @@ const APPLY_STATUS = {
   "Cotiviti": {
     status: "open-now",
     note: "<strong>Payment Insight Analyst I is genuinely entry-level and remote-US</strong> &mdash; bachelor's preferred, data coursework a plus. Client Service Analyst is open as well. The South Jordan engineering reqs want 5+ yrs.",
-    openings: [{ title: "Payment Insight Analyst I", loc: "US remote", url: "https://careers-cotiviti.icims.com/jobs/20222/payment-insight-analyst-i/job" }, { title: "Client Service Analyst - PPM", loc: "US remote", url: "https://careers-cotiviti.icims.com/jobs/20144/client-service-analyst---ppm/job" }]
+    openings: [{ title: "Client Service Analyst - PPM", loc: "US remote", url: "https://careers-cotiviti.icims.com/jobs/20144/client-service-analyst---ppm/job" }]
   },
   "JPMorgan Chase": {
     status: "open-now",
@@ -1788,14 +1788,14 @@ const APPLY_STATUS = {
     openings: [{ title: "2027 Software Engineer Program (July start)", loc: "8 US cities", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210774111" }, { title: "2027 Data &amp; AI Program, Analyst", loc: "8 US cities", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210773954" }]
   },
   "Capital One": {
-    status: "open-now",
-    note: "Technology Development Program Associate, February 2027 is open and asks for a degree finished by December 2026. McLean, Richmond or Plano, no remote. A Cyber Security Development Program runs the same cycle.",
-    openings: [{ title: "Technology Development Program Associate (Feb 2027)", loc: "McLean / Richmond / Plano", url: "https://www.capitalonecareers.com/job/mclean/technology-development-program-associate-february-2027/31238/99973065696" }]
+    status: "watch",
+    note: "<strong>The February 2027 Technology Development Program posting is gone.</strong> The programme itself runs annually and the full-time programmes page is still live, so check there rather than trusting this listing.",
+    openings: []
   },
   "Mastercard": {
-    status: "open-now",
-    note: "<strong>Best big-company path that stays in Utah.</strong> Launch 2027 Software Engineer lists a Salt Lake City seat at $100K for Dec 2026&ndash;Jun 2027 grads. Applications ask for an unofficial transcript. Data Scientist I in SLC is live too.",
-    openings: [{ title: "Software Engineer, Launch Program 2027", loc: "Salt Lake City + 5 cities", url: "https://careers.mastercard.com/us/en/job/R-288578/Software-Engineer-Launch-Program-2027-United-States" }, { title: "Data Scientist I", loc: "Salt Lake City, UT", url: "https://careers.mastercard.com/us/en/job/R-286655" }]
+    status: "watch",
+    note: "<strong>Both Launch 2027 reqs have been pulled since the last check</strong>, including the Salt Lake City seat. Launch is an annual programme that reposts, so watch the early-careers page.",
+    openings: []
   },
   "Bloomberg": {
     status: "opens-later",
@@ -1904,8 +1904,8 @@ const APPLY_STATUS = {
   },
   "Wiz": {
     status: "watch",
-    note: "Cyber Threat Intel Analyst (Washington DC, posted Aug 28) is the nearest entry req; no new-grad track. Reach only.",
-    openings: [{ title: "Cyber Threat Intel Analyst", loc: "Washington, DC", url: "https://job-boards.greenhouse.io/wizinc/jobs/4705367006" }]
+    note: "<strong>The Cyber Threat Intel Analyst req is no longer on their board.</strong> Wiz posts entry-level security analyst roles irregularly; watch rather than wait.",
+    openings: []
   },
   "Abnormal AI": {
     status: "watch",
@@ -1935,7 +1935,7 @@ const APPLY_STATUS = {
   "WGU (Western Governors University)": {
     status: "open-now",
     note: "<strong>Associate Data Engineer, $81,300, posted Aug 25.</strong> Wants SQL, Python, ETL and Spark, and states one year of education counts as one year of experience &mdash; a genuine new-grad door. A Data Analyst role is open too.",
-    openings: [{ title: "Associate Data Engineer", loc: "Salt Lake City, UT", url: "https://jobs.wgu.edu/associate-data-engineer/job/P1-6566704-0" }, { title: "Data Analyst - Institutional Research &amp; Analytics", loc: "Salt Lake City, UT", url: "https://jobs.wgu.edu/data-analyst-institutional-research-and-analytics-iar/job/P1-6550248-0" }, { title: "Software Engineer", loc: "Salt Lake City, UT", url: "https://jobs.wgu.edu/software-engineer/job/P1-5760450-0" }]
+    openings: [{ title: "Data Analyst - Institutional Research &amp; Analytics", loc: "Salt Lake City, UT", url: "https://jobs.wgu.edu/data-analyst-institutional-research-and-analytics-iar/job/P1-6550248-0" }, { title: "Software Engineer", loc: "Salt Lake City, UT", url: "https://jobs.wgu.edu/software-engineer/job/P1-5760450-0" }]
   }
 };
 
