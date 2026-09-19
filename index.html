@@ -267,7 +267,68 @@
     font-size: 10px; padding: 1px 6px; border-radius: 4px; white-space: nowrap;
     color: #fca5a5; background: rgba(248,113,113,0.12); border: 1px solid rgba(248,113,113,0.35);
   }
-  .openings .oloc { color: var(--text-dim); white-space: nowrap; font-size: 11px; }
+  .openings .oloc { color: var(--text-dim); font-size: 11px; text-align: right; flex: 0 1 38%; min-width: 0; overflow-wrap: anywhere; }
+  .openings li.closed a { text-decoration: line-through; opacity: 0.6; }
+  .openings .otitle { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; min-width: 0; }
+  .openings .otag {
+    font-size: 10px; padding: 1px 6px; border-radius: 4px; white-space: nowrap;
+    border: 1px solid var(--border); color: var(--text-dim);
+  }
+  .openings .otag.prog { color: #c4b5fd; background: rgba(124,92,255,0.12); border-color: rgba(124,92,255,0.40); }
+  .openings .otag.move { color: #fde68a; background: rgba(251,191,36,0.10); border-color: rgba(251,191,36,0.35); }
+  .openings .otag.applied { color: #a7f3d0; background: rgba(52,211,153,0.10); border-color: rgba(52,211,153,0.40); }
+  .openings .otag.closes { color: var(--text-dim, #9aa4b2); background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.18); }
+  .openings .otag.soon { color: #fca5a5; background: rgba(248,113,113,0.10); border-color: rgba(248,113,113,0.40); }
+  .openings .otag.closed { color: #9aa4b2; background: transparent; border-color: rgba(255,255,255,0.12); text-decoration: line-through; }
+
+  /* ===== My applications (kept in this browser only) ===== */
+  .apps-btn { cursor: pointer; font-family: inherit; }
+  .apps-btn #apps-count:not(:empty) {
+    margin-left: 6px; padding: 0 7px; border-radius: 999px; font-size: 11px;
+    background: rgba(52,211,153,0.18); color: #a7f3d0;
+  }
+  .my-apps {
+    margin: 0 0 12px; padding: 7px 10px; border-radius: 8px; font-size: 12px; line-height: 1.5;
+    background: rgba(52,211,153,0.06); border: 1px dashed rgba(52,211,153,0.40); color: var(--text-dim);
+  }
+  .my-apps strong { color: var(--text); font-weight: 600; }
+  .st {
+    display: inline-block; font-size: 10px; padding: 0 6px; border-radius: 999px; margin-left: 4px;
+    border: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .st.pending { color: #a5f3fc; border-color: rgba(34,211,238,0.40); }
+  .st.interview { color: #fde68a; border-color: rgba(251,191,36,0.45); }
+  .st.offer { color: #a7f3d0; border-color: rgba(52,211,153,0.50); }
+  .st.rejected, .st.withdrawn { color: #fca5a5; border-color: rgba(248,113,113,0.40); }
+  .apps-summary { font-size: 13px; color: var(--text); margin-bottom: 12px; }
+  .apps-gap {
+    font-size: 12px; line-height: 1.5; color: #fde68a; margin-bottom: 12px; padding: 8px 10px;
+    border-radius: 8px; background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.30);
+  }
+  .apps-list { display: flex; flex-direction: column; gap: 6px; max-height: 42vh; overflow: auto; margin-bottom: 14px; }
+  .apps-row {
+    display: grid; grid-template-columns: 62px 1fr 116px 28px; gap: 8px; align-items: center;
+    padding: 7px 9px; border: 1px solid var(--border); border-radius: 8px;
+    background: rgba(255,255,255,0.03); font-size: 12px;
+  }
+  .apps-row .when { color: var(--text-dim); white-space: nowrap; }
+  .apps-row .who { min-width: 0; color: var(--text-dim); }
+  .apps-row .who strong { color: var(--text); font-weight: 600; }
+  .apps-row .offboard { color: #fde68a; font-size: 10px; white-space: nowrap; }
+  .apps-row .onboard { color: #a7f3d0; font-size: 10px; white-space: nowrap; }
+  .modal .apps-row select { padding: 4px 6px; font-size: 12px; }
+  .apps-row .del {
+    width: 26px; height: 26px; border-radius: 50%; cursor: pointer; font-size: 15px; line-height: 1;
+    border: 1px solid var(--border); background: transparent; color: var(--text-dim);
+  }
+  .apps-row .del:hover { border-color: var(--red); color: var(--red); }
+  .apps-add { display: grid; grid-template-columns: 1fr 1.4fr 132px auto; gap: 8px; }
+  .modal .apps-add input {
+    width: 100%; padding: 9px 11px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--bg-card); color: var(--text); font-family: inherit; font-size: 13px; outline: none;
+  }
+  .modal .apps-add input:focus { border-color: var(--accent); }
+  @media (max-width: 720px) { .apps-row { grid-template-columns: 1fr 110px 28px; } .apps-row .when { display: none; } .apps-add { grid-template-columns: 1fr; } }
 
   .why {
     font-size: 13px; color: var(--text-dim); line-height: 1.55;
@@ -503,7 +564,9 @@
     main { padding: 14px 0 0; }
     footer { padding: 14px 0 0; }
     .header-links { display: none; }
-    .tailor-btn, .profile-switch, .modal-backdrop, .toast, a[href="guide.html"] { display: none !important; }
+    .tailor-btn, .apps-btn, .profile-switch, .modal-backdrop, .toast, a[href="guide.html"] { display: none !important; }
+    /* your application history stays on screen: a printed or shared copy never carries it */
+    .my-apps, .otag.applied, #mine-group { display: none !important; }
     .search input { color: var(--text-dim); }
     .grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .card {
@@ -556,6 +619,7 @@
     </div>
     <div class="header-links">
       <button class="pill-link tailor-btn" id="open-tailor" type="button" title="Upload someone's resume and let Claude re-score every company for them">&#x2B06;&#xFE0E; Upload a resume</button>
+      <button class="pill-link apps-btn" id="open-apps" type="button" title="Keep track of where you have applied. Saved in this browser only, never uploaded.">&#x2713; My applications<span id="apps-count"></span></button>
       <span class="profile-switch" id="profile-switch" hidden>
         <select id="profile-select" aria-label="Choose which resume the board is tailored to"></select>
         <button type="button" id="profile-delete" title="Remove this saved profile" aria-label="Remove this saved profile" hidden>&times;</button>
@@ -581,7 +645,7 @@
     </div>
     <div class="stat">
       <div class="label">Employers</div>
-      <div class="val">60, each checked by hand</div>
+      <div class="val">79, each checked by hand</div>
     </div>
     <div class="stat">
       <div class="label">Cohort</div>
@@ -631,6 +695,7 @@
       <span class="chip" data-filter="loc" data-value="local">SLC Area</span>
       <span class="chip" data-filter="loc" data-value="hybrid">Has SLC Office</span>
       <span class="chip" data-filter="loc" data-value="remote">Remote</span>
+      <span class="chip" data-filter="prog" data-value="move" title="Employers with a structured new-grad program outside the Salt Lake area: the ones worth moving for">New-grad programs elsewhere</span>
       <span class="chip" data-filter="loc" data-value="far" hidden title="No office near this candidate and no remote hiring for this kind of role">Needs relocation</span>
     </div>
     <div class="filter-group">
@@ -645,6 +710,11 @@
     <div class="filter-group" hidden>
       <span class="label">Utes</span>
       <span class="chip" data-filter="alumni" data-value="any" title="Public evidence the company recruits at or hires from the University of Utah">&#x1F534; Hires from the U</span>
+    </div>
+    <div class="filter-group" id="mine-group" hidden>
+      <span class="label">Mine</span>
+      <span class="chip" data-filter="mine" data-value="applied">Applied</span>
+      <span class="chip" data-filter="mine" data-value="todo" title="Employers with a live role you have not applied to yet">Live, not applied yet</span>
     </div>
     <div class="filter-group">
       <span class="label">Tier</span>
@@ -719,18 +789,55 @@
     <div class="merror" id="tailor-error" hidden></div>
   </div>
 </div>
+<div class="modal-backdrop" id="apps-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="apps-title">
+    <div class="modal-head">
+      <div>
+        <h2 id="apps-title">My applications</h2>
+        <div class="mhint">Saved only in this browser's localStorage. Nothing here is uploaded, shared or written into the page, so a published copy of this board never carries your history.</div>
+      </div>
+      <button class="mclose" id="apps-close" type="button" aria-label="Close">&times;</button>
+    </div>
+    <div class="apps-summary" id="apps-summary"></div>
+    <div class="apps-gap" id="apps-gap" hidden></div>
+    <div class="apps-list" id="apps-list"></div>
+    <div class="mrow">
+      <label class="mlabel" for="app-company">Add an application</label>
+      <div class="apps-add">
+        <input id="app-company" type="text" placeholder="Company" maxlength="80" />
+        <input id="app-title" type="text" placeholder="Role title" maxlength="140" />
+        <input id="app-date" type="date" aria-label="Date applied" />
+        <button type="button" class="mini" id="app-add">Add</button>
+      </div>
+    </div>
+    <div class="mactions">
+      <input type="file" id="apps-file" accept=".json,application/json" hidden />
+      <button type="button" class="mini" id="apps-import">Import JSON</button>
+      <button type="button" class="mini" id="apps-export">Export JSON</button>
+      <button type="button" class="mini" id="apps-clear">Clear all</button>
+      <span class="mhint" id="apps-status" style="margin-top:0"></span>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast" hidden></div>
 
 <footer>
-  Openings verified 2026-09-13 &middot; curated for new-grad data, AI and fintech roles around Salt Lake City
+  Openings verified 2026-09-19 &middot; curated for new-grad data, AI and fintech roles around Salt Lake City
   <br>
-  <strong style="color: var(--gold);">Apply now:</strong>
-  Goldman Sachs 2027 SLC New Analyst, JPMorgan's two 2027 programs (deadline Nov 5), Stripe New Grad SWE
-  and Databricks' 2027 APM are open right now and accept December 2026 graduates. Mastercard Launch and
-  Capital One's TDP were open on the last check and have since been pulled, so watch for them to repost.
+  <strong style="color: var(--gold);">Apply now, in Utah:</strong>
+  Goldman Sachs 2027 SLC New Analyst, Morgan Stanley's 2027 Operations Analyst Program (Utah seat), Addepar's
+  AddeGrad 2027 and Cicero's January 2027 Business Analyst class all accept December 2026 graduates.
+  <br>
+  <strong style="color: var(--gold);">Worth relocating for:</strong>
+  Freddie Mac's January 2027 data analyst class, Fidelity's January 2027 Leap cohort, JPMorgan's 2027 programs,
+  Mastercard's Launch seats in St. Louis and American Express's 2027 technology classes (close Oct 31).
+  JPMorgan's Internal Audit program closes Oct 30.
+  Deadlines this week and next: Deloitte Sept 23, Visa Sept 24, PwC Sept 26, Wells Fargo Sept 30.
+  Mastercard's Salt Lake City Launch seat closed on Sept 19.
   <br>
   <strong style="color: var(--accent-2);">Watch in October:</strong>
-  Adobe, Snowflake, Qualtrics, Okta, Datadog, Lucid and Plaid all post their new-grad reqs in the Sept&ndash;Nov window.
+  Adobe, Snowflake, Qualtrics, Okta, Datadog, Lucid and Plaid all post their new-grad reqs in the Sept&ndash;Nov window,
+  and Capital One's US programs have not reposted yet.
   <br>
   Match scores reflect resume alignment (data tools, fintech interest, SLC proximity, new-grad pipelines).
 </footer>
@@ -747,7 +854,7 @@ const FAIRS = [
   { date: "2026-10-28", name: "Marketing &amp; Comms Expo" }
 ];
 
-const REFRESH_DATE = "2026-09-13";
+const REFRESH_DATE = "2026-09-19";
 const COMPANIES = [
   // ===== TIER 1 PERFECT MATCHES =====
   {
@@ -1226,7 +1333,7 @@ const COMPANIES = [
     alumni: "some",
     alumniNote: "A 2024 U of U graduate joined Mastercard as an Associate Product Manager.",
     badges: ["fintech", "local"],
-    why: "AI fraud detection at scale with a real Salt Lake City office. Their Launch program puts new grads through 18-month rotations, and this year's cohort has an SLC seat at $100K.",
+    why: "AI fraud detection at scale with a Salt Lake City office in Holladay. The Launch program puts new graduates through 18-month rotations; this year's Salt Lake City seat has already closed, and the remaining analyst seats are in St. Louis.",
     careers: "https://careers.mastercard.com/us/en/early-careers/launch",
     linkedin: "https://www.linkedin.com/company/mastercard/jobs/"
   },
@@ -1445,7 +1552,7 @@ const COMPANIES = [
   },
   {
     name: "Okta",
-    location: "Remote (US)",
+    location: "Remote (US); new-grad roles hybrid in Chicago",
     locType: "remote",
     industry: ["cyber"],
     roles: ["data", "swe", "product"],
@@ -1631,6 +1738,264 @@ const COMPANIES = [
     why: "<strong>Salt Lake City HQ with 96 open roles and a real data org.</strong> Non-profit online university; their data team hires at the associate level and publishes salaries, which most Utah employers do not.",
     careers: "https://jobs.wgu.edu/jobs",
     linkedin: "https://www.linkedin.com/company/western-governors-university/jobs/"
+  },
+
+  // ===== ADDED 2026-09-19: SALT LAKE EMPLOYERS WITH LIVE NEW-GRAD PROGRAMS =====
+  {
+    name: "Morgan Stanley",
+    location: "South Jordan &amp; Sandy, UT",
+    locType: "local",
+    industry: ["fintech"],
+    roles: ["data", "product"],
+    score: 90,
+    tier: 2,
+    alumni: "strong",
+    alumniNote: "Morgan Stanley - Operations was a registered employer at the U of U Finance, Fintech & Accounting Expo, Sep 10 2026.",
+    badges: ["local", "fintech"],
+    why: "<strong>One of the largest financial employers in Utah</strong>, with operations and wealth-management teams in South Jordan and Sandy. Its 2027 Operations Full-time Analyst Program has a Utah seat, and the Parametric subsidiary runs winter cohorts written for December graduates.",
+    careers: "https://morganstanley.tal.net/vx/lang-en-GB/mobile-0/brand-2/candidate/jobboard/vacancy/1/adv/?f_Item_Opportunity_17058_lk=133175",
+    linkedin: "https://www.linkedin.com/company/morgan-stanley/jobs/"
+  },
+  {
+    name: "Addepar",
+    location: "Salt Lake City, UT",
+    locType: "local",
+    industry: ["fintech", "data"],
+    roles: ["data", "product"],
+    score: 88,
+    tier: 2,
+    alumni: "strong",
+    alumniNote: "Registered employer at the U of U Finance, Fintech & Accounting Expo, Sep 10 2026.",
+    badges: ["local", "fintech"],
+    why: "<strong>Wealth-management data platform with a real Salt Lake City office</strong>, which is where its AddeGrad new-grad program is based. The work is data plumbing for investment firms: client data, reporting and solutions consulting.",
+    careers: "https://job-boards.greenhouse.io/addepar1",
+    linkedin: "https://www.linkedin.com/company/addepar/jobs/"
+  },
+  {
+    name: "Cicero Group (MGT)",
+    location: "Salt Lake City, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data", "product"],
+    score: 82,
+    tier: 2,
+    alumni: "strong",
+    alumniNote: "On three U of U fall 2026 fair rosters: Finance/Fintech (Sep 10), Business (Sep 17) and the Oct 6 Internship & Career Fair.",
+    badges: ["local"],
+    why: "<strong>Salt Lake City strategy and data consultancy</strong>, now part of MGT. It hires business analysts in classes, and the work is survey design, data analysis and client recommendations for large companies.",
+    careers: "https://cicero.applytojob.com/apply",
+    linkedin: "https://www.linkedin.com/company/cicero-group/jobs/"
+  },
+  // ===== ADDED 2026-09-19: NEW-GRAD PROGRAMS OUTSIDE UTAH (worth relocating for) =====
+  {
+    name: "Freddie Mac",
+    location: "McLean, VA (DC area)",
+    locType: "far",
+    industry: ["fintech", "data"],
+    roles: ["data", "swe"],
+    score: 84,
+    tier: 2,
+    badges: ["fintech"],
+    why: "<strong>Housing-finance data work with a January 2027 start.</strong> Its 2027 analyst class is written for December 2026 and May 2027 graduates, and mortgage data is a direct match for a mortgage or lending data background.",
+    careers: "https://freddiemac.wd5.myworkdayjobs.com/External",
+    linkedin: "https://www.linkedin.com/company/freddie-mac/jobs/"
+  },
+  {
+    name: "Fannie Mae",
+    location: "Washington, DC",
+    locType: "far",
+    industry: ["fintech", "data"],
+    roles: ["data", "ml"],
+    score: 82,
+    tier: 2,
+    badges: ["fintech"],
+    why: "<strong>The other housing-finance giant, with a campus analytics program.</strong> The Analytics &amp; Modeling Program pays $110,000, starts June 28, 2027 and takes degrees finished between December 2026 and spring 2027. It asks for SQL and Python.",
+    careers: "https://fanniemae.wd1.myworkdayjobs.com/FannieMaeCareers",
+    linkedin: "https://www.linkedin.com/company/fannie-mae/jobs/"
+  },
+  {
+    name: "American Express",
+    location: "Phoenix &amp; New York (Salt Lake City office)",
+    locType: "hybrid",
+    industry: ["fintech"],
+    roles: ["data", "product"],
+    score: 84,
+    tier: 2,
+    badges: ["fintech"],
+    why: "<strong>Card network and bank with a Salt Lake City office</strong>, though its 2027 undergraduate full-time classes sit in Phoenix, New York, Atlanta, Sunrise FL, Charlotte and Palo Alto. The technology classes name Information Systems among the accepted majors.",
+    careers: "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs?keyword=Campus%20Undergraduate%20Full-Time",
+    linkedin: "https://www.linkedin.com/company/american-express/jobs/"
+  },
+  {
+    name: "USAA",
+    location: "San Antonio, TX &amp; Charlotte, NC",
+    locType: "far",
+    industry: ["fintech"],
+    roles: ["data"],
+    score: 80,
+    tier: 2,
+    badges: ["fintech"],
+    why: "<strong>Insurance and banking for military families, with a two-year data rotation.</strong> The Future Leaders Data &amp; Analytics track lists an Information Stewardship and Data Governance rotation, which fits anyone who has done data-governance work.",
+    careers: "https://usaa.wd1.myworkdayjobs.com/USAAJOBSWD",
+    linkedin: "https://www.linkedin.com/company/usaa/jobs/"
+  },
+  {
+    name: "Fidelity Investments",
+    location: "Westlake, TX; Durham, NC; Merrimack, NH (Salt Lake City office)",
+    locType: "hybrid",
+    industry: ["fintech"],
+    roles: ["data", "swe"],
+    score: 81,
+    tier: 2,
+    alumni: "some",
+    alumniNote: "Registered employer at the U of U Business Career Expo, Sep 17 2026, recruiting for a Salt Lake City licensing program.",
+    badges: ["fintech"],
+    why: "<strong>Asset manager with a Salt Lake City office and a January tech cohort.</strong> The Leap program runs January, April and July 2027 classes, so a December graduate can start right away. Its Salt Lake City openings today ask for five or more years.",
+    careers: "https://wd1.myworkdaysite.com/recruiting/fmr/targeted",
+    linkedin: "https://www.linkedin.com/company/fidelity-investments/jobs/"
+  },
+  {
+    name: "Vanguard",
+    location: "Malvern, PA &amp; Charlotte, NC",
+    locType: "far",
+    industry: ["fintech"],
+    roles: ["data", "ml"],
+    score: 79,
+    tier: 2,
+    badges: ["fintech"],
+    why: "<strong>Index-fund giant with a two-year Technology Leadership Program.</strong> The data analyst and data science tracks run three eight-month rotations, begin in 2027 and invite December 2026 graduates by name.",
+    careers: "https://vanguard.wd5.myworkdayjobs.com/vanguard_external?q=Technology%20Leadership%20Program",
+    linkedin: "https://www.linkedin.com/company/vanguard/jobs/"
+  },
+  {
+    name: "Visa",
+    location: "Foster City, CA; Austin, TX; San Francisco",
+    locType: "far",
+    industry: ["fintech"],
+    roles: ["product", "swe"],
+    score: 80,
+    tier: 2,
+    badges: ["fintech"],
+    why: "<strong>Payments network with 2027 new-college-graduate rotations</strong> in product (APM) and general leadership (VLA). Both start in August or September 2027 and ask for under six months of relevant work experience.",
+    careers: "https://visa.wd5.myworkdayjobs.com/Visa?q=New%20College%20Graduate",
+    linkedin: "https://www.linkedin.com/company/visa/jobs/"
+  },
+  {
+    name: "FIS",
+    location: "Jacksonville, FL; Atlanta, GA; Milwaukee, WI",
+    locType: "far",
+    industry: ["fintech", "data"],
+    roles: ["data", "product"],
+    score: 80,
+    tier: 2,
+    badges: ["fintech"],
+    why: "<strong>Banking and payments software with a 2027 University Program</strong> that has its own Data Analytics &amp; AI track, plus Product Management and Risk &amp; Cybersecurity tracks. It is a two-year full-time program that begins in 2027.",
+    careers: "https://fis.wd5.myworkdayjobs.com/SearchJobs?q=University%20Program",
+    linkedin: "https://www.linkedin.com/company/fisglobal/jobs/"
+  },
+  {
+    name: "Citi",
+    location: "New York, Dallas &amp; Tampa",
+    locType: "far",
+    industry: ["fintech"],
+    roles: ["data"],
+    score: 74,
+    tier: 2,
+    badges: ["fintech"],
+    why: "<strong>Global bank with 2027 full-time analyst classes.</strong> U.S. Consumer Cards is the most analytics-heavy one and pays $90,000, with a 3.3 GPA floor. Internal Audit runs its own classes in Dallas and Tampa.",
+    careers: "https://citi.wd5.myworkdayjobs.com/2?q=2027",
+    linkedin: "https://www.linkedin.com/company/citi/jobs/"
+  },
+  {
+    name: "Wells Fargo",
+    location: "Charlotte, Irving TX, Minneapolis, St. Louis",
+    locType: "far",
+    industry: ["fintech"],
+    roles: ["data"],
+    score: 76,
+    tier: 2,
+    badges: ["fintech"],
+    why: "<strong>Big bank with 2027 early-career programs that close at the end of September.</strong> The Audit Analyst Development Program names Information Systems as an accepted major, and the Wealth &amp; Investment Management class is in St. Louis.",
+    careers: "https://wd1.myworkdaysite.com/recruiting/wf/WellsFargoJobs?q=2027%20Early%20Careers",
+    linkedin: "https://www.linkedin.com/company/wellsfargo/jobs/"
+  },
+  {
+    name: "EY",
+    location: "Salt Lake City and 12 other US offices",
+    locType: "hybrid",
+    industry: ["data"],
+    roles: ["data"],
+    score: 82,
+    tier: 2,
+    badges: [],
+    why: "<strong>Big Four firm hiring data analysts into Assurance, with a Salt Lake City seat.</strong> The Data and Intelligence Delivery Analyst role names AI, Information Systems and Business Analytics degrees and pays $78,000&ndash;100,000. Consulting's Risk Technology track is built around an IS degree.",
+    careers: "https://eyglobal.yello.co/job_boards/c1riT--B2O-KySgYWsZO1Q",
+    linkedin: "https://www.linkedin.com/company/ernstandyoung/jobs/"
+  },
+  {
+    name: "Deloitte",
+    location: "27 US offices, incl. Denver &amp; St. Louis",
+    locType: "far",
+    industry: ["data", "cyber"],
+    roles: ["data"],
+    score: 79,
+    tier: 2,
+    badges: [],
+    why: "<strong>Big Four firm with technology-risk and analytics analyst classes.</strong> Technology Controls Advisory takes MIS and business-analytics majors, and the Government &amp; Public Services Business Analytics class is a winter 2027 start. Both stop recruiting on September 23.",
+    careers: "https://apply.deloitte.com/en_US/careers/SearchJobs/?search=2027",
+    linkedin: "https://www.linkedin.com/company/deloitte/jobs/"
+  },
+  {
+    name: "PwC",
+    location: "Denver, Chicago, New York, San Francisco and more",
+    locType: "far",
+    industry: ["data"],
+    roles: ["data"],
+    score: 78,
+    tier: 2,
+    badges: [],
+    why: "<strong>Big Four firm whose Digital Assurance &amp; Transparency practice hires IS majors</strong> into IT-controls, data-integrity and AI assurance work. Every 2027 DAT associate posting closes on September 26. Denver is the closest city.",
+    careers: "https://pwc.wd3.myworkdayjobs.com/US_Entry_Level_Careers",
+    linkedin: "https://www.linkedin.com/company/pwc/jobs/"
+  },
+  {
+    name: "KPMG",
+    location: "Boston, Dallas, Houston, New York area",
+    locType: "far",
+    industry: ["data"],
+    roles: ["data"],
+    score: 76,
+    tier: 2,
+    badges: [],
+    why: "<strong>Big Four firm hiring 2027 Technology Assurance associates</strong> (IT audit and technology risk). It requires an MIS or accounting-information-systems degree and takes graduates from November 2026 through July 2027.",
+    careers: "https://www.kpmguscareers.com/early-career/",
+    linkedin: "https://www.linkedin.com/company/kpmg-us/jobs/"
+  },
+  {
+    name: "Protiviti",
+    location: "Chicago &amp; Atlanta",
+    locType: "far",
+    industry: ["data"],
+    roles: ["data"],
+    score: 76,
+    tier: 2,
+    badges: [],
+    why: "<strong>Risk and technology consultancy hiring 2027 Technology Consulting classes.</strong> New consultants are placed into areas such as Enterprise Data, Analytics &amp; AI or Technology Risk, and the Chicago offer is $72,000&ndash;87,000.",
+    careers: "https://roberthalf.wd1.myworkdayjobs.com/ProtivitiGraduate",
+    linkedin: "https://www.linkedin.com/company/protiviti/jobs/"
+  },
+  {
+    name: "Accenture",
+    location: "St. Louis &amp; Boston",
+    locType: "far",
+    industry: ["data"],
+    roles: ["data", "product"],
+    score: 72,
+    tier: 2,
+    badges: [],
+    why: "<strong>Consultancy hiring entry-level tech-strategy analysts in St. Louis.</strong> The Maryville Technology Strategy &amp; Transformation analyst works on technology business management, process improvement and product management, and is expected to stay posted until October 16.",
+    careers: "https://accenture.wd103.myworkdayjobs.com/AccentureCareers?q=NAELFY27",
+    linkedin: "https://www.linkedin.com/company/accenture/jobs/"
   }
 ];
 
@@ -1644,8 +2009,8 @@ const APPLY_STATUS = {
   },
   "Goldman Sachs (SLC Campus)": {
     status: "open-now",
-    note: "<strong>Apply this week.</strong> The 2027 New Analyst reqs for the Salt Lake City campus are live in Engineering and Operations, and eligibility is stated as graduating December 2026 through July 2027. Rolling fill.",
-    openings: [{ title: "2027 SLC Engineering | New Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/171570" }, { title: "2027 SLC Operations | New Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/169826" }]
+    note: "<strong>Apply this week.</strong> The 2027 New Analyst reqs for the Salt Lake City campus are live in Engineering and Operations, for graduates finishing December 2026 through July 2027. Three early-career Salt Lake City analyst reqs in Operations, Compliance and Technology Audit also ask for only 0&ndash;3 years, but they carry no graduation window, so expect them to want a start soon after the degree.",
+    openings: [{ title: "2027 SLC Engineering | New Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/171570" }, { title: "2027 SLC Operations | New Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/169826" }, { title: "Operations | Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/159806" }, { title: "Internal Audit - Technology and Engineering | Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/159789" }, { title: "Compliance | Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/159758" }]
   },
   "Recursion Pharmaceuticals": {
     status: "watch",
@@ -1674,13 +2039,13 @@ const APPLY_STATUS = {
   },
   "Adobe (Lehi Campus)": {
     status: "opens-later",
-    note: "2027 University Graduate reqs are not posted yet; the 2026 cycle covered Dec&ndash;Jun grads, so expect Oct&ndash;Nov. Two Lehi analyst reqs are live now, and the other 47 Lehi jobs are senior.",
-    openings: [{ title: "Technology Asset Planning Analyst", loc: "Lehi, UT", url: "https://careers.adobe.com/us/en/job/R170317/Technology-Asset-Planning-Analyst" }]
+    note: "2027 University Graduate reqs for analyst work are not posted yet; the 2026 cycle covered December to June graduates, so expect them in Oct&ndash;Nov. Analyst, Order Management in Lehi is live until December 1 and states no years of experience.",
+    openings: [{ title: "Analyst, Order Management", loc: "Lehi, UT", url: "https://adobe.wd5.myworkdayjobs.com/external_experienced/job/Lehi/Analyst--Order-Management_R171282", closes: "2026-12-01" }]
   },
   "Ancestry": {
     status: "open-now",
-    note: "The Content Analyst req has closed. Associate Software Engineer is still live but reads like a green-card PERM posting, so treat the odds as low. An Imaging Data Technician in Draper is open too.",
-    openings: [{ title: "Associate Software Engineer", loc: "Draper, UT", url: "https://careers.ancestry.com/jobs/pcpL25174456" }, { title: "Associate Pricing and Packaging Specialist", loc: "US remote", url: "https://careers.ancestry.com/jobs/associate-pricing-and-packaging-specialist" }]
+    note: "Associate Software Engineer is the one entry-level req left, and it reads like a green-card PERM posting, so treat the odds as low. The Content Analyst and Associate Pricing roles have both closed.",
+    openings: [{ title: "Associate Software Engineer", loc: "Draper, UT", url: "https://careers.ancestry.com/jobs/pcpL25174456" }]
   },
   "Pluralsight": {
     status: "watch",
@@ -1699,8 +2064,8 @@ const APPLY_STATUS = {
   },
   "Lucid Software": {
     status: "watch",
-    note: "<strong>The Strategic Finance Analyst I req has been taken down since the last check.</strong> It was the one genuinely 0&ndash;1 year opening here. Their New College Grad software roles historically post in the Sept&ndash;Nov window, so watch the board.",
-    openings: []
+    note: "<strong>Nothing here is open to a new graduate right now.</strong> The Strategic Finance Analyst I req has been taken down, the Salt Lake City Security Analyst req asks for three years, and Product Support Specialist asks for two. New College Grad software roles historically post in the Sept&ndash;Nov window.",
+    openings: [{ title: "Security Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/lucidsoftware/jobs/6117122004", yrs: 3 }, { title: "Product Support Specialist", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/lucidsoftware/jobs/5844865004", yrs: 2 }]
   },
   "Weave": {
     status: "watch",
@@ -1708,9 +2073,9 @@ const APPLY_STATUS = {
     openings: [{ title: "Fraud Analyst", loc: "Lehi, UT", url: "https://jobs.ashbyhq.com/weave/8170350e-1a7c-47ec-87d9-1121e037a4b2" , yrs: 3 }]
   },
   "Podium": {
-    status: "watch",
-    note: "55 live reqs (Greenhouse 'podium81'), but engineering is all Senior/Staff (7+ yrs) and PM wants 2&ndash;7 yrs. Nothing entry-level. Watch the board for Analytics Engineer / SWE I reqs.",
-    openings: []
+    status: "open-now",
+    note: "<strong>Three Lehi roles are open to someone early in their career</strong>, though each asks for about a year of experience. AI Onboarding Specialist is also posted three more times under Automotive, Home Services and Medspa, but all four share one requisition, so a single application covers them. The onboarding and product-support roles are on-site in Lehi five days a week.",
+    openings: [{ title: "AI Onboarding Specialist", loc: "Lehi, UT", url: "https://job-boards.greenhouse.io/podium81/jobs/7597038", yrs: 1 }, { title: "AI Product Support Specialist", loc: "Lehi, UT", url: "https://job-boards.greenhouse.io/podium81/jobs/8192812", yrs: 1 }, { title: "Technical Support Engineer", loc: "Lehi, UT", url: "https://job-boards.greenhouse.io/podium81/jobs/8172144", yrs: 1 }]
   },
   "Snowflake": {
     status: "opens-later",
@@ -1778,14 +2143,14 @@ const APPLY_STATUS = {
     openings: []
   },
   "Cotiviti": {
-    status: "open-now",
-    note: "<strong>Payment Insight Analyst I is genuinely entry-level and remote-US</strong> &mdash; bachelor's preferred, data coursework a plus. Client Service Analyst is open as well. The South Jordan engineering reqs want 5+ yrs.",
-    openings: [{ title: "Client Service Analyst - PPM", loc: "US remote", url: "https://careers-cotiviti.icims.com/jobs/20144/client-service-analyst---ppm/job" }]
+    status: "watch",
+    note: "<strong>Both entry-level analyst reqs have closed</strong>: Payment Insight Analyst I and Client Service Analyst. The remote Data Solution Specialist asks for one to two years each of Spark, Python and Hadoop, which is a stretch for a new graduate, so watch for the next Analyst I posting.",
+    openings: []
   },
   "JPMorgan Chase": {
     status: "open-now",
-    note: "Both 2027 programs are open with a November 5 deadline and rolling fill. The Data &amp; AI Analyst track takes Dec 2026&ndash;Aug 2027 grads and says no prior experience is required. No SLC seat, so pick Plano or Chicago.",
-    openings: [{ title: "2027 Software Engineer Program (July start)", loc: "8 US cities", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210774111" }, { title: "2027 Data &amp; AI Program, Analyst", loc: "8 US cities", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210773954" }]
+    note: "Four live doors. The February-start Software Engineer Program is written for graduates who finish by December 2026. The Data &amp; AI Analyst and Internal Audit Analyst programs take December 2026 to mid-2027 graduates, and Internal Audit lists information-systems majors as a plus and closes October 30. The other two close November 5. Neovest, the firm's trading-software unit in Pleasant Grove, is hiring a client-service analyst in Utah.",
+    openings: [{ title: "2027 Software Engineer Program (February start)", loc: "Chicago + 8 US cities", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210774102", closes: "2026-11-05" }, { title: "2027 Data &amp; AI Program, Analyst", loc: "8 US cities", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210773954", closes: "2026-11-05" }, { title: "2027 Internal Audit Analyst Program", loc: "Plano, Columbus or Wilmington", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210773378", closes: "2026-10-30" }, { title: "Neovest - Technical Client Service - Analyst", loc: "Pleasant Grove, UT", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210791182" }]
   },
   "Capital One": {
     status: "watch",
@@ -1793,9 +2158,9 @@ const APPLY_STATUS = {
     openings: []
   },
   "Mastercard": {
-    status: "watch",
-    note: "<strong>Both Launch 2027 reqs have been pulled since the last check</strong>, including the Salt Lake City seat. Launch is an annual programme that reposts, so watch the early-careers page.",
-    openings: []
+    status: "open-now",
+    note: "<strong>The Salt Lake City seat has closed.</strong> The Software Engineer Launch req that included Holladay stopped taking applications on Sept 19, and Data Scientist I is gone too. Two Launch Program 2027 analyst reqs in St. Louis still accept December 2026 graduates, so this is now a relocation decision.",
+    openings: [{ title: "Technology Risk Analyst I, Launch Program 2027", loc: "O'Fallon, MO (St. Louis)", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/OFallon-Missouri/Technology-Risk-Analyst-I--Launch-Program-2027---St-Louis--MO--US_R-287644" }, { title: "Program Management Analyst I, Launch Program 2027", loc: "O'Fallon, MO (St. Louis)", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/OFallon-Missouri/Program-Management-Analyst-I--Launch-Program-2027---St-Louis--MO--US_R-285951" }]
   },
   "Bloomberg": {
     status: "opens-later",
@@ -1819,8 +2184,8 @@ const APPLY_STATUS = {
   },
   "Robinhood": {
     status: "open-now",
-    note: "Business Analyst (New Grad) posted Aug 25 &mdash; SQL-heavy, quant modeling, $110K, Washington DC hybrid (3 days). Predictive-analytics project work is the story to tell.",
-    openings: [{ title: "Business Analyst (New Grad)", loc: "Washington, DC hybrid", url: "https://job-boards.greenhouse.io/robinhood/jobs/8123231" }]
+    note: "Business Analyst (New Grad) posted Aug 25 &mdash; SQL-heavy, quant modeling, $110K, Washington DC hybrid (3 days). Predictive-analytics project work is the story to tell. An Associate Product Manager (New Grad) req went live this week in Menlo Park and New York.",
+    openings: [{ title: "Business Analyst (New Grad)", loc: "Washington, DC hybrid", url: "https://job-boards.greenhouse.io/robinhood/jobs/8123231" }, { title: "Associate Product Manager (New Grad)", loc: "Menlo Park or New York", url: "https://job-boards.greenhouse.io/robinhood/jobs/8199973" }]
   },
   "Ramp": {
     status: "watch",
@@ -1864,8 +2229,8 @@ const APPLY_STATUS = {
   },
   "CrowdStrike": {
     status: "open-now",
-    note: "Analyst I, Falcon Complete (remote, MST shift) is the entry SOC ladder but expects incident-response exposure &mdash; pair with Security+ and a home lab. New Grad Data Scientist req requires MS/PhD.",
-    openings: [{ title: "Analyst I, Falcon Complete (Remote, PST/MST)", loc: "US remote", url: "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote/Analyst-I--Falcon-Complete--Remote-_R29479" }, { title: "Third Party Risk Management Analyst (Remote)", loc: "US remote", url: "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote/Third-Party-Risk-Management--TPRM--Analyst--Remote-_R28654" }]
+    note: "Analyst I, Falcon Complete (remote, MST shift) is the entry SOC ladder but expects incident-response exposure &mdash; pair with Security+ and a home lab. The remote third-party-risk analyst req has closed, and the New Grad Data Scientist req requires an MS or PhD.",
+    openings: [{ title: "Analyst I, Falcon Complete (Remote, PST/MST)", loc: "US remote", url: "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote/Analyst-I--Falcon-Complete--Remote-_R29479" }]
   },
   "Palo Alto Networks": {
     status: "watch",
@@ -1873,9 +2238,9 @@ const APPLY_STATUS = {
     openings: []
   },
   "Okta": {
-    status: "watch",
-    note: "No 2027 new-grad req live. Okta's Software Engineer I (New Grad) historically drops Sept&ndash;Nov in SF, Chicago, Bellevue and DC. The live Chicago Business Analyst reqs want 3&ndash;8 yrs. No Utah office.",
-    openings: []
+    status: "open-now",
+    note: "<strong>Two new-grad roles went up in Chicago this month, both hybrid.</strong> Technical Account Manager Analyst ($84&ndash;126K OTE, in the office two days a week) prefers an Information Systems degree and is customer-facing. Developer Support Associate ($79K) takes graduates from summer 2025 through fall 2026, but says applicants must already live in Chicago and includes weekend shifts. Software Engineer I (New Grad) usually posts Sept&ndash;Nov. No Utah office.",
+    openings: [{ title: "Developer Support Associate (New Grad)", loc: "Chicago, IL", url: "https://www.okta.com/company/careers/opportunity/8191506?gh_jid=8191506" }, { title: "Technical Account Manager Analyst (New Grad)", loc: "Chicago, IL", url: "https://www.okta.com/company/careers/opportunity/7363101?gh_jid=7363101", program: true }]
   },
   "Cloudflare": {
     status: "watch",
@@ -1913,9 +2278,9 @@ const APPLY_STATUS = {
     openings: []
   },
   "Zions Bancorporation": {
-    status: "opens-later",
-    note: "<strong>Their STEM applications are accepted mid-September through November</strong> &mdash; that window opens in about two weeks. The Banker Development Program is a rotational track built for recent grads, and they attend the University of Utah Pathways Computing Expo on Sept 24.",
-    openings: []
+    status: "open-now",
+    note: "<strong>Several entry-level Utah reqs are live.</strong> Data Analytics Staff Auditor is the first rung of the audit ladder, and the Banker Development Program's Salt Lake City credit-analyst seat is a rotational track for new graduates. The Banking Technology Program is applied to through the early-career page rather than posted as a requisition, and STEM applications are taken mid-September through November.",
+    openings: [{ title: "Data Analytics Staff Auditor", loc: "Salt Lake City, UT", url: "https://careers.zionsbancorp.com/jobs/x-28111" }, { title: "Salt Lake City Associate Credit Analyst - Banker Development Program", loc: "Salt Lake City, UT", url: "https://careers.zionsbancorp.com/jobs/x-28022" }, { title: "Business Information Analyst", loc: "Midvale, UT", url: "https://careers.zionsbancorp.com/jobs/x-27877" }, { title: "Cybersecurity Analyst", loc: "Midvale, UT", url: "https://careers.zionsbancorp.com/jobs/x-27643" }]
   },
   "America First Credit Union": {
     status: "watch",
@@ -1929,13 +2294,108 @@ const APPLY_STATUS = {
   },
   "iCapital": {
     status: "open-now",
-    note: "53 Utah roles live. <strong>Master Data Management Analyst</strong> ($60&ndash;75K) wants SQL plus data governance and data quality. It asks for 2+ years, so data-governance internship rotations are the experience to pitch.",
-    openings: [{ title: "Master Data Management Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8646158002" , yrs: 2 }, { title: "Strategic Transformation, Data Operations - Associate", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8606952002" , yrs: 2 }, { title: "Platform Support - Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8344081002" , yrs: 1 }]
+    note: "A dozen entry-level Salt Lake City roles are live. <strong>Master Data Management Analyst</strong> ($60&ndash;75K) wants SQL plus data governance and data quality and asks for 2+ years, so data-governance internship rotations are the experience to pitch. The Data Operations Associate req has since closed.",
+    openings: [{ title: "Master Data Management Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8646158002", yrs: 2 }, { title: "Platform Support - Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8344081002", yrs: 1 }, { title: "Transactional Operations, Investor Servicing - Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8603470002" }, { title: "Client Delivery Advocate - Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8586146002" }]
   },
   "WGU (Western Governors University)": {
     status: "open-now",
-    note: "<strong>Associate Data Engineer, $81,300, posted Aug 25.</strong> Wants SQL, Python, ETL and Spark, and states one year of education counts as one year of experience &mdash; a genuine new-grad door. A Data Analyst role is open too.",
-    openings: [{ title: "Data Analyst - Institutional Research &amp; Analytics", loc: "Salt Lake City, UT", url: "https://jobs.wgu.edu/data-analyst-institutional-research-and-analytics-iar/job/P1-6550248-0" }, { title: "Software Engineer", loc: "Salt Lake City, UT", url: "https://jobs.wgu.edu/software-engineer/job/P1-5760450-0" }]
+    note: "<strong>Associate Data Engineer was reposted on Sept 16.</strong> It wants SQL, Python, ETL and Spark and lets one year of education count as one year of experience, which makes it a genuine new-grad door. The Institutional Research data-analyst req has closed, and the Software Engineer req asks for three years.",
+    openings: [{ title: "Associate Data Engineer", loc: "Salt Lake City, UT", url: "https://wgu.wd5.myworkdayjobs.com/External/job/Salt-Lake-City-UT/Associate-Data-Engineer_JR-025987", closes: "2026-09-25" }, { title: "Software Engineer", loc: "Salt Lake City, UT", url: "https://jobs.wgu.edu/software-engineer/job/P1-5760450-0", yrs: 3 }]
+  },
+  "Morgan Stanley": {
+    status: "open-now",
+    note: "<strong>The 2027 Operations Full-time Analyst Program has a Utah seat</strong> in South Jordan and Sandy with a July 2027 start, and asks only for a bachelor's in progress. Parametric's winter cohorts start in February 2027 and are written for recent graduates, which suits a December finish for anyone willing to relocate.",
+    openings: [{ title: "2027 Operations Full-time Analyst Program (Utah)", loc: "South Jordan, UT", url: "https://morganstanley.tal.net/vx/lang-en-GB/mobile-0/brand-2/candidate/so/pm/1/pl/1/opp/20856-2027-Operations-Full-time-Analyst-Program-Utah/en-GB" }, { title: "Parametric - Operations Analyst Cohort, Winter 2027 (Recent Grads)", loc: "Boston, MA or Alpharetta, GA", url: "https://morganstanley.eightfold.ai/careers/job/549800175346" }, { title: "Parametric - Investment Analyst Winter Cohort 2027", loc: "Seattle, WA", url: "https://morganstanley.eightfold.ai/careers/job/549799888578" }]
+  },
+  "Addepar": {
+    status: "open-now",
+    note: "<strong>AddeGrad 2027 is based in the Salt Lake City office</strong> with a July 2027 start, and relocation assistance is offered. Direct Solutions Consultant ($74&ndash;93K) and Client Support Analyst (1+ yrs) are the other Salt Lake City openings a new graduate could reach.",
+    openings: [{ title: "AddeGrad Program (2027) - Client Solutions Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/addepar1/jobs/8815241002" }, { title: "Direct Solutions Consultant (Investment Management)", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/addepar1/jobs/8816951002" }, { title: "Client Support Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/addepar1/jobs/8744013002", yrs: 1 }]
+  },
+  "Cicero Group (MGT)": {
+    status: "open-now",
+    note: "Business Analyst classes start in January 2027 and summer 2027, in Salt Lake City or Washington, DC, with no experience required. The January class is the natural fit for a December graduate, and the summer class is the fallback.",
+    openings: [{ title: "Business Analyst (January 2027)", loc: "Salt Lake City, UT or Washington, DC", url: "https://cicero.applytojob.com/apply/6QdqIlXan0/Business-Analyst-January-2027" }, { title: "Business Analyst (Summer 2027)", loc: "Salt Lake City, UT or Washington, DC", url: "https://cicero.applytojob.com/apply/tqqiSOGjIv/Business-Analyst-Summer-2027" }]
+  },
+  "Freddie Mac": {
+    status: "open-now",
+    note: "<strong>Apply now: the 2027 analyst class is open.</strong> Single Family Data Analyst ($63&ndash;95K) and Single Family Software Development Analyst both want December 2026 or May 2027 graduates who can start in January or June 2027. The SET Associate asks for 0&ndash;2 years.",
+    openings: [{ title: "Single Family Data Analyst", loc: "McLean, VA", url: "https://freddiemac.wd5.myworkdayjobs.com/en-US/External/job/McLean-VA/Single-Family-Data-Analyst_JR17440", program: true }, { title: "Single Family Software Development Analyst", loc: "McLean, VA", url: "https://freddiemac.wd5.myworkdayjobs.com/en-US/External/job/McLean-VA/Single-Family-Software-Analyst_JR17441", program: true }, { title: "Servicing, Efficiency &amp; Transformation (SET) Associate", loc: "McLean, VA; Chicago, IL", url: "https://freddiemac.wd5.myworkdayjobs.com/en-US/External/job/McLean-VA/Servicing--Efficiency---Transformation--SET--Associate_JR17557" }]
+  },
+  "Fannie Mae": {
+    status: "open-now",
+    note: "The Analytics &amp; Modeling Program is live: $110,000, starting June 28, 2027, for degrees finished between December 2026 and spring 2027. The preferred majors lean quantitative, so lead with SQL and Python work.",
+    openings: [{ title: "Campus &ndash; Analytics &amp; Modeling Program Associate", loc: "Washington, DC", url: "https://fanniemae.wd1.myworkdayjobs.com/en-US/FannieMaeCareers/job/Washington-DC/Campus---Analytics---Modeling-Program-Associate_JR2816-1", program: true }]
+  },
+  "American Express": {
+    status: "open-now",
+    note: "<strong>The technology classes listed here close October 31.</strong> Each wants a graduation date between December 2026 and June 2027. Data &amp; Analytics and Data Engineer I are the closest fits; Digital Product Management is the product track.",
+    openings: [{ title: "Campus Undergraduate Full-Time Analyst &ndash; 2027 Data &amp; Analytics", loc: "Phoenix, AZ", url: "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26013281", closes: "2026-10-31" }, { title: "Campus Undergraduate Full-Time Analyst &ndash; 2027 Data &amp; Analytics", loc: "New York, NY", url: "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26013097", closes: "2026-10-31" }, { title: "Campus Undergraduate Full-Time Analyst &ndash; 2027 Data Engineer I", loc: "Phoenix, AZ", url: "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26013286", closes: "2026-10-31" }, { title: "Campus Undergraduate Full-Time Associate &ndash; 2027 Digital Product Management", loc: "New York, NY", url: "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26012956", closes: "2026-10-31" }, { title: "Campus Undergraduate Full-Time Associate &ndash; 2027 Cybersecurity Analyst", loc: "Phoenix, AZ", url: "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26013352", closes: "2026-10-31" }]
+  },
+  "USAA": {
+    status: "open-now",
+    note: "The Future Leaders Data &amp; Analytics track takes graduates finishing before July 12, 2027, when the cohort starts. A master's degree is preferred but not required, and up to two years of experience is welcome. Pay is $51,370&ndash;92,060.",
+    openings: [{ title: "Future Leaders Program Rotation &ndash; Data and Analytics Track", loc: "San Antonio, TX; Charlotte, NC", url: "https://usaa.wd1.myworkdayjobs.com/en-US/USAAJOBSWD/job/San-Antonio-Home-Office-I/Future-Leaders-Program-Rotation---Data-and-Analytics-Track_R0120828", closes: "2026-10-16", program: true }]
+  },
+  "Fidelity Investments": {
+    status: "open-now",
+    note: "<strong>The January 2027 Leap Systems Analyst class fits a December graduate exactly</strong>: a 10-week in-person cohort that leads into a full-time technology role. April and July 2027 classes are open too, and FidYOU is the operations program starting June 2027.",
+    openings: [{ title: "January 2027 &ndash; Leap Systems Analyst", loc: "Westlake, TX; Durham, NC; Merrimack, NH", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/January-2027---Leap-Systems-Analyst_2133868", program: true }, { title: "April 2027 &ndash; Leap Systems Analyst", loc: "Westlake, TX; Durham, NC; Merrimack, NH", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/April-2027---Leap-Systems-Analyst_2133876", program: true }, { title: "2027 Undergraduate Full-Time &ndash; FidYOU Program", loc: "Westlake, TX; Boston, MA and more", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/XMLNAME-2027-Undergraduate-Full-Time---FidYOU-Program_2133159" }]
+  },
+  "Vanguard": {
+    status: "open-now",
+    note: "Technology Leadership Program tracks begin in 2027 and say graduates finishing in December 2026 are encouraged to apply. Data Analyst runs in both Charlotte and Malvern, and there is a Data Science &amp; AI track in Charlotte. No visa sponsorship.",
+    openings: [{ title: "Technology Leadership Program &ndash; Data Analyst (NC)", loc: "Charlotte, NC", url: "https://vanguard.wd5.myworkdayjobs.com/en-US/vanguard_external/job/Charlotte-NC/Technology-Leadership-Program---Data---Analytics--Analyst----NC_180091-1" }, { title: "Technology Leadership Program &ndash; Data Analyst (PA)", loc: "Malvern, PA", url: "https://vanguard.wd5.myworkdayjobs.com/en-US/vanguard_external/job/Malvern-PA/Technology-Leadership-Program---Data---Analytics--Analyst----PA_180088-1" }, { title: "Technology Leadership Program &ndash; Data Science and AI (NC)", loc: "Charlotte, NC", url: "https://vanguard.wd5.myworkdayjobs.com/en-US/vanguard_external/job/Charlotte-NC/Technology-Leadership-Program---Data---Analytics--Scientist----NC_180093-1" }]
+  },
+  "Visa": {
+    status: "open-now",
+    note: "<strong>Apply by September 24.</strong> Both rotations want degrees finished May 2026&ndash;August 2027 and a fixed August/September 2027 start. They cap relevant experience at under six months, so check whether internships count before applying. The APM pays $116,480 in Foster City.",
+    openings: [{ title: "Associate Product Manager (APM), New College Graduate Rotational Program, 2027", loc: "Foster City, CA", url: "https://visa.wd5.myworkdayjobs.com/en-US/Visa/job/US---Foster-City-CA/Associate-Product-Manager--APM---New-College-Graduate-Rotational-Program--2027_REF088600W", closes: "2026-09-24", program: true }, { title: "Associate Product Manager (APM), New College Graduate Rotational Program, 2027", loc: "Austin, TX", url: "https://visa.wd5.myworkdayjobs.com/en-US/Visa/job/US---Austin-TX/Associate-Product-Manager--APM---New-College-Graduate-Rotational-Program--2027_REF088601W-1", closes: "2026-09-24", program: true }, { title: "Visa Leadership Associate Program (VLA), New College Graduate Rotational Program, 2027", loc: "San Francisco, CA", url: "https://visa.wd5.myworkdayjobs.com/en-US/Visa/job/US---San-Francisco-CA/Visa-Leadership-Associate-Program--VLA---New-College-Graduate-Rotational-Program--2027_REF088605W-2", closes: "2026-09-24" }]
+  },
+  "FIS": {
+    status: "open-now",
+    note: "The 2027 University Program is a two-year full-time program. The Data Analytics and AI track covers BI dashboards, data quality and AI tooling. The postings give no graduation window, so confirm that a December 2026 finish qualifies.",
+    openings: [{ title: "Data Analytics and AI, FIS University Program", loc: "Jacksonville, FL; Atlanta, GA; Milwaukee, WI", url: "https://fis.wd5.myworkdayjobs.com/en-US/SearchJobs/job/US-FL-JAX-347/Data-Analytics-and-AI--FIS-University-Program_JR0309689" }, { title: "Product Management, FIS University Program", loc: "Jacksonville, FL; Atlanta, GA; Milwaukee, WI", url: "https://fis.wd5.myworkdayjobs.com/en-US/SearchJobs/job/US-FL-JAX-347/Product-Management--FIS-University-Program_JR0309693" }, { title: "Risk and Cybersecurity, FIS University Program", loc: "Jacksonville, FL; Atlanta, GA; Milwaukee, WI", url: "https://fis.wd5.myworkdayjobs.com/en-US/SearchJobs/job/US-FL-JAX-347/Risk-and-Cybersecurity--FIS-University-Program_JR0309682" }]
+  },
+  "Citi": {
+    status: "open-now",
+    note: "U.S. Consumer Cards wants graduates finishing between December 2026 and June 2027 with a 3.3 GPA and pays $90,000. The Internal Audit analyst classes pay $75,000 in Dallas and $70,000 in Tampa. <strong>All three are past the close date their postings anticipated</strong> (August 6 for Internal Audit, September 15 for Cards) but are still up, so they may come down without notice.",
+    openings: [{ title: "U.S. Consumer Cards &ndash; Full-Time Analyst, New York, 2027", loc: "New York, NY", url: "https://citi.wd5.myworkdayjobs.com/en-US/2/job/New-York-New-York-United-States/US-Consumer-Cards---Full-Time-Analyst--New-York---USA--2027_26989043" }, { title: "Functions &ndash; Internal Audit, Full-Time Analyst, Dallas, 2027", loc: "Irving, TX", url: "https://citi.wd5.myworkdayjobs.com/en-US/2/job/Irving-Texas-United-States/Functions---Internal-Audit--Full-Time-Analyst--Dallas---USA--2027_26983260" }, { title: "Functions &ndash; Internal Audit, Full-Time Analyst, Tampa, 2027", loc: "Tampa, FL", url: "https://citi.wd5.myworkdayjobs.com/en-US/2/job/Tampa-Florida-United-States/Functions---Internal-Audit--Full-Time-Analyst--Tampa---USA--2027_26983267" }]
+  },
+  "Wells Fargo": {
+    status: "open-now",
+    note: "<strong>The Audit and Finance programs stop taking applications on September 30.</strong> Both want graduation between December 2026 and June 2027, and Audit names Information Systems as an accepted major. The St. Louis Wealth &amp; Investment Management class starts August 2027.",
+    openings: [{ title: "2027 Audit Analyst Development Program &ndash; Early Careers", loc: "Charlotte, NC; Irving, TX; Minneapolis, MN", url: "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/CHARLOTTE-NC/XMLNAME-2027-Audit-Analyst-Development-Program---Early-Careers_R-574043", closes: "2026-09-30" }, { title: "2027 Finance Analyst Rotational Program &ndash; Early Careers", loc: "Charlotte, NC; Irving, TX; Minneapolis, MN", url: "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/CHARLOTTE-NC/XMLNAME-2027-Finance-Analyst-Rotational-Program---Early-Careers_R-573947", closes: "2026-09-30" }, { title: "2027 Wealth &amp; Investment Management Analyst Program &ndash; Early Careers", loc: "St. Louis, MO", url: "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/SAINT-LOUIS-MO/XMLNAME-2027-Wealth---Investment-Management-Analyst-Program---Early-Careers_R-575207", closes: "2026-10-06" }]
+  },
+  "EY": {
+    status: "open-now",
+    note: "<strong>The Assurance Data and Intelligence Delivery Analyst role lists Salt Lake City</strong> among 13 offices and pays $78,000&ndash;100,000. The Consulting Risk Technology Staff role pays $82,000&ndash;95,000 but is not offered in Utah. EY asks candidates to send no more than two applications in six months, so choose one.",
+    openings: [{ title: "USA &ndash; Assurance &ndash; Data and Intelligence Delivery &ndash; Analyst", loc: "Salt Lake City, UT and 12 other offices", url: "https://eyglobal.yello.co/jobs/AZkeE_LpYYLfvoE0TkyIJw" }, { title: "USA &ndash; Consulting &ndash; Risk Technology &ndash; Staff", loc: "Atlanta, Chicago, New York, Dallas and more", url: "https://eyglobal.yello.co/jobs/yWSb8kT4fgrGjhxCCK0YFw" }]
+  },
+  "Deloitte": {
+    status: "open-now",
+    note: "<strong>Apply by September 23 for the first two.</strong> Technology Controls Advisory (IT controls and internal audit, $58,725&ndash;117,875) takes MIS and business-analytics majors. Business Analytics in Government &amp; Public Services is a winter 2027 start and requires eligibility for a security clearance. Cyber stays open until November 1.",
+    openings: [{ title: "Audit &amp; Assurance Analyst, Technology Controls Advisory (Summer/Fall 2027)", loc: "27 US offices, incl. Denver &amp; St. Louis", url: "https://apply.deloitte.com/en_US/careers/JobDetail/Audit-Assurance-Analyst-Technology-Controls-Advisory-Summer-Fall-2027/363237", closes: "2026-09-23" }, { title: "Government &amp; Public Services Analyst, Business Analytics (Winter 2027)", loc: "Washington, DC area", url: "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Government-Public-Services-Analyst-Business-Analytics-Winter-2027/362359", closes: "2026-09-23" }, { title: "Consultative Offerings Analyst, Cyber", loc: "22 US offices, incl. Denver", url: "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Analyst-Cyber/350255", closes: "2026-11-01" }]
+  },
+  "PwC": {
+    status: "open-now",
+    note: "<strong>Every 2027 DAT associate posting closes September 26.</strong> They cover IT controls, ERP integration and data integrity, and the listed majors include MIS and Business Analytics. Denver is the closest city, and there is an AI-focused DAT track. Pay is $53,500&ndash;104,000 depending on city.",
+    openings: [{ title: "Denver &ndash; Digital Assurance &amp; Transparency (DAT) &ndash; Associate &ndash; Summer/Fall 2027", loc: "Denver, CO", url: "https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/CO-Denver/Denver---Digital-Assurance---Transparency--DAT----Associate---Summer-Fall-2027_52926179EIB", closes: "2026-09-26" }, { title: "Digital Assurance &amp; Transparency (DAT) &ndash; Tech &ndash; Associate &ndash; Summer/Fall 2027", loc: "Chicago, New York, Dallas, San Francisco and more", url: "https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Digital-Assurance---Transparency--DAT----Tech---Associate---Summer-Fall-2027_52926176EIB", closes: "2026-09-26" }, { title: "Digital Assurance &amp; Transparency (DAT) &ndash; Artificial Intelligence &ndash; Associate &ndash; Summer/Fall 2027", loc: "Chicago, Dallas, New York", url: "https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Digital-Assurance---Transparency--DAT----Artificial-Intelligence---Associate---Summer-Fall-2027_52926177EIB", closes: "2026-09-26" }]
+  },
+  "KPMG": {
+    status: "open-now",
+    note: "Technology Assurance associates start in summer or fall 2027. The posting says the earliest graduation date is November 2026 and the latest is July 2027. It requires an MIS, accounting-information-systems or equivalent degree, and ERP, AI and data-analysis skills are a plus.",
+    openings: [{ title: "Technology Assurance Associate (Summer/Fall 2027)", loc: "Boston, Dallas, Houston, New York area", url: "https://www.kpmguscareers.com/jobdetail/?jobId=137249", program: true }]
+  },
+  "Protiviti": {
+    status: "open-now",
+    note: "2027 Technology Consulting consultants are placed into areas such as Enterprise Data, Analytics &amp; AI or Technology Risk &amp; Resilience. Chicago pays $72,000&ndash;87,000 plus a $2,000 bonus target. The posting gives no graduation window.",
+    openings: [{ title: "Chicago Technology Consulting Consultant &ndash; 2027", loc: "Chicago, IL", url: "https://roberthalf.wd1.myworkdayjobs.com/en-US/ProtivitiGraduate/job/CHICAGO/Chicago-Technology-Consulting-Consultant---2027_JR-257687-1" }, { title: "Atlanta Technology Consulting Consultant &ndash; 2027", loc: "Atlanta, GA", url: "https://roberthalf.wd1.myworkdayjobs.com/en-US/ProtivitiGraduate/job/ATLANTA---PEACHTREE-RD/Atlanta-Technology-Consulting-Consultant---2027_JR-257677-1" }]
+  },
+  "Accenture": {
+    status: "open-now",
+    note: "The Maryville Technology Strategy &amp; Transformation analyst role takes bachelor's graduates finishing by May 2027. Accenture expects to keep it posted until October 16. It is about 90% on site for the first two years.",
+    openings: [{ title: "Maryville &ndash; Technology Strategy and Transformation Analyst (NAELFY27)", loc: "St. Louis, MO; Boston, MA", url: "https://accenture.wd103.myworkdayjobs.com/en-US/AccentureCareers/job/St-Louis-4220-Duncan-Avenue-Corp/Maryville---Technology-Strategy-and-Transformation-Analyst---StLouis---Boston---Naelfy27_R00356084-1", closes: "2026-10-16", program: true }]
   }
 };
 
@@ -1962,6 +2422,14 @@ const APPLY_LABEL = {
 COMPANIES.forEach(c => {
   c.apply = APPLY_STATUS[c.name] || { status: "watch", note: "Not re-verified this refresh &mdash; check the board." };
   c.apply.openings = c.apply.openings || [];
+  // Openings carry the closing date their posting states. Once every opening a new graduate could
+  // reach has passed it (by this browser's clock), the employer is no longer a live role, whatever
+  // the board said on REFRESH_DATE.
+  const reachable = o => !isClosed(o) && !(typeof o.yrs === 'number' && o.yrs >= 2);
+  if (c.apply.status === 'open-now' && c.apply.openings.some(isClosed) && !c.apply.openings.some(reachable)) {
+    c.apply.status = 'watch';
+    c.apply.note = '<strong>Every entry-level opening listed here has passed its closing date.</strong> ' + c.apply.note;
+  }
 });
 
 // === CAREER FAIRS ===
@@ -1990,11 +2458,11 @@ const resultsCount = document.getElementById('results-count');
 const resetBtn = document.getElementById('reset');
 const filterChips = document.querySelectorAll('#filters .chip[data-filter]');
 
-const state = { search: '', role: null, loc: null, ind: null, tier: null, apply: null, alumni: null };
+const state = { search: '', role: null, loc: null, ind: null, tier: null, apply: null, alumni: null, mine: null, prog: null };
 const ALUMNI_BONUS = { strong: 3, some: 1 };
 // Which resume the board is currently tailored to. The built-in board is the curated default; the
 // tailoring module at the bottom of this script swaps in uploaded profiles.
-let PROFILE = { id: 'default', uofu: false, geoLabel: 'SLC Area', cohortLabel: 'new grad', city: 'Salt Lake City, UT' };
+let PROFILE = { id: 'default', uofu: false, geoLabel: 'SLC Area', cohortLabel: 'new grad', city: 'Salt Lake City, UT', slc: true };
 let SUGGESTED = []; // extra employers Claude proposes when the candidate's home base is outside the Salt Lake area
 const cohort = s => s.replace('Dec 2026 grad', () => escHtml(PROFILE.cohortLabel));
 const escHtml = s => String(s ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -2010,17 +2478,25 @@ const BADGE_LABEL = {
 
 // Hide any Timing/Where chip nothing can match, so no filter ever leads to an empty board.
 function syncChips() {
-  const shown = COMPANIES.concat(SUGGESTED);
+  const shown = COMPANIES.filter(c => !c.untailored).concat(SUGGESTED);
   document.querySelectorAll('.chip[data-filter="apply"], .chip[data-filter="loc"], .chip[data-filter="ind"]').forEach(chip => {
     const f = chip.dataset.filter, v = chip.dataset.value;
     const has = shown.some(c => f === 'apply' ? c.apply.status === v : f === 'ind' ? c.industry.includes(v) : c.locType === v);
     chip.hidden = !has;
     if (!has && state[f] === v) { state[f] = null; chip.classList.remove('active'); }
   });
+  // The relocation chip reads each opening's own city relative to Salt Lake, so it only means
+  // something while the board is still Salt Lake-relative (a tailoring run can re-map geography).
+  const prog = document.querySelector('.chip[data-filter="prog"]');
+  if (prog) {
+    const has = PROFILE.slc !== false && COMPANIES.some(c => !c.untailored && relocProg(c));
+    prog.hidden = !has;
+    if (!has && state.prog) { state.prog = null; prog.classList.remove('active'); }
+  }
   // Collapse a group only when this function owns every chip in it (the Utes group is managed by applyProfile).
   document.querySelectorAll('.filter-group').forEach(g => {
     const chips = Array.from(g.querySelectorAll('.chip[data-filter]'));
-    if (chips.length && chips.every(c => ['apply', 'loc', 'ind'].includes(c.dataset.filter))) {
+    if (chips.length && chips.every(c => ['apply', 'loc', 'ind', 'prog'].includes(c.dataset.filter))) {
       g.hidden = chips.every(c => c.hidden);
     }
   });
@@ -2028,8 +2504,9 @@ function syncChips() {
 
 function render() {
   const q = state.search.trim().toLowerCase();
-  const ALL = COMPANIES.concat(SUGGESTED);
-  const bestBoard = COMPANIES.length ? Math.max(...COMPANIES.map(shownScore)) : 0;
+  const SHOWN = COMPANIES.filter(c => !c.untailored);
+  const ALL = SHOWN.concat(SUGGESTED);
+  const bestBoard = SHOWN.length ? Math.max(...SHOWN.map(shownScore)) : 0;
   const bestSuggested = SUGGESTED.length ? Math.max(...SUGGESTED.map(shownScore)) : 0;
   // A clear gap means the board is background reading for this person.
   const boardIsBackground = bestSuggested >= bestBoard + 8;
@@ -2042,6 +2519,9 @@ function render() {
       if (state.tier && c.tier !== Number(state.tier)) return false;
       if (state.apply && c.apply.status !== state.apply) return false;
       if (state.alumni && !c.alumni) return false;
+      if (state.prog && !relocProg(c)) return false;
+      if (state.mine === 'applied' && !appsFor(c).length) return false;
+      if (state.mine === 'todo' && !(c.apply.status === 'open-now' && c.apply.openings.some(o => !isClosed(o) && !appliedTo(c, o)))) return false;
       if (q && !(`${c.name} ${c.location} ${c.why} ${c.industry.join(' ')} ${c.apply.openings.map(o => o.title).join(' ')}`.toLowerCase().includes(q))) return false;
       return true;
     })
@@ -2076,8 +2556,9 @@ function render() {
       ${c.apply.openings.length ? `
       <div class="openings-label">Verified live ${REFRESH_DATE}</div>
       <ul class="openings">
-        ${c.apply.openings.map(o => `<li><a href="${o.url}" target="_blank" rel="noopener">${o.title}</a>${o.yrs >= 2 ? `<span class="oyrs" title="This posting asks for ${o.yrs}+ years of experience, so it is not an entry-level opening">${o.yrs}+ yrs</span>` : ''}<span class="oloc">${o.loc}</span></li>`).join('')}
+        ${c.apply.openings.map(o => openingHtml(c, o)).join('')}
       </ul>` : ''}
+      ${myAppsHtml(c)}
       <p class="why">${c.why}</p>
       <div class="role-tags">
         ${c.roles.map(r => `<span class="role-tag">${ROLE_LABEL[r]}</span>`).join('')}
@@ -2138,11 +2619,288 @@ search.addEventListener('input', e => {
 
 resetBtn.addEventListener('click', () => {
   state.search = '';
-  state.role = state.loc = state.ind = state.tier = state.apply = state.alumni = null;
+  state.role = state.loc = state.ind = state.tier = state.apply = state.alumni = state.mine = state.prog = null;
   search.value = '';
   document.querySelectorAll('#filters .chip.active').forEach(c => c.classList.remove('active'));
   render();
 });
+
+// === OPENING TAGS ===
+// A company-level "Remote" or "SLC Area" label hides the fact that a specific opening may sit in
+// another city. These read each opening's own location. They are Salt Lake-relative, so they are
+// shown only while the board still is (PROFILE.slc), never after a tailoring run re-maps geography.
+// Only unambiguous place names: Sandy Springs, GA and Lehigh Valley, PA are not Utah. Openings in
+// Sandy or Midvale also say "UT", which is what matches them.
+const HOME_RE = /\b(?:UT|Utah)\b|salt lake|\blehi\b|\bprovo\b|\borem\b|south jordan|american fork|\blindon\b/i;
+// A bare "program" is not enough ("Senior Technical Program Manager"), and an internship is not a
+// new-grad program even when its title carries the year.
+const PROGRAM_RE = /new[ -]?grad|new college grad|\bgraduate\b|early[- ]career|early in career|\buniversity\b|\bcampus\b|rotational|class of|\b20(?:26|27)\b|\b(?:development|leadership|leaders|rotation|analyst|associate|launch|graduate|technology|banker|foundational|trainee|academy)\s+program\b/i;
+const NOT_PROGRAM_RE = /\binterns?(?:hip)?\b|\bco-?op\b|\bsenior\b|\bmanager\b|\bdirector\b/i;
+// The entry rung of product management carries the word "manager" (kept in step with refresh.py).
+const ENTRY_MANAGER_RE = /\b(?:associate|junior|jr\.?)\s+(?:product|program|project)\s+manager\b|\bAPM\b/gi;
+function openingGeo(o) {
+  if (o.geo) return o.geo;
+  const l = o.loc || '';
+  return HOME_RE.test(l) ? 'home' : /\bremote\b/i.test(l) ? 'remote' : 'relocate';
+}
+const isProgram = o => {
+  if (o.program === true || o.program === false) return o.program;
+  const t = String(o.title || '').replace(ENTRY_MANAGER_RE, ' associate ');   // "Associate Program Manager" is a job, not a program
+  return PROGRAM_RE.test(t) && !NOT_PROGRAM_RE.test(t);
+};
+// An opening's "closes" date comes from the posting itself. It is compared with today's date in
+// this browser, so a board that has not been refreshed says plainly when a deadline has passed.
+// Declared as functions, not consts, because the status pass near the top of the script calls them.
+function daysUntilClose(o) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test((o && o.closes) || '')) return null;
+  const now = new Date(), close = new Date(o.closes + 'T00:00:00');   // both local midnight
+  return Math.round((close - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
+}
+function isClosed(o) { const d = daysUntilClose(o); return d !== null && d < 0; }
+function closesTag(o) {
+  const days = daysUntilClose(o);
+  if (days === null) return '';
+  const when = new Date(o.closes + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  if (days < 0) return `<span class="otag closed" title="The posting's closing date, ${escHtml(when)}, has passed">closed ${escHtml(when)}</span>`;
+  const label = days === 0 ? 'closes today' : `closes ${when}`;
+  return `<span class="otag ${days <= 7 ? 'soon' : 'closes'}" title="The date the posting says it stops taking applications">${escHtml(label)}</span>`;
+}
+// A company worth moving for: a live or upcoming structured new-grad program somewhere other than here.
+const relocProg = c => !c.suggested && (c.apply.status === 'open-now' || c.apply.status === 'opens-later') &&
+  c.apply.openings.some(o => isProgram(o) && !isClosed(o) && openingGeo(o) === 'relocate');
+function openingHtml(c, o) {
+  const mine = appliedTo(c, o);
+  const tags = [
+    isProgram(o) ? '<span class="otag prog" title="Built for new graduates: a structured program or an explicitly new-grad requisition">new-grad program</span>' : '',
+    closesTag(o),
+    o.yrs >= 2 ? `<span class="oyrs" title="This posting asks for ${o.yrs}+ years of experience, so it is not an entry-level opening">${o.yrs}+ yrs</span>` : '',
+    PROFILE.slc && openingGeo(o) === 'relocate' ? '<span class="otag move" title="This opening is not in the Salt Lake area and is not remote">relocate</span>' : '',
+    mine ? `<span class="otag applied" title="${escHtml(mine.status)}${mine.note ? ' · ' + escHtml(mine.note) : ''}">applied ${escHtml(shortDate(mine.applied))}</span>` : '',
+  ].join('');
+  return `<li${isClosed(o) ? ' class="closed"' : ''}><span class="otitle"><a href="${o.url}" target="_blank" rel="noopener">${o.title}</a>${tags}</span><span class="oloc">${o.loc}</span></li>`;
+}
+
+// === MY APPLICATIONS ===
+// Where you have applied, kept in this browser's localStorage and nowhere else. It is deliberately
+// not part of COMPANIES or APPLY_STATUS: this page is published, and a published board must never
+// carry one person's job search. Import and export move the list between browsers as a JSON file.
+const APP_STATUSES = ['pending', 'interview', 'offer', 'rejected', 'withdrawn'];
+const APPS_KEY = 'jf.applications', APPS_FILE_KEY = 'jf.applications.fileSig';
+let APPS = [];
+const appNorm = s => String(s || '').toLowerCase().replace(/&amp;/g, '&').replace(/&[a-z]+;|&#\d+;/g, ' ')
+  .replace(/\bn\.\s?a\.?(?=\W|$)/g, 'na').replace(/[^a-z0-9]+/g, ' ').trim();
+// Company matching. Kept in step with same_company() in refresh.py, so the page and the report agree.
+// Words that can follow a name without making it a different company:
+const NAME_SUFFIX = new Set(['inc', 'incorporated', 'corp', 'corporation', 'co', 'company', 'llc', 'llp', 'lp', 'ltd', 'plc', 'us', 'usa', 'group', 'holdings',
+  'bancorporation', 'bancorp', 'bank', 'financial', 'software', 'technologies', 'technology', 'labs', 'services', 'pharmaceuticals', 'na', 'the']);
+// Other names people use for an employer on the board, keyed by the board name without its parenthetical:
+const NAME_ALIASES = {
+  'cicero group': ['mgt', 'cicero', 'mgt consulting'],
+  'wgu': ['western governors university', 'western governors'],
+  'zions bancorporation': ['zions', 'zions bank'],
+  'jpmorgan chase': ['jpmorganchase', 'jp morgan', 'j p morgan', 'jpmorgan', 'jp morgan chase', 'chase', 'neovest'],
+  'morgan stanley': ['parametric', 'e trade', 'etrade'],
+  'america first credit union': ['america first', 'afcu'],
+  'vivint smart home': ['vivint', 'nrg', 'nrg energy'],
+  'instructure': ['canvas lms'],
+  'ey': ['ernst young', 'ernst and young'],
+  'pwc': ['pricewaterhousecoopers', 'pricewaterhouse coopers'],
+  'deloitte': ['deloitte touche', 'deloitte and touche', 'deloitte consulting', 'deloitte advisory'],
+  'citi': ['citigroup', 'citibank'],
+  'american express': ['amex'],
+  'fidelity investments': ['fidelity', 'fmr'],
+  'fis': ['fis global', 'fidelity national information services'],
+  'vanguard': ['the vanguard group', 'vanguard group'],
+  'freddie mac': ['federal home loan mortgage corporation'],
+  'fannie mae': ['federal national mortgage association'],
+};
+function nameVariants(name) {
+  const base = appNorm(String(name || '').replace(/\(.*?\)/g, ' '));
+  const out = new Set([base]);
+  Object.entries(NAME_ALIASES).forEach(([canon, names]) => {
+    if (base === canon || names.includes(base)) { out.add(canon); names.forEach(n => out.add(n)); }
+  });
+  out.delete('');
+  return out;
+}
+function closeName(a, b) {
+  if (a === b) return true;
+  const [short, long] = a.length <= b.length ? [a, b] : [b, a];
+  return long.startsWith(short + ' ') && long.slice(short.length).trim().split(' ').every(w => NAME_SUFFIX.has(w));
+}
+// "Zions" matches "Zions Bancorporation" and "MGT" matches "Cicero Group (MGT)", but "Pattern Energy"
+// is not Pattern, "Canvas Credit Union" is not Instructure (Canvas), and "Capital One" is not iCapital.
+function sameCompany(a, b) {
+  const A = nameVariants(a), B = nameVariants(b);
+  for (const x of A) for (const y of B) if (closeName(x, y)) return true;
+  return false;
+}
+const MONTHS = { jan: 'january', feb: 'february', mar: 'march', apr: 'april', jun: 'june', jul: 'july', aug: 'august', sep: 'september', sept: 'september', oct: 'october', nov: 'november', dec: 'december' };
+const titleTokens = t => new Set(appNorm(String(t || '').replace(/<[^>]+>/g, ' ')).split(' ')
+  .filter(w => w && !['2026', '2027', 'the', 'of', 'and'].includes(w)).map(w => MONTHS[w] || w));
+function titleOverlap(a, b) {
+  const A = titleTokens(a), B = titleTokens(b);
+  if (!A.size || !B.size) return 0;
+  let both = 0; A.forEach(w => { if (B.has(w)) both++; });
+  return both / (A.size + B.size - both);
+}
+const appsFor = c => c.suggested ? [] : APPS.filter(a => sameCompany(a.company, c.name));
+// 0.8, so a sibling posting that adds a word is not mistaken for the one actually applied to
+const placeWords = s => new Set(appNorm(s).split(' ').filter(w => w.length > 2 && !['and', 'more', 'other', 'offices', 'incl', 'area', 'usa'].includes(w)));
+const appliedTo = (c, o) => appsFor(c).find(a => {
+  if (titleOverlap(a.title, o.title) < 0.8) return false;
+  // Visa posts the same APM title in Foster City and Austin: an application names one city.
+  const twins = c.apply.openings.filter(x => x !== o && titleOverlap(x.title, o.title) >= 0.8);
+  if (!twins.length || !a.location) return true;
+  const here = placeWords(o.loc);
+  return [...placeWords(a.location)].some(w => here.has(w));
+}) || null;
+const shortDate = iso => { const d = new Date(String(iso || '') + 'T00:00:00'); return isNaN(d) ? '' : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); };
+const localISODate = (d = new Date()) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+function myAppsHtml(c) {
+  const mine = appsFor(c);
+  if (!mine.length) return '';
+  const rows = mine.slice(0, 4).map(a => `<strong>${escHtml(a.title)}</strong> &middot; ${escHtml(shortDate(a.applied))}<span class="st ${escHtml(a.status)}">${escHtml(a.status)}</span>${a.note ? ` <span>${escHtml(a.note)}</span>` : ''}`);
+  return `<div class="my-apps">You applied: ${rows.join('<br>')}${mine.length > 4 ? `<br>+${mine.length - 4} more` : ''}</div>`;
+}
+(function applications() {
+  const $ = id => document.getElementById(id);
+  const str = v => typeof v === 'string' ? v.trim() : '';
+  // Returns the cleaned row plus which fields the source actually supplied, so an import that omits a
+  // note or a status never blanks one that is already stored.
+  function cleanApp(a) {
+    if (!a || typeof a !== 'object') return null;
+    const company = str(a.company).slice(0, 80), title = str(a.title).slice(0, 140);
+    if (!company || !title) return null;
+    const row = { company, title, location: str(a.location).slice(0, 80), applied: '', status: 'pending', note: str(a.note).slice(0, 200) };
+    const given = new Set(['company', 'title']);
+    if (/^\d{4}-\d{2}-\d{2}$/.test(str(a.applied))) { row.applied = str(a.applied); given.add('applied'); }
+    if (APP_STATUSES.includes(a.status)) { row.status = a.status; given.add('status'); }
+    if (str(a.location)) given.add('location');
+    if (str(a.note)) given.add('note');
+    return { row, given };
+  }
+  const keyOf = a => appNorm(a.company) + '|' + appNorm(a.title);
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : v; } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } },
+  };
+  const load = () => { try { const v = JSON.parse(store.get(APPS_KEY, '[]')); return Array.isArray(v) ? v.map(cleanApp).filter(Boolean).map(x => x.row) : []; } catch (e) { return []; } };
+  let saveFailed = false;
+  const save = () => { saveFailed = !store.set(APPS_KEY, JSON.stringify(APPS)); return !saveFailed; };
+  // updateExisting=false for the Add form: typing a tracked job again must not reset its status or note.
+  function merge(list, updateExisting = true) {
+    const byKey = new Map(APPS.map(a => [keyOf(a), a]));
+    let added = 0, updated = 0;
+    (Array.isArray(list) ? list : []).slice(0, 500).map(cleanApp).filter(Boolean).forEach(({ row, given }) => {
+      const had = byKey.get(keyOf(row));
+      if (!had) { byKey.set(keyOf(row), row); added++; return; }
+      if (!updateExisting) return;
+      let changed = false;
+      given.forEach(k => { if (had[k] !== row[k]) { had[k] = row[k]; changed = true; } });
+      if (changed) updated++;
+    });
+    APPS = Array.from(byKey.values()).sort((x, y) => String(y.applied || '').localeCompare(String(x.applied || '')));
+    return { added, updated };
+  }
+  const say = msg => { $('apps-status').textContent = msg; };
+  // persist=false is the first paint: a visitor who tracks nothing should not have a key written for them
+  function refresh(persist = true) {
+    if (persist && !save()) say('Could not save: this browser is blocking or out of storage, so the list will be gone after a reload. Use Export JSON to keep a copy.');
+    const active = APPS.filter(a => a.status === 'pending' || a.status === 'interview' || a.status === 'offer').length;
+    $('apps-count').textContent = APPS.length ? String(APPS.length) : '';
+    $('mine-group').hidden = APPS.length === 0;
+    if (!APPS.length && state.mine) { state.mine = null; document.querySelectorAll('.chip[data-filter="mine"]').forEach(ch => ch.classList.remove('active')); }
+    $('apps-summary').textContent = (APPS.length
+      ? `${APPS.length} application${APPS.length === 1 ? '' : 's'} · ${active} still active · ${APPS.filter(a => a.status === 'rejected').length} rejected`
+      : 'Nothing tracked yet. Add an application below, or import a JSON file.') + (saveFailed ? ' · NOT SAVED in this browser' : '');
+    // The same question refresh.py asks: which of these could this board never have shown you?
+    const off = APPS.filter(a => !COMPANIES.some(c => sameCompany(a.company, c.name)));
+    const unlisted = APPS.filter(a => { const c = COMPANIES.find(x => sameCompany(a.company, x.name)); return c && !c.apply.openings.some(o => titleOverlap(a.title, o.title) >= 0.8); });
+    const gap = $('apps-gap');
+    gap.hidden = !(off.length || unlisted.length);
+    gap.textContent = (off.length ? `${off.length} of these ${off.length === 1 ? 'is at an employer' : 'are at employers'} this board does not cover (${Array.from(new Set(off.map(a => a.company))).join(', ')}). ` : '')
+      + (unlisted.length ? `${unlisted.length} more ${unlisted.length === 1 ? 'is a role' : 'are roles'} the board does not list even though it covers the employer. ` : '')
+      + 'A hand-picked board only shows what someone thought to add, so treat each of these as a lead on what to add next.';
+    $('apps-list').innerHTML = APPS.map((a, i) => {
+      const onBoard = COMPANIES.some(c => sameCompany(a.company, c.name));
+      return `<div class="apps-row">
+        <span class="when">${escHtml(shortDate(a.applied))}</span>
+        <span class="who"><strong>${escHtml(a.company)}</strong> &middot; ${escHtml(a.title)} <span class="${onBoard ? 'onboard' : 'offboard'}">${onBoard ? 'on this board' : 'not on this board'}</span>${a.note ? `<br>${escHtml(a.note)}` : ''}</span>
+        <select data-i="${i}" aria-label="Status of the ${escHtml(a.company)} application">${APP_STATUSES.map(st => `<option value="${st}"${st === a.status ? ' selected' : ''}>${st}</option>`).join('')}</select>
+        <button type="button" class="del" data-i="${i}" title="Remove" aria-label="Remove the ${escHtml(a.company)} application">&times;</button>
+      </div>`;
+    }).join('');
+    render();
+  }
+  const open = () => { $('apps-modal').hidden = false; if (!saveFailed) say(''); };
+  const close = () => { $('apps-modal').hidden = true; };
+  $('open-apps').addEventListener('click', open);
+  $('apps-close').addEventListener('click', close);
+  $('apps-modal').addEventListener('click', e => { if (e.target === $('apps-modal')) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('apps-modal').hidden) close(); });
+  $('apps-list').addEventListener('change', e => {
+    const i = Number(e.target.dataset.i);
+    if (e.target.tagName === 'SELECT' && APPS[i] && APP_STATUSES.includes(e.target.value)) { APPS[i].status = e.target.value; refresh(); }
+  });
+  $('apps-list').addEventListener('click', e => {
+    if (!e.target.classList.contains('del')) return;
+    const i = Number(e.target.dataset.i);
+    if (APPS[i]) { APPS.splice(i, 1); refresh(); }
+  });
+  $('app-add').addEventListener('click', () => {
+    const cleaned = cleanApp({ company: $('app-company').value, title: $('app-title').value, applied: $('app-date').value, status: 'pending' });
+    if (!cleaned) return say('Enter both a company and a role title.');
+    const r = merge([cleaned.row], false);
+    if (r.added) { $('app-company').value = $('app-title').value = ''; }
+    refresh();
+    if (!saveFailed) say(r.added ? 'Added.' : 'Already tracked. Change its status in the list above.');
+  });
+  $('apps-import').addEventListener('click', () => $('apps-file').click());
+  $('apps-file').addEventListener('change', async e => {
+    const f = e.target.files[0];
+    e.target.value = '';
+    if (!f) return;
+    let list;
+    try { list = JSON.parse(await f.text()); } catch (err) { return say('That file is not valid JSON.'); }
+    if (!Array.isArray(list)) return say('That file is JSON, but not a list of applications.');
+    const r = merge(list);
+    refresh();
+    if (!saveFailed) say(`Imported: ${r.added} added, ${r.updated} updated.`);
+  });
+  $('apps-export').addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(APPS, null, 1)], { type: 'application/json' }));
+    a.download = 'applications.json';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+  $('apps-clear').addEventListener('click', () => {
+    if (APPS.length && confirm(`Remove all ${APPS.length} tracked applications from this browser?`)) { APPS = []; refresh(); }
+  });
+  $('app-date').value = localISODate();
+
+  APPS = load();
+  // Running the page from your own checkout: read applications.json if it sits next to the page. The
+  // file is git-ignored, so it exists on your machine and never on a published copy, which is why this
+  // only runs on localhost. It is merged whenever its contents change, and never re-applied unchanged,
+  // so a Clear all or a status changed here survives a reload until you next edit the file.
+  if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
+    fetch('applications.json', { cache: 'no-store' }).then(r => r.ok ? r.text() : null).then(text => {
+      if (!text) return;
+      let h = 5381; for (let i = 0; i < text.length; i++) h = ((h * 33) ^ text.charCodeAt(i)) >>> 0;
+      const sig = text.length + ':' + h;
+      if (store.get(APPS_FILE_KEY, '') === sig) return;
+      let list; try { list = JSON.parse(text); } catch (e) { return; }
+      if (!Array.isArray(list)) return;
+      merge(list);
+      store.set(APPS_FILE_KEY, sig);
+      refresh();
+    }).catch(() => {});
+  }
+  window.JobFinderApps = { list: () => APPS.slice(), merge: l => { const r = merge(l); refresh(); return r; }, clear: () => { APPS = []; refresh(); } };
+  refresh(false);
+})();
 
 syncChips();
 render();
@@ -2174,6 +2932,12 @@ render();
   // --- snapshot of the built-in board so uploaded profiles can be swapped in and out ---
   const BASE = {};
   COMPANIES.forEach(c => { BASE[c.name] = { score: c.score, tier: c.tier, badges: c.badges.slice(), why: c.why, status: c.apply.status, note: c.apply.note, locType: c.locType, openings: c.apply.openings }; });
+  // What an employer's timing note is about: its status and which openings are listed. When this changes
+  // between tailoring and today, the tailored note describes a board that no longer exists.
+  const factSigOf = b => b.status + '|' + (b.openings || []).map(o => o.url).sort().join(',');
+  // The board date a profile was tailored against. Older profiles did not record it, so fall back to the
+  // LOCAL calendar date of tailoring (a UTC date would call an evening run the next day).
+  const profileBoardDate = p => p.boardDate || (Number.isFinite(p.createdAt) ? localISODate(new Date(p.createdAt)) : '0000-00-00');
   const HEAD = {
     avatar: document.querySelector('.avatar'),
     h1: document.querySelector('.brand h1'),
@@ -2226,7 +2990,12 @@ render();
   function footerHtml(p) {
     const when = new Date(p.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
     const model = (MODELS[p.model] || {}).label || p.model;
+    const changed = COMPANIES.some(c => { const t = p.companies[c.name]; return t && t.factSig && t.factSig !== factSigOf(BASE[c.name]); });
+    const stale = profileBoardDate(p) < REFRESH_DATE || changed;
+    const hidden = COMPANIES.filter(c => !p.companies[c.name]).map(c => c.name);
     return `Built for ${esc(p.name)} &middot; Tailored ${esc(when)} with ${esc(model)} &middot; Board data verified ${REFRESH_DATE}
+      ${stale ? `<br><strong style="color: var(--gold);">The board was re-verified${profileBoardDate(p) < REFRESH_DATE ? ` on ${REFRESH_DATE}` : ''} after this profile was tailored.</strong> Each card's status and openings are current; the two lines below were written on ${esc(when)}, so re-run the tailoring for fresh advice.` : ''}
+      ${hidden.length ? `<br>${hidden.length} employer${hidden.length === 1 ? ' was' : 's were'} not scored for this profile and ${hidden.length === 1 ? 'is' : 'are'} hidden (${esc(hidden.slice(0, 6).join(', '))}${hidden.length > 6 ? ', …' : ''}). Switch to the original board to see ${hidden.length === 1 ? 'it' : 'them'}, or re-run the tailoring to include ${hidden.length === 1 ? 'it' : 'them'}.` : ''}
       <br><strong style="color: var(--gold);">Apply now:</strong> ${rich(p.applyNow)}
       <br><strong style="color: var(--accent-2);">Watch later:</strong> ${rich(p.watchLater)}
       <br>Match scores reflect resume alignment (skills, domain, geography, new-grad pipelines). Openings and timing were verified for the board on ${REFRESH_DATE}, not re-checked per resume.`;
@@ -2244,18 +3013,53 @@ render();
     PROFILE = custom
       ? { id: p.id, uofu: !!p.uofu, geoLabel: p.geoLabel || 'Near you', cohortLabel: p.cohortLabel || 'this candidate', city: p.city || '' }
       : { id: 'default', uofu: false, geoLabel: 'SLC Area', cohortLabel: 'new grad', city: 'Salt Lake City, UT' };
+    // A saved profile froze each employer's timing on the day it was tailored, against the board as it
+    // stood then (p.boardDate). Timing is a fact about the board, re-verified on REFRESH_DATE, so once the
+    // board is newer the board's own status wins; only a "wrong-cohort" verdict survives, because it is
+    // about the candidate's graduation date rather than about what is posted. The tailored note is kept
+    // unless the employer's facts have changed since (factSig), because it was rewritten for this person
+    // and the built-in note may speak to the board's original audience.
+    const boardNewer = custom && profileBoardDate(p) < REFRESH_DATE;
+    // Profiles saved before experience was recorded cannot be re-capped: 0 years would be a guess.
+    const knowsYears = custom && typeof p.yearsExperience === 'number';
+    const yearsHad = knowsYears ? Math.max(0, Math.round(p.yearsExperience)) : 0;
     COMPANIES.forEach(c => {
       const b = BASE[c.name];
       const t = custom ? p.companies[c.name] : null;
+      // An employer this profile never scored (added to the board later, or skipped by the model) is
+      // hidden rather than shown with the board owner's score, text and home-city badge.
+      c.untailored = custom && !t;
       c.score = t ? t.score : b.score;
       c.tier = t ? t.tier : b.tier;
       c.badges = (t ? t.badges : b.badges).slice();
       c.why = t ? rich(t.why) : b.why;
-      c.apply.status = (t && t.status && t.status !== 'keep') ? t.status : b.status;
+      // The board can change on the same day it was re-verified, so the facts decide, not only the date.
+      const factsSame = !t || !t.factSig || t.factSig === factSigOf(b);
+      const ownVerdict = t && t.status && t.status !== 'keep' && ((!boardNewer && factsSame) || t.status === 'wrong-cohort');
+      c.apply.status = ownVerdict ? t.status : b.status;
       c.locType = (t && t.locType && t.locType !== 'keep') ? t.locType : b.locType;
-      c.apply.note = (t && t.note) ? rich(t.note) : b.note;
+      c.apply.note = (t && t.note && factsSame) ? rich(t.note) : b.note;
+      if (t && knowsYears) {
+        // Re-apply the same ceiling buildProfile uses, against the openings as they stand now, starting
+        // from the model's own score so a cap can lift as well as tighten when openings change.
+        const raw = typeof t.rawScore === 'number' ? t.rawScore : t.score;
+        const opens = (b.openings || []).filter(o => !isClosed(o));
+        if (opens.length) {
+          const gap = Math.min(...opens.map(o => (typeof o.yrs === 'number' ? o.yrs : 0))) - yearsHad;
+          c.score = Math.min(raw, gap >= 3 ? 70 : gap >= 2 ? 80 : 100);
+          if (gap >= 2 && c.apply.status === 'open-now') c.apply.status = 'watch';
+        } else {
+          c.score = raw;
+        }
+      }
+      // A company with no listed openings is never a live role for a tailored candidate.
+      if (t && boardNewer && c.apply.status === 'open-now' && !(b.openings || []).length) c.apply.status = 'watch';
     });
     SUGGESTED = custom ? (p.suggested || []).map(suggestedToCompany) : [];
+    if (custom) {
+      COMPANIES.filter(c => !c.untailored).concat(SUGGESTED).sort((x, y) => y.score - x.score)
+        .forEach((c, i) => { c.tier = i < 8 ? 1 : 2; });
+    }
     // Where-filter chips are SLC-relative on the built-in board; relabel them for the candidate's metro.
     const cityShort = (PROFILE.city || '').split(',')[0].trim();
     // Relabel only when Claude actually re-mapped the board; otherwise locTypes are still SLC-relative and the base labels are the truth.
@@ -2263,6 +3067,7 @@ render();
     // imply a different city, since they also appear for an in-town candidate in another field.
     const remapped = custom && COMPANIES.some(c => c.locType !== BASE[c.name].locType);
     const slc = !remapped;
+    PROFILE.slc = slc; // opening-level "relocate" tags are Salt Lake-relative, so render() shows them only in this mode
     const remoteFirst = custom && !cityShort && /remote/i.test(PROFILE.geoLabel);
     HEAD.where.local.textContent = slc ? BASE_HEAD.where.local : (remoteFirst || !PROFILE.geoLabel ? 'Near you' : PROFILE.geoLabel);
     HEAD.where.hybrid.textContent = slc ? BASE_HEAD.where.hybrid : (cityShort ? `Has ${cityShort} office` : 'Office near you');
@@ -2330,7 +3135,7 @@ Scores (60-100) measure how well THIS candidate fits THIS employer for an entry-
 
 Seniority is a gate, not a tiebreaker, and it outranks every other factor including domain and geography. First work out how much full-time professional experience this person will actually have on a realistic start date. For someone finishing an undergraduate degree that is normally none; internships, part-time jobs and coursework are not full-time years, however good they are. Then check what each employer is asking for. Some openings carry a "yearsRequired" number that was read off the live posting, and the timing notes often state it in words, so the evidence is usually there: use it. An opening asking three or more years cannot be a strong match for a new graduate no matter how perfectly the domain lines up. Cap that employer at 70 and let the why name the gap in the first clause. Two years caps it at 80. Only give 85 or more when there is a genuine route in at this person's level, meaning a new-grad or graduate programme, an internship-to-full-time pipeline, or a posting that says zero to one years or that internships count, and only give 95 to 100 when such a route is open right now and the domain and geography line up too. Titles are weak evidence: "Analyst I", "Associate" and "New Grad" usually mean entry-level, while "Senior", "Staff", "Lead", "Principal" and anything numbered II or higher do not. When a listed opening is out of reach on experience, say so plainly rather than suggesting they apply anyway.
 
-This board is narrow on purpose. Every employer on it hires into four role families and no others: AI and machine learning, software engineering, data and analytics, and product. So the question to settle first is not what industry the candidate is in, it is whether a recruiter would plausibly put this person in one of those four seats for an entry-level hire. Judge that on the evidence in the resume, not on the prestige of the degree. A chemistry or biology major with no programming, no SQL and no analytics projects does not belong in a data seat just because a couple of these employers work on health problems, and a business major whose experience is all retail shifts does not belong in a product seat. If the answer is no, do not stretch these companies to fit them. Score the board low and honestly, let each why name the gap in plain words rather than hunting for a tenuous link, open the summary by saying the board is aimed at data and AI work and this candidate is not, and put the real recommendations in the suggested list instead. A short board of honest 62s with twelve genuinely relevant suggested employers is a far better answer than sixty forced 80s. Never describe someone as a data candidate because the board is a data board.
+This board is narrow on purpose. Every employer on it hires into a few role families and no others: AI and machine learning, software engineering, data and analytics, product, and the technology side of audit, risk and assurance (IT audit, technology controls, data assurance). So the question to settle first is not what industry the candidate is in, it is whether a recruiter would plausibly put this person in one of those seats for an entry-level hire. Judge that on the evidence in the resume, not on the prestige of the degree. A chemistry or biology major with no programming, no SQL and no analytics projects does not belong in a data seat just because a couple of these employers work on health problems, and a business major whose experience is all retail shifts does not belong in a product seat. If the answer is no, do not stretch these companies to fit them. Score the board low and honestly, let each why name the gap in plain words rather than hunting for a tenuous link, open the summary by saying the board is aimed at data and AI work and this candidate is not, and put the real recommendations in the suggested list instead. A short board of honest 62s with twelve genuinely relevant suggested employers is a far better answer than sixty forced 80s. Never describe someone as a data candidate because the board is a data board.
 
 Do not rank or categorise the board yourself beyond the score: tiers and badges are derived from your scores and the board's own data, so there is nothing to decide there. The one exception is toolsMatch, a simple true or false per employer: true only when that employer's stack clearly overlaps a tool named on the resume, false otherwise. Do not deliberate over it; if you are unsure, it is false.
 
@@ -2340,7 +3145,7 @@ Timing: each company's "timing.status" (open-now, opens-later, watch, wrong-coho
 
 Geography. Home base is the metro the candidate wants to work in after graduation when the resume states one (an objective line, "relocating to X", "open to Y"); otherwise the city on the resume; otherwise infer it from the most recent school or employer city and say so in the summary. If even that is unclear, treat the candidate as Salt Lake based and say in the summary that the board assumes Salt Lake City. The board was curated around Salt Lake City, so each existing company's locType (local = based in or a major hub in SLC, hybrid = has an SLC office, remote = hires remote) is SLC-relative. If the home base is anywhere on the Wasatch Front (Salt Lake, Utah, Davis or Weber county: Salt Lake City, Provo, Orem, Lehi, Ogden, Park City...) or the candidate says they are moving to or targeting Salt Lake City, treat them as SLC-based: geoLabel "SLC Area", city "Salt Lake City, UT" (or their own Wasatch Front town) and locType "keep" for every company; if they are relocating, say in the summary that the board assumes the move. Otherwise do two things. (1) Re-map every existing company's locType relative to the candidate: local = headquartered or a major hub in the candidate's metro, hybrid = a smaller office there, remote = hires this kind of role remotely from where the candidate lives, far = would require relocation. (2) Add suggested employers, per the rule below.
 
-Suggested employers are the board's escape hatch, and they are needed whenever the researched list does not serve this person. Add them when the candidate lives outside the Salt Lake area, OR when the resume does not support hiring them into AI/ML, software, data or product work, or both. Only a candidate who is both in the Salt Lake area and a credible entry-level hire for one of those four role families gets an empty suggested list, because for them the researched board is already the right answer. When in doubt, add the suggestions: an extra list of relevant employers costs the reader nothing, while a board of sixty employers that will not interview them is worthless. Add up to 15 employers in the candidate's own metro and own field that you are confident exist and hire entry-level talent: a mix of large employers with known early-career programs and notable local tech, fintech, AI, health or security firms, never duplicating a board company. Fewer than 8 is fine; a short list you are sure of beats a padded one, and omit anything you are not sure exists. When the field is the mismatch, these should be employers in the candidate's real profession, even in Salt Lake City: hospitals and clinics for a nurse, school districts for a teacher, accounting firms for an accountant, and for a science major the analytical and clinical labs, hospital systems, diagnostics companies, pharmaceutical manufacturers and university research groups that actually hire bench scientists. Where the strongest evidence is service or hospitality experience rather than the degree, say so and include employers who hire for those strengths too. That list is the useful half of the answer for them, so make it the strongest part. You cannot verify openings, so each note says how they hire: name a program only when you are certain of its exact name, otherwise give typical entry titles and what to search for ("early career", "new grad") on their careers site. Suggested employers get the same score and why treatment as board companies, their locType is relative to the candidate (local, hybrid or remote), and their badges list only fintech, ai-native or tools-match where each genuinely applies. A remote-first candidate with no metro gets geoLabel "Remote" and an empty city; every board company is then "remote" if it hires this kind of role remotely from the candidate's country, otherwise "far", never local or hybrid and never the "local" badge; suggested employers must be remote-friendly with locType "remote" and location as the HQ city followed by " (remote)". If the resume names two or more target metros, use the current residence (or the first listed) for city and geoLabel, mention the other in target and summary, split suggested employers between them with each entry's location naming its own city, and add one searchLinks entry per metro.
+Suggested employers are the board's escape hatch, and they are needed whenever the researched list does not serve this person. Add them when the candidate lives outside the Salt Lake area, OR when the resume does not support hiring them into AI/ML, software, data or product work, or both. Only a candidate who is both in the Salt Lake area and a credible entry-level hire for one of those four role families gets an empty suggested list, because for them the researched board is already the right answer. When in doubt, add the suggestions: an extra list of relevant employers costs the reader nothing, while a board of eighty employers that will not interview them is worthless. Add up to 15 employers in the candidate's own metro and own field that you are confident exist and hire entry-level talent: a mix of large employers with known early-career programs and notable local tech, fintech, AI, health or security firms, never duplicating a board company. Fewer than 8 is fine; a short list you are sure of beats a padded one, and omit anything you are not sure exists. When the field is the mismatch, these should be employers in the candidate's real profession, even in Salt Lake City: hospitals and clinics for a nurse, school districts for a teacher, accounting firms not already on the board for an accountant, and for a science major the analytical and clinical labs, hospital systems, diagnostics companies, pharmaceutical manufacturers and university research groups that actually hire bench scientists. Where the strongest evidence is service or hospitality experience rather than the degree, say so and include employers who hire for those strengths too. That list is the useful half of the answer for them, so make it the strongest part. You cannot verify openings, so each note says how they hire: name a program only when you are certain of its exact name, otherwise give typical entry titles and what to search for ("early career", "new grad") on their careers site. Suggested employers get the same score and why treatment as board companies, their locType is relative to the candidate (local, hybrid or remote), and their badges list only fintech, ai-native or tools-match where each genuinely applies. A remote-first candidate with no metro gets geoLabel "Remote" and an empty city; every board company is then "remote" if it hires this kind of role remotely from the candidate's country, otherwise "far", never local or hybrid and never the "local" badge; suggested employers must be remote-friendly with locType "remote" and location as the HQ city followed by " (remote)". If the resume names two or more target metros, use the current residence (or the first listed) for city and geoLabel, mention the other in target and summary, split suggested employers between them with each entry's location naming its own city, and add one searchLinks entry per metro.
 
 Header fields describe the CANDIDATE, so take their vocabulary from the resume and never from this board. The examples below come from different fields on purpose; do not carry data or AI wording into a resume that has none. status like "Senior · Grad May 2027" or "Recent grad · Available now"; recentRole names their most recent real job, whatever it is, like "Northwestern Mutual — Data Analytics Intern (2 summers)" or "Wagner Community Center — Member Services" or "Mercy Hospital — Student Nurse Extern"; stack = the 5-7 most marketable skills, tools, techniques or certifications on the resume, comma-separated, so a lab candidate might read "Titration, HPLC, GC-MS, lab safety, technical writing" and a service candidate "Customer service, POS systems, opening and closing, staff training"; target like "New Grad FT · Chicago / Remote · Fintech + AI" or "Lab technician roles · Salt Lake City" or "Nurse residency · Denver"; subline like "New-grad AI roles for a May 2027 graduate · Tailored to your September 2026 resume" or "Entry-level lab roles for a June 2027 chemistry graduate · Tailored to your September 2026 resume"; cohortLabel like "Dec 2026 grad" or "May 2027 grad"; city is the home-base metro as "City, ST" or "City, Country" (empty only for a remote-first candidate); geoLabel is a short badge label for that home base, like "SLC Area" or "Austin Area"; yearsExperience is the count you worked out above, normally 0 for a graduating undergraduate; uofu is true only if the candidate studies or studied at the University of Utah. searchLinks are 3-5 LinkedIn job searches worth bookmarking (label, keywords, a location spelled the way LinkedIn does such as "Austin, Texas" or "London, England, United Kingdom", or empty for remote-only, remoteOnly, entryLevel). summary is 2-3 sentences on how to position this candidate. applyNow names which of the currently live roles on the board to apply to first and why; watchLater says what to watch for later in the season. Return exactly one companies entry per input company using the exact input name.`;
 
@@ -2439,7 +3244,7 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
         about: stripHtml(b.why),
         uofuHiringNote: c.alumniNote ? stripHtml(c.alumniNote) : undefined,
         timing: { status: b.status, note: stripHtml(c.apply.note) },
-        openings: c.apply.openings.map(o => ({ title: stripHtml(o.title), loc: o.loc, yearsRequired: o.yrs })),
+        openings: c.apply.openings.filter(o => !isClosed(o)).map(o => ({ title: stripHtml(o.title), loc: o.loc, yearsRequired: o.yrs, closes: o.closes })),
       };
     });
   }
@@ -2484,14 +3289,17 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
       const base = BASE[key];
       const locType = ['local', 'hybrid', 'remote', 'far'].includes(row.locType) ? row.locType : 'keep';
       const effective = locType === 'keep' ? base.locType : locType;
+      const raw = clamp(Math.round(Number(row.score) || 60), 60, 100);
       companies[key] = {
-        score: clamp(Math.round(Number(row.score) || 60), 60, 100),
+        score: raw,
+        rawScore: raw,
         // Tier and badges are derived, not asked for: the model only supplies the score and toolsMatch.
         // 'fintech' and 'ai-native' are facts about the company, so they come from the researched board.
         badges: (effective === 'local' || effective === 'hybrid' ? ['local'] : [])
           .concat(base.badges.filter(b => b === 'fintech' || b === 'ai-native'))
           .concat(row.toolsMatch ? ['tools-match'] : []),
         status: STATUS_ORDER.includes(row.status) && row.status !== 'suggested' ? row.status : 'keep',
+        factSig: factSigOf(base),
         locType,
         note: String(row.note || ''),
         why: String(row.why || ''),
@@ -2503,7 +3311,7 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
     (Array.isArray(data.suggested) ? data.suggested : []).forEach(sg => {
       if (!sg || typeof sg.name !== 'string' || !sg.name.trim() || suggested.length >= 20) return;
       const key = norm(sg.name);
-      if (!key || taken.has(key)) return;
+      if (!key || taken.has(key) || COMPANIES.some(c => sameCompany(c.name, sg.name))) return;
       taken.add(key);
       const sgLoc = ['local', 'hybrid', 'remote'].includes(sg.locType) ? sg.locType : 'local';
       suggested.push({
@@ -2529,7 +3337,7 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
     const candidateYears = Math.max(0, Math.round(Number(p.yearsExperience) || 0));
     let capped = 0;
     Object.entries(companies).forEach(([key, entry]) => {
-      const opens = BASE[key].openings || [];
+      const opens = (BASE[key].openings || []).filter(o => !isClosed(o));
       if (!opens.length) return;
       // An opening with no stated requirement is reachable, so it counts as zero years rather
       // than being skipped. Taking the minimum means one genuine new-grad role rescues the company.
@@ -2551,6 +3359,7 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
     return {
       id: 'p_' + Date.now().toString(36),
       createdAt: Date.now(),
+      boardDate: REFRESH_DATE,
       model: meta.model, effort: meta.effort, servedBy: meta.servedBy,
       usage: meta.usage,
       name,
