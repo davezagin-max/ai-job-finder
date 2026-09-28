@@ -3,10 +3,15 @@
   "configurations": [
     {
       "name": "job-finder",
-      "runtimeExecutable": "sh",
+      "runtimeExecutable": "python3",
       "runtimeArgs": [
-        "-c",
-        "exec python3 -m http.server \"${PORT:-8765}\" --bind 127.0.0.1"
+        "-m",
+        "http.server",
+        "8765",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "/Users/davidzagin/Desktop/Claude ;)/Job Finder"
       ],
       "port": 8765,
       "autoPort": true

@@ -822,22 +822,24 @@
 <div class="toast" id="toast" hidden></div>
 
 <footer>
-  Openings verified 2026-09-19 &middot; curated for new-grad data, AI and fintech roles around Salt Lake City
+  Openings verified 2026-09-27 &middot; curated for new-grad data, AI and fintech roles around Salt Lake City
   <br>
   <strong style="color: var(--gold);">Apply now, in Utah:</strong>
-  Goldman Sachs 2027 SLC New Analyst, Morgan Stanley's 2027 Operations Analyst Program (Utah seat), Addepar's
-  AddeGrad 2027 and Cicero's January 2027 Business Analyst class all accept December 2026 graduates.
+  Adobe's 2027 University Graduate reqs went live this week and both list Lehi, and WGU's Associate Data Engineer
+  closes Oct 2. Goldman Sachs 2027 SLC New Analyst, Morgan Stanley's 2027 Operations Analyst Program (Utah seat),
+  Addepar's AddeGrad 2027 and Cicero's January 2027 Business Analyst class all still accept December 2026 graduates.
   <br>
   <strong style="color: var(--gold);">Worth relocating for:</strong>
-  Freddie Mac's January 2027 data analyst class, Fidelity's January 2027 Leap cohort, JPMorgan's 2027 programs,
-  Mastercard's Launch seats in St. Louis and American Express's 2027 technology classes (close Oct 31).
-  JPMorgan's Internal Audit program closes Oct 30.
-  Deadlines this week and next: Deloitte Sept 23, Visa Sept 24, PwC Sept 26, Wells Fargo Sept 30.
-  Mastercard's Salt Lake City Launch seat closed on Sept 19.
+  Capital One's February 2027 Technology Development Program is back and asks for a degree finished by December 2026.
+  Fidelity's Leap classes were reposted under new numbers, Freddie Mac's January 2027 data analyst class is open,
+  and Mastercard still has three Launch seats in St. Louis.
+  Deadlines: Wells Fargo Sept 30, Fidelity Consulting Oct 1, PwC Management Consulting Oct 3, Mastercard Oct 6,
+  JPMorgan's Commercial program Oct 16, Deloitte Cyber Nov 1, American Express Oct 31.
   <br>
-  <strong style="color: var(--accent-2);">Watch in October:</strong>
-  Adobe, Snowflake, Qualtrics, Okta, Datadog, Lucid and Plaid all post their new-grad reqs in the Sept&ndash;Nov window,
-  and Capital One's US programs have not reposted yet.
+  <strong style="color: var(--accent-2);">Closed this week:</strong>
+  Visa's two 2027 rotations, PwC's Digital Assurance postings, Deloitte's Business Analytics class, and the
+  Zions Staff Auditor, Mastercard Technology Risk and Weave Fraud Analyst reqs. Watch for Snowflake, Qualtrics,
+  Okta and Lucid to post new-grad reqs through November.
   <br>
   Match scores reflect resume alignment (data tools, fintech interest, SLC proximity, new-grad pipelines).
 </footer>
@@ -854,7 +856,7 @@ const FAIRS = [
   { date: "2026-10-28", name: "Marketing &amp; Comms Expo" }
 ];
 
-const REFRESH_DATE = "2026-09-19";
+const REFRESH_DATE = "2026-09-27";
 const COMPANIES = [
   // ===== TIER 1 PERFECT MATCHES =====
   {
@@ -1999,7 +2001,7 @@ const COMPANIES = [
   }
 ];
 
-// === APPLY STATUS (Dec 2026 grad, verified against live job boards on 2026-09-01) ===
+// === APPLY STATUS (Dec 2026 grad, verified against live job boards on 2026-09-27) ===
 // status: open-now | opens-later | watch | wrong-cohort
 const APPLY_STATUS = {
   "MX Technologies": {
@@ -2009,8 +2011,8 @@ const APPLY_STATUS = {
   },
   "Goldman Sachs (SLC Campus)": {
     status: "open-now",
-    note: "<strong>Apply this week.</strong> The 2027 New Analyst reqs for the Salt Lake City campus are live in Engineering and Operations, for graduates finishing December 2026 through July 2027. Three early-career Salt Lake City analyst reqs in Operations, Compliance and Technology Audit also ask for only 0&ndash;3 years, but they carry no graduation window, so expect them to want a start soon after the degree.",
-    openings: [{ title: "2027 SLC Engineering | New Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/171570" }, { title: "2027 SLC Operations | New Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/169826" }, { title: "Operations | Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/159806" }, { title: "Internal Audit - Technology and Engineering | Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/159789" }, { title: "Compliance | Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/159758" }]
+    note: "<strong>Apply this week.</strong> Both 2027 Salt Lake City New Analyst programs are still live, in Engineering and Operations, for graduates finishing December 2026 through July 2027. The Operations Analyst req closed this week; Internal Audit (Technology and Engineering), Compliance and a Credit Risk analyst seat remain, all asking 0&ndash;3 years with no graduation window, so expect them to want a start soon after the degree.",
+    openings: [{ title: "2027 | Americas | Salt Lake City | Engineering | New Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/171570", program: true }, { title: "2027 | Americas | Salt Lake City | Operations | New Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/169826", program: true }, { title: "Internal Audit - Technology and Engineering | Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/159789" }, { title: "Compliance | Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/159758" }, { title: "Risk, Credit Risk, CRG Asset Finance | Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/184984" }]
   },
   "Recursion Pharmaceuticals": {
     status: "watch",
@@ -2038,14 +2040,14 @@ const APPLY_STATUS = {
     openings: [{ title: "Software Engineer (New Grad Program)", loc: "SF / NYC on-site", url: "https://job-boards.greenhouse.io/sigmacomputing/jobs/7690411003" }]
   },
   "Adobe (Lehi Campus)": {
-    status: "opens-later",
-    note: "2027 University Graduate reqs for analyst work are not posted yet; the 2026 cycle covered December to June graduates, so expect them in Oct&ndash;Nov. Analyst, Order Management in Lehi is live until December 1 and states no years of experience.",
-    openings: [{ title: "Analyst, Order Management", loc: "Lehi, UT", url: "https://adobe.wd5.myworkdayjobs.com/external_experienced/job/Lehi/Analyst--Order-Management_R171282", closes: "2026-12-01" }]
+    status: "open-now",
+    note: "<strong>The 2027 University Graduate reqs went live this week, and both list Lehi.</strong> Software Engineer ($76.7&ndash;152.2K) and Machine Learning Engineer ($102.4&ndash;202.3K) both want a December 2026 to June 2027 graduation date and count coursework and internships as experience. Both close Dec 31. Analyst, Order Management is the non-engineering Lehi door.",
+    openings: [{ title: "2027 University Graduate - Software Engineer", loc: "Lehi, UT; San Jose; Austin; Seattle; New York", url: "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/San-Jose/XMLNAME-2027-University-Graduate---Software-Engineer_R172083", closes: "2026-12-31", program: true }, { title: "2027 University Graduate - Machine Learning Engineer", loc: "Lehi, UT; San Jose; Austin; Seattle; Waltham", url: "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/San-Jose/XMLNAME-2027-University-Graduate---Machine-Learning-Engineer_R172085", closes: "2026-12-31", program: true }, { title: "Analyst, Order Management", loc: "Lehi, UT", url: "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/Lehi/Analyst--Order-Management_R171282", closes: "2026-12-01" }]
   },
   "Ancestry": {
-    status: "open-now",
-    note: "Associate Software Engineer is the one entry-level req left, and it reads like a green-card PERM posting, so treat the odds as low. The Content Analyst and Associate Pricing roles have both closed.",
-    openings: [{ title: "Associate Software Engineer", loc: "Draper, UT", url: "https://careers.ancestry.com/jobs/pcpL25174456" }]
+    status: "watch",
+    note: "<strong>The Associate Software Engineer req closed this week.</strong> What is left in Draper is an Imaging Data Technician role in digitisation operations, which is not a data or engineering track. Set an alert on the Workday board and check again in a few weeks.",
+    openings: []
   },
   "Pluralsight": {
     status: "watch",
@@ -2069,8 +2071,8 @@ const APPLY_STATUS = {
   },
   "Weave": {
     status: "watch",
-    note: "<strong>Not entry-level after all.</strong> The Fraud Analyst req states that 3&ndash;5 years in financial investigations or payment fraud is <em>required</em>, even though it only asks for beginner&ndash;intermediate SQL. Nothing else on their board is open to a new graduate, so watch for an associate-level req.",
-    openings: [{ title: "Fraud Analyst", loc: "Lehi, UT", url: "https://jobs.ashbyhq.com/weave/8170350e-1a7c-47ec-87d9-1121e037a4b2" , yrs: 3 }]
+    note: "<strong>The Fraud Analyst req has closed</strong> &mdash; it asked for 3&ndash;5 years in financial investigations or payment fraud anyway, so it was never the new-grad door it looked like. Nothing entry-level is posted on either of Weave's two boards today.",
+    openings: []
   },
   "Podium": {
     status: "open-now",
@@ -2123,9 +2125,9 @@ const APPLY_STATUS = {
     openings: []
   },
   "Vivint Smart Home": {
-    status: "watch",
-    note: "The Provo Data Analyst req is filled, and the 29 live Lehi/Provo reqs are ops, sales, or 3+ yrs engineering. Hiring runs through NRG's board now.",
-    openings: []
+    status: "open-now",
+    note: "An IT Finance Analyst req is live in Lehi &mdash; the first entry-level Utah posting here in weeks. It is finance-facing rather than a data role, but it sits inside the IT organisation. Hiring runs through NRG's board, so search there rather than on vivint.com.",
+    openings: [{ title: "IT Finance Analyst", loc: "Lehi, UT", url: "https://careers.nrgenergy.com/SMARTHOMES/job/Lehi-IT-Finance-Analyst-UT-84043/1403689300/" }]
   },
   "Pattern": {
     status: "watch",
@@ -2153,14 +2155,14 @@ const APPLY_STATUS = {
     openings: [{ title: "2027 Software Engineer Program (February start)", loc: "Chicago + 8 US cities", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210774102", closes: "2026-11-05" }, { title: "2027 Data &amp; AI Program, Analyst", loc: "8 US cities", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210773954", closes: "2026-11-05" }, { title: "2027 Internal Audit Analyst Program", loc: "Plano, Columbus or Wilmington", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210773378", closes: "2026-10-30" }, { title: "Neovest - Technical Client Service - Analyst", loc: "Pleasant Grove, UT", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210791182" }]
   },
   "Capital One": {
-    status: "watch",
-    note: "<strong>The February 2027 Technology Development Program posting is gone.</strong> The programme itself runs annually and the full-time programmes page is still live, so check there rather than trusting this listing.",
-    openings: []
+    status: "open-now",
+    note: "<strong>The February 2027 Technology Development Program is back, and it is written for you.</strong> It asks that the degree be finished by December 2026 or earlier, which rules in a December graduate and rules out most of the 2027 cohort. Base pay is $127&ndash;140K depending on city, across McLean, Plano and Richmond.",
+    openings: [{ title: "Technology Development Program Associate - February 2027", loc: "McLean, VA; Plano, TX; Richmond, VA", url: "https://capitalone.wd12.myworkdayjobs.com/en-US/Capital_One/job/McLean-VA/Technology-Development-Program-Associate---February-2027_R244320-1", program: true }]
   },
   "Mastercard": {
     status: "open-now",
-    note: "<strong>The Salt Lake City seat has closed.</strong> The Software Engineer Launch req that included Holladay stopped taking applications on Sept 19, and Data Scientist I is gone too. Two Launch Program 2027 analyst reqs in St. Louis still accept December 2026 graduates, so this is now a relocation decision.",
-    openings: [{ title: "Technology Risk Analyst I, Launch Program 2027", loc: "O'Fallon, MO (St. Louis)", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/OFallon-Missouri/Technology-Risk-Analyst-I--Launch-Program-2027---St-Louis--MO--US_R-287644" }, { title: "Program Management Analyst I, Launch Program 2027", loc: "O'Fallon, MO (St. Louis)", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/OFallon-Missouri/Program-Management-Analyst-I--Launch-Program-2027---St-Louis--MO--US_R-285951" }]
+    note: "<strong>The Technology Risk Analyst seat closed this week, and the Salt Lake City seat closed on Sept 19.</strong> Three St. Louis Launch Program roles are still open to graduates finishing December 2026 through June 2027: Site Reliability Engineer I ($81K), Program Management Analyst I, and Associate Product Specialist ($83&ndash;95K), which also lists Arlington, VA and closes Oct 6.",
+    openings: [{ title: "Site Reliability Engineer I, Launch Program 2027", loc: "O'Fallon, MO (St. Louis)", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/OFallon-Missouri/Site-Reliability-Engineer-I--Launch-Program-2027---St-Louis--MO--US_R-287642", program: true }, { title: "Program Management Analyst I, Launch Program 2027", loc: "O'Fallon, MO (St. Louis)", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/OFallon-Missouri/Program-Management-Analyst-I--Launch-Program-2027---St-Louis--MO--US_R-285951", program: true }, { title: "Associate Product Specialist, Launch Program 2027", loc: "O'Fallon, MO; Arlington, VA", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/OFallon-Missouri/Associate-Product-Specialist--Launch-Program-2027---United-States_R-287623-1", closes: "2026-10-06", program: true }]
   },
   "Bloomberg": {
     status: "opens-later",
@@ -2178,9 +2180,9 @@ const APPLY_STATUS = {
     openings: []
   },
   "Scale AI": {
-    status: "watch",
-    note: "SWE reqs are SF/NYC mid-level; no new-grad SWE or analyst posting. Their 'ICML 2026 University Recruiting' talent-pool form is open for anyone who wants to be in the system.",
-    openings: []
+    status: "open-now",
+    note: "Two New Grad software engineer reqs are live in San Francisco, one of them on the public-sector team. Scale hires new graduates in bursts, so apply while they are up rather than waiting for a 2027-labelled posting.",
+    openings: [{ title: "Software Engineer - New Grad", loc: "San Francisco, CA", url: "https://job-boards.greenhouse.io/scaleai/jobs/4730836005", program: true }, { title: "Software Engineer, Public Sector - New Grad", loc: "San Francisco, CA", url: "https://job-boards.greenhouse.io/scaleai/jobs/4736426005", program: true }]
   },
   "Robinhood": {
     status: "open-now",
@@ -2229,8 +2231,8 @@ const APPLY_STATUS = {
   },
   "CrowdStrike": {
     status: "open-now",
-    note: "Analyst I, Falcon Complete (remote, MST shift) is the entry SOC ladder but expects incident-response exposure &mdash; pair with Security+ and a home lab. The remote third-party-risk analyst req has closed, and the New Grad Data Scientist req requires an MS or PhD.",
-    openings: [{ title: "Analyst I, Falcon Complete (Remote, PST/MST)", loc: "US remote", url: "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote/Analyst-I--Falcon-Complete--Remote-_R29479" }]
+    note: "The remote Analyst I, Falcon Complete req closed this week and came back as a GovCloud role ($85&ndash;120K) that is remote or hybrid in St. Louis &mdash; it is the entry SOC ladder, so pair it with Security+ and a home lab. Technology Support Associate in Austin is the other entry door; the Professional Services project role asks for two years.",
+    openings: [{ title: "Analyst I, Falcon Complete GovCloud (Hybrid, St Louis)", loc: "US remote or St. Louis, MO", url: "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote/Analyst-I--Falcon-Complete-GovCloud--Hybrid--St-Louis-_R29933-1" }, { title: "Technology Support Associate", loc: "Austin, TX", url: "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Austin-TX/Technology-Support-Associate_R29881" }, { title: "Professional Services Associate Project Manager (Remote)", loc: "US remote", url: "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers/job/USA---Remote/Professional-Services-Associate-Project-Manager--Remote-_R30122", yrs: 2 }]
   },
   "Palo Alto Networks": {
     status: "watch",
@@ -2279,8 +2281,8 @@ const APPLY_STATUS = {
   },
   "Zions Bancorporation": {
     status: "open-now",
-    note: "<strong>Several entry-level Utah reqs are live.</strong> Data Analytics Staff Auditor is the first rung of the audit ladder, and the Banker Development Program's Salt Lake City credit-analyst seat is a rotational track for new graduates. The Banking Technology Program is applied to through the early-career page rather than posted as a requisition, and STEM applications are taken mid-September through November.",
-    openings: [{ title: "Data Analytics Staff Auditor", loc: "Salt Lake City, UT", url: "https://careers.zionsbancorp.com/jobs/x-28111" }, { title: "Salt Lake City Associate Credit Analyst - Banker Development Program", loc: "Salt Lake City, UT", url: "https://careers.zionsbancorp.com/jobs/x-28022" }, { title: "Business Information Analyst", loc: "Midvale, UT", url: "https://careers.zionsbancorp.com/jobs/x-27877" }, { title: "Cybersecurity Analyst", loc: "Midvale, UT", url: "https://careers.zionsbancorp.com/jobs/x-27643" }]
+    note: "<strong>The Data Analytics Staff Auditor req closed this week.</strong> The Banker Development Program in Salt Lake City is still the clearest new-grad door, and Midvale has a Business Information Analyst plus two Cybersecurity Analyst seats, one of them governance, risk and compliance. Zions posts on Taleo, so set an alert there rather than waiting for a careers-page refresh.",
+    openings: [{ title: "Salt Lake City Associate Credit Analyst - Banker Development Program", loc: "Salt Lake City, UT", url: "https://careers.zionsbancorp.com/jobs/x-28022", program: true }, { title: "Business Information Analyst", loc: "Midvale, UT", url: "https://careers.zionsbancorp.com/jobs/x-27877" }, { title: "Cybersecurity Analyst", loc: "Midvale, UT", url: "https://careers.zionsbancorp.com/jobs/x-27643" }, { title: "Cybersecurity Analyst - Governance Risk Compliance (GRC)", loc: "Midvale, UT", url: "https://careers.zionsbancorp.com/jobs/x-27978" }]
   },
   "America First Credit Union": {
     status: "watch",
@@ -2289,8 +2291,8 @@ const APPLY_STATUS = {
   },
   "Verkada": {
     status: "open-now",
-    note: "<strong>They attend the University of Utah Business Career Expo on Sept 17.</strong> A Technical Support Engineer - University Graduate 2026 req is live, plus several Associate-level operations roles. Nearly everything is San Mateo in-office, so plan on relocating.",
-    openings: [{ title: "Technical Support Engineer - University Graduate 2026", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4715534007" }, { title: "Associate, Pricing &amp; Commercial Operations", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4945957007" , yrs: 2 }, { title: "Sales Strategy and Operations Associate", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4086576007" , yrs: 3 }]
+    note: "<strong>A Salt Lake City role opened this week</strong>: Customer Operations Coordinator, which is the local door into their operations team. The San Mateo Technical Support Engineer - University Graduate req is still live, along with two commercial operations roles.",
+    openings: [{ title: "Customer Operations Coordinator, Salt Lake City", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/verkada/jobs/5219108007" }, { title: "Technical Support Engineer - University Graduate 2026", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4715534007", program: true }, { title: "Associate, Pricing &amp; Commercial Operations", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4945957007" }, { title: "Sales Strategy and Operations Associate", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4086576007" }]
   },
   "iCapital": {
     status: "open-now",
@@ -2299,8 +2301,8 @@ const APPLY_STATUS = {
   },
   "WGU (Western Governors University)": {
     status: "open-now",
-    note: "<strong>Associate Data Engineer was reposted on Sept 16.</strong> It wants SQL, Python, ETL and Spark and lets one year of education count as one year of experience, which makes it a genuine new-grad door. The Institutional Research data-analyst req has closed, and the Software Engineer req asks for three years.",
-    openings: [{ title: "Associate Data Engineer", loc: "Salt Lake City, UT", url: "https://wgu.wd5.myworkdayjobs.com/External/job/Salt-Lake-City-UT/Associate-Data-Engineer_JR-025987", closes: "2026-09-25" }, { title: "Software Engineer", loc: "Salt Lake City, UT", url: "https://jobs.wgu.edu/software-engineer/job/P1-5760450-0", yrs: 3 }]
+    note: "<strong>Associate Data Engineer is still the best fit and now closes Oct 2.</strong> It wants SQL, Python, ETL and Spark and lets one year of education count as one year of experience, which is what makes it a genuine new-grad door &mdash; the same substitution applies to the Financial Analyst req. Associate Investment Analyst (JUVO) only prefers 1&ndash;2 years. IAR Data Analyst asks for three. The old Software Engineer posting is gone.",
+    openings: [{ title: "Associate Data Engineer", loc: "Salt Lake City, UT", url: "https://wgu.wd5.myworkdayjobs.com/en-US/External/job/Salt-Lake-City-UT/Associate-Data-Engineer_JR-025987", closes: "2026-10-02" }, { title: "Associate Investment Analyst, JUVO", loc: "Salt Lake City, UT", url: "https://wgu.wd5.myworkdayjobs.com/en-US/External/job/Salt-Lake-City-UT/Associate-Investment-Analyst--JUVO_JR-026215", closes: "2026-10-25" }, { title: "Financial Analyst", loc: "Salt Lake City, UT", url: "https://wgu.wd5.myworkdayjobs.com/en-US/External/job/Salt-Lake-City-UT/Financial-Analyst_JR-025921-1", closes: "2026-09-30", yrs: 2 }, { title: "IAR Data Analyst", loc: "Salt Lake City, UT", url: "https://wgu.wd5.myworkdayjobs.com/en-US/External/job/Salt-Lake-City-UT/IAR-Data-Analyst_JR-026205", closes: "2026-10-03", yrs: 3 }]
   },
   "Morgan Stanley": {
     status: "open-now",
@@ -2309,8 +2311,8 @@ const APPLY_STATUS = {
   },
   "Addepar": {
     status: "open-now",
-    note: "<strong>AddeGrad 2027 is based in the Salt Lake City office</strong> with a July 2027 start, and relocation assistance is offered. Direct Solutions Consultant ($74&ndash;93K) and Client Support Analyst (1+ yrs) are the other Salt Lake City openings a new graduate could reach.",
-    openings: [{ title: "AddeGrad Program (2027) - Client Solutions Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/addepar1/jobs/8815241002" }, { title: "Direct Solutions Consultant (Investment Management)", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/addepar1/jobs/8816951002" }, { title: "Client Support Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/addepar1/jobs/8744013002", yrs: 1 }]
+    note: "<strong>AddeGrad 2027 is based in the Salt Lake City office</strong> with a July 2027 start, and relocation assistance is offered. The Client Support Analyst req closed this week; Direct Solutions Consultant ($74&ndash;93K) is the other Salt Lake City door, and a remote Workday Business Solutions Analyst is open company-wide.",
+    openings: [{ title: "AddeGrad Program (2027) - Client Solutions Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/addepar1/jobs/8815241002", program: true }, { title: "Direct Solutions Consultant (Investment Management)", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/addepar1/jobs/8816951002" }, { title: "Workday Business Solutions Analyst", loc: "Remote, USA", url: "https://job-boards.greenhouse.io/addepar1/jobs/8784459002" }]
   },
   "Cicero Group (MGT)": {
     status: "open-now",
@@ -2339,8 +2341,8 @@ const APPLY_STATUS = {
   },
   "Fidelity Investments": {
     status: "open-now",
-    note: "<strong>The January 2027 Leap Systems Analyst class fits a December graduate exactly</strong>: a 10-week in-person cohort that leads into a full-time technology role. April and July 2027 classes are open too, and FidYOU is the operations program starting June 2027.",
-    openings: [{ title: "January 2027 &ndash; Leap Systems Analyst", loc: "Westlake, TX; Durham, NC; Merrimack, NH", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/January-2027---Leap-Systems-Analyst_2133868", program: true }, { title: "April 2027 &ndash; Leap Systems Analyst", loc: "Westlake, TX; Durham, NC; Merrimack, NH", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/April-2027---Leap-Systems-Analyst_2133876", program: true }, { title: "2027 Undergraduate Full-Time &ndash; FidYOU Program", loc: "Westlake, TX; Boston, MA and more", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/XMLNAME-2027-Undergraduate-Full-Time---FidYOU-Program_2133159" }]
+    note: "<strong>The Leap classes were reposted this week under new requisition numbers</strong>, so any link saved earlier is dead. January 2027 still fits a December graduate exactly: a 10-week in-person cohort that leads into a full-time technology role, with April and October classes behind it. FidYOU is the operations program starting June 2027, and a Boston consulting analyst role closes Oct 1.",
+    openings: [{ title: "January 2027 &ndash; Leap Systems Analyst", loc: "Westlake, TX; Durham, NC; Merrimack, NH", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/January-2027---Leap-Systems-Analyst_2136142", program: true }, { title: "April 2027 &ndash; Leap Systems Analyst", loc: "Westlake, TX; Durham, NC; Merrimack, NH", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/April-2027---Leap-Systems-Analyst_2136143", program: true }, { title: "2026-2027 Undergraduate: Analyst, Fidelity Consulting", loc: "Boston, MA", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Boston-MA/XMLNAME-2026-2027-Undergraduate--Analyst--Fidelity-Consulting_2133705", closes: "2026-10-01", program: true }, { title: "2027 Undergraduate Full-Time &ndash; FidYOU Program", loc: "Westlake, TX; Boston, MA and more", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/XMLNAME-2027-Undergraduate-Full-Time---FidYOU-Program_2133159" }]
   },
   "Vanguard": {
     status: "open-now",
@@ -2348,9 +2350,9 @@ const APPLY_STATUS = {
     openings: [{ title: "Technology Leadership Program &ndash; Data Analyst (NC)", loc: "Charlotte, NC", url: "https://vanguard.wd5.myworkdayjobs.com/en-US/vanguard_external/job/Charlotte-NC/Technology-Leadership-Program---Data---Analytics--Analyst----NC_180091-1" }, { title: "Technology Leadership Program &ndash; Data Analyst (PA)", loc: "Malvern, PA", url: "https://vanguard.wd5.myworkdayjobs.com/en-US/vanguard_external/job/Malvern-PA/Technology-Leadership-Program---Data---Analytics--Analyst----PA_180088-1" }, { title: "Technology Leadership Program &ndash; Data Science and AI (NC)", loc: "Charlotte, NC", url: "https://vanguard.wd5.myworkdayjobs.com/en-US/vanguard_external/job/Charlotte-NC/Technology-Leadership-Program---Data---Analytics--Scientist----NC_180093-1" }]
   },
   "Visa": {
-    status: "open-now",
-    note: "<strong>Apply by September 24.</strong> Both rotations want degrees finished May 2026&ndash;August 2027 and a fixed August/September 2027 start. They cap relevant experience at under six months, so check whether internships count before applying. The APM pays $116,480 in Foster City.",
-    openings: [{ title: "Associate Product Manager (APM), New College Graduate Rotational Program, 2027", loc: "Foster City, CA", url: "https://visa.wd5.myworkdayjobs.com/en-US/Visa/job/US---Foster-City-CA/Associate-Product-Manager--APM---New-College-Graduate-Rotational-Program--2027_REF088600W", closes: "2026-09-24", program: true }, { title: "Associate Product Manager (APM), New College Graduate Rotational Program, 2027", loc: "Austin, TX", url: "https://visa.wd5.myworkdayjobs.com/en-US/Visa/job/US---Austin-TX/Associate-Product-Manager--APM---New-College-Graduate-Rotational-Program--2027_REF088601W-1", closes: "2026-09-24", program: true }, { title: "Visa Leadership Associate Program (VLA), New College Graduate Rotational Program, 2027", loc: "San Francisco, CA", url: "https://visa.wd5.myworkdayjobs.com/en-US/Visa/job/US---San-Francisco-CA/Visa-Leadership-Associate-Program--VLA---New-College-Graduate-Rotational-Program--2027_REF088605W-2", closes: "2026-09-24" }]
+    status: "watch",
+    note: "<strong>Both 2027 rotations closed on September 24, as the postings said they would.</strong> The APM and Visa Leadership Associate programmes run on an annual cycle with a fixed August/September start, so the next intake posts around this time next year. Nothing else entry-level is live. Set an alert on the Visa board.",
+    openings: []
   },
   "FIS": {
     status: "open-now",
@@ -2374,13 +2376,13 @@ const APPLY_STATUS = {
   },
   "Deloitte": {
     status: "open-now",
-    note: "<strong>Apply by September 23 for the first two.</strong> Technology Controls Advisory (IT controls and internal audit, $58,725&ndash;117,875) takes MIS and business-analytics majors. Business Analytics in Government &amp; Public Services is a winter 2027 start and requires eligibility for a security clearance. Cyber stays open until November 1.",
-    openings: [{ title: "Audit &amp; Assurance Analyst, Technology Controls Advisory (Summer/Fall 2027)", loc: "27 US offices, incl. Denver &amp; St. Louis", url: "https://apply.deloitte.com/en_US/careers/JobDetail/Audit-Assurance-Analyst-Technology-Controls-Advisory-Summer-Fall-2027/363237", closes: "2026-09-23" }, { title: "Government &amp; Public Services Analyst, Business Analytics (Winter 2027)", loc: "Washington, DC area", url: "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Government-Public-Services-Analyst-Business-Analytics-Winter-2027/362359", closes: "2026-09-23" }, { title: "Consultative Offerings Analyst, Cyber", loc: "22 US offices, incl. Denver", url: "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Analyst-Cyber/350255", closes: "2026-11-01" }]
+    note: "<strong>Cyber is the one still recruiting, until November 1.</strong> It takes graduates finishing by spring or summer 2027 and lists majors such as business administration and informatics. Technology Controls Advisory (IT controls and internal audit, $58,725&ndash;117,875) stopped recruiting on September 23, although its posting is still up, and the Government &amp; Public Services Business Analytics class has come down.",
+    openings: [{ title: "Consultative Offerings Analyst, Cyber", loc: "22 US offices, incl. Denver", url: "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Analyst-Cyber/350255", closes: "2026-11-01" }, { title: "Audit &amp; Assurance Analyst, Technology Controls Advisory (Summer/Fall 2027)", loc: "27 US offices, incl. Denver &amp; St. Louis", url: "https://apply.deloitte.com/en_US/careers/JobDetail/Audit-Assurance-Analyst-Technology-Controls-Advisory-Summer-Fall-2027/363237", closes: "2026-09-23" }]
   },
   "PwC": {
     status: "open-now",
-    note: "<strong>Every 2027 DAT associate posting closes September 26.</strong> They cover IT controls, ERP integration and data integrity, and the listed majors include MIS and Business Analytics. Denver is the closest city, and there is an AI-focused DAT track. Pay is $53,500&ndash;104,000 depending on city.",
-    openings: [{ title: "Denver &ndash; Digital Assurance &amp; Transparency (DAT) &ndash; Associate &ndash; Summer/Fall 2027", loc: "Denver, CO", url: "https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/CO-Denver/Denver---Digital-Assurance---Transparency--DAT----Associate---Summer-Fall-2027_52926179EIB", closes: "2026-09-26" }, { title: "Digital Assurance &amp; Transparency (DAT) &ndash; Tech &ndash; Associate &ndash; Summer/Fall 2027", loc: "Chicago, New York, Dallas, San Francisco and more", url: "https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Digital-Assurance---Transparency--DAT----Tech---Associate---Summer-Fall-2027_52926176EIB", closes: "2026-09-26" }, { title: "Digital Assurance &amp; Transparency (DAT) &ndash; Artificial Intelligence &ndash; Associate &ndash; Summer/Fall 2027", loc: "Chicago, Dallas, New York", url: "https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Digital-Assurance---Transparency--DAT----Artificial-Intelligence---Associate---Summer-Fall-2027_52926177EIB", closes: "2026-09-26" }]
+    note: "<strong>Every 2027 Digital Assurance &amp; Transparency posting closed on September 26, as expected.</strong> What replaced them: Management Consulting Finance Solutions for winter 2027 ($61&ndash;100K, twelve cities including Washington DC and Chicago) closing Oct 3, an Assurance Innovation &amp; Technology software engineering associate role, and a Milwaukee DAT seat closing Sept 30. The DAT track itself reposts each autumn.",
+    openings: [{ title: "Management Consulting - Finance Solutions Associate - Winter 2027", loc: "Chicago, Washington DC, New York, Dallas and more", url: "https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Management-Consulting---Finance-Solutions-Associate---Winter-2027_763820WD", closes: "2026-10-03", program: true }, { title: "Assurance Innovation &amp; Technology (AIT) - Software Engineering - Associate - Summer/Fall 2027", loc: "Chicago, Tampa, Boston, New York", url: "https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Assurance-Innovation---Technology--AIT----Software-Engineering---Asspciate---Summer-Fall-2027_52926149EIB", program: true }, { title: "Milwaukee - Digital Assurance &amp; Transparency (DAT) - Associate - Summer/Fall 2027", loc: "Milwaukee, WI", url: "https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/WI-Milwaukee/Milwaukee---Digital-Assurance---Transparency--DAT----Associate---Summer-Fall-2027_52926206EIB", closes: "2026-09-30", program: true }]
   },
   "KPMG": {
     status: "open-now",
