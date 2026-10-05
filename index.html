@@ -3137,11 +3137,20 @@ render();
   const JSZIP_URL = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
   const LS = { key: 'jf.apiKey', model: 'jf.model', effort: 'jf.effort', profiles: 'jf.profiles', active: 'jf.activeProfile' };
   const MODELS = {
-    'claude-sonnet-5':  { label: 'Claude Sonnet 5',  price: [2, 10],  hint: 'Recommended. About a minute and well under $0.20 at medium effort. The board only needs judgment, not deep reasoning.' },
-    'claude-opus-5':    { label: 'Claude Opus 5',    price: [5, 25],  hint: 'Deeper judgment for an unusual resume or a career change. Budget 3–6 minutes and $0.50–1.50 at high effort; drop the effort to cut both.' },
-    'claude-fable-5-1': { label: 'Claude Fable 5.1', price: [10, 50], hint: 'The most capable model and the slowest. Several minutes and roughly twice Opus 5. Worth it only when Opus 5 misjudged something.' },
+    // price is [input, output] $/MTok; cacheRead is the cache-read rate $/MTok, which is a
+    // different fraction of base input on each of these models (0.1x, 0.05x, 0.025x).
+    'claude-sonnet-5-5': { label: 'Claude Sonnet 5.5', price: [2, 10],  cacheRead: 0.20, hint: 'Recommended. A minute or two at high effort, usually well under $0.50. The board needs judgment, not deep reasoning — medium costs about half and is normally enough.' },
+    'claude-opus-5-5':   { label: 'Claude Opus 5.5',   price: [4, 20],  cacheRead: 0.20, hint: 'Deeper judgment for an unusual resume or a career change. Budget 3–6 minutes and $0.40–1.20 at high effort; medium is close in quality here and cheaper.' },
+    'claude-fable-5-1':  { label: 'Claude Fable 5.1',  price: [10, 50], cacheRead: 0.25, hint: 'The most capable model and the slowest. Several minutes and about 2.5× Opus 5.5. Worth it only when Opus 5.5 misjudged something.' },
   };
-  const EFFORTS = { low: 'Low · cheapest', medium: 'Medium · recommended', high: 'High · more deliberation', xhigh: 'Extra high', max: 'Max · slowest' };
+  const EFFORTS = { low: 'Low · cheapest', medium: 'Medium · faster and cheaper', high: 'High · recommended', xhigh: 'Extra high', max: 'Max · slowest' };
+  // Refusal categories the server-side fallback does not route to a backup model, per model.
+  // A decline in one of these comes straight back, so the only recourse is another model.
+  const NO_FALLBACK = {
+    'claude-sonnet-5-5': ['bio', 'reasoning_extraction', 'general_harms'],
+    'claude-opus-5-5':   ['reasoning_extraction'],
+    'claude-fable-5-1':  ['reasoning_extraction'],
+  };
   const $ = id => document.getElementById(id);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
   const rich = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
@@ -3488,11 +3497,10 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
         ],
       }],
     };
-    if (model === 'claude-opus-5' || model === 'claude-fable-5-1') {
-      // Server-side refusal fallback: if a safety classifier declines, the API re-runs on Anthropic's recommended substitute.
-      params.betas = ['server-side-fallback-2026-07-01'];
-      params.fallbacks = 'default';
-    }
+    // Server-side refusal fallback: if a safety classifier declines, the API re-runs on Anthropic's
+    // recommended substitute. All three models above accept the 'default' form on the Claude API.
+    params.betas = ['server-side-fallback-2026-07-01'];
+    params.fallbacks = 'default';
     return params;
   }
 
@@ -3604,10 +3612,12 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
     };
   }
   function estimateCost(model, u) {
-    const [pin, pout] = (MODELS[model] || {}).price || [0, 0];
+    const m = MODELS[model] || {};
+    const [pin, pout] = m.price || [0, 0];
     if (!u) return 0;
-    const inTok = (u.input_tokens || 0) + (u.cache_creation_input_tokens || 0) * 1.25 + (u.cache_read_input_tokens || 0) * 0.1;
-    return inTok * pin / 1e6 + (u.output_tokens || 0) * pout / 1e6;
+    const inTok = (u.input_tokens || 0) + (u.cache_creation_input_tokens || 0) * 1.25;
+    const readRate = m.cacheRead != null ? m.cacheRead : pin * 0.1;
+    return inTok * pin / 1e6 + (u.cache_read_input_tokens || 0) * readRate / 1e6 + (u.output_tokens || 0) * pout / 1e6;
   }
 
   // --- reading the resume file ---
@@ -3666,8 +3676,8 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
   $('company-count').textContent = COMPANIES.length;
   $('model-select').innerHTML = Object.entries(MODELS).map(([id, m]) => `<option value="${id}">${m.label}</option>`).join('');
   $('effort-select').innerHTML = Object.entries(EFFORTS).map(([id, label]) => `<option value="${id}">${label}</option>`).join('');
-  $('model-select').value = MODELS[store.get(LS.model, '')] ? store.get(LS.model, '') : 'claude-sonnet-5';
-  $('effort-select').value = EFFORTS[store.get(LS.effort, '')] ? store.get(LS.effort, '') : 'medium';
+  $('model-select').value = MODELS[store.get(LS.model, '')] ? store.get(LS.model, '') : 'claude-sonnet-5-5';
+  $('effort-select').value = EFFORTS[store.get(LS.effort, '')] ? store.get(LS.effort, '') : 'high';
   $('api-key').value = store.get(LS.key, '');
   const updateHint = () => { $('model-hint').textContent = MODELS[$('model-select').value].hint; };
   updateHint();
@@ -3779,9 +3789,17 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
       }
       const final = await stream.finalMessage();
       currentStream = null;
+      // A sticky fallback turn carries no `fallback` content block, so check usage.iterations too.
+      const fellBack = (final.content || []).some(b => b.type === 'fallback')
+        || (((final.usage || {}).iterations) || []).some(it => it.type === 'fallback_message');
       if (final.stop_reason === 'refusal') {
-        const why = final.stop_details && final.stop_details.explanation;
-        throw new Error('Claude declined this request' + (why ? `: ${why}` : '.'));
+        const d = final.stop_details || {};
+        const noRetry = (NO_FALLBACK[model] || []).indexOf(d.category) !== -1;
+        throw new Error(
+          `${MODELS[model].label} declined this request` + (d.explanation ? `: ${d.explanation} ` : '. ') +
+          (fellBack ? 'The backup model declined it as well. '
+            : noRetry ? `Anthropic does not route a “${d.category}” decline to a backup model. ` : '') +
+          'Try a different model above.');
       }
       if (final.stop_reason === 'max_tokens') throw new Error('Claude ran out of output room before finishing (thinking used most of the budget). Try again with a lower effort setting.');
       const raw = final.content.filter(b => b.type === 'text').map(b => b.text).join('');
@@ -3795,11 +3813,10 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
       closeModal(true);
       $('progress').hidden = true;
       const secs = Math.round((Date.now() - t0) / 1000);
-      const fell = (final.content || []).some(b => b.type === 'fallback');
       if (!saved) toast(`<strong>Board tailored to ${esc(profile.name)}, but it could not be saved.</strong> Browser storage is full or disabled, so this profile will disappear on reload. Delete an old profile and run again to keep it.`, true);
       else toast(`<strong>Board tailored to ${esc(profile.name)}.</strong> ${profile.matched} of ${COMPANIES.length} companies re-scored by ${esc(MODELS[model].label)}` +
-        (fell ? ` (served by fallback model ${esc(final.model)})` : '') +
-        ` in ${Math.floor(secs / 60)}m ${secs % 60}s, about $${estimateCost(model, final.usage).toFixed(2)}.` +
+        (fellBack ? ` (served by fallback model ${esc(final.model)})` : '') +
+        ` in ${Math.floor(secs / 60)}m ${secs % 60}s, about $${estimateCost(MODELS[final.model] ? final.model : model, final.usage).toFixed(2)}.` +
         (profile.suggested.length ? ` Plus ${profile.suggested.length} unverified suggested employers ${profile.city ? 'near ' + esc(profile.city) : (/remote/i.test(profile.geoLabel) ? 'that hire remotely' : 'near you')}.` : '') +
         ' Use the profile menu in the header to switch back.');
       window.scrollTo({ top: 0, behavior: 'smooth' });
