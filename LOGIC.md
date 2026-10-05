@@ -58,6 +58,26 @@ refreshed for a while still tells the truth about deadlines.
 | N+ yrs | The posting asks for 2 or more years of experience |
 | closes Sep 25 | The posting gives a closing date |
 | applied | It matches something in My applications |
+| leans SWE | The title is a software-engineering ladder (see below) |
+| wants a CS degree | The posting's own degree bar, read from the listing |
+
+**Weak fits**
+
+This board is aimed at an information-systems resume, so two kinds of opening
+are marked as a stretch rather than hidden:
+
+- **Software-engineering ladders.** Titles such as Software Engineer, SDE,
+  backend, front-end, full-stack, SRE, DevOps, embedded, mobile, and machine
+  learning or AI engineer. The competition there is computer-science graduates.
+  Data engineering is deliberately not on that list: SQL and Python work is this
+  candidate's own ground.
+- **Degree bars.** When the posting itself names only technical majors
+  (computer science, EECS, statistics and the like) with no information-systems
+  or business route in, or requires a master's or PhD. `refresh.py` reads this
+  from the posting text; on the board it is recorded per opening by hand.
+
+The **Hide weak fits** chip hides both. **Hide applied** hides openings you have
+already applied to. Each card says how many of its openings a filter is hiding.
 
 ## 3. Tailoring to a resume
 
@@ -182,6 +202,22 @@ re-verified since, or an employer's facts have changed:
 - Extra words that are not endings mean a different company: "Capital One" is
   not iCapital, and "Pattern Energy" is not Pattern.
 
+**Importing a spreadsheet**
+
+The tracker reads the file people actually keep: `.xlsx`, CSV, TSV, or rows
+pasted straight out of Excel.
+
+- Columns are matched by header name in any order. **Company** and **Job** (or
+  Title) are required; **Date**, **Location** and **Result** are used if present.
+- A **Result** such as "Denied, experience" sets the status to rejected and is
+  kept as the note. "HireVue" or "interview" means interview, "offer" means
+  offer, blank means pending.
+- Dates can be `2026-09-13`, `9/13/2026`, `13-Sep` or an Excel date. A date with
+  no year means the most recent one that has already passed.
+- A row whose date says something like "not yet" is a shortlist entry, not an
+  application, so it is skipped and counted in the message.
+- Importing the same sheet twice changes nothing, so re-import after each edit.
+
 **Job titles on the page**
 
 - Two titles match when at least 80% of their combined words are shared. Years,
@@ -205,7 +241,14 @@ re-verified since, or an employer's facts have changed:
 3. Compares with the last run (saved in `.refresh-state.json`) to find new and
    closed roles.
 4. Tests every job link already on the board.
-5. Writes everything to `refresh-report.txt`.
+5. Flags weak fits: `[SWE]` for a software-engineering ladder, and
+   `[technical majors]` or `[MS/PhD]` where the posting's own degree line says so.
+6. Writes everything to `refresh-report.txt`.
+
+It reads your applications from `applications.json`, or straight from your
+spreadsheet if you name it `applications.csv`, `applications.tsv` or
+`applications.xlsx` and leave it beside the script. All four names are
+git-ignored.
 
 ### Title rules
 

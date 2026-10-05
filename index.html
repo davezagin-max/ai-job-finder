@@ -258,7 +258,7 @@
     color: var(--text-dim); margin: 0 0 4px;
   }
   .openings li {
-    display: flex; justify-content: space-between; align-items: center; gap: 8px;
+    display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap;
     padding: 5px 9px; border-radius: 6px;
     background: rgba(255,255,255,0.03); border: 1px solid var(--border);
   }
@@ -267,7 +267,7 @@
     font-size: 10px; padding: 1px 6px; border-radius: 4px; white-space: nowrap;
     color: #fca5a5; background: rgba(248,113,113,0.12); border: 1px solid rgba(248,113,113,0.35);
   }
-  .openings .oloc { color: var(--text-dim); font-size: 11px; text-align: right; flex: 0 1 38%; min-width: 0; overflow-wrap: anywhere; }
+  .openings .oloc { color: var(--text-dim); font-size: 11px; text-align: right; flex: 1 1 auto; min-width: 96px; overflow-wrap: anywhere; }
   .openings li.closed a { text-decoration: line-through; opacity: 0.6; }
   .openings .otitle { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; min-width: 0; }
   .openings .otag {
@@ -280,6 +280,7 @@
   .openings .otag.closes { color: var(--text-dim, #9aa4b2); background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.18); }
   .openings .otag.soon { color: #fca5a5; background: rgba(248,113,113,0.10); border-color: rgba(248,113,113,0.40); }
   .openings .otag.closed { color: #9aa4b2; background: transparent; border-color: rgba(255,255,255,0.12); text-decoration: line-through; }
+  .openings .otag.weak { color: #fdba74; background: rgba(251,146,60,0.10); border-color: rgba(251,146,60,0.38); }
 
   /* ===== My applications (kept in this browser only) ===== */
   .apps-btn { cursor: pointer; font-family: inherit; }
@@ -507,6 +508,13 @@
   .linkish { background: none; border: none; padding: 0; color: var(--accent-2); cursor: pointer; font: inherit; }
   .linkish:hover { text-decoration: underline; }
   .modal textarea { margin-top: 10px; resize: vertical; min-height: 130px; font-size: 13px; line-height: 1.45; }
+  .apps-paste { margin-top: 14px; border-top: 1px solid var(--border); padding-top: 12px; }
+  .apps-paste summary { cursor: pointer; font-size: 13px; color: var(--text-dim); }
+  .apps-paste textarea {
+    width: 100%; margin: 10px 0 8px; padding: 8px 10px; border-radius: 8px; resize: vertical;
+    background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--text);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px;
+  }
   .mactions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
   .mactions .btn { flex: 0 0 auto; padding: 10px 18px; cursor: pointer; font-family: inherit; font-size: 14px; }
   .mactions .btn[disabled] { opacity: 0.45; cursor: not-allowed; filter: none; }
@@ -715,6 +723,11 @@
       <span class="label">Mine</span>
       <span class="chip" data-filter="mine" data-value="applied">Applied</span>
       <span class="chip" data-filter="mine" data-value="todo" title="Employers with a live role you have not applied to yet">Live, not applied yet</span>
+      <span class="chip" data-filter="hideApplied" data-value="on" title="Hide the individual openings you have already applied to">Hide applied</span>
+    </div>
+    <div class="filter-group">
+      <span class="label">Fit</span>
+      <span class="chip" data-filter="hideWeak" data-value="on" title="Hide openings on a software-engineering ladder, and openings whose posting requires a technical or graduate degree">Hide weak fits</span>
     </div>
     <div class="filter-group">
       <span class="label">Tier</span>
@@ -811,12 +824,22 @@
       </div>
     </div>
     <div class="mactions">
-      <input type="file" id="apps-file" accept=".json,application/json" hidden />
-      <button type="button" class="mini" id="apps-import">Import JSON</button>
+      <input type="file" id="apps-file" accept=".json,.csv,.tsv,.txt,.xlsx" hidden />
+      <button type="button" class="mini" id="apps-import">Import a file</button>
       <button type="button" class="mini" id="apps-export">Export JSON</button>
       <button type="button" class="mini" id="apps-clear">Clear all</button>
       <span class="mhint" id="apps-status" style="margin-top:0"></span>
     </div>
+    <details class="apps-paste">
+      <summary>Import from a spreadsheet</summary>
+      <div class="mhint">Your own tracker works as it is: a spreadsheet (.xlsx), CSV or TSV with a header row.
+        Columns are matched by name in any order &mdash; <em>Company</em> and <em>Job</em> (or Title) are required,
+        and <em>Date</em>, <em>Location</em> and <em>Result</em> are used when present. A Result such as
+        &ldquo;Denied, experience&rdquo; becomes a rejected status and is kept as the note; a row dated
+        &ldquo;not yet&rdquo; is skipped rather than counted as applied. Or copy the rows in Excel and paste them here.</div>
+      <textarea id="apps-paste-box" rows="4" placeholder="Paste rows here, including the header row"></textarea>
+      <button type="button" class="mini" id="apps-paste-go">Import pasted rows</button>
+    </details>
   </div>
 </div>
 <div class="toast" id="toast" hidden></div>
@@ -825,8 +848,8 @@
   Openings verified 2026-09-27 &middot; curated for new-grad data, AI and fintech roles around Salt Lake City
   <br>
   <strong style="color: var(--gold);">Apply now, in Utah:</strong>
-  Adobe's 2027 University Graduate reqs went live this week and both list Lehi, and WGU's Associate Data Engineer
-  closes Oct 2. Goldman Sachs 2027 SLC New Analyst, Morgan Stanley's 2027 Operations Analyst Program (Utah seat),
+  WGU's Associate Data Engineer closes Oct 2, and Adobe's 2027 University Graduate reqs list Lehi, though both
+  set a computer-science degree bar (the ML one wants an MS or PhD). Goldman Sachs 2027 SLC New Analyst, Morgan Stanley's 2027 Operations Analyst Program (Utah seat),
   Addepar's AddeGrad 2027 and Cicero's January 2027 Business Analyst class all still accept December 2026 graduates.
   <br>
   <strong style="color: var(--gold);">Worth relocating for:</strong>
@@ -2041,8 +2064,8 @@ const APPLY_STATUS = {
   },
   "Adobe (Lehi Campus)": {
     status: "open-now",
-    note: "<strong>The 2027 University Graduate reqs went live this week, and both list Lehi.</strong> Software Engineer ($76.7&ndash;152.2K) and Machine Learning Engineer ($102.4&ndash;202.3K) both want a December 2026 to June 2027 graduation date and count coursework and internships as experience. Both close Dec 31. Analyst, Order Management is the non-engineering Lehi door.",
-    openings: [{ title: "2027 University Graduate - Software Engineer", loc: "Lehi, UT; San Jose; Austin; Seattle; New York", url: "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/San-Jose/XMLNAME-2027-University-Graduate---Software-Engineer_R172083", closes: "2026-12-31", program: true }, { title: "2027 University Graduate - Machine Learning Engineer", loc: "Lehi, UT; San Jose; Austin; Seattle; Waltham", url: "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/San-Jose/XMLNAME-2027-University-Graduate---Machine-Learning-Engineer_R172085", closes: "2026-12-31", program: true }, { title: "Analyst, Order Management", loc: "Lehi, UT", url: "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/Lehi/Analyst--Order-Management_R171282", closes: "2026-12-01" }]
+    note: "<strong>The 2027 University Graduate reqs went live this week, and both list Lehi.</strong> Read the degree bars first, though: Software Engineer ($76.7&ndash;152.2K) asks for a computer-science or computer-engineering degree, and Machine Learning Engineer ($102.4&ndash;202.3K) asks for an MS or PhD, so neither is a natural fit for an information-systems bachelor's. Both want a December 2026 to June 2027 graduation and close Dec 31. Analyst, Order Management is the Lehi door that does not.",
+    openings: [{ title: "2027 University Graduate - Software Engineer", loc: "Lehi, UT; San Jose; Austin; Seattle; New York", url: "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/San-Jose/XMLNAME-2027-University-Graduate---Software-Engineer_R172083", closes: "2026-12-31", program: true, degree: "a CS or computer-engineering degree" }, { title: "2027 University Graduate - Machine Learning Engineer", loc: "Lehi, UT; San Jose; Austin; Seattle; Waltham", url: "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/San-Jose/XMLNAME-2027-University-Graduate---Machine-Learning-Engineer_R172085", closes: "2026-12-31", program: true, degree: "an MS or PhD" }, { title: "Analyst, Order Management", loc: "Lehi, UT", url: "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/Lehi/Analyst--Order-Management_R171282", closes: "2026-12-01" }]
   },
   "Ancestry": {
     status: "watch",
@@ -2181,8 +2204,8 @@ const APPLY_STATUS = {
   },
   "Scale AI": {
     status: "open-now",
-    note: "Two New Grad software engineer reqs are live in San Francisco, one of them on the public-sector team. Scale hires new graduates in bursts, so apply while they are up rather than waiting for a 2027-labelled posting.",
-    openings: [{ title: "Software Engineer - New Grad", loc: "San Francisco, CA", url: "https://job-boards.greenhouse.io/scaleai/jobs/4730836005", program: true }, { title: "Software Engineer, Public Sector - New Grad", loc: "San Francisco, CA", url: "https://job-boards.greenhouse.io/scaleai/jobs/4736426005", program: true }]
+    note: "Two New Grad software engineer reqs are live in San Francisco, one of them on the public-sector team. Both ask for a computer science, EECS or statistics degree, so they are a stretch from an information-systems bachelor's. Scale hires new graduates in bursts, so apply while they are up rather than waiting for a 2027-labelled posting.",
+    openings: [{ title: "Software Engineer - New Grad", loc: "San Francisco, CA", url: "https://job-boards.greenhouse.io/scaleai/jobs/4730836005", program: true, degree: "a CS, EECS or statistics degree" }, { title: "Software Engineer, Public Sector - New Grad", loc: "San Francisco, CA", url: "https://job-boards.greenhouse.io/scaleai/jobs/4736426005", program: true, degree: "a CS, EECS or statistics degree" }]
   },
   "Robinhood": {
     status: "open-now",
@@ -2321,8 +2344,8 @@ const APPLY_STATUS = {
   },
   "Freddie Mac": {
     status: "open-now",
-    note: "<strong>Apply now: the 2027 analyst class is open.</strong> Single Family Data Analyst ($63&ndash;95K) and Single Family Software Development Analyst both want December 2026 or May 2027 graduates who can start in January or June 2027. The SET Associate asks for 0&ndash;2 years.",
-    openings: [{ title: "Single Family Data Analyst", loc: "McLean, VA", url: "https://freddiemac.wd5.myworkdayjobs.com/en-US/External/job/McLean-VA/Single-Family-Data-Analyst_JR17440", program: true }, { title: "Single Family Software Development Analyst", loc: "McLean, VA", url: "https://freddiemac.wd5.myworkdayjobs.com/en-US/External/job/McLean-VA/Single-Family-Software-Analyst_JR17441", program: true }, { title: "Servicing, Efficiency &amp; Transformation (SET) Associate", loc: "McLean, VA; Chicago, IL", url: "https://freddiemac.wd5.myworkdayjobs.com/en-US/External/job/McLean-VA/Servicing--Efficiency---Transformation--SET--Associate_JR17557" }]
+    note: "<strong>Apply now: the 2027 analyst class is open.</strong> Single Family Data Analyst ($63&ndash;95K) is the one written for this resume: it wants December 2026 or May 2027 graduates starting January or June 2027. The Software Development Analyst asks for a computer-science degree, and the SET Associate for 0&ndash;2 years.",
+    openings: [{ title: "Single Family Data Analyst", loc: "McLean, VA", url: "https://freddiemac.wd5.myworkdayjobs.com/en-US/External/job/McLean-VA/Single-Family-Data-Analyst_JR17440", program: true }, { title: "Single Family Software Development Analyst", loc: "McLean, VA", url: "https://freddiemac.wd5.myworkdayjobs.com/en-US/External/job/McLean-VA/Single-Family-Software-Analyst_JR17441", program: true, degree: "a CS or computer-engineering degree" }, { title: "Servicing, Efficiency &amp; Transformation (SET) Associate", loc: "McLean, VA; Chicago, IL", url: "https://freddiemac.wd5.myworkdayjobs.com/en-US/External/job/McLean-VA/Servicing--Efficiency---Transformation--SET--Associate_JR17557" }]
   },
   "Fannie Mae": {
     status: "open-now",
@@ -2341,8 +2364,8 @@ const APPLY_STATUS = {
   },
   "Fidelity Investments": {
     status: "open-now",
-    note: "<strong>The Leap classes were reposted this week under new requisition numbers</strong>, so any link saved earlier is dead. January 2027 still fits a December graduate exactly: a 10-week in-person cohort that leads into a full-time technology role, with April and October classes behind it. FidYOU is the operations program starting June 2027, and a Boston consulting analyst role closes Oct 1.",
-    openings: [{ title: "January 2027 &ndash; Leap Systems Analyst", loc: "Westlake, TX; Durham, NC; Merrimack, NH", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/January-2027---Leap-Systems-Analyst_2136142", program: true }, { title: "April 2027 &ndash; Leap Systems Analyst", loc: "Westlake, TX; Durham, NC; Merrimack, NH", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/April-2027---Leap-Systems-Analyst_2136143", program: true }, { title: "2026-2027 Undergraduate: Analyst, Fidelity Consulting", loc: "Boston, MA", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Boston-MA/XMLNAME-2026-2027-Undergraduate--Analyst--Fidelity-Consulting_2133705", closes: "2026-10-01", program: true }, { title: "2027 Undergraduate Full-Time &ndash; FidYOU Program", loc: "Westlake, TX; Boston, MA and more", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/XMLNAME-2027-Undergraduate-Full-Time---FidYOU-Program_2133159" }]
+    note: "<strong>The Leap classes were reposted this week under new requisition numbers</strong>, so any link saved earlier is dead. January 2027 still fits a December graduate on timing: a 10-week in-person cohort that leads into a full-time technology role, with April and October classes behind it. Read the degree line first, though &mdash; the April posting asks for a computer-science or software-engineering degree, so check whether January says the same. FidYOU is the operations program starting June 2027, and a Boston consulting analyst role closes Oct 1.",
+    openings: [{ title: "January 2027 &ndash; Leap Systems Analyst", loc: "Westlake, TX; Durham, NC; Merrimack, NH", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/January-2027---Leap-Systems-Analyst_2136142", program: true }, { title: "April 2027 &ndash; Leap Systems Analyst", loc: "Westlake, TX; Durham, NC; Merrimack, NH", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/April-2027---Leap-Systems-Analyst_2136143", program: true, degree: "a CS or software-engineering degree" }, { title: "2026-2027 Undergraduate: Analyst, Fidelity Consulting", loc: "Boston, MA", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Boston-MA/XMLNAME-2026-2027-Undergraduate--Analyst--Fidelity-Consulting_2133705", closes: "2026-10-01", program: true }, { title: "2027 Undergraduate Full-Time &ndash; FidYOU Program", loc: "Westlake, TX; Boston, MA and more", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/XMLNAME-2027-Undergraduate-Full-Time---FidYOU-Program_2133159" }]
   },
   "Vanguard": {
     status: "open-now",
@@ -2460,7 +2483,7 @@ const resultsCount = document.getElementById('results-count');
 const resetBtn = document.getElementById('reset');
 const filterChips = document.querySelectorAll('#filters .chip[data-filter]');
 
-const state = { search: '', role: null, loc: null, ind: null, tier: null, apply: null, alumni: null, mine: null, prog: null };
+const state = { search: '', role: null, loc: null, ind: null, tier: null, apply: null, alumni: null, mine: null, prog: null, hideApplied: null, hideWeak: null };
 const ALUMNI_BONUS = { strong: 3, some: 1 };
 // Which resume the board is currently tailored to. The built-in board is the curated default; the
 // tailoring module at the bottom of this script swaps in uploaded profiles.
@@ -2555,11 +2578,14 @@ function render() {
         <div class="dot"></div>
         <div><strong>${cohort(APPLY_LABEL[c.apply.status])}</strong> &middot; ${c.apply.note}</div>
       </div>
-      ${c.apply.openings.length ? `
-      <div class="openings-label">Verified live ${REFRESH_DATE}</div>
-      <ul class="openings">
-        ${c.apply.openings.map(o => openingHtml(c, o)).join('')}
-      </ul>` : ''}
+      ${(() => {
+        const all = c.apply.openings;
+        if (!all.length) return '';
+        const shown = all.filter(o => !(state.hideWeak && weakFit(o)) && !(state.hideApplied && appliedTo(c, o)));
+        const hidden = all.length - shown.length;
+        const label = `Verified live ${REFRESH_DATE}${hidden ? ` &middot; ${hidden} hidden by your filters` : ''}`;
+        return `<div class="openings-label">${label}</div>${shown.length ? `<ul class="openings">${shown.map(o => openingHtml(c, o)).join('')}</ul>` : ''}`;
+      })()}
       ${myAppsHtml(c)}
       <p class="why">${c.why}</p>
       <div class="role-tags">
@@ -2622,6 +2648,7 @@ search.addEventListener('input', e => {
 resetBtn.addEventListener('click', () => {
   state.search = '';
   state.role = state.loc = state.ind = state.tier = state.apply = state.alumni = state.mine = state.prog = null;
+  state.hideApplied = state.hideWeak = null;
   search.value = '';
   document.querySelectorAll('#filters .chip.active').forEach(c => c.classList.remove('active'));
   render();
@@ -2650,6 +2677,16 @@ const isProgram = o => {
   const t = String(o.title || '').replace(ENTRY_MANAGER_RE, ' associate ');   // "Associate Program Manager" is a job, not a program
   return PROGRAM_RE.test(t) && !NOT_PROGRAM_RE.test(t);
 };
+// === FIT FLAGS ===
+// Two things this resume loses on, flagged rather than hidden: a software-engineering ladder, where the
+// competition is computer-science graduates, and a posting whose own degree bar is a technical major or
+// a graduate degree. `swe: false` on an opening overrides the title rule; `degree` is read from the
+// posting by hand. Kept in step with SWE_LEAN and degree_flag() in refresh.py. Data engineering is
+// deliberately absent: SQL and Python work is this candidate's own ground.
+const SWE_LEAN_RE = /\b(?:software (?:engineer|developer|development engineer)|sde\b|swe\b|back-?end|front-?end|full[ -]?stack|site reliability|sre\b|devops|platform engineer|embedded|firmware|mobile (?:engineer|developer)|ios (?:engineer|developer)|android (?:engineer|developer)|compiler|kernel|graphics engineer|research engineer|machine learning engineer|ml engineer|ai engineer)\b/i;
+const isSweLean = o => o.swe === true || (o.swe !== false && SWE_LEAN_RE.test(String(o.title || '')));
+const weakFit = o => isSweLean(o) || !!o.degree;
+
 // An opening's "closes" date comes from the posting itself. It is compared with today's date in
 // this browser, so a board that has not been refreshed says plainly when a deadline has passed.
 // Declared as functions, not consts, because the status pass near the top of the script calls them.
@@ -2675,6 +2712,8 @@ function openingHtml(c, o) {
   const tags = [
     isProgram(o) ? '<span class="otag prog" title="Built for new graduates: a structured program or an explicitly new-grad requisition">new-grad program</span>' : '',
     closesTag(o),
+    isSweLean(o) ? '<span class="otag weak" title="A software-engineering ladder. An information-systems resume is judged here against computer-science graduates, so treat it as a stretch">leans SWE</span>' : '',
+    o.degree ? `<span class="otag weak" title="The posting&apos;s own requirement, read from the listing">wants ${escHtml(o.degree)}</span>` : '',
     o.yrs >= 2 ? `<span class="oyrs" title="This posting asks for ${o.yrs}+ years of experience, so it is not an entry-level opening">${o.yrs}+ yrs</span>` : '',
     PROFILE.slc && openingGeo(o) === 'relocate' ? '<span class="otag move" title="This opening is not in the Salt Lake area and is not remote">relocate</span>' : '',
     mine ? `<span class="otag applied" title="${escHtml(mine.status)}${mine.note ? ' · ' + escHtml(mine.note) : ''}">applied ${escHtml(shortDate(mine.applied))}</span>` : '',
@@ -2737,9 +2776,13 @@ function sameCompany(a, b) {
   for (const x of A) for (const y of B) if (closeName(x, y)) return true;
   return false;
 }
+// Abbreviations people use in their own tracker, so "Master Data Mngt Analyst" still matches the
+// posting's "Master Data Management Analyst". Only unambiguous ones.
+const TITLE_ABBREV = { prog: 'program', mngt: 'management', mgmt: 'management', mgr: 'manager', univ: 'university',
+  ops: 'operations', assoc: 'associate', engr: 'engineer', dev: 'developer', admin: 'administrator', sr: 'senior', jr: 'junior' };
 const MONTHS = { jan: 'january', feb: 'february', mar: 'march', apr: 'april', jun: 'june', jul: 'july', aug: 'august', sep: 'september', sept: 'september', oct: 'october', nov: 'november', dec: 'december' };
 const titleTokens = t => new Set(appNorm(String(t || '').replace(/<[^>]+>/g, ' ')).split(' ')
-  .filter(w => w && !['2026', '2027', 'the', 'of', 'and'].includes(w)).map(w => MONTHS[w] || w));
+  .filter(w => w && !['2026', '2027', 'the', 'of', 'and'].includes(w)).map(w => TITLE_ABBREV[w] || MONTHS[w] || w));
 function titleOverlap(a, b) {
   const A = titleTokens(a), B = titleTokens(b);
   if (!A.size || !B.size) return 0;
@@ -2783,6 +2826,10 @@ function myAppsHtml(c) {
     return { row, given };
   }
   const keyOf = a => appNorm(a.company) + '|' + appNorm(a.title);
+  // The same title in two cities is two applications (KPMG in Charlotte and in New York), but a row
+  // that names no city still matches the one that does, so re-importing a sheet does not duplicate.
+  const sameJob = (a, b) => keyOf(a) === keyOf(b) &&
+    (!a.location || !b.location || appNorm(a.location) === appNorm(b.location));
   const store = {
     get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : v; } catch (e) { return d; } },
     set(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } },
@@ -2792,17 +2839,17 @@ function myAppsHtml(c) {
   const save = () => { saveFailed = !store.set(APPS_KEY, JSON.stringify(APPS)); return !saveFailed; };
   // updateExisting=false for the Add form: typing a tracked job again must not reset its status or note.
   function merge(list, updateExisting = true) {
-    const byKey = new Map(APPS.map(a => [keyOf(a), a]));
+    const rows = APPS.slice();
     let added = 0, updated = 0;
     (Array.isArray(list) ? list : []).slice(0, 500).map(cleanApp).filter(Boolean).forEach(({ row, given }) => {
-      const had = byKey.get(keyOf(row));
-      if (!had) { byKey.set(keyOf(row), row); added++; return; }
+      const had = rows.find(a => sameJob(a, row));
+      if (!had) { rows.push(row); added++; return; }
       if (!updateExisting) return;
       let changed = false;
       given.forEach(k => { if (had[k] !== row[k]) { had[k] = row[k]; changed = true; } });
       if (changed) updated++;
     });
-    APPS = Array.from(byKey.values()).sort((x, y) => String(y.applied || '').localeCompare(String(x.applied || '')));
+    APPS = rows.sort((x, y) => String(y.applied || '').localeCompare(String(x.applied || '')));
     return { added, updated };
   }
   const say = msg => { $('apps-status').textContent = msg; };
@@ -2858,17 +2905,188 @@ function myAppsHtml(c) {
     refresh();
     if (!saveFailed) say(r.added ? 'Added.' : 'Already tracked. Change its status in the list above.');
   });
+  // === SPREADSHEET IMPORT ===
+  // A tracker is usually a spreadsheet, not JSON, so read that directly: .xlsx, CSV, TSV, or rows
+  // pasted from Excel (which arrive tab-separated). Columns are matched by header name, in any order.
+  const HEAD_MAP = [
+    ['company', /^(company|employer|organi[sz]ation|firm)$/i],
+    ['title', /^(job|title|role|position|job title|job role)$/i],
+    ['applied', /^(date|applied|date applied|applied on|submitted)$/i],
+    ['location', /^(location|city|where|office|site)$/i],
+    ['note', /^(result|status|outcome|stage|notes?|comments?)$/i],
+  ];
+  const MONTHS3 = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+  // A spreadsheet date is written a dozen ways, and often with no year at all ("15-Aug"), which means
+  // the most recent one that has already happened.
+  function parseSheetDate(text) {
+    const t = String(text || '').trim();
+    if (!t) return '';
+    if (/^\d{4}-\d{2}-\d{2}$/.test(t)) return t;
+    const iso = d => (isNaN(d) ? '' : localISODate(d));
+    // An Excel date arrives as a serial number. Count the days in local time: going through UTC lands
+    // on the previous day for anyone west of Greenwich.
+    if (/^\d{4,5}(\.\d+)?$/.test(t)) return iso(new Date(1899, 11, 30 + Math.round(Number(t))));
+    let m = t.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})$/);
+    if (m) { const y = Number(m[3]) < 100 ? 2000 + Number(m[3]) : Number(m[3]); return iso(new Date(y, Number(m[1]) - 1, Number(m[2]))); }
+    m = t.match(/^(\d{1,2})[- ]([A-Za-z]{3,})\.?$/) || t.match(/^([A-Za-z]{3,})\.?[- ](\d{1,2})$/);
+    if (m) {
+      const dayFirst = /^\d/.test(m[1]);
+      const day = Number(dayFirst ? m[1] : m[2]);
+      const mon = MONTHS3[String(dayFirst ? m[2] : m[1]).slice(0, 3).toLowerCase()];
+      if (mon === undefined || !day) return '';
+      const now = new Date();
+      const guess = new Date(now.getFullYear(), mon, day);
+      return iso(guess > now ? new Date(now.getFullYear() - 1, mon, day) : guess);
+    }
+    const d = new Date(t);
+    return isNaN(d) ? '' : iso(new Date(d.getFullYear(), d.getMonth(), d.getDate()));
+  }
+  function statusFromResult(text) {
+    const t = String(text || '').toLowerCase();
+    if (/offer/.test(t)) return 'offer';
+    if (/withdrew|withdrawn/.test(t)) return 'withdrawn';
+    if (/denied|rejected|reject|no thank|not selected|turned down/.test(t)) return 'rejected';
+    if (/interview|hirevue|hireview|hire view|screen|assessment|onsite|final round/.test(t)) return 'interview';
+    return 'pending';
+  }
+  function delimitedRows(text) {
+    const t = String(text || '').replace(/\r\n?/g, '\n');
+    const first = t.split('\n')[0] || '';
+    const delim = (first.match(/\t/g) || []).length > (first.match(/,/g) || []).length ? '\t' : ',';
+    const rows = []; let row = [], field = '', quoted = false;
+    for (let i = 0; i < t.length; i++) {
+      const ch = t[i];
+      if (quoted) {
+        if (ch === '"') { if (t[i + 1] === '"') { field += '"'; i++; } else quoted = false; }
+        else field += ch;
+      } else if (ch === '"') quoted = true;
+      else if (ch === delim) { row.push(field); field = ''; }
+      else if (ch === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+      else field += ch;
+    }
+    if (field !== '' || row.length) { row.push(field); rows.push(row); }
+    return rows.map(r => r.map(c => c.trim()));
+  }
+  // .xlsx is a zip of XML. Only two parts are needed: the shared string table and the first sheet.
+  async function unzip(bytes) {
+    const dv = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+    let eocd = -1;
+    for (let i = bytes.length - 22; i >= 0 && i > bytes.length - 66000; i--) if (dv.getUint32(i, true) === 0x06054b50) { eocd = i; break; }
+    if (eocd < 0) throw new Error('not a valid .xlsx file');
+    const count = dv.getUint16(eocd + 10, true);
+    const out = {};
+    let p = dv.getUint32(eocd + 16, true);
+    for (let n = 0; n < count; n++) {
+      if (dv.getUint32(p, true) !== 0x02014b50) break;
+      const method = dv.getUint16(p + 10, true), csize = dv.getUint32(p + 20, true);
+      const nameLen = dv.getUint16(p + 28, true), extraLen = dv.getUint16(p + 30, true), cmtLen = dv.getUint16(p + 32, true);
+      const local = dv.getUint32(p + 42, true);
+      const name = new TextDecoder().decode(bytes.subarray(p + 46, p + 46 + nameLen));
+      const start = local + 30 + dv.getUint16(local + 26, true) + dv.getUint16(local + 28, true);
+      const raw = bytes.subarray(start, start + csize);
+      if (/^xl\/(sharedStrings\.xml|worksheets\/sheet\d+\.xml)$/.test(name)) {
+        if (method === 0) out[name] = raw;
+        else if (typeof DecompressionStream === 'function') {
+          out[name] = new Uint8Array(await new Response(new Blob([raw]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer());
+        } else throw new Error('this browser cannot unzip .xlsx &mdash; save the sheet as CSV instead');
+      }
+      p += 46 + nameLen + extraLen + cmtLen;
+    }
+    return out;
+  }
+  const xmlText = frag => frag.replace(/<[^>]+>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, '&').trim();
+  async function xlsxRows(buffer) {
+    const files = await unzip(new Uint8Array(buffer));
+    const dec = new TextDecoder();
+    const shared = [];
+    if (files['xl/sharedStrings.xml']) {
+      for (const m of dec.decode(files['xl/sharedStrings.xml']).matchAll(/<si>([\s\S]*?)<\/si>/g)) shared.push(xmlText(m[1]));
+    }
+    const sheetName = Object.keys(files).filter(k => k.startsWith('xl/worksheets/')).sort()[0];
+    if (!sheetName) throw new Error('that .xlsx has no worksheet');
+    const xml = dec.decode(files[sheetName]);
+    const rows = [];
+    for (const rm of xml.matchAll(/<row[^>]*>([\s\S]*?)<\/row>/g)) {
+      const cells = [];
+      for (const cm of rm[1].matchAll(/<c([^>]*?)(?:\/>|>([\s\S]*?)<\/c>)/g)) {
+        const attrs = cm[1] || '', inner = cm[2] || '';
+        const ref = (attrs.match(/r="([A-Z]+)\d+"/) || [])[1] || '';
+        const col = ref ? ref.split('').reduce((n, ch) => n * 26 + (ch.charCodeAt(0) - 64), 0) - 1 : cells.length;
+        const type = (attrs.match(/t="([^"]+)"/) || [])[1];
+        const v = inner.match(/<v>([\s\S]*?)<\/v>/);
+        let value = '';
+        if (type === 's') value = shared[Number(v ? v[1] : -1)] || '';
+        else if (type === 'inlineStr') value = xmlText(inner);
+        else if (v) value = xmlText(v[1]);
+        cells[col] = value;
+      }
+      rows.push(Array.from({ length: cells.length }, (_, i) => (cells[i] == null ? '' : String(cells[i]).trim())));
+    }
+    return rows;
+  }
+  function rowsToApps(rows) {
+    const filled = (rows || []).filter(r => r.some(c => c !== ''));
+    let head = -1, map = {};
+    for (let i = 0; i < Math.min(filled.length, 10); i++) {
+      const m = {};
+      filled[i].forEach((cell, j) => {
+        const hit = HEAD_MAP.find(([, re]) => re.test(cell));
+        if (hit && m[hit[0]] === undefined) m[hit[0]] = j;
+      });
+      if (m.company !== undefined && m.title !== undefined) { head = i; map = m; break; }
+    }
+    if (head < 0) return { error: 'No header row found. It needs a Company column and a Job (or Title) column.' };
+    const list = [], skipped = [];
+    filled.slice(head + 1).forEach(r => {
+      const get = k => (map[k] === undefined ? '' : String(r[map[k]] || '').trim());
+      const company = get('company'), title = get('title');
+      if (!company || !title) return;
+      const dateText = get('applied');
+      // "not yet" in the date column means a job on the shortlist, not an application.
+      if (dateText && !parseSheetDate(dateText)) { skipped.push(`${company} — ${title}`); return; }
+      const result = get('note');
+      list.push({ company, title, location: get('location'), applied: parseSheetDate(dateText), status: statusFromResult(result), note: result });
+    });
+    return { list, skipped };
+  }
+  function importRows(rows) {
+    const parsed = rowsToApps(rows);
+    if (parsed.error) return say(parsed.error);
+    if (!parsed.list.length) return say('No application rows found under that header.');
+    const r = merge(parsed.list);
+    refresh();
+    if (saveFailed) return;
+    const skipped = parsed.skipped.length ? ` Skipped ${parsed.skipped.length} row${parsed.skipped.length === 1 ? '' : 's'} not applied to yet.` : '';
+    say(`Imported: ${r.added} added, ${r.updated} updated.${skipped}`);
+  }
+  $('apps-paste-go').addEventListener('click', () => {
+    const text = $('apps-paste-box').value.trim();
+    if (!text) return say('Paste the rows first, including the header row.');
+    importRows(delimitedRows(text));
+    $('apps-paste-box').value = '';
+  });
   $('apps-import').addEventListener('click', () => $('apps-file').click());
   $('apps-file').addEventListener('change', async e => {
     const f = e.target.files[0];
     e.target.value = '';
     if (!f) return;
-    let list;
-    try { list = JSON.parse(await f.text()); } catch (err) { return say('That file is not valid JSON.'); }
-    if (!Array.isArray(list)) return say('That file is JSON, but not a list of applications.');
-    const r = merge(list);
-    refresh();
-    if (!saveFailed) say(`Imported: ${r.added} added, ${r.updated} updated.`);
+    try {
+      if ((f.name || '').toLowerCase().endsWith('.xlsx')) return importRows(await xlsxRows(await f.arrayBuffer()));
+      const text = await f.text();
+      if (text.trim().startsWith('[')) {
+        let list;
+        try { list = JSON.parse(text); } catch (err) { return say('That file looks like JSON but will not parse.'); }
+        if (!Array.isArray(list)) return say('That file is JSON, but not a list of applications.');
+        const r = merge(list);
+        refresh();
+        if (!saveFailed) say(`Imported: ${r.added} added, ${r.updated} updated.`);
+        return;
+      }
+      importRows(delimitedRows(text));
+    } catch (err) {
+      say('Could not read that file: ' + (err && err.message ? err.message : 'unknown error'));
+    }
   });
   $('apps-export').addEventListener('click', () => {
     const a = document.createElement('a');
@@ -2900,7 +3118,9 @@ function myAppsHtml(c) {
       refresh();
     }).catch(() => {});
   }
-  window.JobFinderApps = { list: () => APPS.slice(), merge: l => { const r = merge(l); refresh(); return r; }, clear: () => { APPS = []; refresh(); } };
+  window.JobFinderApps = { list: () => APPS.slice(), merge: l => { const r = merge(l); refresh(); return r; }, clear: () => { APPS = []; refresh(); },
+    // the spreadsheet readers, for the console and for testing
+    parseText: text => rowsToApps(delimitedRows(text)), parseXlsx: async buf => rowsToApps(await xlsxRows(buf)), importRows };
   refresh(false);
 })();
 

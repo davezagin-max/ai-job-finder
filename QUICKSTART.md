@@ -41,9 +41,18 @@ Claude re-scores every employer for that person and rewrites each card. It
 takes about a minute and costs about $0.15 on the default settings. The result
 is saved as a profile you can switch to from the header.
 
-**Track applications.** Click **My applications** to log where you applied.
-Cards then show what you applied for, and the **Applied** and **Live, not
-applied yet** filters appear.
+**Track applications.** Click **My applications** to log where you applied, or
+import the tracker you already keep: an Excel file, a CSV, or rows pasted
+straight out of a spreadsheet. Columns are matched by header name, a Result
+column such as "Denied, experience" becomes the status, and a row dated "not
+yet" is skipped rather than counted as applied. Cards then show what you applied
+for, and the **Applied**, **Live, not applied yet** and **Hide applied** filters
+appear.
+
+**Skip the roles that are not for you.** Openings on a software-engineering
+ladder are tagged *leans SWE*, and openings whose posting demands a
+computer-science degree or a master's are tagged with that requirement. The
+**Hide weak fits** chip takes both off the board.
 
 ## Keep the jobs current
 

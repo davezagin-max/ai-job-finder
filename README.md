@@ -194,9 +194,31 @@ Once you have entries, the board uses them:
   Those are the most useful signal for what to add next: a job you found that
   the board could not show means the next one like it will be missed too.
 
-**Import JSON** and **Export JSON** move the list between browsers. When the page
-is served from your own machine (`localhost`), it also loads an
-`applications.json` sitting next to `index.html`. That file is in `.gitignore`
+**Import a file** reads the tracker you already keep, not just this board's own
+format: an Excel `.xlsx`, a CSV or TSV, a JSON export, or rows pasted straight
+out of a spreadsheet. Columns are matched by header name in any order &mdash;
+`Company` and `Job` (or `Title`) are required, and `Date`, `Location` and
+`Result` are used when present:
+
+```
+Date,Company,Job,Experience,Result,Location
+13-Sep,Example Bank,Data Analyst I,entry level,"Denied, experience","Salt Lake City, UT"
+not yet,Example Bank,Banker Development Program,entry level,,
+```
+
+A `Result` of "Denied, experience" becomes a rejected status with that text kept
+as the note; "HireVue" or "interview" becomes interview. `13-Sep` with no year
+means the most recent September 13 that has passed, and an Excel date column
+works as it is. The second row above is skipped rather than counted as applied,
+because its date says it has not been sent yet. Importing the same sheet twice
+changes nothing.
+
+**Export JSON** moves the list between browsers. When the page is served from
+your own machine (`localhost`), it also loads an `applications.json` sitting next
+to `index.html`. `refresh.py` reads the same list for its audit, and takes the
+spreadsheet directly: name it `applications.csv`, `applications.tsv` or
+`applications.xlsx` and drop it beside the script. Every one of those names is in
+`.gitignore`, because this repository is public. That file is in `.gitignore`
 and must stay there, because this repository is public. The format:
 
 ```json
@@ -312,8 +334,20 @@ itself rather than from the company:
 | new-grad program | The title names a structured program or an explicitly new-grad requisition |
 | relocate | The opening is neither in the Salt Lake area nor remote, even if the company has a Salt Lake office |
 | closes Sep 25 | The posting's own closing date. It turns red within a week, and once the date has passed (by this browser's clock) it reads "closed" and is struck through |
+| leans SWE | The title is a software-engineering ladder, where an information-systems resume is judged against computer-science graduates |
+| wants a CS degree | The posting's own degree bar: only technical majors, or a master's or PhD |
 | N+ yrs | The live posting asks for that many years, so it is not entry-level |
 | applied | You applied to it (from My applications) |
+
+**Weak fits are flagged, not hidden.** Two kinds of opening are a stretch for an
+information-systems resume: a software-engineering ladder (Software Engineer,
+SDE, backend, SRE, DevOps, embedded, ML or AI engineer &mdash; data engineering is
+deliberately excluded), and a posting whose own degree bar names only technical
+majors or demands a master's. `refresh.py` marks both in its report, `[SWE]` and
+`[technical majors]` or `[MS/PhD]`, reading the degree line out of the posting
+where it can see one. The **Hide weak fits** chip takes them off the board, and
+**Hide applied** does the same for openings you have already applied to; each
+card says how many of its openings are hidden.
 
 The **New-grad programs elsewhere** filter shows employers with at least one
 program outside the Salt Lake area. It and the relocate tag are Salt Lake-relative,
@@ -382,6 +416,8 @@ Notable choices:
 
 `window.JobFinderTailor` exposes `applyProfile`, `buildProfile`, `buildParams`,
 `profiles()` and `OUTPUT_FORMAT` for console use and testing.
+`window.JobFinderApps` exposes `list()`, `merge()`, `clear()` and the spreadsheet
+readers `parseText()`, `parseXlsx()` and `importRows()`.
 
 ## Editing the board by hand
 

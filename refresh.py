@@ -11,7 +11,7 @@ run can tell you what changed.
 
 No installs needed - standard library, shells out to curl.
 """
-import json, os, re, subprocess, sys, time, datetime, threading, concurrent.futures, urllib.parse, hashlib
+import io, json, os, re, subprocess, sys, time, datetime, threading, concurrent.futures, urllib.parse, hashlib
 from html import unescape as html_unescape
 
 HERE  = os.path.dirname(os.path.abspath(__file__))
@@ -163,6 +163,36 @@ OFFTOPIC= re.compile(r"\b(sales|business development|development representative|
                      r"wealth banking(?!\s+technology)|fiduciary\s+(?:trust|officer|specialist|administrator|associate|accountant)|"
                      r"adjuster|administrative\s+(?:assistant|associate|coordinator|support|specialist|business partner))\b", re.I)
 REMOTE  = re.compile(r"\bremote\b|anywhere|distributed", re.I)
+# ---------- roles this candidate is a weak fit for ----------
+# Flagged and still reported, not dropped: a software-engineering ladder is a real job, just not one an
+# information-systems resume wins against computer-science graduates. Data engineering is deliberately
+# absent, since SQL and Python work is the candidate's own ground.
+SWE_LEAN = re.compile(r"\b(?:software (?:engineer|developer|development engineer)|sde\b|swe\b|back-?end|front-?end|"
+                      r"full[ -]?stack|site reliability|\bsre\b|devops|platform engineer|embedded|firmware|"
+                      r"mobile (?:engineer|developer)|ios (?:engineer|developer)|android (?:engineer|developer)|"
+                      r"compiler|kernel|graphics engineer|research engineer|machine learning engineer|ml engineer|"
+                      r"\bai engineer)\b", re.I)
+# Read from the posting text where there is one: a required graduate degree, or a majors list naming
+# only technical fields. A bare "Bachelor's degree" says nothing and is not flagged.
+ADV_DEGREE  = re.compile(r"\b(?:ph\.?\s?d|master'?s|m\.?s\.?)\b[^.]{0,80}\brequired\b|"
+                         r"\b(?:ph\.?\s?d|m\.?s\.?)\s+or\s+(?:m\.?s\.?|ph\.?\s?d)\b", re.I)
+DEGREE_IN   = re.compile(r"degree in ([^.;]{0,160})", re.I)
+# A bar only counts when the posting names hard-technical majors and offers no way in for this degree.
+# "a related discipline" or "a relevant field of study" on their own are an open door, not a bar.
+TECH_MAJOR  = re.compile(r"computer science|computer engineering|electrical engineering|software engineering|"
+                         r"\beecs\b|\bmathematics\b|\bstatistics\b|\bphysics\b|data science|applied math", re.I)
+DEGREE_OPEN = re.compile(r"information systems|management information|business analytics|business administration|"
+                         r"informatics|information technology|data analytics|any major|any discipline|"
+                         r"quantitative field|\bbusiness\b|finance|accounting|economics", re.I)
+
+def degree_flag(text):
+    """"MS/PhD" or "technical majors" when the posting sets that bar, else None."""
+    if not text: return None
+    t = re.sub(r"\s+", " ", html_unescape(re.sub(r"<[^>]+>", " ", text)))
+    if ADV_DEGREE.search(t): return "MS/PhD"
+    for field in DEGREE_IN.findall(t):
+        if TECH_MAJOR.search(field) and not DEGREE_OPEN.search(field): return "technical majors"
+    return None
 # Written by the Workday reader when a requisition's own country code is not the US. It is checked
 # before everything else, because "Chennai, TN" would otherwise read as Tennessee.
 ABROAD  = re.compile(r"\([^()]*,\s*abroad\)")
@@ -189,7 +219,8 @@ NONUS   = re.compile(r"\b(?:london|dublin|india|bangalore|bengaluru|hyderabad|pu
 # The version is derived from every rule above, so editing HOME or DROP_INTERNSHIPS re-baselines the
 # next run automatically instead of reporting every no-longer-matching role as closed.
 FILTER_VERSION = hashlib.sha1("\x1f".join([
-    HOME.pattern, SENIOR.pattern, LEVEL_N.pattern, NEW_GRAD.pattern, ENTRY_MANAGER.pattern, STAFF.pattern, AUDITLIKE.pattern, WRONG_COHORT.pattern, PROGRAM.pattern,
+    HOME.pattern, SENIOR.pattern, LEVEL_N.pattern, NEW_GRAD.pattern, ENTRY_MANAGER.pattern, STAFF.pattern,
+    SWE_LEAN.pattern, ADV_DEGREE.pattern, DEGREE_IN.pattern, TECH_MAJOR.pattern, DEGREE_OPEN.pattern, AUDITLIKE.pattern, WRONG_COHORT.pattern, PROGRAM.pattern,
     ENTRYWORD.pattern, ONTOPIC.pattern, OFFTOPIC.pattern, REMOTE.pattern, ABROAD.pattern, US_HINT.pattern, NONUS.pattern,
     str(DROP_INTERNSHIPS)]).encode()).hexdigest()[:12]
 
@@ -384,7 +415,8 @@ def fetch(kind, slug):
             extra = [c if (not mark or HOME.search(c) or US_HINT.search(c)) else c + mark
                      for c in info.get("additionalLocations") or [] if c]
             cities = [c for c in [first] + extra if c]
-            return (title, "; ".join(cities) or loc, url, (info.get("endDate") or "")[:10] or None)
+            return (title, "; ".join(cities) or loc, url, (info.get("endDate") or "")[:10] or None,
+                    degree_flag(info.get("jobDescription")))
         wanted = lambda r: classify(r[0], r[1]) or (hidden.match(r[1] or "") and classify(r[0], HOME_NAME))
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as ex:
             rows = list(ex.map(lambda r: detail(r) if wanted(r) else r, out))
@@ -422,8 +454,11 @@ def fetch(kind, slug):
             try:
                 d = patient(curl, f"https://{host}/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?onlyData=true"
                                   f"&finder=ById;Id=%22{row[2].rsplit('/', 1)[-1]}%22,siteNumber={site}", slots=_DETAIL_SLOTS)
-                end = ((d.get("items") or [{}])[0].get("ExternalPostedEndDate") or "").replace("Z", "+00:00")
-                return row + (datetime.datetime.fromisoformat(end).astimezone().date().isoformat() if end else None,)
+                it = (d.get("items") or [{}])[0]
+                end = (it.get("ExternalPostedEndDate") or "").replace("Z", "+00:00")
+                text = " ".join(str(it.get(k) or "") for k in ("ExternalDescriptionStr", "ExternalQualificationsStr"))
+                return row + (datetime.datetime.fromisoformat(end).astimezone().date().isoformat() if end else None,
+                              degree_flag(text))
             except Exception:
                 return row
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as ex:
@@ -601,7 +636,9 @@ def scan(item):
         t, l, u = r[:3]
         c = classify(t, l)
         if c: hits.append({"title": t.strip(), "loc": (l or "").strip(), "url": u,
-                           "closes": r[3] if len(r) > 3 else None, **c})
+                           "closes": r[3] if len(r) > 3 else None,
+                           "degree": r[4] if len(r) > 4 else None,
+                           "swe": bool(SWE_LEAN.search(t)), **c})
     raw = [((r[0] or "").strip(), (r[1] or "").strip(), r[2]) for r in rows]
     return company, hits, raw, None
 
@@ -703,6 +740,8 @@ def check_link(url):
 # says, for every job you applied to, whether this script could have found it and if not, why.
 # That file is listed in .gitignore: it is personal, and this repository is public.
 APPS = os.path.join(HERE, "applications.json")
+# The same list, kept the way most people keep it. Whichever exists is read, in this order.
+APP_SHEETS = [APPS] + [os.path.join(HERE, "applications" + e) for e in (".csv", ".tsv", ".xlsx")]
 def _norm(x):
     x = re.sub(r"&[a-z]+;|&#\d+;", " ", (x or "").lower().replace("&amp;", "&"))   # "&ndash;" is not a word
     return re.sub(r"[^a-z0-9]+", " ", re.sub(r"\bn\.\s?a\.?(?=\W|$)", "na", x)).strip()
@@ -767,10 +806,116 @@ def is_posting_for(applied, posted):
     extra = " ".join(sorted(B - A))
     return not (SENIOR.search(extra) or (STAFF.search(extra) and not AUDITLIKE.search(posted)))
 
+# ---------- reading the tracker people actually keep ----------
+APP_HEADS = [("company", r"^(company|employer|organi[sz]ation|firm)$"),
+             ("title",   r"^(job|title|role|position|job title|job role)$"),
+             ("applied", r"^(date|applied|date applied|applied on|submitted)$"),
+             ("location", r"^(location|city|where|office|site)$"),
+             ("note",    r"^(result|status|outcome|stage|notes?|comments?)$")]
+_MONTH_N = {m: i + 1 for i, m in enumerate(["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"])}
+
+def sheet_date(text, today=None):
+    """A spreadsheet date, however it is written. No year means the most recent one already past."""
+    t = str(text or "").strip()
+    today = today or datetime.date.today()
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", t): return t
+    if re.fullmatch(r"\d{4,5}(\.\d+)?", t):        # an Excel serial number
+        return (datetime.date(1899, 12, 30) + datetime.timedelta(days=round(float(t)))).isoformat()
+    m = re.fullmatch(r"(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})", t)
+    if m:
+        y = int(m.group(3)); y += 2000 if y < 100 else 0
+        try: return datetime.date(y, int(m.group(1)), int(m.group(2))).isoformat()
+        except ValueError: return ""
+    m = re.fullmatch(r"(\d{1,2})[- ]([A-Za-z]{3,})\.?", t) or re.fullmatch(r"([A-Za-z]{3,})\.?[- ](\d{1,2})", t)
+    if m:
+        day_first = m.group(1)[0].isdigit()
+        day = int(m.group(1) if day_first else m.group(2))
+        mon = _MONTH_N.get((m.group(2) if day_first else m.group(1))[:3].lower())
+        if not mon: return ""
+        try: d = datetime.date(today.year, mon, day)
+        except ValueError: return ""
+        return (d if d <= today else datetime.date(today.year - 1, mon, day)).isoformat()
+    return ""
+
+def sheet_status(text):
+    t = str(text or "").lower()
+    if "offer" in t: return "offer"
+    if re.search(r"withdrew|withdrawn", t): return "withdrawn"
+    if re.search(r"denied|rejected|reject|no thank|not selected|turned down", t): return "rejected"
+    if re.search(r"interview|hirevue|hireview|hire view|screen|assessment|onsite|final round", t): return "interview"
+    return "pending"
+
+def sheet_rows(path):
+    """[[cell, ...], ...] from a .csv, .tsv or .xlsx, using only the standard library."""
+    if path.endswith(".xlsx"):
+        import zipfile, xml.etree.ElementTree as ET
+        ns = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
+        with zipfile.ZipFile(path) as z:
+            names = z.namelist()
+            shared = []
+            if "xl/sharedStrings.xml" in names:
+                for si in ET.fromstring(z.read("xl/sharedStrings.xml")):
+                    shared.append("".join(t.text or "" for t in si.iter(ns + "t")))
+            sheet = sorted(n for n in names if re.fullmatch(r"xl/worksheets/sheet\d+\.xml", n))[0]
+            rows = []
+            for row in ET.fromstring(z.read(sheet)).iter(ns + "row"):
+                cells = {}
+                for c in row.iter(ns + "c"):
+                    ref = re.match(r"([A-Z]+)", c.get("r") or "A")
+                    col = 0
+                    for ch in (ref.group(1) if ref else "A"): col = col * 26 + ord(ch) - 64
+                    v = c.find(ns + "v")
+                    if c.get("t") == "s" and v is not None and v.text and v.text.isdigit():
+                        val = shared[int(v.text)] if int(v.text) < len(shared) else ""
+                    elif c.get("t") == "inlineStr":
+                        val = "".join(t.text or "" for t in c.iter(ns + "t"))
+                    else:
+                        val = (v.text or "") if v is not None else ""
+                    cells[col - 1] = val.strip()
+                rows.append([cells.get(i, "") for i in range(max(cells) + 1)] if cells else [])
+            return rows
+    text = open(path, encoding="utf-8-sig", newline="").read()
+    first = text.split("\n")[0]
+    import csv as _csv
+    delim = "\t" if first.count("\t") > first.count(",") else ","
+    return [[c.strip() for c in r] for r in _csv.reader(io.StringIO(text), delimiter=delim)]
+
+def apps_from_sheet(path):
+    """Applications from a spreadsheet, plus the rows skipped because they are not applications yet."""
+    rows = [r for r in sheet_rows(path) if any(c for c in r)]
+    head, cols = -1, {}
+    for i, row in enumerate(rows[:10]):
+        found = {}
+        for j, cell in enumerate(row):
+            for key, pat in APP_HEADS:
+                if key not in found and re.fullmatch(pat, cell.strip(), re.I): found[key] = j
+        if "company" in found and "title" in found:
+            head, cols = i, found
+            break
+    if head < 0: return None, f"{os.path.basename(path)} has no header row with a Company column and a Job column"
+    out, skipped = [], 0
+    for row in rows[head + 1:]:
+        get = lambda k: (row[cols[k]].strip() if k in cols and cols[k] < len(row) else "")
+        company, title = get("company"), get("title")
+        if not company or not title: continue
+        when = get("applied")
+        if when and not sheet_date(when):      # "not yet" means a shortlist entry, not an application
+            skipped += 1
+            continue
+        result = get("note")
+        out.append({"company": company, "title": title, "location": get("location"),
+                    "applied": sheet_date(when), "status": sheet_status(result), "note": result})
+    return out, (f"{skipped} row(s) in {os.path.basename(path)} are not applied to yet, so they were skipped" if skipped else None)
+
 def load_applications():
-    """Rows from applications.json with a company and a title; anything malformed is skipped, so a
-    hand-edited file can never abort a run after every board has already been fetched."""
-    if not os.path.exists(APPS): return [], None
+    """Rows with a company and a title, from applications.json or the same list as a spreadsheet.
+    Anything malformed is skipped, so a hand-edited file can never abort a run after every board has
+    already been fetched."""
+    path = next((p for p in APP_SHEETS if os.path.exists(p)), None)
+    if path is None: return [], None
+    if path != APPS:
+        try: return apps_from_sheet(path)
+        except Exception as e: return [], f"could not read {os.path.basename(path)}: {e}"
     try: data = json.load(open(APPS, encoding="utf-8"))
     except Exception as e: return [], f"could not read applications.json: {e}"
     if not isinstance(data, list): return [], "applications.json should be a JSON list of applications"
@@ -892,6 +1037,23 @@ def selftest():
         (is_posting_for("Risk Analyst I, Launch 2027", "Risk Analyst I, Launch 2027 - St. Louis, MO, US"), "city suffix"),
         (not is_posting_for("Data Analyst", "Senior Data Analyst"), "senior sibling is a different job"),
         (not is_posting_for("Security Analyst", "Security Analyst II"), "level II is a different job"),
+        (bool(SWE_LEAN.search("Software Engineer, New Grad")) and bool(SWE_LEAN.search("Site Reliability Engineer I")), "SWE ladders are flagged"),
+        (not SWE_LEAN.search("Data Engineer I") and not SWE_LEAN.search("Business Analyst"), "data work is not flagged as SWE"),
+        (degree_flag("PhD or MS in Computer Science, Statistics or equivalent") == "MS/PhD", "graduate degree bar"),
+        (degree_flag("Bachelor's degree in Computer Science, Computer Engineering, or a related technical field") == "technical majors", "technical-majors bar"),
+        (degree_flag("Bachelor's degree in Information Systems, Business Analytics or a related field") is None, "an IS-friendly majors list is not a bar"),
+        (degree_flag("Bachelor's degree in a related discipline") is None, "'a related discipline' is an open door"),
+        (degree_flag("Bachelor's degree in a relevant field of study, proficiency in Excel") is None, "'a relevant field of study' is an open door"),
+        (degree_flag("degree in a relevant field (Computer Science, EECS, Statistics)") == "technical majors", "named technical majors are a bar even after 'relevant field'"),
+        (degree_flag("degree in Computer Science, Information Technology, or related field") is None, "IT counts as a way in"),
+        (sheet_date("2026-09-13") == "2026-09-13" and sheet_date("9/13/2026") == "2026-09-13", "spreadsheet date formats"),
+        (sheet_date("13-Sep", datetime.date(2026, 9, 28)) == "2026-09-13", "a day and month with no year"),
+        (sheet_date("15-Dec", datetime.date(2026, 9, 28)) == "2025-12-15", "a month still to come means last year"),
+        (sheet_date("46278") == "2026-09-13", "an Excel serial date"),
+        (sheet_date("not yet") == "" and sheet_date("") == "", "a note in the date column is not a date"),
+        (sheet_status("Denied, experience") == "rejected" and sheet_status("HireView done") == "interview"
+         and sheet_status("") == "pending", "a Result column becomes a status"),
+        (degree_flag("Currently enrolled in a Bachelor's or accelerated Master's degree") is None, "a bare degree line is not a bar"),
     ]
     bad += [f"check failed: {why}" for ok, why in checks if not ok]
     print("\n".join(bad) if bad else f"selftest passed: {len(must_keep)} kept, {len(must_drop)} dropped, {len(checks)} checks")
@@ -968,8 +1130,10 @@ def main():
 
     def line(co, h):
         mark = " (you applied)" if applied(co, h["title"]) else (" ?years" if h["signal"] == "unleveled" else "")
+        weak = " [SWE]" if h.get("swe") else ""
+        weak += f" [{h['degree']}]" if h.get("degree") else ""
         closes = f" closes {h['closes']}" if h.get("closes") else ""
-        return f"{co[:26]:28} {(h['title'][:50] + mark)[:64]:66} {h['loc'][:26]:28} {h['url']}{closes}"
+        return f"{co[:26]:28} {(h['title'][:50] + mark + weak)[:64]:66} {h['loc'][:26]:28} {h['url']}{closes}"
 
     groups = {"home": [], "remote": [], "program": [], "other": []}
     for co in sorted(new_roles):
@@ -977,6 +1141,7 @@ def main():
             key = h["geo"] if h["geo"] in ("home", "remote") else ("program" if h["signal"] == "program" else "other")
             groups[key].append((h["loc"], line(co, h)))
     add(""); add(f"NEW ENTRY-LEVEL ROLES ({sum(len(v) for v in groups.values())})   '?years' = no level in the title, so read the posting")
+    add("  [SWE] = a software-engineering ladder; [technical majors] and [MS/PhD] are the posting's own degree bar. Weak fits, still listed.")
     block(f"  In {HOME_NAME} ({len(groups['home'])})", [r for _, r in sorted(groups["home"], key=lambda x: x[1])])
     block(f"  Remote ({len(groups['remote'])})", [r for _, r in sorted(groups["remote"], key=lambda x: x[1])])
     # Every row is printed. An earlier version capped this list at fifteen, which silently hid
@@ -1003,6 +1168,11 @@ def main():
     past = sorted((c, u) for u, c in re.findall(r'\{[^{}]*?url: "([^"]+)"[^{}]*?closes: "(\d{4}-\d{2}-\d{2})"', " ".join(board_links))
                   if c < today)
     block(f"PAST THEIR CLOSING DATE ON YOUR BOARD ({len(past)})", [f"{c}  {u}" for c, u in past])
+
+    weak = [h for hits in found.values() for h in hits if h.get("swe") or h.get("degree")]
+    add(""); add(f"  Of the {len(live)} live roles, {len(weak)} are flagged a weak fit for this resume: "
+                 f"{sum(1 for h in weak if h.get('swe'))} software-engineering ladders and "
+                 f"{sum(1 for h in weak if h.get('degree'))} whose posting sets a degree bar.")
 
     if apps:
         rows, blind = audit_applications(apps, found, raw, list(found) + list(errors), list(MANUAL), errors)

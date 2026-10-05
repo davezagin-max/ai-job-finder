@@ -2,9 +2,13 @@
 .refresh-state.json
 refresh-report.txt
 
-# Your own application history. refresh.py reads it and the page can import it.
-# It is personal and this repository is public, so it must never be committed.
+# Your own application history, in whichever format you keep it. refresh.py reads
+# it and the page can import it. It is personal and this repository is public, so
+# it must never be committed.
 applications.json
+applications.csv
+applications.tsv
+applications.xlsx
 
 # Generated print artifacts
 *.pdf
