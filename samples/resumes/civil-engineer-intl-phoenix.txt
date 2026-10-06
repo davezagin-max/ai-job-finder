@@ -1,0 +1,45 @@
+NIKHIL VENKATARAMAN
+Phoenix, AZ 85004 | (602) 555-0147 | nikhil.venkataraman@example.com | https://www.linkedin.com/in/nikhil-venkataraman-civil
+Work authorization: F-1 student, eligible for 12-month OPT and the 24-month STEM OPT extension; will require H-1B sponsorship for long-term employment.
+
+OBJECTIVE
+Transportation or structural engineer-in-training position in the Phoenix metro beginning June 2027, with a consultancy or public agency delivering roadway, traffic and bridge projects. Two years of full-time highway site experience in India, an MS in civil engineering from Arizona State University (May 2027) and a summer of corridor and intersection design in Phoenix.
+
+EDUCATION
+Arizona State University, Ira A. Fulton Schools of Engineering, Tempe, AZ
+M.S. Civil, Environmental and Sustainable Engineering, Transportation emphasis | Expected May 2027 | GPA 3.86
+Coursework: Traffic Flow Theory, Travel Demand Modeling, Highway Geometric Design, Pavement Design, Advanced Structural Analysis, Prestressed Concrete, Transportation Safety Analysis
+
+National Institute of Technology, Tiruchirappalli, India
+B.Tech. Civil Engineering | May 2023 | CGPA 8.71/10, First Class with Distinction
+
+LICENSURE
+NCEES Fundamentals of Engineering (FE Civil) exam passed April 2026; Arizona Engineer-in-Training certification in progress
+
+EXPERIENCE
+Dibble, Phoenix, AZ
+Transportation Engineering Intern | May 2026 - August 2026
+- Prepared 30% and 60% plan sheets in AutoCAD Civil 3D for a 2.4-mile arterial widening for the City of Phoenix: horizontal and vertical alignment, superelevation, corridor model, cross sections and earthwork quantities.
+- Ran Synchro and SimTraffic analyses for six signalized intersections, recommended protected-permissive left-turn phasing that cut modeled peak-hour delay 18% at the worst approach, and drafted the traffic impact analysis chapter under a licensed PE.
+- Wrote Python scripts (pandas) to clean 14 months of ADOT continuous-count and probe speed data into HCM 7th Edition inputs.
+- Checked MUTCD signing and striping sheets and assembled quantity takeoffs for the opinion of probable cost.
+
+Larsen & Toubro Construction, Transportation Infrastructure IC, Chennai, India
+Site Engineer, full-time | July 2024 - June 2025
+Graduate Engineer Trainee, full-time | July 2023 - June 2024
+- Supervised earthwork, granular sub-base and bituminous paving on a 38-km section of a four-lane national highway, coordinating three subcontractor crews and daily quality-control sampling against MoRTH specifications.
+- Reviewed reinforcement and formwork for 11 box culverts and two minor bridges against IRC drawings, raised RFIs with the design office, and maintained pour cards and cube-strength records.
+- Tracked monthly earned quantities for the running account bill; the section finished the 2024-25 season two weeks ahead of the baseline schedule.
+
+PROJECTS
+Loop 101 Interchange Travel Demand Study, ASU graduate project | Spring 2026
+- Built a four-step demand model in TransCAD from Maricopa Association of Governments trip tables and a 2045 land-use scenario; evaluated a diverging diamond interchange alternative in VISSIM and presented findings to an ADOT reviewer.
+
+Prestressed Concrete Girder Bridge Design | Fall 2025
+- Designed a 120-ft single-span AASHTO Type IV girder bridge to AASHTO LRFD, including load rating in SAP2000 and bearing and deck detailing.
+
+SKILLS
+Design and analysis: AutoCAD Civil 3D, MicroStation and OpenRoads Designer, Synchro/SimTraffic, PTV VISSIM, HCS 8, TransCAD, SAP2000, ArcGIS Pro, Bluebeam Revu
+Standards: AASHTO Green Book and LRFD, MUTCD, HCM 7th Edition, ADOT Roadway Design Guidelines, IRC and MoRTH specifications
+Data: Python (pandas, GeoPandas) for traffic-count and probe-data processing, Excel, Microsoft Project
+Affiliations: ITE Arizona Section student member; ASCE, ASU student chapter

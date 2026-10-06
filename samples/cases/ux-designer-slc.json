@@ -1,0 +1,942 @@
+{
+ "profile": {
+  "name": "Rowan Halverson",
+  "initials": "RH",
+  "subline": "Product and UX design roles for a December 2026 BFA graduate · Tailored to your resume",
+  "status": "Senior · Grad Dec 2026",
+  "recentRole": "Lehi SaaS company — Product Design Intern (Summer 2026)",
+  "stack": "Figma, user research, prototyping, design systems, usability testing, HTML/CSS basics",
+  "target": "Product or UX designer · Salt Lake City · SaaS",
+  "yearsExperience": 0,
+  "uofu": false,
+  "city": "Ogden, UT",
+  "geoLabel": "SLC Area",
+  "cohortLabel": "Dec 2026 grad",
+  "linkedin": "https://www.linkedin.com/in/rowan-halverson-ux",
+  "summary": "A product designer is adjacent to this board rather than on it: the software companies here (Qualtrics, Lucid, Podium, BambooHR, Filevine) all employ designers, but their listed openings are data and analyst roles. The suggested Utah design employers fill the gap.",
+  "searchLinks": [
+   {
+    "label": "Product designer, Salt Lake City",
+    "keywords": "product designer",
+    "location": "Salt Lake City, Utah",
+    "remoteOnly": false,
+    "entryLevel": true
+   }
+  ],
+  "applyNow": "Apply to the product-design openings at Lucid, Podium and Qualtrics directly from their careers pages; the listed analyst roles here are not for you.",
+  "watchLater": "Design-intern-to-hire pipelines at the Lehi SaaS companies convert in the spring."
+ },
+ "companies": [
+  {
+   "name": "MX Technologies",
+   "score": 65,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at MX Technologies: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Goldman Sachs (SLC Campus)",
+   "score": 71,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Goldman Sachs (SLC Campus): fintech employer, local to the candidate."
+  },
+  {
+   "name": "Recursion Pharmaceuticals",
+   "score": 70,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Recursion Pharmaceuticals: health employer, local to the candidate."
+  },
+  {
+   "name": "Domo",
+   "score": 78,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Domo: data employer, local to the candidate."
+  },
+  {
+   "name": "Qualtrics",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Qualtrics: data employer, local to the candidate."
+  },
+  {
+   "name": "Ataccama",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Ataccama: data employer, away from the candidate."
+  },
+  {
+   "name": "Sigma Computing",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Sigma Computing: data employer, away from the candidate."
+  },
+  {
+   "name": "Adobe (Lehi Campus)",
+   "score": 86,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Adobe (Lehi Campus): data employer, local to the candidate."
+  },
+  {
+   "name": "Ancestry",
+   "score": 72,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Ancestry: data employer, local to the candidate."
+  },
+  {
+   "name": "Pluralsight",
+   "score": 77,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Pluralsight: data employer, local to the candidate."
+  },
+  {
+   "name": "Health Catalyst",
+   "score": 64,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Health Catalyst: health employer, local to the candidate."
+  },
+  {
+   "name": "Galileo Financial Technologies",
+   "score": 77,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Galileo Financial Technologies: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Lucid Software",
+   "score": 83,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Lucid Software: data employer, local to the candidate."
+  },
+  {
+   "name": "Weave",
+   "score": 83,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Weave: data employer, local to the candidate."
+  },
+  {
+   "name": "Podium",
+   "score": 82,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Podium: data employer, local to the candidate."
+  },
+  {
+   "name": "Snowflake",
+   "score": 72,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Snowflake: data employer, away from the candidate."
+  },
+  {
+   "name": "Databricks",
+   "score": 74,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Databricks: data employer, away from the candidate."
+  },
+  {
+   "name": "Plaid",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Plaid: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Stripe",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Stripe: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Brex",
+   "score": 80,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Brex: fintech employer, local to the candidate."
+  },
+  {
+   "name": "SoFi",
+   "score": 69,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at SoFi: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Instructure (Canvas)",
+   "score": 81,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Instructure (Canvas): data employer, local to the candidate."
+  },
+  {
+   "name": "Filevine",
+   "score": 90,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Filevine: data employer, local to the candidate."
+  },
+  {
+   "name": "BambooHR",
+   "score": 75,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at BambooHR: data employer, local to the candidate."
+  },
+  {
+   "name": "Vivint Smart Home",
+   "score": 89,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Vivint Smart Home: data employer, local to the candidate."
+  },
+  {
+   "name": "Pattern",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Pattern: data employer, local to the candidate."
+  },
+  {
+   "name": "Entrata",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Entrata: data employer, local to the candidate."
+  },
+  {
+   "name": "Nav Technologies",
+   "score": 77,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Nav Technologies: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Cotiviti",
+   "score": 63,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Cotiviti: health employer, local to the candidate."
+  },
+  {
+   "name": "JPMorgan Chase",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at JPMorgan Chase: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Capital One",
+   "score": 63,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Capital One: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Mastercard",
+   "score": 69,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Mastercard: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Bloomberg",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Bloomberg: fintech employer, away from the candidate."
+  },
+  {
+   "name": "OpenAI",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at OpenAI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Anthropic",
+   "score": 69,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Anthropic: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Scale AI",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Scale AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Robinhood",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Robinhood: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Ramp",
+   "score": 69,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Ramp: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Hugging Face",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Hugging Face: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Perplexity AI",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Perplexity AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "DigiCert",
+   "score": 80,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at DigiCert: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Ivanti",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Ivanti: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Proofpoint",
+   "score": 64,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Proofpoint: cyber employer, local to the candidate."
+  },
+  {
+   "name": "SecurityMetrics",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at SecurityMetrics: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Arctic Wolf",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Arctic Wolf: cyber employer, local to the candidate."
+  },
+  {
+   "name": "CrowdStrike",
+   "score": 67,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at CrowdStrike: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Palo Alto Networks",
+   "score": 64,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Palo Alto Networks: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Okta",
+   "score": 64,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Okta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Cloudflare",
+   "score": 65,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Cloudflare: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Datadog",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Datadog: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Vanta",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Vanta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Coalition",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Coalition: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Sardine",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Sardine: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Wiz",
+   "score": 62,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Wiz: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Abnormal AI",
+   "score": 62,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Abnormal AI: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Zions Bancorporation",
+   "score": 84,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Zions Bancorporation: fintech employer, local to the candidate."
+  },
+  {
+   "name": "America First Credit Union",
+   "score": 69,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at America First Credit Union: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Sunwest Bank",
+   "score": 61,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Sunwest Bank: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Datafy",
+   "score": 67,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Datafy: data employer, local to the candidate."
+  },
+  {
+   "name": "Verkada",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Verkada: cyber employer, away from the candidate."
+  },
+  {
+   "name": "iCapital",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at iCapital: fintech employer, local to the candidate."
+  },
+  {
+   "name": "WGU (Western Governors University)",
+   "score": 84,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at WGU (Western Governors University): data employer, local to the candidate."
+  },
+  {
+   "name": "Morgan Stanley",
+   "score": 80,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Morgan Stanley: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Addepar",
+   "score": 83,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Addepar: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Cicero Group (MGT)",
+   "score": 85,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Cicero Group (MGT): data employer, local to the candidate."
+  },
+  {
+   "name": "Freddie Mac",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Freddie Mac: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fannie Mae",
+   "score": 66,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Fannie Mae: fintech employer, away from the candidate."
+  },
+  {
+   "name": "American Express",
+   "score": 77,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at American Express: fintech employer, local to the candidate."
+  },
+  {
+   "name": "USAA",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at USAA: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fidelity Investments",
+   "score": 71,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Fidelity Investments: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Vanguard",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Vanguard: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Visa",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Visa: fintech employer, away from the candidate."
+  },
+  {
+   "name": "FIS",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at FIS: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Citi",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Citi: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Wells Fargo",
+   "score": 64,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Wells Fargo: fintech employer, away from the candidate."
+  },
+  {
+   "name": "EY",
+   "score": 80,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at EY: data employer, local to the candidate."
+  },
+  {
+   "name": "Deloitte",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Deloitte: data employer, away from the candidate."
+  },
+  {
+   "name": "PwC",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at PwC: data employer, away from the candidate."
+  },
+  {
+   "name": "KPMG",
+   "score": 70,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at KPMG: data employer, away from the candidate."
+  },
+  {
+   "name": "Protiviti",
+   "score": 63,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Protiviti: data employer, away from the candidate."
+  },
+  {
+   "name": "Accenture",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Accenture: data employer, away from the candidate."
+  }
+ ],
+ "suggested": [
+  {
+   "name": "O.C. Tanner",
+   "location": "Ogden, UT",
+   "locType": "local",
+   "industry": [
+    "data"
+   ],
+   "roles": [
+    "product"
+   ],
+   "score": 90,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Utah software company with a product-design team.",
+   "note": "Search \"product designer\" and \"UX designer\".",
+   "confidence": "high"
+  },
+  {
+   "name": "Underbelly",
+   "location": "Ogden, UT",
+   "locType": "local",
+   "industry": [
+    "data"
+   ],
+   "roles": [
+    "product"
+   ],
+   "score": 87,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Utah software company with a product-design team.",
+   "note": "Search \"product designer\" and \"UX designer\".",
+   "confidence": "high"
+  },
+  {
+   "name": "BILL (Divvy)",
+   "location": "Ogden, UT",
+   "locType": "local",
+   "industry": [
+    "data"
+   ],
+   "roles": [
+    "product"
+   ],
+   "score": 84,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Utah software company with a product-design team.",
+   "note": "Search \"product designer\" and \"UX designer\".",
+   "confidence": "high"
+  },
+  {
+   "name": "Traeger",
+   "location": "Ogden, UT",
+   "locType": "local",
+   "industry": [
+    "data"
+   ],
+   "roles": [
+    "product"
+   ],
+   "score": 81,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Utah software company with a product-design team.",
+   "note": "Search \"product designer\" and \"UX designer\".",
+   "confidence": "high"
+  },
+  {
+   "name": "Owlet",
+   "location": "Ogden, UT",
+   "locType": "local",
+   "industry": [
+    "data"
+   ],
+   "roles": [
+    "product"
+   ],
+   "score": 78,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Utah software company with a product-design team.",
+   "note": "Search \"product designer\" and \"UX designer\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Canopy",
+   "location": "Ogden, UT",
+   "locType": "local",
+   "industry": [
+    "data"
+   ],
+   "roles": [
+    "product"
+   ],
+   "score": 75,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Utah software company with a product-design team.",
+   "note": "Search \"product designer\" and \"UX designer\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Struck",
+   "location": "Ogden, UT",
+   "locType": "local",
+   "industry": [
+    "data"
+   ],
+   "roles": [
+    "product"
+   ],
+   "score": 72,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Utah software company with a product-design team.",
+   "note": "Search \"product designer\" and \"UX designer\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Super Top Secret",
+   "location": "Ogden, UT",
+   "locType": "local",
+   "industry": [
+    "data"
+   ],
+   "roles": [
+    "product"
+   ],
+   "score": 69,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Utah software company with a product-design team.",
+   "note": "Search \"product designer\" and \"UX designer\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Cotopaxi",
+   "location": "Ogden, UT",
+   "locType": "local",
+   "industry": [
+    "data"
+   ],
+   "roles": [
+    "product"
+   ],
+   "score": 66,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Utah software company with a product-design team.",
+   "note": "Search \"product designer\" and \"UX designer\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Clearlink",
+   "location": "Ogden, UT",
+   "locType": "local",
+   "industry": [
+    "data"
+   ],
+   "roles": [
+    "product"
+   ],
+   "score": 63,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Utah software company with a product-design team.",
+   "note": "Search \"product designer\" and \"UX designer\".",
+   "confidence": "medium"
+  }
+ ]
+}

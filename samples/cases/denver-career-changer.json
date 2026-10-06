@@ -1,0 +1,883 @@
+{
+ "profile": {
+  "name": "Caleb Montenegro",
+  "initials": "CM",
+  "subline": "Data analyst roles for a career changer with six years of teaching and a 2026 analytics master's · Tailored to your resume · Board re-mapped to Denver",
+  "status": "MS Analytics (OMSA) · Grad Aug 2026",
+  "recentRole": "Jeffco Public Schools — High School Mathematics Teacher (2018–2024)",
+  "stack": "SQL, Tableau, Python (pandas), R, regression and forecasting, stakeholder communication",
+  "target": "Data analyst · Denver, CO · open to relocating to Salt Lake City",
+  "yearsExperience": 6,
+  "uofu": false,
+  "city": "Denver, CO",
+  "geoLabel": "Denver Area",
+  "cohortLabel": "career changer",
+  "linkedin": "https://www.linkedin.com/in/caleb-montenegro-analytics",
+  "summary": "Six years of professional work plus a fresh analytics master's puts you past the new-grad programs and into the ordinary analyst reqs, which is better news than it sounds: roles asking two or three years are within reach. Denver employers are added below, and the Salt Lake roles are flagged as a move you said you would make.",
+  "searchLinks": [
+   {
+    "label": "Data analyst, Denver",
+    "keywords": "data analyst",
+    "location": "Denver, Colorado",
+    "remoteOnly": false,
+    "entryLevel": false
+   },
+   {
+    "label": "Data analyst, Salt Lake City",
+    "keywords": "data analyst",
+    "location": "Salt Lake City, Utah",
+    "remoteOnly": false,
+    "entryLevel": false
+   }
+  ],
+  "applyNow": "Qualtrics' GTM Data Analyst in Provo and Fidelity's Salt Lake Analytics associate are written for exactly your years; EY's Assurance Data analyst lists Denver.",
+  "watchLater": "The 2027 new-grad classes are the wrong cohort for you; ignore them rather than apply."
+ },
+ "companies": [
+  {
+   "name": "MX Technologies",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at MX Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Goldman Sachs (SLC Campus)",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Goldman Sachs (SLC Campus): fintech employer, away from the candidate."
+  },
+  {
+   "name": "Recursion Pharmaceuticals",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Recursion Pharmaceuticals: health employer, away from the candidate."
+  },
+  {
+   "name": "Domo",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Domo: data employer, away from the candidate."
+  },
+  {
+   "name": "Qualtrics",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Qualtrics: data employer, away from the candidate."
+  },
+  {
+   "name": "Ataccama",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Ataccama: data employer, away from the candidate."
+  },
+  {
+   "name": "Sigma Computing",
+   "score": 75,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Sigma Computing: data employer, away from the candidate."
+  },
+  {
+   "name": "Adobe (Lehi Campus)",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Adobe (Lehi Campus): data employer, away from the candidate."
+  },
+  {
+   "name": "Ancestry",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Ancestry: data employer, away from the candidate."
+  },
+  {
+   "name": "Pluralsight",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Pluralsight: data employer, away from the candidate."
+  },
+  {
+   "name": "Health Catalyst",
+   "score": 61,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Health Catalyst: health employer, away from the candidate."
+  },
+  {
+   "name": "Galileo Financial Technologies",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Galileo Financial Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Lucid Software",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Lucid Software: data employer, away from the candidate."
+  },
+  {
+   "name": "Weave",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Weave: data employer, away from the candidate."
+  },
+  {
+   "name": "Podium",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Podium: data employer, away from the candidate."
+  },
+  {
+   "name": "Snowflake",
+   "score": 82,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Snowflake: data employer, away from the candidate."
+  },
+  {
+   "name": "Databricks",
+   "score": 80,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Databricks: data employer, away from the candidate."
+  },
+  {
+   "name": "Plaid",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Plaid: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Stripe",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Stripe: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Brex",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Brex: fintech employer, away from the candidate."
+  },
+  {
+   "name": "SoFi",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at SoFi: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Instructure (Canvas)",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Instructure (Canvas): data employer, away from the candidate."
+  },
+  {
+   "name": "Filevine",
+   "score": 80,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Filevine: data employer, away from the candidate."
+  },
+  {
+   "name": "BambooHR",
+   "score": 65,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at BambooHR: data employer, away from the candidate."
+  },
+  {
+   "name": "Vivint Smart Home",
+   "score": 79,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Vivint Smart Home: data employer, away from the candidate."
+  },
+  {
+   "name": "Pattern",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Pattern: data employer, away from the candidate."
+  },
+  {
+   "name": "Entrata",
+   "score": 61,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Entrata: data employer, away from the candidate."
+  },
+  {
+   "name": "Nav Technologies",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Nav Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Cotiviti",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Cotiviti: health employer, away from the candidate."
+  },
+  {
+   "name": "JPMorgan Chase",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at JPMorgan Chase: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Capital One",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Capital One: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Mastercard",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Mastercard: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Bloomberg",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Bloomberg: fintech employer, away from the candidate."
+  },
+  {
+   "name": "OpenAI",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at OpenAI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Anthropic",
+   "score": 64,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Anthropic: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Scale AI",
+   "score": 77,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Scale AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Robinhood",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Robinhood: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Ramp",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Ramp: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Hugging Face",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Hugging Face: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Perplexity AI",
+   "score": 62,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Perplexity AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "DigiCert",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at DigiCert: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Ivanti",
+   "score": 61,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Ivanti: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Proofpoint",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Proofpoint: cyber employer, away from the candidate."
+  },
+  {
+   "name": "SecurityMetrics",
+   "score": 62,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at SecurityMetrics: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Arctic Wolf",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Arctic Wolf: cyber employer, away from the candidate."
+  },
+  {
+   "name": "CrowdStrike",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at CrowdStrike: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Palo Alto Networks",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Palo Alto Networks: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Okta",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Okta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Cloudflare",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Cloudflare: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Datadog",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Datadog: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Vanta",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Vanta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Coalition",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Coalition: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Sardine",
+   "score": 62,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Sardine: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Wiz",
+   "score": 64,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Wiz: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Abnormal AI",
+   "score": 64,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Abnormal AI: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Zions Bancorporation",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Zions Bancorporation: fintech employer, away from the candidate."
+  },
+  {
+   "name": "America First Credit Union",
+   "score": 65,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at America First Credit Union: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Sunwest Bank",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Sunwest Bank: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Datafy",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Datafy: data employer, away from the candidate."
+  },
+  {
+   "name": "Verkada",
+   "score": 65,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Verkada: cyber employer, away from the candidate."
+  },
+  {
+   "name": "iCapital",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at iCapital: fintech employer, away from the candidate."
+  },
+  {
+   "name": "WGU (Western Governors University)",
+   "score": 80,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at WGU (Western Governors University): data employer, away from the candidate."
+  },
+  {
+   "name": "Morgan Stanley",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Morgan Stanley: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Addepar",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Addepar: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Cicero Group (MGT)",
+   "score": 78,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Cicero Group (MGT): data employer, away from the candidate."
+  },
+  {
+   "name": "Freddie Mac",
+   "score": 69,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Freddie Mac: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fannie Mae",
+   "score": 80,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Fannie Mae: fintech employer, away from the candidate."
+  },
+  {
+   "name": "American Express",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at American Express: fintech employer, away from the candidate."
+  },
+  {
+   "name": "USAA",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at USAA: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fidelity Investments",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Fidelity Investments: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Vanguard",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Vanguard: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Visa",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Visa: fintech employer, away from the candidate."
+  },
+  {
+   "name": "FIS",
+   "score": 81,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at FIS: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Citi",
+   "score": 75,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Citi: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Wells Fargo",
+   "score": 84,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Wells Fargo: fintech employer, away from the candidate."
+  },
+  {
+   "name": "EY",
+   "score": 89,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at EY: data employer, away from the candidate."
+  },
+  {
+   "name": "Deloitte",
+   "score": 88,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "hybrid",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Deloitte: data employer, away from the candidate."
+  },
+  {
+   "name": "PwC",
+   "score": 92,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "local",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at PwC: data employer, away from the candidate."
+  },
+  {
+   "name": "KPMG",
+   "score": 90,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at KPMG: data employer, away from the candidate."
+  },
+  {
+   "name": "Protiviti",
+   "score": 83,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Protiviti: data employer, away from the candidate."
+  },
+  {
+   "name": "Accenture",
+   "score": 80,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Accenture: data employer, away from the candidate."
+  }
+ ],
+ "suggested": [
+  {
+   "name": "Ibotta",
+   "location": "Denver, CO",
+   "locType": "local",
+   "industry": [
+    "fintech",
+    "data"
+   ],
+   "roles": [
+    "data",
+    "product"
+   ],
+   "score": 86,
+   "badges": [
+    "fintech",
+    "tools-match"
+   ],
+   "why": "Denver fintech with a large analytics organisation that hires analysts from non-traditional backgrounds.",
+   "note": "Search 'Analyst' on Ibotta's careers site.",
+   "confidence": "high"
+  },
+  {
+   "name": "Gusto",
+   "location": "Denver, CO",
+   "locType": "local",
+   "industry": [
+    "fintech"
+   ],
+   "roles": [
+    "data",
+    "swe"
+   ],
+   "score": 80,
+   "badges": [
+    "fintech",
+    "tools-match"
+   ],
+   "why": "Payroll fintech with a big Denver office and regular data-analyst reqs.",
+   "note": "Filter Gusto's jobs to Denver and 'Data'.",
+   "confidence": "high"
+  },
+  {
+   "name": "Guild",
+   "location": "Denver, CO",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 82,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Education-benefits company; a former teacher's domain knowledge is a genuine edge here.",
+   "note": "Look for 'Analyst' and 'Business Intelligence' roles.",
+   "confidence": "medium"
+  },
+  {
+   "name": "Western Union",
+   "location": "Denver, CO",
+   "locType": "local",
+   "industry": [
+    "fintech"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 74,
+   "badges": [
+    "fintech",
+    "tools-match"
+   ],
+   "why": "Denver HQ with analytics and risk analyst roles.",
+   "note": "Search 'Analyst' and filter to Denver.",
+   "confidence": "high"
+  },
+  {
+   "name": "DaVita",
+   "location": "Denver, CO",
+   "locType": "local",
+   "industry": [
+    "health"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 76,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Denver HQ; healthcare analytics teams hire SQL-first analysts.",
+   "note": "Search 'Data Analyst' on DaVita's careers site.",
+   "confidence": "high"
+  },
+  {
+   "name": "Arrow Electronics",
+   "location": "Centennial, CO",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 70,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Large Denver-area employer with supply-chain analytics roles.",
+   "note": "Search 'Analyst' on Arrow's careers site.",
+   "confidence": "medium"
+  }
+ ]
+}

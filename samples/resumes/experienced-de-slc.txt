@@ -1,0 +1,43 @@
+BRONWYN CASTELLANOS
+Salt Lake City, UT | (801) 555-0147 | bronwyn.castellanos@example.com | https://www.linkedin.com/in/bronwyn-castellanos-data
+
+SUMMARY
+Data engineer with five years of full-time experience building and operating batch and streaming pipelines for a Salt Lake City payments platform. Owns the Airflow, dbt and Snowflake stack for a 40-person engineering org, mentors junior engineers, and has led two platform migrations end to end. Seeking a Senior or Lead Data Engineer role in Salt Lake City (hybrid or on-site).
+
+EXPERIENCE
+
+Galileo Financial Technologies - Salt Lake City, UT
+Data Engineer II, April 2024 - Present
+- Lead a four-engineer pod that owns the ledger and transaction data platform: 300+ dbt models, 120 Airflow DAGs, and 9 TB/day of card-authorization events landing in Snowflake.
+- Designed the Spark Structured Streaming job (EMR on EKS) that replaced a nightly batch load, cutting fraud-model feature latency from 14 hours to under 6 minutes.
+- Migrated 1,900 legacy SQL Server stored procedures to dbt with full test coverage; lowered monthly Snowflake spend 31% through clustering, warehouse right-sizing and incremental models.
+- Run the on-call rotation and the data-quality SLA (99.7% of SLAs met in 2025); introduced Great Expectations checks that catch schema drift before it reaches reporting.
+- Interview-loop lead for data engineering; mentor two junior engineers and one apprentice.
+
+Data Engineer I, June 2021 - March 2024
+- Built the company's first Airflow deployment (MWAA) and moved 60 cron jobs onto it; wrote the internal DAG style guide still in use.
+- Developed Kafka-to-S3 ingestion with Lambda and Glue for merchant settlement files, handling 25M records nightly with idempotent replays.
+- Partnered with Risk and Compliance to deliver PCI-scoped data marts, including column-level masking and role-based access in Snowflake.
+- Automated the quarterly SOC 2 evidence pull in Python, saving the analytics team roughly 80 hours a year.
+
+Vivint - Provo, UT
+Business Intelligence Intern, May 2020 - August 2020
+- Wrote SQL Server reports and Power BI dashboards for the field-service scheduling team; cleaned technician-routing data with pandas.
+
+EDUCATION
+
+University of Utah, David Eccles School of Business - Salt Lake City, UT
+Bachelor of Science, Management Information Systems, May 2021
+- Minor in Computer Science; GPA 3.6
+- Capstone: demand forecasting for a regional transit agency using Python and PostgreSQL
+
+SKILLS
+Languages: Python, SQL, Scala (working), Bash
+Processing: Apache Spark, Spark Structured Streaming, Kafka
+Orchestration and modeling: Airflow (MWAA and self-hosted), dbt Core and dbt Cloud, Great Expectations
+Warehouses and storage: Snowflake, PostgreSQL, S3, Apache Iceberg
+Cloud and infrastructure: AWS (EMR, EKS, Glue, Lambda, Kinesis, IAM), Terraform, Docker, GitHub Actions
+Practices: Kimball dimensional modeling, CI/CD for data, PCI DSS and SOC 2 controls, on-call ownership
+
+CERTIFICATIONS
+SnowPro Core (2023); AWS Certified Data Engineer - Associate (2025)

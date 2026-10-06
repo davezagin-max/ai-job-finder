@@ -1,0 +1,902 @@
+{
+ "profile": {
+  "name": "Nadia Castellanos",
+  "initials": "NC",
+  "subline": "Laboratory scientist and research associate roles for a December 2026 chemistry graduate · Tailored to your resume",
+  "status": "Senior · Grad Dec 2026",
+  "recentRole": "ARUP Laboratories — Laboratory Assistant Intern, Salt Lake City (Summer 2026)",
+  "stack": "HPLC, GC-MS, wet chemistry, LIMS, method validation, lab notebooks, Excel",
+  "target": "Lab scientist or research associate · Salt Lake City · diagnostics or biotech",
+  "yearsExperience": 0,
+  "uofu": true,
+  "city": "Salt Lake City, UT",
+  "geoLabel": "SLC Area",
+  "cohortLabel": "Dec 2026 grad",
+  "linkedin": "https://www.linkedin.com/in/nadia-castellanos-chem",
+  "summary": "You are a bench scientist, and this board is built for data and software hiring, so the suggested clinical labs, diagnostics companies and biotech firms in Salt Lake City are where your applications go. Recursion and Health Catalyst are the only researched employers in a neighbouring field.",
+  "searchLinks": [
+   {
+    "label": "Laboratory scientist, Salt Lake City",
+    "keywords": "laboratory scientist",
+    "location": "Salt Lake City, Utah",
+    "remoteOnly": false,
+    "entryLevel": true
+   }
+  ],
+  "applyNow": "ARUP's and Myriad's lab-scientist postings take December graduates; apply before finals.",
+  "watchLater": "Recursion's wet-lab research associate reqs post a few times a year."
+ },
+ "companies": [
+  {
+   "name": "MX Technologies",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at MX Technologies: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Goldman Sachs (SLC Campus)",
+   "score": 64,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Goldman Sachs (SLC Campus): fintech employer, local to the candidate."
+  },
+  {
+   "name": "Recursion Pharmaceuticals",
+   "score": 73,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Recursion Pharmaceuticals: health employer, local to the candidate."
+  },
+  {
+   "name": "Domo",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Domo: data employer, local to the candidate."
+  },
+  {
+   "name": "Qualtrics",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Qualtrics: data employer, local to the candidate."
+  },
+  {
+   "name": "Ataccama",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Ataccama: data employer, away from the candidate."
+  },
+  {
+   "name": "Sigma Computing",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Sigma Computing: data employer, away from the candidate."
+  },
+  {
+   "name": "Adobe (Lehi Campus)",
+   "score": 68,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Adobe (Lehi Campus): data employer, local to the candidate."
+  },
+  {
+   "name": "Ancestry",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Ancestry: data employer, local to the candidate."
+  },
+  {
+   "name": "Pluralsight",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Pluralsight: data employer, local to the candidate."
+  },
+  {
+   "name": "Health Catalyst",
+   "score": 62,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Health Catalyst: health employer, local to the candidate."
+  },
+  {
+   "name": "Galileo Financial Technologies",
+   "score": 65,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Galileo Financial Technologies: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Lucid Software",
+   "score": 65,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Lucid Software: data employer, local to the candidate."
+  },
+  {
+   "name": "Weave",
+   "score": 65,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Weave: data employer, local to the candidate."
+  },
+  {
+   "name": "Podium",
+   "score": 64,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Podium: data employer, local to the candidate."
+  },
+  {
+   "name": "Snowflake",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Snowflake: data employer, away from the candidate."
+  },
+  {
+   "name": "Databricks",
+   "score": 66,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Databricks: data employer, away from the candidate."
+  },
+  {
+   "name": "Plaid",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Plaid: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Stripe",
+   "score": 61,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Stripe: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Brex",
+   "score": 68,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Brex: fintech employer, local to the candidate."
+  },
+  {
+   "name": "SoFi",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at SoFi: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Instructure (Canvas)",
+   "score": 63,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Instructure (Canvas): data employer, local to the candidate."
+  },
+  {
+   "name": "Filevine",
+   "score": 72,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Filevine: data employer, local to the candidate."
+  },
+  {
+   "name": "BambooHR",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at BambooHR: data employer, local to the candidate."
+  },
+  {
+   "name": "Vivint Smart Home",
+   "score": 71,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Vivint Smart Home: data employer, local to the candidate."
+  },
+  {
+   "name": "Pattern",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Pattern: data employer, local to the candidate."
+  },
+  {
+   "name": "Entrata",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Entrata: data employer, local to the candidate."
+  },
+  {
+   "name": "Nav Technologies",
+   "score": 65,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Nav Technologies: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Cotiviti",
+   "score": 64,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Cotiviti: health employer, local to the candidate."
+  },
+  {
+   "name": "JPMorgan Chase",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at JPMorgan Chase: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Capital One",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Capital One: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Mastercard",
+   "score": 62,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Mastercard: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Bloomberg",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Bloomberg: fintech employer, away from the candidate."
+  },
+  {
+   "name": "OpenAI",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at OpenAI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Anthropic",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Anthropic: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Scale AI",
+   "score": 62,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Scale AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Robinhood",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Robinhood: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Ramp",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Ramp: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Hugging Face",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Hugging Face: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Perplexity AI",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Perplexity AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "DigiCert",
+   "score": 70,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at DigiCert: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Ivanti",
+   "score": 63,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Ivanti: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Proofpoint",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Proofpoint: cyber employer, local to the candidate."
+  },
+  {
+   "name": "SecurityMetrics",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at SecurityMetrics: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Arctic Wolf",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Arctic Wolf: cyber employer, local to the candidate."
+  },
+  {
+   "name": "CrowdStrike",
+   "score": 63,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at CrowdStrike: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Palo Alto Networks",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Palo Alto Networks: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Okta",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Okta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Cloudflare",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Cloudflare: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Datadog",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Datadog: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Vanta",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Vanta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Coalition",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Coalition: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Sardine",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Sardine: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Wiz",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Wiz: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Abnormal AI",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Abnormal AI: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Zions Bancorporation",
+   "score": 72,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Zions Bancorporation: fintech employer, local to the candidate."
+  },
+  {
+   "name": "America First Credit Union",
+   "score": 62,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at America First Credit Union: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Sunwest Bank",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Sunwest Bank: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Datafy",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Datafy: data employer, local to the candidate."
+  },
+  {
+   "name": "Verkada",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Verkada: cyber employer, away from the candidate."
+  },
+  {
+   "name": "iCapital",
+   "score": 64,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at iCapital: fintech employer, local to the candidate."
+  },
+  {
+   "name": "WGU (Western Governors University)",
+   "score": 71,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at WGU (Western Governors University): data employer, local to the candidate."
+  },
+  {
+   "name": "Morgan Stanley",
+   "score": 67,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Morgan Stanley: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Addepar",
+   "score": 67,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Addepar: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Cicero Group (MGT)",
+   "score": 66,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Cicero Group (MGT): data employer, local to the candidate."
+  },
+  {
+   "name": "Freddie Mac",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Freddie Mac: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fannie Mae",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Fannie Mae: fintech employer, away from the candidate."
+  },
+  {
+   "name": "American Express",
+   "score": 64,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at American Express: fintech employer, local to the candidate."
+  },
+  {
+   "name": "USAA",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at USAA: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fidelity Investments",
+   "score": 64,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Fidelity Investments: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Vanguard",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Vanguard: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Visa",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Visa: fintech employer, away from the candidate."
+  },
+  {
+   "name": "FIS",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at FIS: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Citi",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Citi: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Wells Fargo",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Wells Fargo: fintech employer, away from the candidate."
+  },
+  {
+   "name": "EY",
+   "score": 70,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at EY: data employer, local to the candidate."
+  },
+  {
+   "name": "Deloitte",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Deloitte: data employer, away from the candidate."
+  },
+  {
+   "name": "PwC",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at PwC: data employer, away from the candidate."
+  },
+  {
+   "name": "KPMG",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at KPMG: data employer, away from the candidate."
+  },
+  {
+   "name": "Protiviti",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Protiviti: data employer, away from the candidate."
+  },
+  {
+   "name": "Accenture",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Accenture: data employer, away from the candidate."
+  }
+ ],
+ "suggested": [
+  {
+   "name": "ARUP Laboratories",
+   "location": "Salt Lake City, UT",
+   "locType": "local",
+   "industry": [
+    "health"
+   ],
+   "roles": [],
+   "score": 90,
+   "badges": [],
+   "why": "Synthetic fixture: a clinical laboratory, diagnostics or biotech employer in Salt Lake City.",
+   "note": "Search \"laboratory scientist\", \"research associate\" and \"lab technician\".",
+   "confidence": "high"
+  },
+  {
+   "name": "Myriad Genetics",
+   "location": "Salt Lake City, UT",
+   "locType": "local",
+   "industry": [
+    "health"
+   ],
+   "roles": [],
+   "score": 87,
+   "badges": [],
+   "why": "Synthetic fixture: a clinical laboratory, diagnostics or biotech employer in Salt Lake City.",
+   "note": "Search \"laboratory scientist\", \"research associate\" and \"lab technician\".",
+   "confidence": "high"
+  },
+  {
+   "name": "BioFire Diagnostics (bioMerieux)",
+   "location": "Salt Lake City, UT",
+   "locType": "local",
+   "industry": [
+    "health"
+   ],
+   "roles": [],
+   "score": 84,
+   "badges": [],
+   "why": "Synthetic fixture: a clinical laboratory, diagnostics or biotech employer in Salt Lake City.",
+   "note": "Search \"laboratory scientist\", \"research associate\" and \"lab technician\".",
+   "confidence": "high"
+  },
+  {
+   "name": "Nelson Laboratories (Sotera Health)",
+   "location": "Salt Lake City, UT",
+   "locType": "local",
+   "industry": [
+    "health"
+   ],
+   "roles": [],
+   "score": 81,
+   "badges": [],
+   "why": "Synthetic fixture: a clinical laboratory, diagnostics or biotech employer in Salt Lake City.",
+   "note": "Search \"laboratory scientist\", \"research associate\" and \"lab technician\".",
+   "confidence": "high"
+  },
+  {
+   "name": "USANA Health Sciences",
+   "location": "Salt Lake City, UT",
+   "locType": "local",
+   "industry": [
+    "health"
+   ],
+   "roles": [],
+   "score": 78,
+   "badges": [],
+   "why": "Synthetic fixture: a clinical laboratory, diagnostics or biotech employer in Salt Lake City.",
+   "note": "Search \"laboratory scientist\", \"research associate\" and \"lab technician\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Intermountain Health Central Laboratory",
+   "location": "Salt Lake City, UT",
+   "locType": "local",
+   "industry": [
+    "health"
+   ],
+   "roles": [],
+   "score": 75,
+   "badges": [],
+   "why": "Synthetic fixture: a clinical laboratory, diagnostics or biotech employer in Salt Lake City.",
+   "note": "Search \"laboratory scientist\", \"research associate\" and \"lab technician\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "University of Utah Health / Huntsman Cancer Institute",
+   "location": "Salt Lake City, UT",
+   "locType": "local",
+   "industry": [
+    "health"
+   ],
+   "roles": [],
+   "score": 72,
+   "badges": [],
+   "why": "Synthetic fixture: a clinical laboratory, diagnostics or biotech employer in Salt Lake City.",
+   "note": "Search \"laboratory scientist\", \"research associate\" and \"lab technician\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Chemtech-Ford Laboratories",
+   "location": "Salt Lake City, UT",
+   "locType": "local",
+   "industry": [
+    "health"
+   ],
+   "roles": [],
+   "score": 69,
+   "badges": [],
+   "why": "Synthetic fixture: a clinical laboratory, diagnostics or biotech employer in Salt Lake City.",
+   "note": "Search \"laboratory scientist\", \"research associate\" and \"lab technician\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Utah Public Health Laboratory",
+   "location": "Salt Lake City, UT",
+   "locType": "local",
+   "industry": [
+    "health"
+   ],
+   "roles": [],
+   "score": 66,
+   "badges": [],
+   "why": "Synthetic fixture: a clinical laboratory, diagnostics or biotech employer in Salt Lake City.",
+   "note": "Search \"laboratory scientist\", \"research associate\" and \"lab technician\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Merit Medical Systems",
+   "location": "Salt Lake City, UT",
+   "locType": "local",
+   "industry": [
+    "health"
+   ],
+   "roles": [],
+   "score": 63,
+   "badges": [],
+   "why": "Synthetic fixture: a clinical laboratory, diagnostics or biotech employer in Salt Lake City.",
+   "note": "Search \"laboratory scientist\", \"research associate\" and \"lab technician\".",
+   "confidence": "medium"
+  }
+ ]
+}

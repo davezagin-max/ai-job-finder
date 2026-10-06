@@ -1,0 +1,38 @@
+ROWAN HALVERSON
+Ogden, UT | (801) 555-0147 | hello@rowanhalverson.design | rowanhalverson.design | https://www.linkedin.com/in/rowan-halverson-ux
+
+OBJECTIVE
+Graphic design BFA candidate with a concentration in user experience design, graduating December 2026, seeking a full-time product designer or UX designer role in Salt Lake City starting January 2027. Figma-first designer who pairs hands-on user research with strong typographic and visual craft, with a case-study portfolio spanning SaaS, mobile and wayfinding work.
+
+EDUCATION
+Weber State University, Ogden, UT
+Bachelor of Fine Arts, Graphic Design, Concentration in User Experience Design - Expected December 2026
+GPA 3.74 | Dean's List, five semesters | AIGA Student Group, vice president (2025-2026)
+Relevant coursework: Interaction Design, UX Research Methods, Typography I-III, Design Systems, Information Design, Motion Graphics, Senior BFA Thesis
+
+EXPERIENCE
+Product Design Intern - Entrata, Lehi, UT | May 2026 - August 2026
+- Redesigned the resident maintenance-request flow in the mobile app, cutting the steps to submit a request from nine to four in moderated usability testing.
+- Planned and moderated 12 usability sessions with property managers and residents; synthesized findings into affinity maps and a prioritized recommendations deck for the product team.
+- Built and documented eight reusable components (form fields, status chips, empty states) in the team's Figma design system, with WCAG AA contrast and focus states.
+- Produced annotated wireframes, high-fidelity prototypes and redlined handoff specs for two engineering squads.
+
+Student Graphic Designer (part-time) - Weber State University Marketing & Communications, Ogden, UT | September 2024 - Present
+- Design print and digital collateral for campus events and admissions campaigns: posters, social graphics, email headers and web banners that follow the university brand guidelines.
+- Prepare press-ready files and coordinate proofs with the campus print shop.
+- Created an illustrated icon set used across the 2025-2026 orientation materials.
+
+Freelance Brand and Web Designer - Ogden, UT | 2023 - Present
+- Delivered logos, identity systems and Squarespace websites for six local businesses, including a bike shop and a coffee roaster on Historic 25th Street.
+- Run discovery interviews and competitive audits with each client before sketching concepts.
+
+SELECTED CASE STUDIES (portfolio: rowanhalverson.design)
+- Ogden Trails Companion (BFA thesis, in progress): mobile wayfinding app concept; 14 trail-user interviews, card sorting, journey maps and a clickable prototype tested with 10 participants.
+- Campus Dining Reorder: redesign of the mobile ordering flow for a campus dining vendor; task success rose from 60% to 95% across two rounds of testing.
+- Nonprofit Donation Flow: pro bono checkout redesign for an Ogden food pantry; shortened the donation form from four screens to one.
+
+SKILLS
+Design tools: Figma, FigJam, Adobe Illustrator, Photoshop, InDesign, After Effects, ProtoPie
+Research: user interviews, usability testing, card sorting, surveys, personas, journey mapping, affinity mapping, Maze, UserTesting
+Craft: wireframing, prototyping, design systems, typography, layout, iconography, accessibility (WCAG 2.2), responsive and mobile design; working knowledge of HTML/CSS for developer handoff
+Recognition: Best in Show, Weber State Student Design Exhibition 2025; AIGA Utah student portfolio review, 2026

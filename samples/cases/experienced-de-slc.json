@@ -1,0 +1,761 @@
+{
+ "profile": {
+  "name": "Bronwyn Castellanos",
+  "initials": "BC",
+  "subline": "Senior data-engineering roles for a five-year Snowflake and Spark engineer · Tailored to your resume",
+  "status": "5 yrs · open to senior and lead",
+  "recentRole": "Galileo Financial Technologies — Data Engineer II, Salt Lake City (2023–2026)",
+  "stack": "Spark, Airflow, dbt, Snowflake, AWS, Python, Kafka, data modeling",
+  "target": "Senior or lead data engineer · Salt Lake City · fintech or data tooling",
+  "yearsExperience": 5,
+  "uofu": true,
+  "city": "Salt Lake City, UT",
+  "geoLabel": "SLC Area",
+  "cohortLabel": "five-year engineer",
+  "linkedin": "https://www.linkedin.com/in/bronwyn-castellanos-data",
+  "summary": "This is a new-grad board and you are five years past it: every program here is the wrong cohort, and the ordinary reqs that ask for two or three years are easily within reach. The useful signal is which Salt Lake employers have real data teams.",
+  "searchLinks": [
+   {
+    "label": "Senior data engineer, Salt Lake City",
+    "keywords": "senior data engineer",
+    "location": "Salt Lake City, Utah",
+    "remoteOnly": false,
+    "entryLevel": false
+   }
+  ],
+  "applyNow": "Skip the programs. iCapital's and Fidelity's Salt Lake data roles, and Snowflake's and Databricks' experienced reqs, are where your resume lands.",
+  "watchLater": "Nothing on this board is worth waiting for at your level; use the All Jobs buttons."
+ },
+ "companies": [
+  {
+   "name": "MX Technologies",
+   "score": 77,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at MX Technologies: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Goldman Sachs (SLC Campus)",
+   "score": 91,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Goldman Sachs (SLC Campus): fintech employer, local to the candidate."
+  },
+  {
+   "name": "Recursion Pharmaceuticals",
+   "score": 85,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Recursion Pharmaceuticals: health employer, local to the candidate."
+  },
+  {
+   "name": "Domo",
+   "score": 88,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Domo: data employer, local to the candidate."
+  },
+  {
+   "name": "Qualtrics",
+   "score": 86,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Qualtrics: data employer, local to the candidate."
+  },
+  {
+   "name": "Ataccama",
+   "score": 78,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Ataccama: data employer, away from the candidate."
+  },
+  {
+   "name": "Sigma Computing",
+   "score": 81,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Sigma Computing: data employer, away from the candidate."
+  },
+  {
+   "name": "Adobe (Lehi Campus)",
+   "score": 96,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Adobe (Lehi Campus): data employer, local to the candidate."
+  },
+  {
+   "name": "Ancestry",
+   "score": 89,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Ancestry: data employer, local to the candidate."
+  },
+  {
+   "name": "Pluralsight",
+   "score": 87,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Pluralsight: data employer, local to the candidate."
+  },
+  {
+   "name": "Health Catalyst",
+   "score": 81,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Health Catalyst: health employer, local to the candidate."
+  },
+  {
+   "name": "Galileo Financial Technologies",
+   "score": 89,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Galileo Financial Technologies: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Lucid Software",
+   "score": 93,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Lucid Software: data employer, local to the candidate."
+  },
+  {
+   "name": "Weave",
+   "score": 93,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Weave: data employer, local to the candidate."
+  },
+  {
+   "name": "Podium",
+   "score": 92,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Podium: data employer, local to the candidate."
+  },
+  {
+   "name": "Snowflake",
+   "score": 90,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Snowflake: data employer, away from the candidate."
+  },
+  {
+   "name": "Databricks",
+   "score": 90,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Databricks: data employer, away from the candidate."
+  },
+  {
+   "name": "Plaid",
+   "score": 80,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Plaid: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Stripe",
+   "score": 84,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Stripe: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Brex",
+   "score": 92,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Brex: fintech employer, local to the candidate."
+  },
+  {
+   "name": "SoFi",
+   "score": 81,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at SoFi: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Instructure (Canvas)",
+   "score": 91,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Instructure (Canvas): data employer, local to the candidate."
+  },
+  {
+   "name": "Filevine",
+   "score": 100,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Filevine: data employer, local to the candidate."
+  },
+  {
+   "name": "BambooHR",
+   "score": 85,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at BambooHR: data employer, local to the candidate."
+  },
+  {
+   "name": "Vivint Smart Home",
+   "score": 99,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Vivint Smart Home: data employer, local to the candidate."
+  },
+  {
+   "name": "Pattern",
+   "score": 86,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Pattern: data employer, local to the candidate."
+  },
+  {
+   "name": "Entrata",
+   "score": 81,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Entrata: data employer, local to the candidate."
+  },
+  {
+   "name": "Nav Technologies",
+   "score": 89,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Nav Technologies: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Cotiviti",
+   "score": 84,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Cotiviti: health employer, local to the candidate."
+  },
+  {
+   "name": "JPMorgan Chase",
+   "score": 82,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at JPMorgan Chase: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Capital One",
+   "score": 82,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Capital One: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Mastercard",
+   "score": 89,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Mastercard: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Bloomberg",
+   "score": 77,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Bloomberg: fintech employer, away from the candidate."
+  },
+  {
+   "name": "OpenAI",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at OpenAI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Anthropic",
+   "score": 75,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Anthropic: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Scale AI",
+   "score": 85,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Scale AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Robinhood",
+   "score": 79,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Robinhood: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Ramp",
+   "score": 81,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Ramp: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Hugging Face",
+   "score": 69,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Hugging Face: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Perplexity AI",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Perplexity AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "DigiCert",
+   "score": 88,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at DigiCert: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Ivanti",
+   "score": 81,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Ivanti: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Proofpoint",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Proofpoint: cyber employer, local to the candidate."
+  },
+  {
+   "name": "SecurityMetrics",
+   "score": 77,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at SecurityMetrics: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Arctic Wolf",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Arctic Wolf: cyber employer, local to the candidate."
+  },
+  {
+   "name": "CrowdStrike",
+   "score": 82,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at CrowdStrike: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Palo Alto Networks",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Palo Alto Networks: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Okta",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Okta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Cloudflare",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Cloudflare: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Datadog",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Datadog: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Vanta",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Vanta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Coalition",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Coalition: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Sardine",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Sardine: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Wiz",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Wiz: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Abnormal AI",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Abnormal AI: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Zions Bancorporation",
+   "score": 96,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Zions Bancorporation: fintech employer, local to the candidate."
+  },
+  {
+   "name": "America First Credit Union",
+   "score": 89,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at America First Credit Union: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Sunwest Bank",
+   "score": 81,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Sunwest Bank: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Datafy",
+   "score": 89,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Datafy: data employer, local to the candidate."
+  },
+  {
+   "name": "Verkada",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Verkada: cyber employer, away from the candidate."
+  },
+  {
+   "name": "iCapital",
+   "score": 88,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at iCapital: fintech employer, local to the candidate."
+  },
+  {
+   "name": "WGU (Western Governors University)",
+   "score": 100,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at WGU (Western Governors University): data employer, local to the candidate."
+  },
+  {
+   "name": "Morgan Stanley",
+   "score": 90,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Morgan Stanley: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Addepar",
+   "score": 92,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Addepar: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Cicero Group (MGT)",
+   "score": 93,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Cicero Group (MGT): data employer, local to the candidate."
+  },
+  {
+   "name": "Freddie Mac",
+   "score": 78,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Freddie Mac: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fannie Mae",
+   "score": 86,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Fannie Mae: fintech employer, away from the candidate."
+  },
+  {
+   "name": "American Express",
+   "score": 87,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at American Express: fintech employer, local to the candidate."
+  },
+  {
+   "name": "USAA",
+   "score": 80,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at USAA: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fidelity Investments",
+   "score": 91,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Fidelity Investments: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Vanguard",
+   "score": 81,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Vanguard: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Visa",
+   "score": 62,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Visa: fintech employer, away from the candidate."
+  },
+  {
+   "name": "FIS",
+   "score": 83,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at FIS: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Citi",
+   "score": 79,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Citi: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Wells Fargo",
+   "score": 88,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Wells Fargo: fintech employer, away from the candidate."
+  },
+  {
+   "name": "EY",
+   "score": 100,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at EY: data employer, local to the candidate."
+  },
+  {
+   "name": "Deloitte",
+   "score": 79,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Deloitte: data employer, away from the candidate."
+  },
+  {
+   "name": "PwC",
+   "score": 80,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at PwC: data employer, away from the candidate."
+  },
+  {
+   "name": "KPMG",
+   "score": 92,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at KPMG: data employer, away from the candidate."
+  },
+  {
+   "name": "Protiviti",
+   "score": 85,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Protiviti: data employer, away from the candidate."
+  },
+  {
+   "name": "Accenture",
+   "score": 81,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Accenture: data employer, away from the candidate."
+  }
+ ],
+ "suggested": []
+}

@@ -1,0 +1,902 @@
+{
+ "profile": {
+  "name": "Nikhil Venkataraman",
+  "initials": "NV",
+  "subline": "Transportation and structural engineering roles for a May 2027 MS graduate who needs visa sponsorship · Tailored to your resume · Board re-mapped to Phoenix",
+  "status": "MS Civil Engineering · Grad May 2027",
+  "recentRole": "Phoenix engineering consultancy — Transportation Engineering Intern (Summer 2026)",
+  "stack": "AutoCAD Civil 3D, transportation modelling, Python for traffic data, structural analysis, EIT",
+  "target": "Transportation or structural engineer · Phoenix, AZ · needs H-1B sponsorship",
+  "yearsExperience": 2,
+  "uofu": false,
+  "city": "Phoenix, AZ",
+  "geoLabel": "Phoenix Area",
+  "cohortLabel": "May 2027 master's grad",
+  "linkedin": "https://www.linkedin.com/in/nikhil-venkataraman-civil",
+  "summary": "A civil engineer on a software board: the researched employers are a mismatch, and several of their programs state no visa sponsorship, which rules them out twice over. The suggested Phoenix engineering consultancies and public agencies are the list, and your two years of practice before the master's count as experience.",
+  "searchLinks": [
+   {
+    "label": "Transportation engineer EIT, Phoenix",
+    "keywords": "transportation engineer EIT",
+    "location": "Phoenix, Arizona",
+    "remoteOnly": false,
+    "entryLevel": true
+   }
+  ],
+  "applyNow": "The large consultancies (Kimley-Horn, HDR, AECOM) sponsor engineers routinely; apply to their Phoenix EIT postings first.",
+  "watchLater": "ADOT and the City of Phoenix post engineer-in-training roles but rarely sponsor."
+ },
+ "companies": [
+  {
+   "name": "MX Technologies",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at MX Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Goldman Sachs (SLC Campus)",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Goldman Sachs (SLC Campus): fintech employer, away from the candidate."
+  },
+  {
+   "name": "Recursion Pharmaceuticals",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Recursion Pharmaceuticals: health employer, away from the candidate."
+  },
+  {
+   "name": "Domo",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Domo: data employer, away from the candidate."
+  },
+  {
+   "name": "Qualtrics",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Qualtrics: data employer, away from the candidate."
+  },
+  {
+   "name": "Ataccama",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Ataccama: data employer, away from the candidate."
+  },
+  {
+   "name": "Sigma Computing",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Sigma Computing: data employer, away from the candidate."
+  },
+  {
+   "name": "Adobe (Lehi Campus)",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Adobe (Lehi Campus): data employer, away from the candidate."
+  },
+  {
+   "name": "Ancestry",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Ancestry: data employer, away from the candidate."
+  },
+  {
+   "name": "Pluralsight",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Pluralsight: data employer, away from the candidate."
+  },
+  {
+   "name": "Health Catalyst",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Health Catalyst: health employer, away from the candidate."
+  },
+  {
+   "name": "Galileo Financial Technologies",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Galileo Financial Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Lucid Software",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Lucid Software: data employer, away from the candidate."
+  },
+  {
+   "name": "Weave",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Weave: data employer, away from the candidate."
+  },
+  {
+   "name": "Podium",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Podium: data employer, away from the candidate."
+  },
+  {
+   "name": "Snowflake",
+   "score": 62,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Snowflake: data employer, away from the candidate."
+  },
+  {
+   "name": "Databricks",
+   "score": 66,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Databricks: data employer, away from the candidate."
+  },
+  {
+   "name": "Plaid",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Plaid: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Stripe",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Stripe: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Brex",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Brex: fintech employer, away from the candidate."
+  },
+  {
+   "name": "SoFi",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at SoFi: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Instructure (Canvas)",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Instructure (Canvas): data employer, away from the candidate."
+  },
+  {
+   "name": "Filevine",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Filevine: data employer, away from the candidate."
+  },
+  {
+   "name": "BambooHR",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at BambooHR: data employer, away from the candidate."
+  },
+  {
+   "name": "Vivint Smart Home",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Vivint Smart Home: data employer, away from the candidate."
+  },
+  {
+   "name": "Pattern",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Pattern: data employer, away from the candidate."
+  },
+  {
+   "name": "Entrata",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Entrata: data employer, away from the candidate."
+  },
+  {
+   "name": "Nav Technologies",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Nav Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Cotiviti",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Cotiviti: health employer, away from the candidate."
+  },
+  {
+   "name": "JPMorgan Chase",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at JPMorgan Chase: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Capital One",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "wrong-cohort",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Capital One: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Mastercard",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "wrong-cohort",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Mastercard: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Bloomberg",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Bloomberg: fintech employer, away from the candidate."
+  },
+  {
+   "name": "OpenAI",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at OpenAI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Anthropic",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Anthropic: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Scale AI",
+   "score": 62,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Scale AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Robinhood",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Robinhood: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Ramp",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Ramp: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Hugging Face",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Hugging Face: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Perplexity AI",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Perplexity AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "DigiCert",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at DigiCert: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Ivanti",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Ivanti: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Proofpoint",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Proofpoint: cyber employer, away from the candidate."
+  },
+  {
+   "name": "SecurityMetrics",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at SecurityMetrics: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Arctic Wolf",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Arctic Wolf: cyber employer, away from the candidate."
+  },
+  {
+   "name": "CrowdStrike",
+   "score": 63,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at CrowdStrike: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Palo Alto Networks",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Palo Alto Networks: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Okta",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Okta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Cloudflare",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Cloudflare: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Datadog",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Datadog: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Vanta",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Vanta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Coalition",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Coalition: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Sardine",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Sardine: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Wiz",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Wiz: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Abnormal AI",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Abnormal AI: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Zions Bancorporation",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Zions Bancorporation: fintech employer, away from the candidate."
+  },
+  {
+   "name": "America First Credit Union",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at America First Credit Union: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Sunwest Bank",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Sunwest Bank: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Datafy",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Datafy: data employer, away from the candidate."
+  },
+  {
+   "name": "Verkada",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Verkada: cyber employer, away from the candidate."
+  },
+  {
+   "name": "iCapital",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at iCapital: fintech employer, away from the candidate."
+  },
+  {
+   "name": "WGU (Western Governors University)",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at WGU (Western Governors University): data employer, away from the candidate."
+  },
+  {
+   "name": "Morgan Stanley",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Morgan Stanley: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Addepar",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Addepar: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Cicero Group (MGT)",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Cicero Group (MGT): data employer, away from the candidate."
+  },
+  {
+   "name": "Freddie Mac",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Freddie Mac: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fannie Mae",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Fannie Mae: fintech employer, away from the candidate."
+  },
+  {
+   "name": "American Express",
+   "score": 65,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "local",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at American Express: fintech employer, local to the candidate."
+  },
+  {
+   "name": "USAA",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at USAA: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fidelity Investments",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "wrong-cohort",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Fidelity Investments: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Vanguard",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "wrong-cohort",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Vanguard: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Visa",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Visa: fintech employer, away from the candidate."
+  },
+  {
+   "name": "FIS",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at FIS: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Citi",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Citi: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Wells Fargo",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Wells Fargo: fintech employer, away from the candidate."
+  },
+  {
+   "name": "EY",
+   "score": 61,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at EY: data employer, away from the candidate."
+  },
+  {
+   "name": "Deloitte",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Deloitte: data employer, away from the candidate."
+  },
+  {
+   "name": "PwC",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at PwC: data employer, away from the candidate."
+  },
+  {
+   "name": "KPMG",
+   "score": 62,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at KPMG: data employer, away from the candidate."
+  },
+  {
+   "name": "Protiviti",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Protiviti: data employer, away from the candidate."
+  },
+  {
+   "name": "Accenture",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Accenture: data employer, away from the candidate."
+  }
+ ],
+ "suggested": [
+  {
+   "name": "Kimley-Horn",
+   "location": "Phoenix, AZ",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 90,
+   "badges": [],
+   "why": "Synthetic fixture: a engineering consultancy or public agency in Phoenix.",
+   "note": "Search \"EIT\", \"transportation engineer\" and \"structural engineer\".",
+   "confidence": "high"
+  },
+  {
+   "name": "HDR",
+   "location": "Phoenix, AZ",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 87,
+   "badges": [],
+   "why": "Synthetic fixture: a engineering consultancy or public agency in Phoenix.",
+   "note": "Search \"EIT\", \"transportation engineer\" and \"structural engineer\".",
+   "confidence": "high"
+  },
+  {
+   "name": "AECOM",
+   "location": "Phoenix, AZ",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 84,
+   "badges": [],
+   "why": "Synthetic fixture: a engineering consultancy or public agency in Phoenix.",
+   "note": "Search \"EIT\", \"transportation engineer\" and \"structural engineer\".",
+   "confidence": "high"
+  },
+  {
+   "name": "Jacobs",
+   "location": "Phoenix, AZ",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 81,
+   "badges": [],
+   "why": "Synthetic fixture: a engineering consultancy or public agency in Phoenix.",
+   "note": "Search \"EIT\", \"transportation engineer\" and \"structural engineer\".",
+   "confidence": "high"
+  },
+  {
+   "name": "WSP",
+   "location": "Phoenix, AZ",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 78,
+   "badges": [],
+   "why": "Synthetic fixture: a engineering consultancy or public agency in Phoenix.",
+   "note": "Search \"EIT\", \"transportation engineer\" and \"structural engineer\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Stantec",
+   "location": "Phoenix, AZ",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 75,
+   "badges": [],
+   "why": "Synthetic fixture: a engineering consultancy or public agency in Phoenix.",
+   "note": "Search \"EIT\", \"transportation engineer\" and \"structural engineer\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Dibble",
+   "location": "Phoenix, AZ",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 72,
+   "badges": [],
+   "why": "Synthetic fixture: a engineering consultancy or public agency in Phoenix.",
+   "note": "Search \"EIT\", \"transportation engineer\" and \"structural engineer\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Arizona Department of Transportation",
+   "location": "Phoenix, AZ",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 69,
+   "badges": [],
+   "why": "Synthetic fixture: a engineering consultancy or public agency in Phoenix.",
+   "note": "Search \"EIT\", \"transportation engineer\" and \"structural engineer\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "City of Phoenix Street Transportation Department",
+   "location": "Phoenix, AZ",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 66,
+   "badges": [],
+   "why": "Synthetic fixture: a engineering consultancy or public agency in Phoenix.",
+   "note": "Search \"EIT\", \"transportation engineer\" and \"structural engineer\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Maricopa County Department of Transportation",
+   "location": "Phoenix, AZ",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 63,
+   "badges": [],
+   "why": "Synthetic fixture: a engineering consultancy or public agency in Phoenix.",
+   "note": "Search \"EIT\", \"transportation engineer\" and \"structural engineer\".",
+   "confidence": "medium"
+  }
+ ]
+}

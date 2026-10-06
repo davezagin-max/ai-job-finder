@@ -1,0 +1,40 @@
+CALEB R. HADFIELD
+Logan, UT 84321 | (435) 555-0147 | caleb.hadfield@aggiemail.usu.edu | https://www.linkedin.com/in/caleb-hadfield-me
+
+OBJECTIVE
+Mechanical engineering senior at Utah State University (B.S. expected May 2027) seeking a full-time design engineer position in aerospace or manufacturing along the Wasatch Front. FE exam passed. Relocating to the Salt Lake City area after graduation.
+
+EDUCATION
+Utah State University, Logan, UT
+B.S. Mechanical Engineering, expected May 2027 | GPA 3.62
+Relevant coursework: Machine Design, Finite Element Analysis, Manufacturing Processes, Mechanics of Materials, Heat Transfer, Engineering Materials, Geometric Dimensioning and Tolerancing
+Certifications: NCEES Fundamentals of Engineering (FE) Mechanical exam, passed August 2026; Certified SolidWorks Associate (CSWA), 2025
+
+EXPERIENCE
+Northrop Grumman, Propulsion Systems | Magna, UT
+Mechanical Engineering Intern | May 2026 - August 2026
+- Modeled and detailed six tooling fixtures in SolidWorks for solid rocket motor case handling, producing drawings per ASME Y14.5 that released to the machine shop without revision.
+- Ran static and modal analyses in ANSYS Mechanical on a lifting beam, documenting a 3.2 factor of safety against yield and supporting the lift plan review.
+- Completed tolerance stack-ups on an igniter closure assembly and recommended a datum change that cleared a recurring mating-fit nonconformance on the floor.
+- Walked the manufacturing floor daily with process engineers, red-lining work instructions and closing out three engineering change requests.
+
+Utah State University, Department of Mechanical and Aerospace Engineering | Logan, UT
+Student Machinist and Shop Assistant (part-time) | January 2025 - Present
+- Machine student and faculty parts on manual mills, lathes and a Haas CNC mill; train undergraduates on safe shop practice and workholding.
+- Maintain the shop's FDM printers and prepare STL files for research groups.
+
+SENIOR DESIGN PROJECT
+Vibration-Isolation Mount for a Small-Satellite Star Tracker | September 2026 - May 2027 (in progress)
+Team lead, four-person industry-sponsored capstone
+- Own the structural design: SolidWorks assembly, ANSYS random-vibration and modal analysis targeting a first mode above 140 Hz, and a mass budget under 180 g.
+- Selected 7075-T6 aluminum and elastomer isolators through trade studies; machining the prototype in-house for a shaker-table test to a GEVS-style profile.
+- Present design reviews to the sponsor's engineering team and keep the drawing package under revision control.
+
+SKILLS
+CAD and analysis: SolidWorks (parts, assemblies, drawings, simulation), ANSYS Mechanical (static, modal, random vibration), MATLAB, GD&T (ASME Y14.5), tolerance stack-up, DFM/DFA
+Manufacturing: manual mill and lathe, Haas CNC (Fusion 360 CAM), FDM printing, composite hand layup, MIG and TIG basics, CMM inspection
+Other: bill of materials and drawing release, engineering change requests, Microsoft Excel
+
+ACTIVITIES
+ASME Utah State Student Section, Vice President (2025 - Present)
+USU Aggie Rocketry, structures team, two high-power launches

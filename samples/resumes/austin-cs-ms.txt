@@ -1,0 +1,53 @@
+TOBIAS MARCHETTI
+Austin, TX | (512) 555-0147 | tobias.marchetti.ml@gmail.com | https://www.linkedin.com/in/tobias-marchetti-ml | github.com/tmarchetti
+
+OBJECTIVE
+M.S. Computer Science candidate specializing in machine learning, seeking a full-time Machine Learning Engineer or Research Engineer position in Austin, TX beginning June 2027. Austin-based and planning to stay; open to hybrid teams or remote roles on teams headquartered elsewhere.
+
+EDUCATION
+The University of Texas at Austin - Austin, TX
+M.S. in Computer Science, Machine Learning concentration | Expected May 2027 | GPA 3.92/4.00
+Coursework: Deep Learning, Optimization for Machine Learning, Natural Language Processing, Parallel Computer Architecture, Probabilistic Graphical Models, Large-Scale Systems for ML
+
+The University of Texas at Dallas - Richardson, TX
+B.S. in Computer Science, Minor in Mathematics | May 2025 | summa cum laude
+
+EXPERIENCE
+Meta - Menlo Park, CA
+Machine Learning Engineer Intern, Ads Ranking Infrastructure | May 2026 - Aug 2026
+- Built an INT8 inference path for a production ranking model in PyTorch, cutting p99 serving latency 23% with no measurable change in offline AUC.
+- Wrote a fused CUDA kernel for the model's feature-crossing layer, replacing three separate ops and reducing GPU memory traffic by 31%.
+- Ran an A/B test on 2% of traffic and presented results to the ranking infrastructure leads; received a return offer.
+
+The University of Texas at Austin, Scalable Learning Lab - Austin, TX
+Graduate Research Assistant (part-time, 20 hrs/week) | Aug 2025 - Present
+- First author on two peer-reviewed papers on efficient LLM inference (see Publications).
+- Trained 1B- to 7B-parameter transformer models on a 64-GPU Slurm cluster with PyTorch FSDP; maintain the lab's shared training codebase.
+- Mentor two undergraduate researchers on evaluation tooling and experiment hygiene.
+
+Indeed - Austin, TX
+Software Engineering Intern, Job Search Relevance | May 2024 - Aug 2024
+- Shipped a Python service that re-ranks search results with a lightweight gradient-boosted model, lifting click-through rate 1.8% in an online experiment.
+- Added unit and integration tests to a Java ranking library, raising coverage from 54% to 88%.
+
+The University of Texas at Dallas - Richardson, TX
+Undergraduate Teaching Assistant, Machine Learning | Jan 2025 - May 2025
+- Led weekly discussion sections for 120 students and graded projects on backpropagation and convolutional networks.
+
+PUBLICATIONS
+- T. Marchetti, L. Park, R. Venkataraman. "Draft-Tree Speculative Decoding with Learned Acceptance Thresholds." NeurIPS 2026 (to appear).
+- T. Marchetti, R. Venkataraman. "Mixed-Precision Attention Kernels for Long-Context Inference on Consumer GPUs." ICML 2026 Workshop on Efficient Foundation Models.
+
+PROJECTS
+- nibbleq (open source): PyTorch library for post-training INT4 quantization of decoder-only models with a Triton backend; 140 GitHub stars, used in two UT Austin course projects.
+- Austin Transit Delay Forecaster: temporal graph network trained on CapMetro GTFS-realtime feeds to predict bus delays 15 minutes ahead (MAE 1.9 min); deployed as a Flask app.
+
+SKILLS
+Languages: Python, C++, CUDA, Java, SQL
+ML: PyTorch, Triton, JAX, Hugging Face Transformers, FSDP, DeepSpeed, vLLM, scikit-learn
+Systems: Linux, Docker, Slurm, Git, AWS (EC2, S3), Weights & Biases
+Foundations: optimization, linear algebra, probability, distributed systems
+
+ACTIVITIES
+- Organizer, UT Austin Graduate ML Reading Group (40 members), 2025 - present
+- Volunteer mentor, Austin Hack the Future high-school hackathon, 2025 and 2026

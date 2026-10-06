@@ -1,0 +1,903 @@
+{
+ "profile": {
+  "name": "Tobias Marchetti",
+  "initials": "TM",
+  "subline": "New-grad machine-learning and software roles for a May 2027 CS master's graduate · Tailored to your resume · Board re-mapped to Austin",
+  "status": "MS Computer Science · Grad May 2027",
+  "recentRole": "Meta — Machine Learning Engineer Intern, Ads Ranking (Summer 2026)",
+  "stack": "PyTorch, CUDA, distributed training, Python, C++, two publications, Spark",
+  "target": "New-grad ML or software engineer · Austin, TX · remote welcome",
+  "yearsExperience": 0,
+  "uofu": false,
+  "city": "Austin, TX",
+  "geoLabel": "Austin Area",
+  "cohortLabel": "May 2027 master's grad",
+  "linkedin": "https://www.linkedin.com/in/tobias-marchetti-ml",
+  "summary": "You are a strong new-grad ML candidate, and the degree bars that stop information-systems applicants on this board are no obstacle for a CS master's. The board is Salt Lake-centric, so Utah employers read as relocation; Austin employers are added below.",
+  "searchLinks": [
+   {
+    "label": "ML engineer new grad, Austin",
+    "keywords": "machine learning engineer new grad",
+    "location": "Austin, Texas",
+    "remoteOnly": false,
+    "entryLevel": true
+   },
+   {
+    "label": "Remote new-grad ML",
+    "keywords": "machine learning engineer new grad",
+    "location": "",
+    "remoteOnly": true,
+    "entryLevel": true
+   }
+  ],
+  "applyNow": "Scale AI, Adobe's University Graduate ML Engineer and Stripe's New Grad SWE are the live doors that fit; Cloudflare's Austin data team is the local one.",
+  "watchLater": "Snowflake and Databricks post new-grad ML reqs in waves through the fall."
+ },
+ "companies": [
+  {
+   "name": "MX Technologies",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at MX Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Goldman Sachs (SLC Campus)",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Goldman Sachs (SLC Campus): fintech employer, away from the candidate."
+  },
+  {
+   "name": "Recursion Pharmaceuticals",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Recursion Pharmaceuticals: health employer, away from the candidate."
+  },
+  {
+   "name": "Domo",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Domo: data employer, away from the candidate."
+  },
+  {
+   "name": "Qualtrics",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Qualtrics: data employer, away from the candidate."
+  },
+  {
+   "name": "Ataccama",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Ataccama: data employer, away from the candidate."
+  },
+  {
+   "name": "Sigma Computing",
+   "score": 75,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Sigma Computing: data employer, away from the candidate."
+  },
+  {
+   "name": "Adobe (Lehi Campus)",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Adobe (Lehi Campus): data employer, away from the candidate."
+  },
+  {
+   "name": "Ancestry",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Ancestry: data employer, away from the candidate."
+  },
+  {
+   "name": "Pluralsight",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Pluralsight: data employer, away from the candidate."
+  },
+  {
+   "name": "Health Catalyst",
+   "score": 61,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Health Catalyst: health employer, away from the candidate."
+  },
+  {
+   "name": "Galileo Financial Technologies",
+   "score": 69,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Galileo Financial Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Lucid Software",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Lucid Software: data employer, away from the candidate."
+  },
+  {
+   "name": "Weave",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Weave: data employer, away from the candidate."
+  },
+  {
+   "name": "Podium",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Podium: data employer, away from the candidate."
+  },
+  {
+   "name": "Snowflake",
+   "score": 83,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Snowflake: data employer, away from the candidate."
+  },
+  {
+   "name": "Databricks",
+   "score": 94,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Databricks: data employer, away from the candidate."
+  },
+  {
+   "name": "Plaid",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Plaid: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Stripe",
+   "score": 81,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Stripe: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Brex",
+   "score": 75,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Brex: fintech employer, away from the candidate."
+  },
+  {
+   "name": "SoFi",
+   "score": 61,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at SoFi: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Instructure (Canvas)",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Instructure (Canvas): data employer, away from the candidate."
+  },
+  {
+   "name": "Filevine",
+   "score": 80,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Filevine: data employer, away from the candidate."
+  },
+  {
+   "name": "BambooHR",
+   "score": 65,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at BambooHR: data employer, away from the candidate."
+  },
+  {
+   "name": "Vivint Smart Home",
+   "score": 79,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Vivint Smart Home: data employer, away from the candidate."
+  },
+  {
+   "name": "Pattern",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Pattern: data employer, away from the candidate."
+  },
+  {
+   "name": "Entrata",
+   "score": 61,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Entrata: data employer, away from the candidate."
+  },
+  {
+   "name": "Nav Technologies",
+   "score": 69,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Nav Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Cotiviti",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Cotiviti: health employer, away from the candidate."
+  },
+  {
+   "name": "JPMorgan Chase",
+   "score": 65,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at JPMorgan Chase: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Capital One",
+   "score": 79,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Capital One: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Mastercard",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Mastercard: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Bloomberg",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Bloomberg: fintech employer, away from the candidate."
+  },
+  {
+   "name": "OpenAI",
+   "score": 77,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at OpenAI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Anthropic",
+   "score": 88,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Anthropic: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Scale AI",
+   "score": 86,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Scale AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Robinhood",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Robinhood: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Ramp",
+   "score": 75,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Ramp: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Hugging Face",
+   "score": 82,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Hugging Face: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Perplexity AI",
+   "score": 86,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Perplexity AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "DigiCert",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at DigiCert: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Ivanti",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Ivanti: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Proofpoint",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Proofpoint: cyber employer, away from the candidate."
+  },
+  {
+   "name": "SecurityMetrics",
+   "score": 61,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at SecurityMetrics: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Arctic Wolf",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Arctic Wolf: cyber employer, away from the candidate."
+  },
+  {
+   "name": "CrowdStrike",
+   "score": 85,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at CrowdStrike: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Palo Alto Networks",
+   "score": 61,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Palo Alto Networks: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Okta",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Okta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Cloudflare",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Cloudflare: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Datadog",
+   "score": 69,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Datadog: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Vanta",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Vanta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Coalition",
+   "score": 64,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Coalition: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Sardine",
+   "score": 65,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Sardine: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Wiz",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Wiz: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Abnormal AI",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Abnormal AI: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Zions Bancorporation",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Zions Bancorporation: fintech employer, away from the candidate."
+  },
+  {
+   "name": "America First Credit Union",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at America First Credit Union: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Sunwest Bank",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Sunwest Bank: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Datafy",
+   "score": 63,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Datafy: data employer, away from the candidate."
+  },
+  {
+   "name": "Verkada",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Verkada: cyber employer, away from the candidate."
+  },
+  {
+   "name": "iCapital",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at iCapital: fintech employer, away from the candidate."
+  },
+  {
+   "name": "WGU (Western Governors University)",
+   "score": 81,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at WGU (Western Governors University): data employer, away from the candidate."
+  },
+  {
+   "name": "Morgan Stanley",
+   "score": 68,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Morgan Stanley: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Addepar",
+   "score": 70,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Addepar: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Cicero Group (MGT)",
+   "score": 71,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Cicero Group (MGT): data employer, away from the candidate."
+  },
+  {
+   "name": "Freddie Mac",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Freddie Mac: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fannie Mae",
+   "score": 82,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Fannie Mae: fintech employer, away from the candidate."
+  },
+  {
+   "name": "American Express",
+   "score": 68,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at American Express: fintech employer, away from the candidate."
+  },
+  {
+   "name": "USAA",
+   "score": 68,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at USAA: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fidelity Investments",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Fidelity Investments: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Vanguard",
+   "score": 77,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Vanguard: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Visa",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "hybrid",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Visa: fintech employer, away from the candidate."
+  },
+  {
+   "name": "FIS",
+   "score": 75,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at FIS: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Citi",
+   "score": 67,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Citi: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Wells Fargo",
+   "score": 76,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Wells Fargo: fintech employer, away from the candidate."
+  },
+  {
+   "name": "EY",
+   "score": 79,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at EY: data employer, away from the candidate."
+  },
+  {
+   "name": "Deloitte",
+   "score": 70,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Deloitte: data employer, away from the candidate."
+  },
+  {
+   "name": "PwC",
+   "score": 68,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at PwC: data employer, away from the candidate."
+  },
+  {
+   "name": "KPMG",
+   "score": 80,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at KPMG: data employer, away from the candidate."
+  },
+  {
+   "name": "Protiviti",
+   "score": 73,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Protiviti: data employer, away from the candidate."
+  },
+  {
+   "name": "Accenture",
+   "score": 73,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Accenture: data employer, away from the candidate."
+  }
+ ],
+ "suggested": [
+  {
+   "name": "Oracle",
+   "location": "Austin, TX",
+   "locType": "local",
+   "industry": [
+    "data"
+   ],
+   "roles": [
+    "swe",
+    "data"
+   ],
+   "score": 84,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Headquartered in Austin, with a large new-college-grad engineering intake every year.",
+   "note": "Search 'New College Grad' on Oracle's careers site.",
+   "confidence": "high"
+  },
+  {
+   "name": "Dell Technologies",
+   "location": "Round Rock, TX",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "swe",
+    "data",
+    "ml"
+   ],
+   "score": 82,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Round Rock HQ hires new grads into software and data roles each spring.",
+   "note": "Look for 'Software Engineer 1' and 'Data Scientist 1' reqs.",
+   "confidence": "high"
+  },
+  {
+   "name": "Apple",
+   "location": "Austin, TX",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "swe",
+    "ml"
+   ],
+   "score": 80,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Austin campus is Apple's second largest; ML hiring is mostly experienced.",
+   "note": "Filter Apple's jobs page to Austin and 'Machine Learning'.",
+   "confidence": "medium"
+  },
+  {
+   "name": "Indeed",
+   "location": "Austin, TX",
+   "locType": "local",
+   "industry": [
+    "data"
+   ],
+   "roles": [
+    "swe",
+    "ml",
+    "data"
+   ],
+   "score": 83,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Austin-based, with a University Grad software engineer program.",
+   "note": "Search 'University Grad' on Indeed's own careers site.",
+   "confidence": "high"
+  },
+  {
+   "name": "Applied Materials",
+   "location": "Austin, TX",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "ml",
+    "swe"
+   ],
+   "score": 72,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Semiconductor equipment maker with a large Austin site that hires ML engineers for process control.",
+   "note": "Search 'Machine Learning' and 'New College Graduate'.",
+   "confidence": "medium"
+  },
+  {
+   "name": "Tesla",
+   "location": "Austin, TX",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "swe",
+    "ml"
+   ],
+   "score": 76,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Gigafactory Texas and the autopilot teams hire new-grad engineers, usually without a formal program.",
+   "note": "Search 'Software Engineer, New Grad' on Tesla's site.",
+   "confidence": "medium"
+  },
+  {
+   "name": "Arm",
+   "location": "Austin, TX",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "swe"
+   ],
+   "score": 70,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Austin design center with a graduate engineering intake.",
+   "note": "Look for 'Graduate Software Engineer' postings.",
+   "confidence": "medium"
+  }
+ ]
+}

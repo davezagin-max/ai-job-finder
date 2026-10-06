@@ -101,8 +101,8 @@ native documents, so layout and columns are read correctly.
 | Positioning line | Two or three sentences on how to present this candidate |
 | Every company card | New match score, tier, badges, and a rewritten explanation tied to the person's real experience |
 | Timing notes | Rewritten wherever the original referenced the board owner's school or graduation date |
-| Where filters | Relabeled to the candidate's metro, with a "Needs relocation" filter for employers that would require a move |
-| Suggested employers | Up to fifteen in the candidate's own metro and field, whenever the board's geography or its subject matter does not fit them |
+| Where filters | Relabeled to the candidate's metro; the "Needs relocation" filter, which the default board also shows, then means a move from that metro |
+| Suggested employers | Up to fifteen in the candidate's own metro and field (the page keeps at most twenty), whenever the board's geography or its subject matter does not fit them |
 | Footer | Which live roles to apply to first, and what to watch for later in the season |
 | Career fair strip | Hidden by default; appears only for a University of Utah student |
 
@@ -126,8 +126,12 @@ original board was verified by hand on the date shown in the footer.
 
 If the resume shows a home base anywhere on the Wasatch Front, or says the
 person is moving to Salt Lake City, the board stays in local mode: the location
-filters keep their original meaning and no suggested employers are added. This is
-deliberate. The researched board is already correct for those candidates.
+filters keep their original meaning. Suggested employers are added only when the
+person's field is outside what the board covers (a nurse or a mechanical engineer
+in Salt Lake City still gets them). This is deliberate: for a local data or
+software candidate the researched board is already the right answer. Local mode
+itself is decided by the employers' location types coming back unchanged, not by
+the city string.
 
 The career fair strip and the alumni filter are gated on the school rather than
 the city, so they never appear on the default board and show up only when a
@@ -386,9 +390,9 @@ so they are hidden once a tailoring run re-maps the board to another city.
 
 A tailored profile records each employer's timing on the day it was made. Timing
 is a fact about the board rather than the candidate, so once the board has been
-re-verified (a later `REFRESH_DATE`), or an employer's status or openings have
-changed since the profile was made (even on the same day), the board's own status
-and note win for that employer. Only a candidate-specific "wrong cohort" verdict
+re-verified (a later `REFRESH_DATE`), the board's own status wins for every
+employer; the tailored note is kept as long as that employer's facts (status and
+openings) are unchanged, and the board's note replaces it when they are not. Only a candidate-specific "wrong cohort" verdict
 survives, and the seniority cap is re-applied against the openings as they stand
 now. The footer then says the profile's Apply now and Watch later advice predates
 the re-verification. Employers added to the board after a profile was made are
@@ -418,8 +422,9 @@ or `far` meaning it would require relocation. On the original board it is
 relative to Salt Lake City.
 
 Statuses sort in a fixed order: live roles, suggested employers, opening later,
-watch list, wrong cohort. Any filter chip that would match nothing is hidden, so
-you can never land on an empty board.
+watch list, wrong cohort. A Timing, Where or Industry chip that would match
+nothing is hidden; the other chips and the search box can still produce "No
+matches".
 
 ### The tailoring module
 
@@ -441,7 +446,8 @@ Notable choices:
   category and says whether a backup model was tried.
 - **Everything Claude returns is treated as untrusted.** Scores are clamped,
   unknown enum values are dropped, unknown companies are ignored, duplicates are
-  removed, strings are length-capped, and anything rendered as HTML is escaped.
+  removed, the short fields are length-capped (initials, labels, city, suggested
+  names), and anything rendered as HTML is escaped.
   A run that returns fewer than 80% of the companies is rejected rather than
   applied.
 
@@ -469,9 +475,23 @@ Two things to know:
 
 ## Testing
 
-There is no test runner. Verification is done in the browser against the mock
-responses in `samples/cases/`, which exercise the full path with no API key and
-no cost. See [`samples/README.md`](samples/README.md) for how to replay one.
+Two layers, neither of which spends API credits:
+
+- **`samples/harness.js`** replays fifteen mock responses through the page and
+  checks every rule in LOGIC.md, plus what each scenario demands (about 380
+  checks). Run it from the browser console:
+  `await import('/samples/harness.js'); await JobFinderHarness.run();`
+- **`samples/resumes/`** holds twelve fictional candidates who are nothing like
+  the board owner: a nurse, a mechanical engineer, a chemist, a journalist, a
+  product designer, a marketer, an international civil engineer, a CS master's
+  student in Austin, a career-changing teacher, a BYU accounting senior, a
+  bootcamp graduate with no degree and a five-year data engineer. They are for
+  real runs against the API when a prompt change needs judging rather than
+  checking.
+
+The mock responses are generated from the board by `samples/make-cases.py`, so
+they cover every employer; re-run it after adding one. See
+[`samples/README.md`](samples/README.md).
 
 The current build was checked across roughly 190 assertions covering: every
 filter and search field, sort order and grouping, the career fair countdown,

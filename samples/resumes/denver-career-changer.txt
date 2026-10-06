@@ -1,0 +1,42 @@
+CALEB MONTENEGRO
+Denver, CO 80210 | (720) 555-0164 | caleb.montenegro@example.com | https://www.linkedin.com/in/caleb-montenegro-analytics
+
+SUMMARY
+Data analyst in transition from the classroom: M.S. in Analytics from Georgia Tech (completed August 2026) on top of six years as a full-time high-school mathematics and AP Statistics teacher. Comfortable turning messy operational data into SQL models, Tableau dashboards and plain-English recommendations, and used to explaining numbers to people who did not ask for them. Seeking an entry-level data analyst or analytics associate role in the Denver metro area; open to relocating to Salt Lake City for the right team.
+
+EDUCATION
+Georgia Institute of Technology, Atlanta, GA (online program)
+Master of Science in Analytics (OMSA), Business Analytics track | August 2026 | GPA 3.82
+Coursework: Data and Visual Analytics, Regression Analysis, Data Analytics in Business, Computing for Data Analysis, Applied Analytics Practicum
+
+Colorado State University, Fort Collins, CO
+B.S. Mathematics, Secondary Teaching Licensure concentration | May 2018 | Magna cum laude
+
+EXPERIENCE
+Jefferson County Public Schools (Jeffco), Lakewood, CO
+High School Mathematics Teacher (full-time) | August 2018 - May 2024
+- Taught Algebra II, Pre-Calculus and AP Statistics to roughly 150 students a year across six school years; AP Statistics pass rate rose from 58% to 81% between 2020 and 2024.
+- Served as the department's data lead for three years: consolidated common-assessment results from 11 teachers into a single Google Sheets model, then a Tableau Public dashboard, that the department used for weekly intervention decisions.
+- Built an early-warning flag combining attendance, missing-assignment and quiz-score trends; students flagged in the first six weeks were twice as likely to finish the semester passing after intervention.
+
+Georgia Institute of Technology, remote
+Instructional Associate, ISYE 6501 Introduction to Analytics Modeling (part-time, about 10 hrs/week) | January 2025 - August 2026
+- Graded roughly 400 R-based submissions per term and held weekly office hours on regression, time series and optimization.
+
+PROJECTS
+Applied Analytics Practicum, regional food-bank nonprofit (sponsor) | Spring 2026
+- Loaded 1.2M distribution records from six years of CSV exports into PostgreSQL, wrote the SQL to deduplicate agencies and standardize units, and modeled monthly demand per county with seasonal ARIMA in Python (statsmodels).
+- Delivered a Tableau dashboard showing that 14% of truck-miles went to pantries that could be served from a closer warehouse; the sponsor's logistics lead adopted the rerouting proposal for its fall schedule.
+
+Colorado CMAS Math Results Explorer (Tableau Public) | 2025
+- Combined five years of public Colorado Department of Education assessment files with school-level demographics in SQLite; the Tableau story walks through where proficiency gaps widened after 2020.
+
+Denver 311 Response-Time Analysis (Python + SQL) | 2025
+- Pulled 900K service requests from Denver Open Data into BigQuery, modeled closure time by request type and neighborhood with a gradient-boosted model (scikit-learn), and identified the three request types where a staffing change would cut median closure time most.
+
+SKILLS
+SQL (PostgreSQL, BigQuery, SQLite) | Tableau (Desktop, Public) | Python (pandas, scikit-learn, statsmodels) | R (tidyverse) | Excel and Google Sheets (advanced) | Git | Jupyter | Regression, hypothesis testing, A/B testing, time-series forecasting | Data cleaning and documentation | Presenting to non-technical audiences
+
+CERTIFICATIONS
+Tableau Desktop Specialist | May 2026
+Colorado Professional Teacher License, Mathematics 7-12 | active through 2027

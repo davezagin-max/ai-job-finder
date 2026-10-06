@@ -1,0 +1,1191 @@
+{
+ "profile": {
+  "name": "  Hostile   Output  ",
+  "initials": "hostile",
+  "subline": "IT-audit and technology-risk roles for an April 2027 accounting graduate · Tailored to your resume",
+  "status": "Senior · Grad Apr 2027",
+  "recentRole": "KPMG — Technology Risk Intern, Salt Lake City (Summer 2026)",
+  "stack": "Audit, SOX testing, Alteryx, ACL, Excel, information-systems minor, CPA-track",
+  "target": "IT audit or technology-risk associate · Salt Lake City · Big Four or bank",
+  "yearsExperience": -3,
+  "uofu": false,
+  "city": "Provo, UT",
+  "geoLabel": "SLC Area",
+  "cohortLabel": "Apr 2027 grad",
+  "linkedin": "javascript:alert(1)",
+  "summary": "An accounting degree with an IS minor and two Big Four internships is the exact profile the technology-assurance classes on this board recruit. You graduate in April, so programs that want a December 2026 finish are the wrong cohort; most summer/fall 2027 classes fit.",
+  "searchLinks": [
+   {
+    "label": "IT audit associate, Salt Lake City",
+    "keywords": "IT audit associate 2027",
+    "location": "Salt Lake City, Utah",
+    "remoteOnly": false,
+    "entryLevel": true
+   }
+  ],
+  "applyNow": "Deloitte's Technology Controls Advisory, KPMG Technology Assurance, PwC's DAT Data class and Goldman's Internal Audit analyst seat are the live doors; Zions' GRC analyst is the local one.",
+  "watchLater": "Wells Fargo's Audit Analyst Development Program reposts in the spring."
+ },
+ "companies": [
+  {
+   "name": "MX Technologies",
+   "score": 140,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at MX Technologies: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Goldman Sachs (SLC Campus)",
+   "score": 10,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Goldman Sachs (SLC Campus): fintech employer, local to the candidate."
+  },
+  {
+   "name": "Recursion Pharmaceuticals",
+   "score": 69,
+   "toolsMatch": false,
+   "status": "hired",
+   "locType": "moon",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Recursion Pharmaceuticals: health employer, local to the candidate."
+  },
+  {
+   "name": "Domo",
+   "score": 72,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Domo: data employer, local to the candidate."
+  },
+  {
+   "name": "Qualtrics",
+   "score": 70,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Qualtrics: data employer, local to the candidate."
+  },
+  {
+   "name": "Ataccama",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Ataccama: data employer, away from the candidate."
+  },
+  {
+   "name": "Sigma Computing",
+   "score": 65,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Sigma Computing: data employer, away from the candidate."
+  },
+  {
+   "name": "Adobe (Lehi Campus)",
+   "score": 80,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Adobe (Lehi Campus): data employer, local to the candidate."
+  },
+  {
+   "name": "Ancestry",
+   "score": 70,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Ancestry: data employer, local to the candidate."
+  },
+  {
+   "name": "Pluralsight",
+   "score": 71,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Pluralsight: data employer, local to the candidate."
+  },
+  {
+   "name": "Health Catalyst",
+   "score": 66,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Health Catalyst: health employer, local to the candidate."
+  },
+  {
+   "name": "Galileo Financial Technologies",
+   "score": 85,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Galileo Financial Technologies: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Lucid Software",
+   "score": 77,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Lucid Software: data employer, local to the candidate."
+  },
+  {
+   "name": "Weave",
+   "score": 77,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Weave: data employer, local to the candidate."
+  },
+  {
+   "name": "Podium",
+   "score": 76,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Podium: data employer, local to the candidate."
+  },
+  {
+   "name": "Snowflake",
+   "score": 72,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Snowflake: data employer, away from the candidate."
+  },
+  {
+   "name": "Databricks",
+   "score": 71,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Databricks: data employer, away from the candidate."
+  },
+  {
+   "name": "Plaid",
+   "score": 76,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Plaid: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Stripe",
+   "score": 80,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Stripe: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Brex",
+   "score": 88,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Brex: fintech employer, local to the candidate."
+  },
+  {
+   "name": "SoFi",
+   "score": 77,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at SoFi: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Instructure (Canvas)",
+   "score": 75,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Instructure (Canvas): data employer, local to the candidate."
+  },
+  {
+   "name": "Filevine",
+   "score": 84,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Filevine: data employer, local to the candidate."
+  },
+  {
+   "name": "BambooHR",
+   "score": 69,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at BambooHR: data employer, local to the candidate."
+  },
+  {
+   "name": "Vivint Smart Home",
+   "score": 83,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Vivint Smart Home: data employer, local to the candidate."
+  },
+  {
+   "name": "Pattern",
+   "score": 70,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Pattern: data employer, local to the candidate."
+  },
+  {
+   "name": "Entrata",
+   "score": 65,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Entrata: data employer, local to the candidate."
+  },
+  {
+   "name": "Nav Technologies",
+   "score": 85,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Nav Technologies: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Cotiviti",
+   "score": 71,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Cotiviti: health employer, local to the candidate."
+  },
+  {
+   "name": "JPMorgan Chase",
+   "score": 78,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at JPMorgan Chase: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Capital One",
+   "score": 75,
+   "toolsMatch": false,
+   "status": "wrong-cohort",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Capital One: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Mastercard",
+   "score": 83,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Mastercard: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Bloomberg",
+   "score": 71,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Bloomberg: fintech employer, away from the candidate."
+  },
+  {
+   "name": "OpenAI",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at OpenAI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Anthropic",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Anthropic: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Scale AI",
+   "score": 69,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Scale AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Robinhood",
+   "score": 75,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Robinhood: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Ramp",
+   "score": 77,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Ramp: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Hugging Face",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Hugging Face: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Perplexity AI",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Perplexity AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "DigiCert",
+   "score": 88,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at DigiCert: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Ivanti",
+   "score": 81,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Ivanti: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Proofpoint",
+   "score": 72,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Proofpoint: cyber employer, local to the candidate."
+  },
+  {
+   "name": "SecurityMetrics",
+   "score": 80,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at SecurityMetrics: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Arctic Wolf",
+   "score": 68,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Arctic Wolf: cyber employer, local to the candidate."
+  },
+  {
+   "name": "CrowdStrike",
+   "score": 79,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at CrowdStrike: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Palo Alto Networks",
+   "score": 72,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Palo Alto Networks: cyber employer, local to the candidate."
+  },
+  {
+   "name": "Okta",
+   "score": 72,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Okta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Cloudflare",
+   "score": 73,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Cloudflare: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Datadog",
+   "score": 64,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Datadog: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Vanta",
+   "score": 74,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Vanta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Coalition",
+   "score": 65,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Coalition: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Sardine",
+   "score": 65,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Sardine: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Wiz",
+   "score": 70,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Wiz: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Abnormal AI",
+   "score": 70,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Abnormal AI: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Zions Bancorporation",
+   "score": 92,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Zions Bancorporation: fintech employer, local to the candidate."
+  },
+  {
+   "name": "America First Credit Union",
+   "score": 83,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at America First Credit Union: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Sunwest Bank",
+   "score": 75,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Sunwest Bank: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Datafy",
+   "score": 73,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Datafy: data employer, local to the candidate."
+  },
+  {
+   "name": "Verkada",
+   "score": 71,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Verkada: cyber employer, away from the candidate."
+  },
+  {
+   "name": "iCapital",
+   "score": 84,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at iCapital: fintech employer, local to the candidate."
+  },
+  {
+   "name": "WGU (Western Governors University)",
+   "score": 84,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at WGU (Western Governors University): data employer, local to the candidate."
+  },
+  {
+   "name": "Morgan Stanley",
+   "score": 89,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Morgan Stanley: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Addepar",
+   "score": 85,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Addepar: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Cicero Group (MGT)",
+   "score": 80,
+   "toolsMatch": false,
+   "status": "wrong-cohort",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Cicero Group (MGT): data employer, local to the candidate."
+  },
+  {
+   "name": "Freddie Mac",
+   "score": 66,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Freddie Mac: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fannie Mae",
+   "score": 74,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Fannie Mae: fintech employer, away from the candidate."
+  },
+  {
+   "name": "American Express",
+   "score": 86,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at American Express: fintech employer, local to the candidate."
+  },
+  {
+   "name": "USAA",
+   "score": 76,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at USAA: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fidelity Investments",
+   "score": 85,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Fidelity Investments: fintech employer, local to the candidate."
+  },
+  {
+   "name": "Vanguard",
+   "score": 75,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Vanguard: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Visa",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Visa: fintech employer, away from the candidate."
+  },
+  {
+   "name": "FIS",
+   "score": 76,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at FIS: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Citi",
+   "score": 75,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Citi: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Wells Fargo",
+   "score": 84,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Wells Fargo: fintech employer, away from the candidate."
+  },
+  {
+   "name": "EY",
+   "score": 86,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at EY: data employer, local to the candidate."
+  },
+  {
+   "name": "Deloitte",
+   "score": 71,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Deloitte: data employer, away from the candidate."
+  },
+  {
+   "name": "PwC",
+   "score": 64,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at PwC: data employer, away from the candidate."
+  },
+  {
+   "name": "KPMG",
+   "score": 76,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at KPMG: data employer, away from the candidate."
+  },
+  {
+   "name": "Protiviti",
+   "score": 69,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Protiviti: data employer, away from the candidate."
+  },
+  {
+   "name": "Accenture",
+   "score": 68,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Accenture: data employer, away from the candidate."
+  },
+  {
+   "name": "Domo",
+   "score": 72,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Domo: data employer, local to the candidate."
+  },
+  {
+   "name": "Totally Fake Corp",
+   "score": 70,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Qualtrics: data employer, local to the candidate."
+  },
+  {
+   "name": "ATACCAMA  ",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Ataccama: data employer, away from the candidate."
+  }
+ ],
+ "suggested": [
+  {
+   "name": "Zions Bank",
+   "location": "Salt Lake City, UT",
+   "locType": "local",
+   "industry": [
+    "fintech"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 99,
+   "badges": [
+    "fintech"
+   ],
+   "why": "a board company in disguise",
+   "note": "must be dropped",
+   "confidence": "high"
+  },
+  {
+   "name": "Synthetic Employer 00 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 61,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 01 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 62,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 02 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 63,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 03 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 64,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 04 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 65,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 05 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 66,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 06 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 67,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 07 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 68,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 08 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 69,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 09 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 70,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 10 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 71,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 11 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 72,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 12 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 73,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 13 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 74,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 14 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 75,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 15 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 76,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 16 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 77,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 17 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 78,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 18 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 79,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 19 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 80,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 20 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 81,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 21 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 82,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 22 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 83,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  },
+  {
+   "name": "Synthetic Employer 23 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "location": "Provo, UT",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [],
+   "score": 84,
+   "badges": [
+    "gold"
+   ],
+   "why": "filler",
+   "note": "filler",
+   "confidence": "low"
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+BROOKE LINDQVIST
+Boise, ID | (208) 555-0147 | brooke.lindqvist.mktg@gmail.com | https://www.linkedin.com/in/brooke-lindqvist-mktg
+
+OBJECTIVE
+Marketing coordinator with one year of full-time campaign experience at a Boise credit union and a Boise State marketing degree, looking to move into a marketing analytics role where campaign reporting, audience segmentation, and testing are the core of the job. Open to remote positions or relocating to Salt Lake City.
+
+EDUCATION
+Boise State University, College of Business and Economics - Boise, ID
+Bachelor of Business Administration, Marketing, May 2026 | GPA 3.6
+Completed the final two semesters in evening and online sections while working full time.
+Relevant coursework: Marketing Research, Consumer Behavior, Digital Marketing, Integrated Marketing Communications, Business Statistics
+Boise State chapter of the American Marketing Association, member 2023-2026
+
+CERTIFICATIONS
+SQL for Data Science (Coursera, University of California, Davis), 2026
+Google Analytics 4 Certification, 2025
+HubSpot Email Marketing Certification, 2025
+
+EXPERIENCE
+Marketing Coordinator (full time) - CapEd Credit Union, Boise, ID | September 2025 - Present
+- Plan and send the credit union's member email program in HubSpot: monthly newsletter, auto loan and home equity promotions, and onboarding sequences for new members, reaching about 48,000 inboxes a month.
+- Ran 14 subject line A/B tests over the past year; the winning variants lifted the average open rate from 31% to 36%.
+- Build the monthly campaign recap deck for the VP of Marketing in Excel, using pivot tables to break results out by branch and member segment.
+- Tag every campaign link with UTM parameters and maintain the Google Analytics 4 dashboard for the online account opening page; flagged a mobile drop-off that led to a shorter application form and a 12% rise in completed applications.
+- Write basic SQL queries against the marketing export of the core banking system to pull member lists for mailers and cross-sell offers, cutting list requests to the IT team by about half.
+- Coordinate the spring auto loan direct mail campaign (22,000 pieces) with a Boise print vendor, from creative approval to response tracking by promo code.
+- Keep the social content calendar and community sponsorship schedule, including Boise Farmers Market and Treefort Music Fest activations.
+
+Marketing Intern - CapEd Credit Union, Boise, ID | May 2025 - August 2025
+- Drafted social posts and newsletter copy under the brand guidelines; built a competitor rate-watch sheet covering six Treasure Valley credit unions and banks.
+- Pulled weekly email metrics from HubSpot into a tracker the team still uses.
+
+Student Marketing Assistant (part time) - Boise State Campus Recreation, Boise, ID | August 2023 - May 2025
+- Produced flyers, digital signage, and Instagram content for intramural leagues and fitness classes; grew the department's Instagram following from 2,100 to 3,400.
+- Surveyed participants after each semester and summarized the results for the program director.
+
+SKILLS
+Marketing tools: HubSpot Marketing Hub, Google Analytics 4, Looker Studio, Meta Ads Manager, Google Ads, Sprout Social, Canva, Adobe Express
+Analysis: Excel (pivot tables, XLOOKUP, charts), SQL basics (SELECT, JOIN, GROUP BY), UTM tracking, A/B testing, survey design
+Marketing: email marketing, campaign reporting, member segmentation, direct mail, brand guidelines, content calendars, community sponsorships

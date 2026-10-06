@@ -1,0 +1,854 @@
+{
+ "profile": {
+  "name": "Tessa Marquardt",
+  "initials": "TM",
+  "subline": "Remote data-analyst roles for a bootcamp graduate · Tailored to your resume · Board assumes remote-only",
+  "status": "Bootcamp grad · available now",
+  "recentRole": "Sweetgrass Grill — General Manager, Dillon MT (2021–2026)",
+  "stack": "Python, SQL, Power BI, Excel, forecasting projects, P&L management",
+  "target": "Remote data or operations analyst · anywhere in the US",
+  "yearsExperience": 0,
+  "uofu": false,
+  "city": "",
+  "geoLabel": "Remote",
+  "cohortLabel": "bootcamp graduate",
+  "linkedin": "https://www.linkedin.com/in/tessa-marquardt-data",
+  "summary": "With no degree and no office nearby, the realistic doors are remote analyst and operations roles that hire on portfolio and work history. The new-grad programs on this board want a bachelor's, so they are out; the remote roles and the suggested remote-first employers are the list.",
+  "searchLinks": [
+   {
+    "label": "Remote data analyst",
+    "keywords": "data analyst",
+    "location": "",
+    "remoteOnly": true,
+    "entryLevel": true
+   }
+  ],
+  "applyNow": "Stripe's Fraud Patterns Analyst and CrowdStrike's Falcon Complete Analyst I are remote and do not name a degree; everything in Utah would mean moving.",
+  "watchLater": "Keep building the portfolio; a Microsoft PL-300 certification would help with the Power BI roles."
+ },
+ "companies": [
+  {
+   "name": "MX Technologies",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at MX Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Goldman Sachs (SLC Campus)",
+   "score": 65,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Goldman Sachs (SLC Campus): fintech employer, away from the candidate."
+  },
+  {
+   "name": "Recursion Pharmaceuticals",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Recursion Pharmaceuticals: health employer, away from the candidate."
+  },
+  {
+   "name": "Domo",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Domo: data employer, away from the candidate."
+  },
+  {
+   "name": "Qualtrics",
+   "score": 61,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Qualtrics: data employer, away from the candidate."
+  },
+  {
+   "name": "Ataccama",
+   "score": 64,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Ataccama: data employer, away from the candidate."
+  },
+  {
+   "name": "Sigma Computing",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Sigma Computing: data employer, away from the candidate."
+  },
+  {
+   "name": "Adobe (Lehi Campus)",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Adobe (Lehi Campus): data employer, away from the candidate."
+  },
+  {
+   "name": "Ancestry",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Ancestry: data employer, away from the candidate."
+  },
+  {
+   "name": "Pluralsight",
+   "score": 62,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Pluralsight: data employer, away from the candidate."
+  },
+  {
+   "name": "Health Catalyst",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Health Catalyst: health employer, away from the candidate."
+  },
+  {
+   "name": "Galileo Financial Technologies",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Galileo Financial Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Lucid Software",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Lucid Software: data employer, away from the candidate."
+  },
+  {
+   "name": "Weave",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Weave: data employer, away from the candidate."
+  },
+  {
+   "name": "Podium",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Podium: data employer, away from the candidate."
+  },
+  {
+   "name": "Snowflake",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Snowflake: data employer, away from the candidate."
+  },
+  {
+   "name": "Databricks",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Databricks: data employer, away from the candidate."
+  },
+  {
+   "name": "Plaid",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Plaid: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Stripe",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Stripe: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Brex",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Brex: fintech employer, away from the candidate."
+  },
+  {
+   "name": "SoFi",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at SoFi: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Instructure (Canvas)",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Instructure (Canvas): data employer, away from the candidate."
+  },
+  {
+   "name": "Filevine",
+   "score": 75,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Filevine: data employer, away from the candidate."
+  },
+  {
+   "name": "BambooHR",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at BambooHR: data employer, away from the candidate."
+  },
+  {
+   "name": "Vivint Smart Home",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Vivint Smart Home: data employer, away from the candidate."
+  },
+  {
+   "name": "Pattern",
+   "score": 61,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Pattern: data employer, away from the candidate."
+  },
+  {
+   "name": "Entrata",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Entrata: data employer, away from the candidate."
+  },
+  {
+   "name": "Nav Technologies",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Nav Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Cotiviti",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Cotiviti: health employer, away from the candidate."
+  },
+  {
+   "name": "JPMorgan Chase",
+   "score": 62,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at JPMorgan Chase: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Capital One",
+   "score": 69,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Capital One: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Mastercard",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Mastercard: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Bloomberg",
+   "score": 65,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Bloomberg: fintech employer, away from the candidate."
+  },
+  {
+   "name": "OpenAI",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at OpenAI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Anthropic",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Anthropic: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Scale AI",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Scale AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Robinhood",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Robinhood: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Ramp",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Ramp: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Hugging Face",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Hugging Face: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Perplexity AI",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Perplexity AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "DigiCert",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at DigiCert: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Ivanti",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Ivanti: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Proofpoint",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Proofpoint: cyber employer, away from the candidate."
+  },
+  {
+   "name": "SecurityMetrics",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at SecurityMetrics: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Arctic Wolf",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Arctic Wolf: cyber employer, away from the candidate."
+  },
+  {
+   "name": "CrowdStrike",
+   "score": 77,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at CrowdStrike: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Palo Alto Networks",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Palo Alto Networks: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Okta",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Okta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Cloudflare",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Cloudflare: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Datadog",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Datadog: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Vanta",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Vanta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Coalition",
+   "score": 62,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Coalition: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Sardine",
+   "score": 62,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Sardine: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Wiz",
+   "score": 69,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Wiz: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Abnormal AI",
+   "score": 69,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Abnormal AI: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Zions Bancorporation",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Zions Bancorporation: fintech employer, away from the candidate."
+  },
+  {
+   "name": "America First Credit Union",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at America First Credit Union: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Sunwest Bank",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Sunwest Bank: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Datafy",
+   "score": 65,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Datafy: data employer, away from the candidate."
+  },
+  {
+   "name": "Verkada",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Verkada: cyber employer, away from the candidate."
+  },
+  {
+   "name": "iCapital",
+   "score": 65,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at iCapital: fintech employer, away from the candidate."
+  },
+  {
+   "name": "WGU (Western Governors University)",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at WGU (Western Governors University): data employer, away from the candidate."
+  },
+  {
+   "name": "Morgan Stanley",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Morgan Stanley: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Addepar",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Addepar: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Cicero Group (MGT)",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Cicero Group (MGT): data employer, away from the candidate."
+  },
+  {
+   "name": "Freddie Mac",
+   "score": 65,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Freddie Mac: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fannie Mae",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Fannie Mae: fintech employer, away from the candidate."
+  },
+  {
+   "name": "American Express",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at American Express: fintech employer, away from the candidate."
+  },
+  {
+   "name": "USAA",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at USAA: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fidelity Investments",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Fidelity Investments: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Vanguard",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Vanguard: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Visa",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Visa: fintech employer, away from the candidate."
+  },
+  {
+   "name": "FIS",
+   "score": 77,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at FIS: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Citi",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Citi: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Wells Fargo",
+   "score": 80,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Wells Fargo: fintech employer, away from the candidate."
+  },
+  {
+   "name": "EY",
+   "score": 81,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at EY: data employer, away from the candidate."
+  },
+  {
+   "name": "Deloitte",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Deloitte: data employer, away from the candidate."
+  },
+  {
+   "name": "PwC",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at PwC: data employer, away from the candidate."
+  },
+  {
+   "name": "KPMG",
+   "score": 82,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at KPMG: data employer, away from the candidate."
+  },
+  {
+   "name": "Protiviti",
+   "score": 75,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Protiviti: data employer, away from the candidate."
+  },
+  {
+   "name": "Accenture",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Accenture: data employer, away from the candidate."
+  }
+ ],
+ "suggested": [
+  {
+   "name": "Automattic",
+   "location": "San Francisco, CA (remote)",
+   "locType": "remote",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data",
+    "product"
+   ],
+   "score": 78,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Fully distributed company that hires on trial projects rather than degrees.",
+   "note": "Search 'Data' on automattic.com/work-with-us.",
+   "confidence": "high"
+  },
+  {
+   "name": "GitLab",
+   "location": "San Francisco, CA (remote)",
+   "locType": "remote",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 76,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "All-remote; its data team publishes its handbook and hires analysts.",
+   "note": "Look for 'Data Analyst' on GitLab's jobs page.",
+   "confidence": "high"
+  },
+  {
+   "name": "Toast",
+   "location": "Boston, MA (remote)",
+   "locType": "remote",
+   "industry": [
+    "fintech"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 80,
+   "badges": [
+    "fintech",
+    "tools-match"
+   ],
+   "why": "Restaurant-software company where a restaurant GM's experience is domain expertise.",
+   "note": "Search 'Analyst' and 'Remote'.",
+   "confidence": "medium"
+  },
+  {
+   "name": "Zapier",
+   "location": "San Francisco, CA (remote)",
+   "locType": "remote",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 74,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Remote-first automation company with operations analyst roles.",
+   "note": "Search 'Operations' on Zapier's careers site.",
+   "confidence": "medium"
+  },
+  {
+   "name": "Olo",
+   "location": "New York, NY (remote)",
+   "locType": "remote",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 72,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Restaurant ordering platform, remote-friendly.",
+   "note": "Search 'Analyst'.",
+   "confidence": "medium"
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+CAMILLE THORSBY
+Provo, UT | (801) 555-0143 | camille.thorsby@example.com | https://www.linkedin.com/in/camille-thorsby-byu
+
+OBJECTIVE
+Accounting senior with an information systems minor and two Big Four internships seeking a full-time IT audit or technology risk associate role starting summer 2027, following an April 2027 graduation. CPA-track. Comfortable testing IT general controls, walking through systems with process owners, and automating audit procedures in Alteryx.
+
+EDUCATION
+Brigham Young University, Marriott School of Business - Provo, UT
+B.S. Accounting, Minor in Information Systems | Expected April 2027 | GPA 3.78
+Relevant coursework: Accounting Information Systems, IT Audit and Controls, Database Systems (SQL), Data Analytics for Accountants, Auditing, Intermediate Financial Accounting I and II
+Honors and activities: Marriott School Dean's List (4 semesters); Beta Alpha Psi, Treasurer (2025 - present); ISACA student member
+CPA: on track to complete the 150-credit requirement by April 2027; planning to sit for AUD and FAR in summer 2027
+
+EXPERIENCE
+PwC - Risk Assurance Intern, Technology Risk | Salt Lake City, UT | June 2026 - August 2026
+- Tested IT general controls (logical access, change management, computer operations) across SAP and Workday environments on two SOX 404 engagements, documenting 40+ control tests with no review notes returned on the second engagement.
+- Built an Alteryx workflow that reconciled 18,000 user-access records against HR termination data, cutting a two-day manual procedure to under an hour and surfacing 11 exceptions for the engagement team.
+- Drafted system walkthrough narratives and Visio process flows for a client's order-to-cash cycle after interviewing IT and finance process owners.
+
+KPMG - Audit Intern | Salt Lake City, UT | January 2026 - March 2026
+- Performed substantive testing of cash, fixed assets and accrued liabilities for a public manufacturing client during busy season, tying balances to support and preparing lead schedules in Excel.
+- Ran journal entry testing in ACL Analytics, isolating 23 entries posted outside business hours or by unexpected users for senior review.
+- Prepared confirmation requests and rolled forward prior-year workpapers for three engagements.
+
+BYU Marriott School of Business - Teaching Assistant, Accounting Information Systems | Provo, UT | September 2025 - present
+- Lead a weekly lab of 30 students on flowcharting, internal control design and introductory SQL; hold office hours and grade case assignments.
+
+Volunteer Income Tax Assistance (VITA) - IRS-Certified Preparer | Provo, UT | January 2025 - April 2025
+- Prepared 60+ individual federal and Utah returns for low-income taxpayers; reviewed by a site coordinator with zero rejected filings.
+
+SKILLS
+Audit and risk: IT general controls (ITGC), SOX 404, COSO framework, walkthroughs, substantive testing, workpaper documentation
+Tools: Microsoft Excel (Power Query, PivotTables, XLOOKUP, macros), Alteryx Designer (Core certified), ACL Analytics, SQL (intermediate), Power BI (basic), Visio, SAP and Workday (as auditor)
+Certifications and study: Alteryx Designer Core Certification; studying for the CISA exam

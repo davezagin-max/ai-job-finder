@@ -1181,7 +1181,7 @@ const COMPANIES = [
     tier: 2,
     alumni: "some",
     alumniNote: "Several U of U alumni found, though no confirmed campus recruiting relationship.",
-    badges: ["fintech", "ai-native"],
+    badges: ["local", "fintech", "ai-native"],
     why: "Fintech corporate cards w/ AI expense agents. Has SLC presence. Smart entry data hires.",
     careers: "https://www.brex.com/careers",
     linkedin: "https://www.linkedin.com/company/brex/jobs/"
@@ -1333,7 +1333,7 @@ const COMPANIES = [
     tier: 2,
     alumni: "some",
     alumniNote: "Multiple U of U alumni found in Utah banking roles; no official campus recruiting list.",
-    badges: ["fintech"],
+    badges: ["local", "fintech"],
     why: "Has SLC tech center. JP Morgan AI Research is one of the largest financial-AI groups in the world. Apply to their Software Engineer Program / DSAI Associate.",
     careers: "https://www.jpmorganchase.com/careers/explore-opportunities/programs/software-engineer-fulltime",
     linkedin: "https://www.linkedin.com/company/jpmorganchase/jobs/"
@@ -1546,7 +1546,7 @@ const COMPANIES = [
     tier: 2,
     alumni: "some",
     alumniNote: "Multiple U of U alumni found including a Utah-based analyst, though HQ is Minnesota.",
-    badges: ["ai-native"],
+    badges: ["local", "ai-native"],
     why: "<strong>Has a Utah office (Pleasant Grove).</strong> Managed detection & response; famous for hiring new grads into Security Developer / Concierge Security tracks with paid training.",
     careers: "https://arcticwolf.com/company/careers/",
     linkedin: "https://www.linkedin.com/company/arctic-wolf-networks/jobs/"
@@ -1880,7 +1880,7 @@ const COMPANIES = [
     roles: ["data", "product"],
     score: 84,
     tier: 2,
-    badges: ["fintech"],
+    badges: ["local", "fintech"],
     why: "<strong>Card network and bank with a Salt Lake City office</strong>, though its 2027 undergraduate full-time classes sit in Phoenix, New York, Atlanta, Sunrise FL, Charlotte and Palo Alto. The technology classes name Information Systems among the accepted majors.",
     careers: "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs?keyword=Campus%20Undergraduate%20Full-Time",
     linkedin: "https://www.linkedin.com/company/american-express/jobs/"
@@ -1908,7 +1908,7 @@ const COMPANIES = [
     tier: 2,
     alumni: "some",
     alumniNote: "Registered employer at the U of U Business Career Expo, Sep 17 2026, recruiting for a Salt Lake City licensing program.",
-    badges: ["fintech"],
+    badges: ["local", "fintech"],
     why: "<strong>Asset manager with a Salt Lake City office and a January tech cohort.</strong> The Leap program runs January, April and July 2027 classes, so a December graduate can start right away. Its Salt Lake City openings today ask for five or more years.",
     careers: "https://wd1.myworkdaysite.com/recruiting/fmr/targeted",
     linkedin: "https://www.linkedin.com/company/fidelity-investments/jobs/"
@@ -1986,7 +1986,7 @@ const COMPANIES = [
     roles: ["data"],
     score: 82,
     tier: 2,
-    badges: [],
+    badges: ["local"],
     why: "<strong>Big Four firm hiring data analysts into Assurance, with a Salt Lake City seat.</strong> The Data and Intelligence Delivery Analyst role names AI, Information Systems and Business Analytics degrees and pays $78,000&ndash;100,000. Consulting's Risk Technology track is built around an IS degree.",
     careers: "https://eyglobal.yello.co/job_boards/c1riT--B2O-KySgYWsZO1Q",
     linkedin: "https://www.linkedin.com/company/ernstandyoung/jobs/"
@@ -2533,7 +2533,8 @@ const ALUMNI_BONUS = { strong: 3, some: 1 };
 // tailoring module at the bottom of this script swaps in uploaded profiles.
 let PROFILE = { id: 'default', uofu: false, geoLabel: 'SLC Area', cohortLabel: 'new grad', city: 'Salt Lake City, UT', slc: true };
 let SUGGESTED = []; // extra employers Claude proposes when the candidate's home base is outside the Salt Lake area
-const cohort = s => s.replace('Dec 2026 grad', () => escHtml(PROFILE.cohortLabel));
+// The templates already supply the article ("for a Dec 2026 grad"), so a label that brings its own is trimmed.
+const cohort = s => s.replace('Dec 2026 grad', () => escHtml(String(PROFILE.cohortLabel || '').replace(/^(?:a|an|the)\s+/i, '')));
 const escHtml = s => String(s ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
 const shownScore = c => Math.min(100, c.score + (PROFILE.uofu ? (ALUMNI_BONUS[c.alumni] || 0) : 0));
 

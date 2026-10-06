@@ -34,8 +34,9 @@ Each employer card has four things:
 **Sorting:** cards are grouped by status in the order above, then sorted by
 score, highest first.
 
-**Filters:** a filter chip that would match nothing is hidden, so you never land
-on an empty board.
+**Filters:** a Timing, Where or Industry chip that would match nothing is
+hidden; Role, Tier and the other chips stay, so a search or an odd combination
+can still show "No matches".
 
 **New this week:** the first chip in the Timing row. It shows only employers
 with an opening added in the latest refresh (or added to the board in it), and on
@@ -121,7 +122,8 @@ Claude is told what the scores mean:
 
 **Step 3: The page checks the answer.** Claude's reply is treated as untrusted.
 
-- Employer names must match the board; unknown names and duplicates are dropped.
+- Employer names must match the board (exactly, or ignoring case, punctuation
+  and a parenthetical); unknown names and duplicates are dropped.
 - Scores are forced into the 60 to 100 range.
 - If fewer than 80% of the employers come back, the whole run is rejected.
 
@@ -161,11 +163,16 @@ itself is never stored.
 | Lives somewhere else | Claude re-labels every employer as local, nearby office, remote or needs relocation, relative to the candidate's city. The Where filters are renamed to match, and the relocate tags are hidden. |
 | Remote only, no city | Every employer becomes either remote or needs relocation. |
 
+These are instructions to Claude. The page decides local mode by one test: if
+every employer's location type comes back unchanged, the board stays in Salt
+Lake mode; if any changed, the Where filters are relabeled to the candidate's
+metro.
+
 ### Suggested employers
 
 The board is built for data, AI, software and product roles around Salt Lake
 City. When that does not fit the person, Claude adds up to 15 employers in their
-own city and field.
+own city and field (the page accepts at most 20).
 
 - **Added when:** the candidate lives outside the Salt Lake area, **or** their
   resume does not fit those role types (a nurse, a teacher, a chemist).
@@ -180,7 +187,9 @@ own city and field.
 
 The career fair strip and the "Hires from the U" filter only appear when the
 resume shows a University of Utah student. For those students, employers with a
-known U of U hiring pipeline get +3 points (strong pipeline) or +1 (some).
+known U of U hiring pipeline get +3 points (strong pipeline) or +1 (some) on the
+displayed score and in the sort order; tiers are assigned from the score before
+the bonus.
 
 ## 4. Old profiles after the board is updated
 
@@ -192,8 +201,10 @@ re-verified since, or an employer's facts have changed:
   kept, because that is about the person's graduation date, not about what is
   posted.
 - **The seniority cap is re-run** against today's openings, starting from
-  Claude's original score. A cap can loosen as well as tighten.
-- **An employer with no openings** cannot be a live role.
+  Claude's original score. A cap can loosen as well as tighten. (A profile saved
+  before the page recorded years of experience keeps its frozen scores.)
+- **An employer with no openings** cannot be a live role once the board is
+  newer than the profile.
 - **Employers added after the profile was made** are hidden until you tailor
   again.
 - The footer warns that the profile's Apply now and Watch later advice is older

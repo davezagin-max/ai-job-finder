@@ -1,0 +1,949 @@
+{
+ "profile": {
+  "name": "Brooke Lindqvist",
+  "initials": "BL",
+  "subline": "Marketing-analytics roles for a marketing coordinator with one year on the job · Tailored to your resume · Board re-mapped to Boise",
+  "status": "1 yr · Marketing coordinator",
+  "recentRole": "Boise credit union — Marketing Coordinator (2025–2026)",
+  "stack": "HubSpot, Google Analytics, Excel, campaign reporting, SQL basics, copywriting",
+  "target": "Marketing analyst · Boise, ID · remote or Salt Lake City welcome",
+  "yearsExperience": 1,
+  "uofu": false,
+  "city": "Boise, ID",
+  "geoLabel": "Boise Area",
+  "cohortLabel": "early-career marketer",
+  "linkedin": "https://www.linkedin.com/in/brooke-lindqvist-mktg",
+  "summary": "Marketing analytics sits between this board's data roles and your marketing work: the analyst reqs that want SQL are a stretch, the ones that want campaign reporting are a fit. Boise employers and remote-friendly ones are added; Salt Lake roles read as a move you said you would consider.",
+  "searchLinks": [
+   {
+    "label": "Marketing analyst, Boise",
+    "keywords": "marketing analyst",
+    "location": "Boise, Idaho",
+    "remoteOnly": false,
+    "entryLevel": true
+   },
+   {
+    "label": "Remote marketing analyst",
+    "keywords": "marketing analyst",
+    "location": "",
+    "remoteOnly": true,
+    "entryLevel": true
+   }
+  ],
+  "applyNow": "Stripe's and Datadog's GTM operations analyst roles are the board's closest fit; the suggested Boise employers are the local list.",
+  "watchLater": "Qualtrics' Provo GTM analytics team hires again once the current req fills."
+ },
+ "companies": [
+  {
+   "name": "MX Technologies",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at MX Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Goldman Sachs (SLC Campus)",
+   "score": 62,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Goldman Sachs (SLC Campus): fintech employer, away from the candidate."
+  },
+  {
+   "name": "Recursion Pharmaceuticals",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Recursion Pharmaceuticals: health employer, away from the candidate."
+  },
+  {
+   "name": "Domo",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Domo: data employer, away from the candidate."
+  },
+  {
+   "name": "Qualtrics",
+   "score": 61,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Qualtrics: data employer, away from the candidate."
+  },
+  {
+   "name": "Ataccama",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Ataccama: data employer, away from the candidate."
+  },
+  {
+   "name": "Sigma Computing",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Sigma Computing: data employer, away from the candidate."
+  },
+  {
+   "name": "Adobe (Lehi Campus)",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Adobe (Lehi Campus): data employer, away from the candidate."
+  },
+  {
+   "name": "Ancestry",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Ancestry: data employer, away from the candidate."
+  },
+  {
+   "name": "Pluralsight",
+   "score": 62,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Pluralsight: data employer, away from the candidate."
+  },
+  {
+   "name": "Health Catalyst",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Health Catalyst: health employer, away from the candidate."
+  },
+  {
+   "name": "Galileo Financial Technologies",
+   "score": 64,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Galileo Financial Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Lucid Software",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Lucid Software: data employer, away from the candidate."
+  },
+  {
+   "name": "Weave",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Weave: data employer, away from the candidate."
+  },
+  {
+   "name": "Podium",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Podium: data employer, away from the candidate."
+  },
+  {
+   "name": "Snowflake",
+   "score": 75,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Snowflake: data employer, away from the candidate."
+  },
+  {
+   "name": "Databricks",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Databricks: data employer, away from the candidate."
+  },
+  {
+   "name": "Plaid",
+   "score": 69,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Plaid: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Stripe",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Stripe: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Brex",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Brex: fintech employer, away from the candidate."
+  },
+  {
+   "name": "SoFi",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at SoFi: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Instructure (Canvas)",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Instructure (Canvas): data employer, away from the candidate."
+  },
+  {
+   "name": "Filevine",
+   "score": 75,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Filevine: data employer, away from the candidate."
+  },
+  {
+   "name": "BambooHR",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at BambooHR: data employer, away from the candidate."
+  },
+  {
+   "name": "Vivint Smart Home",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Vivint Smart Home: data employer, away from the candidate."
+  },
+  {
+   "name": "Pattern",
+   "score": 61,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Pattern: data employer, away from the candidate."
+  },
+  {
+   "name": "Entrata",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Entrata: data employer, away from the candidate."
+  },
+  {
+   "name": "Nav Technologies",
+   "score": 64,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Nav Technologies: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Cotiviti",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Cotiviti: health employer, away from the candidate."
+  },
+  {
+   "name": "JPMorgan Chase",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at JPMorgan Chase: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Capital One",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Capital One: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Mastercard",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Mastercard: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Bloomberg",
+   "score": 62,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Bloomberg: fintech employer, away from the candidate."
+  },
+  {
+   "name": "OpenAI",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at OpenAI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Anthropic",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Anthropic: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Scale AI",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Scale AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Robinhood",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Robinhood: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Ramp",
+   "score": 70,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Ramp: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Hugging Face",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Hugging Face: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "Perplexity AI",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Perplexity AI: ai-lab employer, away from the candidate."
+  },
+  {
+   "name": "DigiCert",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at DigiCert: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Ivanti",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Ivanti: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Proofpoint",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Proofpoint: cyber employer, away from the candidate."
+  },
+  {
+   "name": "SecurityMetrics",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at SecurityMetrics: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Arctic Wolf",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Arctic Wolf: cyber employer, away from the candidate."
+  },
+  {
+   "name": "CrowdStrike",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at CrowdStrike: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Palo Alto Networks",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Palo Alto Networks: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Okta",
+   "score": 61,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Okta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Cloudflare",
+   "score": 62,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Cloudflare: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Datadog",
+   "score": 61,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Datadog: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Vanta",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Vanta: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Coalition",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Coalition: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Sardine",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Sardine: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Wiz",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Wiz: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Abnormal AI",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Abnormal AI: cyber employer, away from the candidate."
+  },
+  {
+   "name": "Zions Bancorporation",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Zions Bancorporation: fintech employer, away from the candidate."
+  },
+  {
+   "name": "America First Credit Union",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at America First Credit Union: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Sunwest Bank",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Sunwest Bank: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Datafy",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Datafy: data employer, away from the candidate."
+  },
+  {
+   "name": "Verkada",
+   "score": 60,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "remote",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Verkada: cyber employer, away from the candidate."
+  },
+  {
+   "name": "iCapital",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at iCapital: fintech employer, away from the candidate."
+  },
+  {
+   "name": "WGU (Western Governors University)",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at WGU (Western Governors University): data employer, away from the candidate."
+  },
+  {
+   "name": "Morgan Stanley",
+   "score": 69,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Morgan Stanley: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Addepar",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Addepar: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Cicero Group (MGT)",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Cicero Group (MGT): data employer, away from the candidate."
+  },
+  {
+   "name": "Freddie Mac",
+   "score": 63,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Freddie Mac: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fannie Mae",
+   "score": 72,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Fannie Mae: fintech employer, away from the candidate."
+  },
+  {
+   "name": "American Express",
+   "score": 69,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at American Express: fintech employer, away from the candidate."
+  },
+  {
+   "name": "USAA",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at USAA: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Fidelity Investments",
+   "score": 65,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Fidelity Investments: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Vanguard",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Vanguard: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Visa",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Visa: fintech employer, away from the candidate."
+  },
+  {
+   "name": "FIS",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at FIS: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Citi",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Citi: fintech employer, away from the candidate."
+  },
+  {
+   "name": "Wells Fargo",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Wells Fargo: fintech employer, away from the candidate."
+  },
+  {
+   "name": "EY",
+   "score": 79,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at EY: data employer, away from the candidate."
+  },
+  {
+   "name": "Deloitte",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Deloitte: data employer, away from the candidate."
+  },
+  {
+   "name": "PwC",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at PwC: data employer, away from the candidate."
+  },
+  {
+   "name": "KPMG",
+   "score": 80,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at KPMG: data employer, away from the candidate."
+  },
+  {
+   "name": "Protiviti",
+   "score": 73,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Protiviti: data employer, away from the candidate."
+  },
+  {
+   "name": "Accenture",
+   "score": 74,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Brooke at Accenture: data employer, away from the candidate."
+  }
+ ],
+ "suggested": [
+  {
+   "name": "Albertsons Companies",
+   "location": "Boise, ID",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 90,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Boise or remote-friendly employer with a marketing-analytics team.",
+   "note": "Search \"marketing analyst\" and \"marketing operations\".",
+   "confidence": "high"
+  },
+  {
+   "name": "Scentsy",
+   "location": "Boise, ID",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 87,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Boise or remote-friendly employer with a marketing-analytics team.",
+   "note": "Search \"marketing analyst\" and \"marketing operations\".",
+   "confidence": "high"
+  },
+  {
+   "name": "Clearwater Analytics",
+   "location": "Boise, ID",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 84,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Boise or remote-friendly employer with a marketing-analytics team.",
+   "note": "Search \"marketing analyst\" and \"marketing operations\".",
+   "confidence": "high"
+  },
+  {
+   "name": "Idaho Central Credit Union",
+   "location": "Boise, ID",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 81,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Boise or remote-friendly employer with a marketing-analytics team.",
+   "note": "Search \"marketing analyst\" and \"marketing operations\".",
+   "confidence": "high"
+  },
+  {
+   "name": "Blue Cross of Idaho",
+   "location": "Boise, ID",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 78,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Boise or remote-friendly employer with a marketing-analytics team.",
+   "note": "Search \"marketing analyst\" and \"marketing operations\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "St. Luke's Health System",
+   "location": "Boise, ID",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 75,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Boise or remote-friendly employer with a marketing-analytics team.",
+   "note": "Search \"marketing analyst\" and \"marketing operations\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "J.R. Simplot Company",
+   "location": "Boise, ID",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 72,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Boise or remote-friendly employer with a marketing-analytics team.",
+   "note": "Search \"marketing analyst\" and \"marketing operations\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Drake Cooper",
+   "location": "Boise, ID",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 69,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Boise or remote-friendly employer with a marketing-analytics team.",
+   "note": "Search \"marketing analyst\" and \"marketing operations\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Micron Technology",
+   "location": "Boise, ID",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 66,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Boise or remote-friendly employer with a marketing-analytics team.",
+   "note": "Search \"marketing analyst\" and \"marketing operations\".",
+   "confidence": "medium"
+  },
+  {
+   "name": "Boise Cascade",
+   "location": "Boise, ID",
+   "locType": "local",
+   "industry": [
+    "other"
+   ],
+   "roles": [
+    "data"
+   ],
+   "score": 63,
+   "badges": [
+    "tools-match"
+   ],
+   "why": "Synthetic fixture: a Boise or remote-friendly employer with a marketing-analytics team.",
+   "note": "Search \"marketing analyst\" and \"marketing operations\".",
+   "confidence": "medium"
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+TESSA MARQUARDT
+Choteau, MT 59422 | (406) 555-0147 | t.marquardt.analytics@outlook.com | https://www.linkedin.com/in/tessa-marquardt-data | github.com/tmarquardt-analytics
+
+OBJECTIVE
+Career changer with eight years in restaurant operations and a 2026 data-analytics bootcamp certificate, seeking a fully remote entry-level data analyst or BI analyst role. I live on family land in rural north-central Montana and am not able to relocate, so I am applying to remote-only positions.
+
+SKILLS
+Languages and tools: Python (pandas, NumPy, matplotlib, seaborn), SQL (PostgreSQL, SQLite), Power BI (DAX, Power Query), Excel (pivot tables, XLOOKUP, Power Pivot), Google Sheets, Git/GitHub, Jupyter
+Analytics: data cleaning, exploratory analysis, KPI dashboards, basic forecasting, A/B test readouts, data storytelling
+Operations: P&L management, scheduling, inventory control, vendor negotiation, staff training
+
+EDUCATION AND TRAINING
+Bitterroot Data Academy (online) - Data Analytics Bootcamp Certificate | Jan 2026 - Apr 2026
+16-week full-time immersive: Python, SQL, statistics, Power BI, capstone project. Top quarter of the cohort.
+Google Data Analytics Professional Certificate (Coursera) | Nov 2025
+Flathead Valley Community College, Kalispell, MT - General studies coursework, 2017-2018 (no degree)
+Choteau High School, Choteau, MT - Diploma, May 2017
+
+PORTFOLIO PROJECTS (github.com/tmarquardt-analytics)
+Restaurant Labor Forecasting (capstone) - Python, SQL, Power BI | Mar 2026 - Apr 2026
+- Loaded three years of anonymized POS and timeclock data (about 190,000 rows) into PostgreSQL to forecast hourly staffing needs by daypart and weekday.
+- Built a Power BI dashboard with DAX measures for labor-cost percentage and sales per labor hour; a weighted moving-average forecast cut projected over-scheduling by 11% in backtesting.
+
+Montana Visitor Spending Dashboard - Power BI, Excel | Feb 2026
+- Cleaned and joined public state tourism and county employment tables in Power Query; published an interactive report comparing seasonal visitor spending across seven regions.
+
+Telecom Churn Analysis - Python | Jan 2026 - Feb 2026
+- Explored a 7,000-customer public dataset with pandas; built a logistic-regression baseline (AUC 0.83) and wrote a plain-language findings memo for a non-technical reader.
+
+EXPERIENCE
+Volunteer Data Analyst - Choteau Area Food Bank, Choteau, MT | May 2026 - Present (about 5 hours/week, unpaid)
+- Replaced paper intake logs with a Google Sheets system and a monthly Power BI summary of households served, donation inflows and inventory turnover for the board.
+
+General Manager - Front Range Grill, Great Falls, MT | Mar 2022 - Dec 2025
+- Ran a 120-seat full-service restaurant with 32 employees and about $2.4M in annual sales; owned the P&L, hiring, training and scheduling.
+- Built an Excel inventory and food-cost tracker that lowered food cost from 34% to 30% of sales over 14 months.
+- Reviewed POS sales mix weekly to re-price and trim the menu, lifting the average check 8% without reducing guest counts.
+- Cut annual staff turnover from 95% to 61% with a structured 30-day onboarding plan.
+
+Assistant Manager - Front Range Grill, Great Falls, MT | Jun 2019 - Mar 2022
+- Managed shifts, cash handling and vendor orders; tracked daily sales and labor against budget and reported variances to the owner.
+
+Server - Olive Garden, Missoula, MT | Aug 2017 - May 2019
+- High-volume dining room; promoted to shift trainer in 2018.
+
+ADDITIONAL
+Preparing for the Microsoft PL-300 (Power BI Data Analyst) exam, planned for November 2026. Reliable fiber internet and a dedicated home office on Mountain Time.
