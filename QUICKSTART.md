@@ -38,8 +38,9 @@ narrow by status, role, location or industry.
 4. Click **Tailor the board**.
 
 Claude re-scores every employer for that person and rewrites each card. It
-takes about a minute and costs about $0.15 on the default settings. The result
-is saved as a profile you can switch to from the header.
+takes a few minutes and costs about $0.30 on the default settings (Claude
+Sonnet 5.5, high effort). The result is saved as a profile you can switch to from
+the header.
 
 **Track applications.** Click **My applications** to log where you applied, or
 import the tracker you already keep: an Excel file, a CSV, or rows pasted
@@ -48,6 +49,9 @@ column such as "Denied, experience" becomes the status, and a row dated "not
 yet" is skipped rather than counted as applied. Cards then show what you applied
 for, and the **Applied**, **Live, not applied yet** and **Hide applied** filters
 appear.
+
+**See what changed this week.** Openings the employer posted since the last
+refresh carry an amber **new** tag. Click **New this week** to see only those.
 
 **Skip the roles that are not for you.** Openings on a software-engineering
 ladder are tagged *leans SWE*, and openings whose posting demands a
@@ -61,8 +65,10 @@ python3 refresh.py
 ```
 
 This re-checks every employer's job board in about a minute and writes what
-changed to `refresh-report.txt`. Copy any new openings into `index.html`, then
-update `REFRESH_DATE` and the footer date.
+changed to `refresh-report.txt`. Copy any new openings into `index.html` with
+`added: "<today's date>"` on each, then update `REFRESH_DATE` and the footer date
+to that same date. The **new** tags follow `REFRESH_DATE`, so last week's clear
+themselves.
 
 ## Your data
 

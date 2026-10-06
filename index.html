@@ -274,6 +274,11 @@
     font-size: 10px; padding: 1px 6px; border-radius: 4px; white-space: nowrap;
     border: 1px solid var(--border); color: var(--text-dim);
   }
+  .openings .otag.new { color: #1a1205; background: #fbbf24; border-color: #fbbf24; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+  .chip.new-chip { border-color: rgba(251,191,36,0.55); color: #fcd34d; }
+  .chip.new-chip.active { background: #fbbf24; color: #1a1205; border-color: #fbbf24; }
+  .chip .new-count { font-weight: 700; margin-left: 2px; }
+  .badge.new-co { color: #1a1205; background: #fbbf24; border-color: #fbbf24; font-weight: 700; }
   .openings .otag.prog { color: #c4b5fd; background: rgba(124,92,255,0.12); border-color: rgba(124,92,255,0.40); }
   .openings .otag.move { color: #fde68a; background: rgba(251,191,36,0.10); border-color: rgba(251,191,36,0.35); }
   .openings .otag.applied { color: #a7f3d0; background: rgba(52,211,153,0.10); border-color: rgba(52,211,153,0.40); }
@@ -653,7 +658,7 @@
     </div>
     <div class="stat">
       <div class="label">Employers</div>
-      <div class="val">79, each checked by hand</div>
+      <div class="val">81, each checked by hand</div>
     </div>
     <div class="stat">
       <div class="label">Cohort</div>
@@ -685,6 +690,7 @@
   <div class="filters" id="filters">
     <div class="filter-group">
       <span class="label">Timing</span>
+      <span class="chip new-chip" data-filter="fresh" data-value="on" id="new-chip" title="Openings and employers added in the latest refresh. Turning this on shows only those, and only the new openings on each card">&#x2728; New this week <span class="new-count" id="new-count"></span></span>
       <span class="chip" data-filter="apply" data-value="open-now">&#x1F7E2; Live role now</span>
       <span class="chip" data-filter="apply" data-value="opens-later">&#x1F7E1; Opens later this fall</span>
       <span class="chip" data-filter="apply" data-value="watch">&#x1F535; Watch list</span>
@@ -845,24 +851,24 @@
 <div class="toast" id="toast" hidden></div>
 
 <footer>
-  Openings verified 2026-09-27 &middot; curated for new-grad data, AI and fintech roles around Salt Lake City
+  Openings verified 2026-10-05 &middot; curated for new-grad data, AI and fintech roles around Salt Lake City
   <br>
-  <strong style="color: var(--gold);">Apply now, in Utah:</strong>
-  WGU's Associate Data Engineer closes Oct 2, and Adobe's 2027 University Graduate reqs list Lehi, though both
-  set a computer-science degree bar (the ML one wants an MS or PhD). Goldman Sachs 2027 SLC New Analyst, Morgan Stanley's 2027 Operations Analyst Program (Utah seat),
-  Addepar's AddeGrad 2027 and Cicero's January 2027 Business Analyst class all still accept December 2026 graduates.
+  <strong style="color: var(--gold);">New this week, in Utah:</strong>
+  Brex opened a Rotational Program in its Salt Lake City office that names Information Systems among its majors,
+  Fidelity's Salt Lake City Associate, Analytics &amp; Performance Insights accepts a degree in place of experience (closes Oct 16),
+  and JPMorgan posted a Private Bank AWM Program Analyst seat in Salt Lake City. Goldman's 2027 SLC New Analyst classes,
+  Morgan Stanley's Utah Operations program, Addepar's AddeGrad and Cicero's January class still take December 2026 graduates.
   <br>
   <strong style="color: var(--gold);">Worth relocating for:</strong>
-  Capital One's February 2027 Technology Development Program is back and asks for a degree finished by December 2026.
-  Fidelity's Leap classes were reposted under new numbers, Freddie Mac's January 2027 data analyst class is open,
-  and Mastercard still has three Launch seats in St. Louis.
-  Deadlines: Wells Fargo Sept 30, Fidelity Consulting Oct 1, PwC Management Consulting Oct 3, Mastercard Oct 6,
-  JPMorgan's Commercial program Oct 16, Deloitte Cyber Nov 1, American Express Oct 31.
+  Mastercard's Launch Program added Data Engineer I in Arlington ($115K), PwC's Digital Assurance &amp; Transparency Data class is back,
+  and Deloitte's Technology Controls Advisory class is open again until Oct 11 alongside a Risk Technology &amp; Analytics class that also lists MIS.
+  Deadlines: Mastercard Associate Product Specialist Oct 6, Wells Fargo WIM Oct 7, both Deloitte audit classes Oct 11,
+  Mastercard Corporate Functions Oct 11, Fidelity SLC Oct 16, Deloitte AI &amp; Data Oct 25, PwC DAT Data Oct 30, American Express Oct 31.
   <br>
   <strong style="color: var(--accent-2);">Closed this week:</strong>
-  Visa's two 2027 rotations, PwC's Digital Assurance postings, Deloitte's Business Analytics class, and the
-  Zions Staff Auditor, Mastercard Technology Risk and Weave Fraud Analyst reqs. Watch for Snowflake, Qualtrics,
-  Okta and Lucid to post new-grad reqs through November.
+  Capital One's February 2027 TDP, USAA's Future Leaders Data &amp; Analytics track, Robinhood's new-grad Business Analyst,
+  Zions' Salt Lake City Banker Development Program and Cybersecurity Analyst, WGU's Associate Data Engineer, Wells Fargo's Audit and Finance programs,
+  and Deloitte Cyber. Zions re-indexed its careers site, so every Zions link changed while the remaining roles did not. Sunwest Bank and Datafy join the board as Utah employers to watch.
   <br>
   Match scores reflect resume alignment (data tools, fintech interest, SLC proximity, new-grad pipelines).
 </footer>
@@ -879,7 +885,7 @@ const FAIRS = [
   { date: "2026-10-28", name: "Marketing &amp; Comms Expo" }
 ];
 
-const REFRESH_DATE = "2026-09-27";
+const REFRESH_DATE = "2026-10-05";
 const COMPANIES = [
   // ===== TIER 1 PERFECT MATCHES =====
   {
@@ -1719,6 +1725,34 @@ const COMPANIES = [
     careers: "https://www.americafirst.com/about/careers.html",
     linkedin: "https://www.linkedin.com/company/america-first-credit-union/jobs/"
   },
+  {
+    name: "Sunwest Bank",
+    location: "Salt Lake City, UT (HQ)",
+    locType: "local",
+    industry: ["fintech"],
+    roles: ["data", "swe"],
+    score: 78,
+    tier: 2,
+    added: "2026-10-05",
+    badges: ["local", "fintech"],
+    why: "An entrepreneurial business bank, founded in California in 1969 and now headquartered in Utah, with offices across the West. It runs recent-graduate programs (an 18-month Analyst Program in commercial banking, a 12-month Operations Trainee rotation and a Cybersecurity Training Program) and has posted a Technology Analyst Program, which is the door for an information-systems graduate.",
+    careers: "https://www.sunwestbank.com/about/careers/",
+    linkedin: "https://www.linkedin.com/company/sunwest-bank/jobs/"
+  },
+  {
+    name: "Datafy",
+    location: "Ogden, UT",
+    locType: "local",
+    industry: ["data"],
+    roles: ["data"],
+    score: 74,
+    tier: 2,
+    added: "2026-10-05",
+    badges: ["local", "tools-match"],
+    why: "A young Ogden data company whose analytics platform blends geolocation, spending, demographic and transportation data for clients' strategic decisions. Small enough that a junior data engineer or analyst works on the real pipeline from day one.",
+    careers: "https://www.datafy.com/careers",
+    linkedin: "https://www.linkedin.com/company/datafy/jobs/"
+  },
 
   // ===== MET AT U OF U CAREER FAIRS (added 2026-09-01) =====
   {
@@ -2034,7 +2068,7 @@ const APPLY_STATUS = {
   },
   "Goldman Sachs (SLC Campus)": {
     status: "open-now",
-    note: "<strong>Apply this week.</strong> Both 2027 Salt Lake City New Analyst programs are still live, in Engineering and Operations, for graduates finishing December 2026 through July 2027. The Operations Analyst req closed this week; Internal Audit (Technology and Engineering), Compliance and a Credit Risk analyst seat remain, all asking 0&ndash;3 years with no graduation window, so expect them to want a start soon after the degree.",
+    note: "<strong>Apply this week.</strong> Both 2027 Salt Lake City New Analyst programs are still live, in Engineering and Operations, for graduates finishing December 2026 through July 2027. Internal Audit (Technology and Engineering), Compliance and a Credit Risk analyst seat remain, all asking 0&ndash;3 years with no graduation window, so expect them to want a start soon after the degree.",
     openings: [{ title: "2027 | Americas | Salt Lake City | Engineering | New Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/171570", program: true }, { title: "2027 | Americas | Salt Lake City | Operations | New Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/169826", program: true }, { title: "Internal Audit - Technology and Engineering | Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/159789" }, { title: "Compliance | Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/159758" }, { title: "Risk, Credit Risk, CRG Asset Finance | Analyst", loc: "Salt Lake City, UT", url: "https://higher.gs.com/roles/184984" }]
   },
   "Recursion Pharmaceuticals": {
@@ -2049,8 +2083,8 @@ const APPLY_STATUS = {
   },
   "Qualtrics": {
     status: "opens-later",
-    note: "Nothing entry-level in Provo right now &mdash; the four live Provo reqs are account executives and a controller. Sign up for Qualtrics Life Insider and re-check in October for SWE I and Product Specialist.",
-    openings: []
+    note: "A Provo <strong>Data Analyst, GTM Analytics</strong> req went up this week, but it asks for 2&ndash;5 years of analysis experience and is in the office three days a week. Still no SWE I or Product Specialist new-grad req; keep checking through October.",
+    openings: [{ title: "Data Analyst, GTM Analytics", loc: "Provo, UT", url: "https://www.qualtrics.com/careers/us/en/job/8247259?gh_jid=8247259", yrs: 2, added: "2026-10-05" }]
   },
   "Ataccama": {
     status: "watch",
@@ -2064,8 +2098,8 @@ const APPLY_STATUS = {
   },
   "Adobe (Lehi Campus)": {
     status: "open-now",
-    note: "<strong>The 2027 University Graduate reqs went live this week, and both list Lehi.</strong> Read the degree bars first, though: Software Engineer ($76.7&ndash;152.2K) asks for a computer-science or computer-engineering degree, and Machine Learning Engineer ($102.4&ndash;202.3K) asks for an MS or PhD, so neither is a natural fit for an information-systems bachelor's. Both want a December 2026 to June 2027 graduation and close Dec 31. Analyst, Order Management is the Lehi door that does not.",
-    openings: [{ title: "2027 University Graduate - Software Engineer", loc: "Lehi, UT; San Jose; Austin; Seattle; New York", url: "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/San-Jose/XMLNAME-2027-University-Graduate---Software-Engineer_R172083", closes: "2026-12-31", program: true, degree: "a CS or computer-engineering degree" }, { title: "2027 University Graduate - Machine Learning Engineer", loc: "Lehi, UT; San Jose; Austin; Seattle; Waltham", url: "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/San-Jose/XMLNAME-2027-University-Graduate---Machine-Learning-Engineer_R172085", closes: "2026-12-31", program: true, degree: "an MS or PhD" }, { title: "Analyst, Order Management", loc: "Lehi, UT", url: "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/Lehi/Analyst--Order-Management_R171282", closes: "2026-12-01" }]
+    note: "<strong>The Lehi Analyst, Order Management req has closed</strong>, so the 2027 University Graduate reqs are what is left, and both list Lehi. Read the degree bars first: Software Engineer ($76.7&ndash;152.2K) asks for a computer-science or computer-engineering degree, and Machine Learning Engineer ($102.4&ndash;202.3K) asks for an MS or PhD. Both want a December 2026 to June 2027 graduation and close Dec 31. A new Lehi Business Process Analyst req asks for three years.",
+    openings: [{ title: "2027 University Graduate - Software Engineer", loc: "Lehi, UT; San Jose; Austin; Seattle; New York", url: "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/San-Jose/XMLNAME-2027-University-Graduate---Software-Engineer_R172083", closes: "2026-12-31", program: true, degree: "a CS or computer-engineering degree" }, { title: "2027 University Graduate - Machine Learning Engineer", loc: "Lehi, UT; San Jose; Austin; Seattle; Waltham", url: "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/San-Jose/XMLNAME-2027-University-Graduate---Machine-Learning-Engineer_R172085", closes: "2026-12-31", program: true, degree: "an MS or PhD" }]
   },
   "Ancestry": {
     status: "watch",
@@ -2078,9 +2112,9 @@ const APPLY_STATUS = {
     openings: []
   },
   "Health Catalyst": {
-    status: "open-now",
-    note: "Jr DevOps Engineer, Interoperability in SLC (posted Aug 19) takes 1&ndash;3 yrs with internships counting &mdash; the only US junior req among their 15. Their data-analyst hiring has shifted to India.",
-    openings: [{ title: "Jr DevOps Engineer - Interoperability", loc: "Salt Lake City, UT", url: "https://healthcatalyst.wd5.myworkdayjobs.com/en-US/healthcatalystcareers/job/Salt-Lake-City-UT/Jr-DevOps-Engineer--Interoperability_REQ-3280" }]
+    status: "watch",
+    note: "<strong>The Jr DevOps Engineer req has closed.</strong> The only US posting near entry level is a remote Contract Analyst, which is a legal-operations role. Their data-analyst hiring has shifted to India; set a Workday alert.",
+    openings: []
   },
   "Galileo Financial Technologies": {
     status: "watch",
@@ -2123,9 +2157,9 @@ const APPLY_STATUS = {
     openings: [{ title: "Software Engineer, New Grad", loc: "SF / Seattle / NYC", url: "https://job-boards.greenhouse.io/stripe/jobs/8128744" }, { title: "Fraud Patterns Analyst", loc: "US-Remote", url: "https://job-boards.greenhouse.io/stripe/jobs/7913410" }, { title: "Risk Operations Analyst", loc: "Remote", url: "https://job-boards.greenhouse.io/stripe/jobs/7230921" , yrs: 5 }]
   },
   "Brex": {
-    status: "watch",
-    note: "SLC office is real (two live SLC reqs) but they are support/collections. Data Engineer and AI Engineer reqs are SF/Seattle mid-level. Set a Greenhouse alert; nothing to apply to today.",
-    openings: []
+    status: "open-now",
+    note: "<strong>New this week: a Brex Rotational Program based in the Salt Lake City office</strong> ($58.7&ndash;66K, hybrid, three office days). It is an 18&ndash;20 month rotation through two G&amp;A teams (risk, finance, automation, data analysis); the requirements are a bachelor's degree and demonstrated use of AI tools, with no years of experience asked, and Information Systems is on its bonus-points list of majors alongside computer science, data science and statistics. The SLC Implementation Consultant I and Technical Consultant I reqs ask for two years in a customer-facing role.",
+    openings: [{ title: "Brex Rotational Program", loc: "Salt Lake City, UT", url: "https://www.brex.com/careers/8864176002?gh_jid=8864176002", program: true, added: "2026-10-05" }, { title: "Implementation Consultant I, Commercial", loc: "Salt Lake City, UT", url: "https://www.brex.com/careers/8536986002?gh_jid=8536986002", yrs: 2 }, { title: "Technical Consultant I", loc: "Salt Lake City, UT", url: "https://www.brex.com/careers/8579215002?gh_jid=8579215002", yrs: 2 }]
   },
   "SoFi": {
     status: "opens-later",
@@ -2174,18 +2208,18 @@ const APPLY_STATUS = {
   },
   "JPMorgan Chase": {
     status: "open-now",
-    note: "Four live doors. The February-start Software Engineer Program is written for graduates who finish by December 2026. The Data &amp; AI Analyst and Internal Audit Analyst programs take December 2026 to mid-2027 graduates, and Internal Audit lists information-systems majors as a plus and closes October 30. The other two close November 5. Neovest, the firm's trading-software unit in Pleasant Grove, is hiring a client-service analyst in Utah.",
-    openings: [{ title: "2027 Software Engineer Program (February start)", loc: "Chicago + 8 US cities", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210774102", closes: "2026-11-05" }, { title: "2027 Data &amp; AI Program, Analyst", loc: "8 US cities", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210773954", closes: "2026-11-05" }, { title: "2027 Internal Audit Analyst Program", loc: "Plano, Columbus or Wilmington", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210773378", closes: "2026-10-30" }, { title: "Neovest - Technical Client Service - Analyst", loc: "Pleasant Grove, UT", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210791182" }]
+    note: "<strong>New this week: a U.S. Private Bank AWM Program Analyst seat in Salt Lake City</strong>, client-facing analysis for private bankers (pitch books, balance sheets, investment objectives). It requires a 3.2 GPA and an aptitude for sales and client relationships, and is open to people no more than two years out of their bachelor's; it is a banker-track seat rather than a data role. The February-start Software Engineer Program is written for graduates who finish by December 2026. The Data &amp; AI Analyst and Internal Audit Analyst programs take December 2026 to mid-2027 graduates, and Internal Audit lists information-systems majors as a plus and closes October 30. Neovest in Pleasant Grove is hiring a client-service analyst.",
+    openings: [{ title: "U.S. Private Bank &ndash; AWM Program Analyst &ndash; Salt Lake City", loc: "Salt Lake City, UT", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210797480", program: true, added: "2026-10-05" }, { title: "2027 Software Engineer Program (February start)", loc: "Chicago + 8 US cities", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210774102", closes: "2026-11-05" }, { title: "2027 Data &amp; AI Program, Analyst", loc: "8 US cities", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210773954", closes: "2026-11-05", degree: "a quantitative or technical degree" }, { title: "2027 Internal Audit Analyst Program", loc: "Plano, Columbus or Wilmington", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210773378", closes: "2026-10-30" }, { title: "Neovest - Technical Client Service - Analyst", loc: "Pleasant Grove, UT", url: "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210791182" }]
   },
   "Capital One": {
-    status: "open-now",
-    note: "<strong>The February 2027 Technology Development Program is back, and it is written for you.</strong> It asks that the degree be finished by December 2026 or earlier, which rules in a December graduate and rules out most of the 2027 cohort. Base pay is $127&ndash;140K depending on city, across McLean, Plano and Richmond.",
-    openings: [{ title: "Technology Development Program Associate - February 2027", loc: "McLean, VA; Plano, TX; Richmond, VA", url: "https://capitalone.wd12.myworkdayjobs.com/en-US/Capital_One/job/McLean-VA/Technology-Development-Program-Associate---February-2027_R244320-1", program: true }]
+    status: "watch",
+    note: "<strong>The February 2027 Technology Development Program has been taken down again.</strong> It was the one Capital One door written for a December graduate. Nothing else entry-level in tech is posted; watch the board, since it has come back once already.",
+    openings: []
   },
   "Mastercard": {
     status: "open-now",
-    note: "<strong>The Technology Risk Analyst seat closed this week, and the Salt Lake City seat closed on Sept 19.</strong> Three St. Louis Launch Program roles are still open to graduates finishing December 2026 through June 2027: Site Reliability Engineer I ($81K), Program Management Analyst I, and Associate Product Specialist ($83&ndash;95K), which also lists Arlington, VA and closes Oct 6.",
-    openings: [{ title: "Site Reliability Engineer I, Launch Program 2027", loc: "O'Fallon, MO (St. Louis)", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/OFallon-Missouri/Site-Reliability-Engineer-I--Launch-Program-2027---St-Louis--MO--US_R-287642", program: true }, { title: "Program Management Analyst I, Launch Program 2027", loc: "O'Fallon, MO (St. Louis)", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/OFallon-Missouri/Program-Management-Analyst-I--Launch-Program-2027---St-Louis--MO--US_R-285951", program: true }, { title: "Associate Product Specialist, Launch Program 2027", loc: "O'Fallon, MO; Arlington, VA", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/OFallon-Missouri/Associate-Product-Specialist--Launch-Program-2027---United-States_R-287623-1", closes: "2026-10-06", program: true }]
+    note: "<strong>New this week: Data Engineer I in the Launch Program</strong>, Arlington, VA, $115,000, for graduates finishing December 2026 through June 2027 with a grounding in databases, warehousing and analytics &mdash; the closest Mastercard fit for this resume. A Corporate Functions Associate Analyst class ($80&ndash;86K, New York area) closes Oct 11, and Associate Product Specialist closes Oct 6. Two St. Louis Launch seats remain.",
+    openings: [{ title: "Data Engineer I, Launch Program 2027", loc: "Arlington, VA", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/Arlington-Virginia/Data-Engineer-I--Launch-Program-2027---Arlington--VA--US_R-285985", program: true, added: "2026-10-05" }, { title: "Corporate Functions Associate Analyst, Launch Program 2027", loc: "Purchase, NY; New York, NY", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/Purchase-New-York/Corporate-Functions-Associate-Analyst--Launch-Program-2027---United-States_R-287636", closes: "2026-10-11", program: true, added: "2026-10-05" }, { title: "Site Reliability Engineer I, Launch Program 2027", loc: "O'Fallon, MO (St. Louis)", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/OFallon-Missouri/Site-Reliability-Engineer-I--Launch-Program-2027---St-Louis--MO--US_R-287642", program: true }, { title: "Program Management Analyst I, Launch Program 2027", loc: "O'Fallon, MO (St. Louis)", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/OFallon-Missouri/Program-Management-Analyst-I--Launch-Program-2027---St-Louis--MO--US_R-285951", program: true }, { title: "Associate Product Specialist, Launch Program 2027", loc: "O'Fallon, MO; Arlington, VA", url: "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus/job/OFallon-Missouri/Associate-Product-Specialist--Launch-Program-2027---United-States_R-287623-1", closes: "2026-10-06", program: true }]
   },
   "Bloomberg": {
     status: "opens-later",
@@ -2209,8 +2243,8 @@ const APPLY_STATUS = {
   },
   "Robinhood": {
     status: "open-now",
-    note: "Business Analyst (New Grad) posted Aug 25 &mdash; SQL-heavy, quant modeling, $110K, Washington DC hybrid (3 days). Predictive-analytics project work is the story to tell. An Associate Product Manager (New Grad) req went live this week in Menlo Park and New York.",
-    openings: [{ title: "Business Analyst (New Grad)", loc: "Washington, DC hybrid", url: "https://job-boards.greenhouse.io/robinhood/jobs/8123231" }, { title: "Associate Product Manager (New Grad)", loc: "Menlo Park or New York", url: "https://job-boards.greenhouse.io/robinhood/jobs/8199973" }]
+    note: "<strong>The Business Analyst (New Grad) req in Washington, DC has closed.</strong> The Associate Product Manager (New Grad) req in Menlo Park and New York is still live.",
+    openings: [{ title: "Associate Product Manager (New Grad)", loc: "Menlo Park or New York", url: "https://job-boards.greenhouse.io/robinhood/jobs/8199973" }]
   },
   "Ramp": {
     status: "watch",
@@ -2229,8 +2263,8 @@ const APPLY_STATUS = {
   },
   "DigiCert": {
     status: "open-now",
-    note: "Associate Authentication Analyst (Lehi, posted Aug 31) is a true entry door but junior &mdash; validation/customer-facing, HS diploma + 1 yr service. Worth applying to get inside; ask about analytics teams.",
-    openings: [{ title: "Associate Authentication Analyst", loc: "Lehi, UT", url: "https://job-boards.greenhouse.io/digicert/jobs/8752868002" , yrs: 1 }, { title: "Deal Desk Analyst", loc: "Lehi, UT", url: "https://job-boards.greenhouse.io/digicert/jobs/8659394002" , yrs: 3 }]
+    note: "Associate Authentication Analyst (Lehi) is a true entry door but junior &mdash; validation and customer-facing, with a year of service experience. The Deal Desk Analyst req has closed.",
+    openings: [{ title: "Associate Authentication Analyst", loc: "Lehi, UT", url: "https://job-boards.greenhouse.io/digicert/jobs/8752868002" , yrs: 1 }]
   },
   "Ivanti": {
     status: "watch",
@@ -2264,8 +2298,8 @@ const APPLY_STATUS = {
   },
   "Okta": {
     status: "open-now",
-    note: "<strong>Two new-grad roles went up in Chicago this month, both hybrid.</strong> Technical Account Manager Analyst ($84&ndash;126K OTE, in the office two days a week) prefers an Information Systems degree and is customer-facing. Developer Support Associate ($79K) takes graduates from summer 2025 through fall 2026, but says applicants must already live in Chicago and includes weekend shifts. Software Engineer I (New Grad) usually posts Sept&ndash;Nov. No Utah office.",
-    openings: [{ title: "Developer Support Associate (New Grad)", loc: "Chicago, IL", url: "https://www.okta.com/company/careers/opportunity/8191506?gh_jid=8191506" }, { title: "Technical Account Manager Analyst (New Grad)", loc: "Chicago, IL", url: "https://www.okta.com/company/careers/opportunity/7363101?gh_jid=7363101", program: true }]
+    note: "Technical Account Manager Analyst (New Grad, Chicago, $84&ndash;126K OTE, in the office two days a week) prefers an Information Systems degree and is customer-facing. <strong>The Developer Support Associate req has closed.</strong> Software Engineer I (New Grad) usually posts Sept&ndash;Nov. No Utah office.",
+    openings: [{ title: "Technical Account Manager Analyst (New Grad)", loc: "Chicago, IL", url: "https://www.okta.com/company/careers/opportunity/7363101?gh_jid=7363101", program: true }]
   },
   "Cloudflare": {
     status: "watch",
@@ -2278,9 +2312,9 @@ const APPLY_STATUS = {
     openings: [{ title: "GTM Strategy/Operations Associate", loc: "New York, NY", url: "https://job-boards.greenhouse.io/datadog/jobs/8171303" , yrs: 2 }]
   },
   "Vanta": {
-    status: "open-now",
-    note: "GTM Strategy & Operations Analyst (remote US, posted Aug 28) is an analyst role at a GRC company, and enterprise data-standards work pitches well as compliance-adjacent.",
-    openings: [{ title: "GTM Strategy & Operations Analyst, Account Management", loc: "Remote US", url: "https://jobs.ashbyhq.com/vanta/0e82974a-0023-49a2-b1ec-a0fa89636dd5" }]
+    status: "watch",
+    note: "<strong>The GTM Strategy &amp; Operations Analyst req has closed.</strong> Nothing entry-level is posted; watch for the next analyst opening at this GRC company.",
+    openings: []
   },
   "Coalition": {
     status: "watch",
@@ -2304,8 +2338,18 @@ const APPLY_STATUS = {
   },
   "Zions Bancorporation": {
     status: "open-now",
-    note: "<strong>The Data Analytics Staff Auditor req closed this week.</strong> The Banker Development Program in Salt Lake City is still the clearest new-grad door, and Midvale has a Business Information Analyst plus two Cybersecurity Analyst seats, one of them governance, risk and compliance. Zions posts on Taleo, so set an alert there rather than waiting for a careers-page refresh.",
-    openings: [{ title: "Salt Lake City Associate Credit Analyst - Banker Development Program", loc: "Salt Lake City, UT", url: "https://careers.zionsbancorp.com/jobs/x-28022", program: true }, { title: "Business Information Analyst", loc: "Midvale, UT", url: "https://careers.zionsbancorp.com/jobs/x-27877" }, { title: "Cybersecurity Analyst", loc: "Midvale, UT", url: "https://careers.zionsbancorp.com/jobs/x-27643" }, { title: "Cybersecurity Analyst - Governance Risk Compliance (GRC)", loc: "Midvale, UT", url: "https://careers.zionsbancorp.com/jobs/x-27978" }]
+    note: "<strong>The Salt Lake City Banker Development Program, Business Information Analyst, the general Cybersecurity Analyst req and the Oracle EPM Systems Analyst req have all come down.</strong> Zions re-indexed its careers site this week, so every link changed while the roles did not: the Cybersecurity GRC seat in Midvale is the same requisition under a new link, and it is a security-awareness role asking 2&ndash;4 years. The June 2027 Banker Development class at California Bank &amp; Trust is still posted in Irvine and San Diego: $33.65 an hour, apply by Oct 16, with a 3.0 GPA and six hours of accounting required. Zions posts on Taleo, so set an alert there.",
+    openings: [{ title: "Cybersecurity Analyst - Governance Risk Compliance (GRC)", loc: "Midvale, UT", url: "https://careers.zionsbancorp.com/jobs/x-28747", yrs: 2 }, { title: "June 2027 Associate Credit Analyst, Banker Development Program - Irvine", loc: "Irvine, CA", url: "https://careers.zionsbancorp.com/jobs/x-28637", closes: "2026-10-16", program: true }, { title: "June 2027 Associate Credit Analyst, Banker Development Program - San Diego", loc: "San Diego, CA", url: "https://careers.zionsbancorp.com/jobs/x-28638", closes: "2026-10-16", program: true }]
+  },
+  "Sunwest Bank": {
+    status: "watch",
+    note: "<strong>New on the board.</strong> The Technology Analyst Program is no longer on Sunwest's ADP job board, which refresh.py now reads each week. Of its 19 postings, the Salt Lake City ones are experienced (Full Stack Developer, Portfolio Manager I, Loan Administrator) plus an entry-level content-marketing role. Their Analyst, Operations Trainee and Cybersecurity Training programs recur, so the next posting will show up in the report.",
+    openings: []
+  },
+  "Datafy": {
+    status: "watch",
+    note: "<strong>New on the board.</strong> No openings are listed today; the careers page invites a resume by email instead. Their Junior Data Engineer req has come down, which usually means it filled or is in interviews.",
+    openings: []
   },
   "America First Credit Union": {
     status: "watch",
@@ -2314,18 +2358,18 @@ const APPLY_STATUS = {
   },
   "Verkada": {
     status: "open-now",
-    note: "<strong>A Salt Lake City role opened this week</strong>: Customer Operations Coordinator, which is the local door into their operations team. The San Mateo Technical Support Engineer - University Graduate req is still live, along with two commercial operations roles.",
-    openings: [{ title: "Customer Operations Coordinator, Salt Lake City", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/verkada/jobs/5219108007" }, { title: "Technical Support Engineer - University Graduate 2026", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4715534007", program: true }, { title: "Associate, Pricing &amp; Commercial Operations", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4945957007" }, { title: "Sales Strategy and Operations Associate", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4086576007" }]
+    note: "The Salt Lake City coordinator role is now titled Customer Operations &amp; Logistics Coordinator; it is order entry and freight scheduling ($48&ndash;53K) and asks for 2+ years. In San Mateo, a 2027 University Graduate Technical Support Engineer class ($46&ndash;50/hr, on site five days) sits alongside the 2026 one. The two San Mateo commercial-operations roles listed last week ask for two and three years, so they are off the card.",
+    openings: [{ title: "Customer Operations &amp; Logistics Coordinator, Salt Lake City", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/verkada/jobs/5219108007", yrs: 2 }, { title: "Technical Support Engineer - University Graduate 2026", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/4715534007", program: true }, { title: "Technical Support Engineer - University Graduate 2027", loc: "San Mateo, CA", url: "https://job-boards.greenhouse.io/verkada/jobs/5121488007", program: true }]
   },
   "iCapital": {
     status: "open-now",
-    note: "A dozen entry-level Salt Lake City roles are live. <strong>Master Data Management Analyst</strong> ($60&ndash;75K) wants SQL plus data governance and data quality and asks for 2+ years, so data-governance internship rotations are the experience to pitch. The Data Operations Associate req has since closed.",
-    openings: [{ title: "Master Data Management Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8646158002", yrs: 2 }, { title: "Platform Support - Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8344081002", yrs: 1 }, { title: "Transactional Operations, Investor Servicing - Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8603470002" }, { title: "Client Delivery Advocate - Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8586146002" }]
+    note: "Ten entry-level Salt Lake City roles are live. <strong>Master Data Management Analyst</strong> ($60&ndash;75K) supports the data governance program and data quality, lists SQL as a plus and asks for 2+ years, so data-governance internship work is what to pitch. Client Delivery Advocate ($62&ndash;70K, on the Data Solutions team) asks for no prior experience. The Investor Servicing analyst req has closed; a Reconciliations analyst seat asks for one to five years in financial services, and a Vulnerability Management associate seat is the local security door.",
+    openings: [{ title: "Master Data Management - Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8646158002", yrs: 2 }, { title: "Platform Support - Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8344081002", yrs: 1 }, { title: "Client Delivery Advocate - Analyst", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8586146002" }, { title: "Transactional Operations &ndash; Reconciliations &ndash; Analyst / Associate", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8384800002", yrs: 1 }, { title: "Cyber Security Vulnerability Management Specialist - Associate", loc: "Salt Lake City, UT", url: "https://job-boards.greenhouse.io/icapitalnetwork/jobs/8653714002" }]
   },
   "WGU (Western Governors University)": {
     status: "open-now",
-    note: "<strong>Associate Data Engineer is still the best fit and now closes Oct 2.</strong> It wants SQL, Python, ETL and Spark and lets one year of education count as one year of experience, which is what makes it a genuine new-grad door &mdash; the same substitution applies to the Financial Analyst req. Associate Investment Analyst (JUVO) only prefers 1&ndash;2 years. IAR Data Analyst asks for three. The old Software Engineer posting is gone.",
-    openings: [{ title: "Associate Data Engineer", loc: "Salt Lake City, UT", url: "https://wgu.wd5.myworkdayjobs.com/en-US/External/job/Salt-Lake-City-UT/Associate-Data-Engineer_JR-025987", closes: "2026-10-02" }, { title: "Associate Investment Analyst, JUVO", loc: "Salt Lake City, UT", url: "https://wgu.wd5.myworkdayjobs.com/en-US/External/job/Salt-Lake-City-UT/Associate-Investment-Analyst--JUVO_JR-026215", closes: "2026-10-25" }, { title: "Financial Analyst", loc: "Salt Lake City, UT", url: "https://wgu.wd5.myworkdayjobs.com/en-US/External/job/Salt-Lake-City-UT/Financial-Analyst_JR-025921-1", closes: "2026-09-30", yrs: 2 }, { title: "IAR Data Analyst", loc: "Salt Lake City, UT", url: "https://wgu.wd5.myworkdayjobs.com/en-US/External/job/Salt-Lake-City-UT/IAR-Data-Analyst_JR-026205", closes: "2026-10-03", yrs: 3 }]
+    note: "<strong>Associate Data Engineer and IAR Data Analyst have closed.</strong> The Juvo associate role (investment analysis for WGU's venture arm, $75,200&ndash;112,700) closes Oct 25 and only prefers 1&ndash;2 years. The Financial Analyst req was reposted and closes Oct 9; it asks for a bachelor's plus two years of relevant experience, and its substitution clause lets experience stand in for the degree, not the other way round.",
+    openings: [{ title: "Associate - Juvo", loc: "Salt Lake City, UT", url: "https://wgu.wd5.myworkdayjobs.com/en-US/External/job/Salt-Lake-City-UT/Associate-Investment-Analyst--JUVO_JR-026215", closes: "2026-10-25" }, { title: "Financial Analyst", loc: "Salt Lake City, UT", url: "https://wgu.wd5.myworkdayjobs.com/en-US/External/job/Salt-Lake-City-UT/Financial-Analyst_JR-025921-1", closes: "2026-10-09", yrs: 2 }]
   },
   "Morgan Stanley": {
     status: "open-now",
@@ -2358,14 +2402,14 @@ const APPLY_STATUS = {
     openings: [{ title: "Campus Undergraduate Full-Time Analyst &ndash; 2027 Data &amp; Analytics", loc: "Phoenix, AZ", url: "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26013281", closes: "2026-10-31" }, { title: "Campus Undergraduate Full-Time Analyst &ndash; 2027 Data &amp; Analytics", loc: "New York, NY", url: "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26013097", closes: "2026-10-31" }, { title: "Campus Undergraduate Full-Time Analyst &ndash; 2027 Data Engineer I", loc: "Phoenix, AZ", url: "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26013286", closes: "2026-10-31" }, { title: "Campus Undergraduate Full-Time Associate &ndash; 2027 Digital Product Management", loc: "New York, NY", url: "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26012956", closes: "2026-10-31" }, { title: "Campus Undergraduate Full-Time Associate &ndash; 2027 Cybersecurity Analyst", loc: "Phoenix, AZ", url: "https://egug.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/26013352", closes: "2026-10-31" }]
   },
   "USAA": {
-    status: "open-now",
-    note: "The Future Leaders Data &amp; Analytics track takes graduates finishing before July 12, 2027, when the cohort starts. A master's degree is preferred but not required, and up to two years of experience is welcome. Pay is $51,370&ndash;92,060.",
-    openings: [{ title: "Future Leaders Program Rotation &ndash; Data and Analytics Track", loc: "San Antonio, TX; Charlotte, NC", url: "https://usaa.wd1.myworkdayjobs.com/en-US/USAAJOBSWD/job/San-Antonio-Home-Office-I/Future-Leaders-Program-Rotation---Data-and-Analytics-Track_R0120828", closes: "2026-10-16", program: true }]
+    status: "watch",
+    note: "<strong>The Future Leaders Data &amp; Analytics track has closed.</strong> What USAA has live is mid-level analytics and Software Engineer I reqs in San Antonio and Phoenix. Watch for the next Future Leaders cohort.",
+    openings: []
   },
   "Fidelity Investments": {
     status: "open-now",
-    note: "<strong>The Leap classes were reposted this week under new requisition numbers</strong>, so any link saved earlier is dead. January 2027 still fits a December graduate on timing: a 10-week in-person cohort that leads into a full-time technology role, with April and October classes behind it. Read the degree line first, though &mdash; the April posting asks for a computer-science or software-engineering degree, so check whether January says the same. FidYOU is the operations program starting June 2027, and a Boston consulting analyst role closes Oct 1.",
-    openings: [{ title: "January 2027 &ndash; Leap Systems Analyst", loc: "Westlake, TX; Durham, NC; Merrimack, NH", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/January-2027---Leap-Systems-Analyst_2136142", program: true }, { title: "April 2027 &ndash; Leap Systems Analyst", loc: "Westlake, TX; Durham, NC; Merrimack, NH", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/April-2027---Leap-Systems-Analyst_2136143", program: true, degree: "a CS or software-engineering degree" }, { title: "2026-2027 Undergraduate: Analyst, Fidelity Consulting", loc: "Boston, MA", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Boston-MA/XMLNAME-2026-2027-Undergraduate--Analyst--Fidelity-Consulting_2133705", closes: "2026-10-01", program: true }, { title: "2027 Undergraduate Full-Time &ndash; FidYOU Program", loc: "Westlake, TX; Boston, MA and more", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/XMLNAME-2027-Undergraduate-Full-Time---FidYOU-Program_2133159" }]
+    note: "<strong>New this week in Salt Lake City: Associate, Analytics &amp; Performance Insights</strong>, which asks for three years in data or analytics <em>or a degree in the field</em>. Its end date is Oct 16 and Fidelity takes postings down as that day begins, so apply by Oct 15. Fidelity is moving to full-time on-site work. Both Leap Systems Analyst classes ask for a bachelor's in computer science, software engineering or a related field by the start date (January 11, 2027 for the January class), so an Information Systems degree has to make the related-field case. FidYOU was reposted under a new number; the Boston consulting analyst role has closed.",
+    openings: [{ title: "Associate, Analytics &amp; Performance Insights", loc: "Salt Lake City, UT", url: "https://fmr.wd1.myworkdayjobs.com/en-US/FidelityCareers/job/Salt-Lake-City-UT/Associate--Analytics---Performance-Insights_2135555", closes: "2026-10-16", added: "2026-10-05" }, { title: "January 2027 &ndash; Leap Systems Analyst", loc: "Westlake, TX; Boston, MA; Durham, NC; Merrimack, NH", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/January-2027---Leap-Systems-Analyst_2136142", program: true, degree: "a CS, software-engineering or related degree" }, { title: "April 2027 &ndash; Leap Systems Analyst", loc: "Westlake, TX; Durham, NC; Merrimack, NH", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/April-2027---Leap-Systems-Analyst_2136143", program: true, degree: "a CS, software-engineering or related degree" }, { title: "2027 Undergraduate Full-Time (Analyst) &ndash; FidYOU Program", loc: "Westlake, TX; Boston, MA and more", url: "https://wd1.myworkdaysite.com/en-US/recruiting/fmr/targeted/job/Westlake-TX/XMLNAME-2027-Undergraduate-Full-Time--Analyst-----FidYOU-Program_2135271", program: true }]
   },
   "Vanguard": {
     status: "open-now",
@@ -2379,8 +2423,8 @@ const APPLY_STATUS = {
   },
   "FIS": {
     status: "open-now",
-    note: "The 2027 University Program is a two-year full-time program. The Data Analytics and AI track covers BI dashboards, data quality and AI tooling. The postings give no graduation window, so confirm that a December 2026 finish qualifies.",
-    openings: [{ title: "Data Analytics and AI, FIS University Program", loc: "Jacksonville, FL; Atlanta, GA; Milwaukee, WI", url: "https://fis.wd5.myworkdayjobs.com/en-US/SearchJobs/job/US-FL-JAX-347/Data-Analytics-and-AI--FIS-University-Program_JR0309689" }, { title: "Product Management, FIS University Program", loc: "Jacksonville, FL; Atlanta, GA; Milwaukee, WI", url: "https://fis.wd5.myworkdayjobs.com/en-US/SearchJobs/job/US-FL-JAX-347/Product-Management--FIS-University-Program_JR0309693" }, { title: "Risk and Cybersecurity, FIS University Program", loc: "Jacksonville, FL; Atlanta, GA; Milwaukee, WI", url: "https://fis.wd5.myworkdayjobs.com/en-US/SearchJobs/job/US-FL-JAX-347/Risk-and-Cybersecurity--FIS-University-Program_JR0309682" }]
+    note: "The 2027 University Program is a two-year full-time program. The Data Analytics &amp; AI posting was renamed an Early Talent Pipeline on Sept 29 and asks for a degree in data science, computer science, business analytics or similar; it gives no graduation window, so confirm a December 2026 finish qualifies. Auditor I and Financial Analyst I tracks (posted Sept 17) are also open.",
+    openings: [{ title: "Data Analytics &amp; AI Early Talent Pipeline (FIS University Program)", loc: "Jacksonville, FL; Atlanta, GA; Milwaukee, WI", url: "https://fis.wd5.myworkdayjobs.com/en-US/SearchJobs/job/US-FL-JAX-347/Data-Analytics-and-AI--FIS-University-Program_JR0309689" }, { title: "Product Management, FIS University Program", loc: "Jacksonville, FL; Atlanta, GA; Milwaukee, WI", url: "https://fis.wd5.myworkdayjobs.com/en-US/SearchJobs/job/US-FL-JAX-347/Product-Management--FIS-University-Program_JR0309693" }, { title: "Risk and Cybersecurity, FIS University Program", loc: "Jacksonville, FL; Atlanta, GA; Milwaukee, WI", url: "https://fis.wd5.myworkdayjobs.com/en-US/SearchJobs/job/US-FL-JAX-347/Risk-and-Cybersecurity--FIS-University-Program_JR0309682" }, { title: "Auditor I, FIS University Program", loc: "Jacksonville, FL; Milwaukee, WI", url: "https://fis.wd5.myworkdayjobs.com/en-US/SearchJobs/job/US-FL-JAX-347/Auditor-I--FIS-University-Program_JR0308688", program: true }, { title: "Financial Analyst I, FIS University Program", loc: "Jacksonville, FL", url: "https://fis.wd5.myworkdayjobs.com/en-US/SearchJobs/job/US-FL-JAX-347/Financial-Analyst-I--FIS-University-Program_JR0309326", program: true }]
   },
   "Citi": {
     status: "open-now",
@@ -2389,8 +2433,8 @@ const APPLY_STATUS = {
   },
   "Wells Fargo": {
     status: "open-now",
-    note: "<strong>The Audit and Finance programs stop taking applications on September 30.</strong> Both want graduation between December 2026 and June 2027, and Audit names Information Systems as an accepted major. The St. Louis Wealth &amp; Investment Management class starts August 2027.",
-    openings: [{ title: "2027 Audit Analyst Development Program &ndash; Early Careers", loc: "Charlotte, NC; Irving, TX; Minneapolis, MN", url: "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/CHARLOTTE-NC/XMLNAME-2027-Audit-Analyst-Development-Program---Early-Careers_R-574043", closes: "2026-09-30" }, { title: "2027 Finance Analyst Rotational Program &ndash; Early Careers", loc: "Charlotte, NC; Irving, TX; Minneapolis, MN", url: "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/CHARLOTTE-NC/XMLNAME-2027-Finance-Analyst-Rotational-Program---Early-Careers_R-573947", closes: "2026-09-30" }, { title: "2027 Wealth &amp; Investment Management Analyst Program &ndash; Early Careers", loc: "St. Louis, MO", url: "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/SAINT-LOUIS-MO/XMLNAME-2027-Wealth---Investment-Management-Analyst-Program---Early-Careers_R-575207", closes: "2026-10-06" }]
+    note: "<strong>The Audit and Finance programs closed on September 30.</strong> The St. Louis and Charlotte Wealth &amp; Investment Management analyst class starts August 2027 and stops taking applications on October 7.",
+    openings: [{ title: "2027 Wealth &amp; Investment Management Analyst Program &ndash; Early Careers", loc: "St. Louis, MO; Charlotte, NC", url: "https://wd1.myworkdaysite.com/en-US/recruiting/wf/WellsFargoJobs/job/SAINT-LOUIS-MO/XMLNAME-2027-Wealth---Investment-Management-Analyst-Program---Early-Careers_R-575207", closes: "2026-10-07" }]
   },
   "EY": {
     status: "open-now",
@@ -2399,13 +2443,13 @@ const APPLY_STATUS = {
   },
   "Deloitte": {
     status: "open-now",
-    note: "<strong>Cyber is the one still recruiting, until November 1.</strong> It takes graduates finishing by spring or summer 2027 and lists majors such as business administration and informatics. Technology Controls Advisory (IT controls and internal audit, $58,725&ndash;117,875) stopped recruiting on September 23, although its posting is still up, and the Government &amp; Public Services Business Analytics class has come down.",
-    openings: [{ title: "Consultative Offerings Analyst, Cyber", loc: "22 US offices, incl. Denver", url: "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Analyst-Cyber/350255", closes: "2026-11-01" }, { title: "Audit &amp; Assurance Analyst, Technology Controls Advisory (Summer/Fall 2027)", loc: "27 US offices, incl. Denver &amp; St. Louis", url: "https://apply.deloitte.com/en_US/careers/JobDetail/Audit-Assurance-Analyst-Technology-Controls-Advisory-Summer-Fall-2027/363237", closes: "2026-09-23" }]
+    note: "<strong>Technology Controls Advisory is open again until Oct 11</strong>: its recruiting end date moved from Sept 23, and its majors list names management information systems first. Two more analyst classes this board had not listed: Audit &amp; Assurance Risk Technology &amp; Analytics (summer/fall 2027 or winter 2028 start) also lists MIS and also closes Oct 11, and Government &amp; Public Services AI &amp; Data Engineering (winter 2027) closes Oct 25 but wants an AI, computer-science or data-science degree and clearance eligibility. All three ask for a 3.0 GPA and three office days a week. The Cyber class has closed.",
+    openings: [{ title: "Audit &amp; Assurance &ndash; Analyst &ndash; Technology Controls Advisory &ndash; Summer/Fall 2027", loc: "27 US offices, incl. Denver &amp; St. Louis", url: "https://apply.deloitte.com/en_US/careers/JobDetail/Audit-Assurance-Analyst-Technology-Controls-Advisory-Summer-Fall-2027/363237", closes: "2026-10-11", program: true }, { title: "Audit &amp; Assurance &ndash; Analyst &ndash; Risk Technology &amp; Analytics &ndash; Summer/Fall 2027, Winter 2028", loc: "Multiple US offices", url: "https://apply.deloitte.com/en_US/careers/JobDetail/Audit-Assurance-Analyst-Risk-Technology-Analytics-Summer-Fall-2027-Winter-2028/359267", closes: "2026-10-11", program: true }, { title: "Consultative Offerings &ndash; Government &amp; Public Services &ndash; Analyst &ndash; AI &amp; Data Engineering &ndash; Winter 2027", loc: "Multiple US offices", url: "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Government-Public-Services-Analyst-AI-Data-Engineering-Winter-2027/365230", closes: "2026-10-25", program: true, degree: "an AI, CS or data-science degree" }]
   },
   "PwC": {
     status: "open-now",
-    note: "<strong>Every 2027 Digital Assurance &amp; Transparency posting closed on September 26, as expected.</strong> What replaced them: Management Consulting Finance Solutions for winter 2027 ($61&ndash;100K, twelve cities including Washington DC and Chicago) closing Oct 3, an Assurance Innovation &amp; Technology software engineering associate role, and a Milwaukee DAT seat closing Sept 30. The DAT track itself reposts each autumn.",
-    openings: [{ title: "Management Consulting - Finance Solutions Associate - Winter 2027", loc: "Chicago, Washington DC, New York, Dallas and more", url: "https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Management-Consulting---Finance-Solutions-Associate---Winter-2027_763820WD", closes: "2026-10-03", program: true }, { title: "Assurance Innovation &amp; Technology (AIT) - Software Engineering - Associate - Summer/Fall 2027", loc: "Chicago, Tampa, Boston, New York", url: "https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Assurance-Innovation---Technology--AIT----Software-Engineering---Asspciate---Summer-Fall-2027_52926149EIB", program: true }, { title: "Milwaukee - Digital Assurance &amp; Transparency (DAT) - Associate - Summer/Fall 2027", loc: "Milwaukee, WI", url: "https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/WI-Milwaukee/Milwaukee---Digital-Assurance---Transparency--DAT----Associate---Summer-Fall-2027_52926206EIB", closes: "2026-09-30", program: true }]
+    note: "<strong>New this week: Digital Assurance &amp; Transparency &ndash; Data, summer/fall 2027</strong>, in Rosemont, Boston, New York and more, closing Oct 30. It works in SQL Server tools and Python and accepts CISA eligibility as well as CPA, which suits an information-systems degree. A Louisville DAT seat closes Oct 16. Management Consulting, AIT and Milwaukee DAT have closed.",
+    openings: [{ title: "Digital Assurance &amp; Transparency (DAT) &ndash; Data &ndash; Associate &ndash; Summer/Fall 2027", loc: "Rosemont, IL; Boston; New York and more", url: "https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Digital-Assurance---Transparency--DAT----Data---Associate---Summer-Fall-2027_52926175EIB", closes: "2026-10-30", program: true, added: "2026-10-05" }, { title: "Louisville &ndash; Digital Assurance &amp; Transparency (DAT) &ndash; Associate &ndash; Summer/Fall 2027", loc: "Louisville, KY", url: "https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/KY-Louisville/Louisville---Digital-Assurance---Transparency--DAT----Associate---Summer-Fall-2027_764749WD", closes: "2026-10-16", program: true, added: "2026-10-05" }]
   },
   "KPMG": {
     status: "open-now",
@@ -2483,7 +2527,7 @@ const resultsCount = document.getElementById('results-count');
 const resetBtn = document.getElementById('reset');
 const filterChips = document.querySelectorAll('#filters .chip[data-filter]');
 
-const state = { search: '', role: null, loc: null, ind: null, tier: null, apply: null, alumni: null, mine: null, prog: null, hideApplied: null, hideWeak: null };
+const state = { search: '', role: null, loc: null, ind: null, tier: null, apply: null, alumni: null, mine: null, prog: null, hideApplied: null, hideWeak: null, fresh: null };
 const ALUMNI_BONUS = { strong: 3, some: 1 };
 // Which resume the board is currently tailored to. The built-in board is the curated default; the
 // tailoring module at the bottom of this script swaps in uploaded profiles.
@@ -2503,6 +2547,7 @@ const BADGE_LABEL = {
 
 // Hide any Timing/Where chip nothing can match, so no filter ever leads to an empty board.
 function syncChips() {
+  syncNewChip();
   const shown = COMPANIES.filter(c => !c.untailored).concat(SUGGESTED);
   document.querySelectorAll('.chip[data-filter="apply"], .chip[data-filter="loc"], .chip[data-filter="ind"]').forEach(chip => {
     const f = chip.dataset.filter, v = chip.dataset.value;
@@ -2545,6 +2590,7 @@ function render() {
       if (state.apply && c.apply.status !== state.apply) return false;
       if (state.alumni && !c.alumni) return false;
       if (state.prog && !relocProg(c)) return false;
+      if (state.fresh && !companyIsNew(c)) return false;
       if (state.mine === 'applied' && !appsFor(c).length) return false;
       if (state.mine === 'todo' && !(c.apply.status === 'open-now' && c.apply.openings.some(o => !isClosed(o) && !appliedTo(c, o)))) return false;
       if (q && !(`${c.name} ${c.location} ${c.why} ${c.industry.join(' ')} ${c.apply.openings.map(o => o.title).join(' ')}`.toLowerCase().includes(q))) return false;
@@ -2571,6 +2617,7 @@ function render() {
         <div class="score" style="--p: ${shownScore(c)}%" title="${PROFILE.uofu && c.alumni ? 'Includes +' + ALUMNI_BONUS[c.alumni] + ' for a verified University of Utah hiring pipeline' : 'Resume-alignment score'}"><span>${shownScore(c)}</span></div>
       </div>
       <div class="badges">
+        ${!c.suggested && c.added === REFRESH_DATE ? '<span class="badge new-co" title="Added to the board in the latest refresh">New on the board</span>' : ''}
         ${c.badges.map(b => `<span class="badge ${b}">${b === 'local' ? escHtml(PROFILE.geoLabel) : (BADGE_LABEL[b] || b)}</span>`).join('')}
         ${PROFILE.uofu && c.alumni === 'strong' ? `<span class="badge alumni" title="${c.alumniNote || ''}">Hires Utes</span>` : PROFILE.uofu && c.alumni === 'some' ? `<span class="badge alumni-some" title="${c.alumniNote || ''}">Some Utes</span>` : ''}
       </div>
@@ -2581,7 +2628,7 @@ function render() {
       ${(() => {
         const all = c.apply.openings;
         if (!all.length) return '';
-        const shown = all.filter(o => !(state.hideWeak && weakFit(o)) && !(state.hideApplied && appliedTo(c, o)));
+        const shown = all.filter(o => !(state.hideWeak && weakFit(o)) && !(state.hideApplied && appliedTo(c, o)) && !(state.fresh && c.added !== REFRESH_DATE && !isNewOpening(o)));
         const hidden = all.length - shown.length;
         const label = `Verified live ${REFRESH_DATE}${hidden ? ` &middot; ${hidden} hidden by your filters` : ''}`;
         return `<div class="openings-label">${label}</div>${shown.length ? `<ul class="openings">${shown.map(o => openingHtml(c, o)).join('')}</ul>` : ''}`;
@@ -2648,7 +2695,7 @@ search.addEventListener('input', e => {
 resetBtn.addEventListener('click', () => {
   state.search = '';
   state.role = state.loc = state.ind = state.tier = state.apply = state.alumni = state.mine = state.prog = null;
-  state.hideApplied = state.hideWeak = null;
+  state.hideApplied = state.hideWeak = state.fresh = null;
   search.value = '';
   document.querySelectorAll('#filters .chip.active').forEach(c => c.classList.remove('active'));
   render();
@@ -2663,7 +2710,7 @@ resetBtn.addEventListener('click', () => {
 const HOME_RE = /\b(?:UT|Utah)\b|salt lake|\blehi\b|\bprovo\b|\borem\b|south jordan|american fork|\blindon\b/i;
 // A bare "program" is not enough ("Senior Technical Program Manager"), and an internship is not a
 // new-grad program even when its title carries the year.
-const PROGRAM_RE = /new[ -]?grad|new college grad|\bgraduate\b|early[- ]career|early in career|\buniversity\b|\bcampus\b|rotational|class of|\b20(?:26|27)\b|\b(?:development|leadership|leaders|rotation|analyst|associate|launch|graduate|technology|banker|foundational|trainee|academy)\s+program\b/i;
+const PROGRAM_RE = /new[ -]?grad|new college grad|\bgraduate\b|early[- ]career|early in career|talent pipeline|\buniversity\b|\bcampus\b|rotational|class of|\b20(?:26|27)\b|\b(?:development|leadership|leaders|rotation|analyst|associate|launch|graduate|technology|banker|foundational|trainee|academy)\s+program\b/i;
 const NOT_PROGRAM_RE = /\binterns?(?:hip)?\b|\bco-?op\b|\bsenior\b|\bmanager\b|\bdirector\b/i;
 // The entry rung of product management carries the word "manager" (kept in step with refresh.py).
 const ENTRY_MANAGER_RE = /\b(?:associate|junior|jr\.?)\s+(?:product|program|project)\s+manager\b|\bAPM\b/gi;
@@ -2686,6 +2733,20 @@ const isProgram = o => {
 const SWE_LEAN_RE = /\b(?:software (?:engineer|developer|development engineer)|sde\b|swe\b|back-?end|front-?end|full[ -]?stack|site reliability|sre\b|devops|platform engineer|embedded|firmware|mobile (?:engineer|developer)|ios (?:engineer|developer)|android (?:engineer|developer)|compiler|kernel|graphics engineer|research engineer|machine learning engineer|ml engineer|ai engineer)\b/i;
 const isSweLean = o => o.swe === true || (o.swe !== false && SWE_LEAN_RE.test(String(o.title || '')));
 const weakFit = o => isSweLean(o) || !!o.degree;
+// === NEW THIS WEEK ===
+// An opening or employer carries `added`, the refresh date it first appeared on the board. "New" means
+// added in the latest refresh (REFRESH_DATE) and not yet past its closing date.
+function isNewOpening(o) { return o.added === REFRESH_DATE && !isClosed(o); }
+function companyIsNew(c) { return !c.suggested && (c.added === REFRESH_DATE || c.apply.openings.some(isNewOpening)); }
+function syncNewChip() {
+  const chip = document.getElementById('new-chip');
+  if (!chip) return;
+  const shown = COMPANIES.filter(c => !c.untailored);
+  const n = shown.reduce((k, c) => k + c.apply.openings.filter(isNewOpening).length + (c.added === REFRESH_DATE ? 1 : 0), 0);
+  document.getElementById('new-count').textContent = n ? `(${n})` : '';
+  chip.hidden = !n;
+  if (!n && state.fresh) { state.fresh = null; chip.classList.remove('active'); }
+}
 
 // An opening's "closes" date comes from the posting itself. It is compared with today's date in
 // this browser, so a board that has not been refreshed says plainly when a deadline has passed.
@@ -2710,6 +2771,7 @@ const relocProg = c => !c.suggested && (c.apply.status === 'open-now' || c.apply
 function openingHtml(c, o) {
   const mine = appliedTo(c, o);
   const tags = [
+    isNewOpening(o) ? `<span class="otag new" title="First listed on the board in the ${escHtml(shortDate(REFRESH_DATE))} refresh">new</span>` : '',
     isProgram(o) ? '<span class="otag prog" title="Built for new graduates: a structured program or an explicitly new-grad requisition">new-grad program</span>' : '',
     closesTag(o),
     isSweLean(o) ? '<span class="otag weak" title="A software-engineering ladder. An information-systems resume is judged here against computer-science graduates, so treat it as a stretch">leans SWE</span>' : '',
@@ -2736,11 +2798,12 @@ const NAME_SUFFIX = new Set(['inc', 'incorporated', 'corp', 'corporation', 'co',
   'bancorporation', 'bancorp', 'bank', 'financial', 'software', 'technologies', 'technology', 'labs', 'services', 'pharmaceuticals', 'na', 'the']);
 // Other names people use for an employer on the board, keyed by the board name without its parenthetical:
 const NAME_ALIASES = {
-  'cicero group': ['mgt', 'cicero', 'mgt consulting'],
+  'cicero group': ['mgt', 'cicero', 'mgt consulting', 'mgt cicero'],
   'wgu': ['western governors university', 'western governors'],
   'zions bancorporation': ['zions', 'zions bank'],
   'jpmorgan chase': ['jpmorganchase', 'jp morgan', 'j p morgan', 'jpmorgan', 'jp morgan chase', 'chase', 'neovest'],
   'morgan stanley': ['parametric', 'e trade', 'etrade'],
+  'goldman sachs': ['goldman'],
   'america first credit union': ['america first', 'afcu'],
   'vivint smart home': ['vivint', 'nrg', 'nrg energy'],
   'instructure': ['canvas lms'],
@@ -2752,8 +2815,8 @@ const NAME_ALIASES = {
   'fidelity investments': ['fidelity', 'fmr'],
   'fis': ['fis global', 'fidelity national information services'],
   'vanguard': ['the vanguard group', 'vanguard group'],
-  'freddie mac': ['federal home loan mortgage corporation'],
-  'fannie mae': ['federal national mortgage association'],
+  'freddie mac': ['federal home loan mortgage corporation', 'freddiemac', 'fhlmc'],
+  'fannie mae': ['federal national mortgage association', 'fanniemae', 'fnma'],
 };
 function nameVariants(name) {
   const base = appNorm(String(name || '').replace(/\(.*?\)/g, ' '));
@@ -2792,11 +2855,17 @@ function titleOverlap(a, b) {
 const appsFor = c => c.suggested ? [] : APPS.filter(a => sameCompany(a.company, c.name));
 // 0.8, so a sibling posting that adds a word is not mistaken for the one actually applied to
 const placeWords = s => new Set(appNorm(s).split(' ').filter(w => w.length > 2 && !['and', 'more', 'other', 'offices', 'incl', 'area', 'usa'].includes(w)));
+const yearIn = t => (String(t || '').match(/\b20[2-3]\d\b/) || [''])[0];
 const appliedTo = (c, o) => appsFor(c).find(a => {
   if (titleOverlap(a.title, o.title) < 0.8) return false;
-  // Visa posts the same APM title in Foster City and Austin: an application names one city.
   const twins = c.apply.openings.filter(x => x !== o && titleOverlap(x.title, o.title) >= 0.8);
-  if (!twins.length || !a.location) return true;
+  if (!twins.length) return true;
+  // Verkada posts the same title for its 2026 and 2027 classes. Years are ignored when titles are
+  // compared, so when one of the look-alikes carries the year the application names, that one is it.
+  const ay = yearIn(a.title), oy = yearIn(o.title);
+  if (ay && oy && ay !== oy && twins.some(x => yearIn(x.title) === ay)) return false;
+  // Visa posts the same APM title in Foster City and Austin: an application names one city.
+  if (!a.location) return true;
   const here = placeWords(o.loc);
   return [...placeWords(a.location)].some(w => here.has(w));
 }) || null;
@@ -3139,9 +3208,9 @@ render();
   const MODELS = {
     // price is [input, output] $/MTok; cacheRead is the cache-read rate $/MTok, which is a
     // different fraction of base input on each of these models (0.1x, 0.05x, 0.025x).
-    'claude-sonnet-5-5': { label: 'Claude Sonnet 5.5', price: [2, 10],  cacheRead: 0.20, hint: 'Recommended. A minute or two at high effort, usually well under $0.50. The board needs judgment, not deep reasoning — medium costs about half and is normally enough.' },
-    'claude-opus-5-5':   { label: 'Claude Opus 5.5',   price: [4, 20],  cacheRead: 0.20, hint: 'Deeper judgment for an unusual resume or a career change. Budget 3–6 minutes and $0.40–1.20 at high effort; medium is close in quality here and cheaper.' },
-    'claude-fable-5-1':  { label: 'Claude Fable 5.1',  price: [10, 50], cacheRead: 0.25, hint: 'The most capable model and the slowest. Several minutes and about 2.5× Opus 5.5. Worth it only when Opus 5.5 misjudged something.' },
+    'claude-sonnet-5-5': { label: 'Claude Sonnet 5.5', price: [2, 10],  cacheRead: 0.20, hint: 'Recommended. About $0.30 a run at high effort, measured on this board. The work is judgment rather than deep reasoning, so medium is cheaper and normally enough.' },
+    'claude-opus-5-5':   { label: 'Claude Opus 5.5',   price: [4, 20],  cacheRead: 0.20, hint: 'Deeper judgment for an unusual resume or a career change. Twice Sonnet 5.5’s price per token and it thinks longer, so expect roughly $0.60–1.20 at high effort; medium is close in quality here and cheaper.' },
+    'claude-fable-5-1':  { label: 'Claude Fable 5.1',  price: [10, 50], cacheRead: 0.25, hint: 'The most capable model and the slowest. Five times Sonnet 5.5’s price per token, so $1.50 and up a run. Worth it only when Opus 5.5 misjudged something.' },
   };
   const EFFORTS = { low: 'Low · cheapest', medium: 'Medium · faster and cheaper', high: 'High · recommended', xhigh: 'Extra high', max: 'Max · slowest' };
   // Refusal categories the server-side fallback does not route to a backup model, per model.

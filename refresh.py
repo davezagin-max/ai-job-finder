@@ -45,6 +45,8 @@ BOARDS = {
              "Lumos":"lumos",
              "Weave (Ashby)":"weave"},   # Weave posts on both Greenhouse and Ashby; most roles are on Ashby
   "workable":{"Hugging Face":"huggingface"},
+  # ADP WorkforceNow: the value is the career-center id (cid) in the employer's recruitment.html link
+  "adp":     {"Sunwest Bank":"f9e1fc49-57c2-48ad-998b-5652b70d3889"},
   "workday": {
     "Pluralsight":"pluralsight|wd1|Careers", "Proofpoint":"proofpoint|wd5|ProofpointCareers",
     "CrowdStrike":"crowdstrike|wd5|crowdstrikecareers", "Arctic Wolf":"arcticwolf|wd1|External",
@@ -94,6 +96,7 @@ BOARDS = {
 # Deloitte's Avature search is rendered in the browser and its RSS feed ignores the search, KPMG's
 # and EY's career sites have no public feed at all.
 MANUAL = {
+  "Datafy":"https://www.datafy.com/careers",
   "Deloitte":"https://apply.deloitte.com/en_US/careers/SearchJobs/?search=2027",
   "EY":"https://careers.ey.com/ey/search/?q=staff&locationsearch=united+states",
   "KPMG":"https://www.kpmguscareers.com/early-career/",
@@ -133,7 +136,7 @@ WRONG_COHORT = re.compile(r"\b(interns?|internship|c[o0]-?op|summer (?:analyst|a
                           r"mba|master'?s|return to work|returnship|insight (?:day|program)|early insights?)\b", re.I)
 # Strongest signal: the employer built the role for new graduates. Worth relocating for.
 # A bare "program" is not enough ("Program Mentor", "Program Development Owner").
-PROGRAM = re.compile(r"(new[ -]?grad|new college grad|\bgraduate\b|early[- ]career|early in career|"
+PROGRAM = re.compile(r"(new[ -]?grad|new college grad|\bgraduate\b|early[- ]career|early in career|talent pipeline|"
                      r"\buniversity\b|\bcampus\b|rotational|class of|\b20(?:26|27)\b|"
                      r"\b(?:development|leadership|leaders|rotation|analyst|associate|launch|graduate|technology|"
                      r"banker|foundational|trainee|academy)\s+program\b)", re.I)
@@ -152,7 +155,7 @@ ONTOPIC = re.compile(r"\b(data|analytics?|ai|ml|machine learning|software|develo
 # in security it means Endpoint Detection and Response.)
 OFFTOPIC= re.compile(r"\b(sales|business development|development representative|bdr|sdr|"
                      r"account executive|account manager|partnerships?|marketing|investor relations|"
-                     r"recruit\w*|talent|skillbridge|hackathon|general interest|"
+                     r"recruit\w*|talent(?!\s+pipeline)|skillbridge|hackathon|general interest|"
                      r"clinical|nurse|physician|therapist|dental|teacher|instructor|faculty|"
                      r"real estate|collections|underwrit\w*|payroll|tax|legal|counsel|"
                      r"communications|public relations|brand|content|social media|"
@@ -189,6 +192,9 @@ def degree_flag(text):
     """"MS/PhD" or "technical majors" when the posting sets that bar, else None."""
     if not text: return None
     t = re.sub(r"\s+", " ", html_unescape(re.sub(r"<[^>]+>", " ", text)))
+    # "degree in a technical discipline (e.g., Computer Science...)": the period in "e.g." would end
+    # the majors list before the majors.
+    t = re.sub(r"\b(?:e\.g\.|i\.e\.),?", "such as", t, flags=re.I)
     if ADV_DEGREE.search(t): return "MS/PhD"
     for field in DEGREE_IN.findall(t):
         if TECH_MAJOR.search(field) and not DEGREE_OPEN.search(field): return "technical majors"
@@ -337,6 +343,25 @@ def fetch(kind, slug):
         d = curl(f"https://api.ashbyhq.com/posting-api/job-board/{slug}")
         need(isinstance(d.get("jobs"), list), "no jobs list")
         return [(j["title"], j.get("location",""), j.get("jobUrl","")) for j in d["jobs"]]
+    if kind == "adp":
+        # ADP WorkforceNow career centers share one public API; the posting link needs the
+        # requisition's ExternalJobID, not its itemID. postDate is unreliable (Sunwest's all say 2022).
+        rows, skip = [], 0
+        while True:
+            d = curl(f"https://workforcenow.adp.com/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions"
+                     f"?cid={slug}&lang=en_US&locale=en_US&$top=100&$skip={skip}")
+            items = d.get("jobRequisitions")
+            need(isinstance(items, list), "no jobRequisitions list")
+            for j in items:
+                ext = next((f.get("stringValue") for f in (j.get("customFieldGroup") or {}).get("stringFields", [])
+                            if (f.get("nameCode") or {}).get("codeValue") == "ExternalJobID"), None)
+                if not ext: continue
+                loc = "; ".join(sorted({(l.get("nameCode") or {}).get("shortName", "").strip() for l in j.get("requisitionLocations", [])} - {""}))
+                rows.append((j.get("requisitionTitle", "").strip(), loc,
+                             f"https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid={slug}&selectedMenuKey=CurrentOpenings&jobId={ext}"))
+            if len(items) < 100: break
+            skip += 100
+        return rows
     if kind == "workable":
         # One row per location, so a remote job repeats once per listed city: fold those together.
         # The state and the telecommuting flag matter: without them a remote role that also lists
@@ -660,6 +685,7 @@ WORKABLE_LINK = re.compile(r"apply\.workable\.com/(?:([^/]+)/)?j/([0-9A-F]{8,})"
 DELOITTE_LINK = re.compile(r"apply\.deloitte\.com/.*/JobDetail/")
 KPMG_LINK   = re.compile(r"kpmguscareers\.com/jobdetail/\?jobId=\d+")
 YELLO_LINK  = re.compile(r"\.yello\.co/jobs/[\w-]+$")
+ADP_LINK    = re.compile(r"workforcenow\.adp\.com/.*[?&]cid=([0-9a-f-]{36}).*[?&]jobId=(\d+)")
 
 def _status(url, *extra):
     return subprocess.run(["curl","-sS","-o","/dev/null","--max-time","25","-A",UA,"-w","%{http_code}",*extra,url],
@@ -719,6 +745,11 @@ def link_state(url):
         if code == "404": return "dead"
         if code != "200" or not title: return "unknown"
         return "dead" if re.match(r"Error\b|Job Posting Not Found", title) else "live"
+    m = ADP_LINK.search(url)
+    if m:   # the recruitment page is a shell; the career center's own listing says whether the id is still posted
+        try: live_ids = {u.rsplit("jobId=", 1)[1] for _, _, u in fetch("adp", m.group(1))}
+        except Exception: return "unknown"
+        return "live" if m.group(2) in live_ids else "dead"
     if YELLO_LINK.search(url):   # a job that is gone redirects to the company's job board
         code, _, target = _status(url, "-w", "%{http_code} %{redirect_url}").partition(" ")
         if code == "302" and "/job_boards/" in target: return "dead"
@@ -730,6 +761,27 @@ def link_state(url):
         if code == "404" and "Invalid Request" in body: return "dead"
         return "live" if code == "200" and re.search(r"Apply for Job|apply-form", body) else "unknown"
     return _verdict(_status(url, "-L"), dead=("404", "410"))
+
+def board_openings(html):
+    """[(company, title, url)] for every opening on the board, read from APPLY_STATUS in index.html."""
+    out = []
+    for co, body in re.findall(r'\n  "([^"]+)": \{.*?openings: \[(.*?)\]\n', html, re.S):
+        for t, u in re.findall(r'title: "((?:[^"\\]|\\.)*)".*?url: "([^"]+)"', body):
+            out.append((co, html_unescape(t.replace('\\"', '"')), u))
+    return out
+
+def moved_links(dead_urls, openings, raw):
+    """Some careers sites re-index and hand every posting a new link (Zions did this in October 2026),
+    and employers repost a program under a new requisition. A dead link whose title is still on the
+    employer's feed is reported as moved, with the new link, rather than as a closed role."""
+    moved = {}
+    for co, title, url in openings:
+        if url not in dead_urls or url in moved: continue
+        rows = [r for feed, rs in raw.items() if same_company(co, feed) for r in rs]
+        hit = next((r for r in rows if _norm(r[0]) == _norm(title)), None) or \
+              next((r for r in rows if is_posting_for(title, r[0]) and r[2] != url), None)
+        if hit: moved[url] = (title, hit[2])
+    return moved
 
 def check_link(url):
     try: return url, link_state(url)
@@ -751,11 +803,12 @@ _SUFFIX = {"inc","incorporated","corp","corporation","co","company","llc","llp",
            "services","pharmaceuticals","na","the"}
 # Other names people use for an employer on the board. Keys are the board name without its parenthetical.
 ALIASES = {
-    "cicero group": {"mgt", "cicero", "mgt consulting"},
+    "cicero group": {"mgt", "cicero", "mgt consulting", "mgt cicero"},
     "wgu": {"western governors university", "western governors"},
     "zions bancorporation": {"zions", "zions bank"},
     "jpmorgan chase": {"jpmorganchase", "jp morgan", "j p morgan", "jpmorgan", "jp morgan chase", "chase", "neovest"},
     "morgan stanley": {"parametric", "e trade", "etrade"},
+    "goldman sachs": {"goldman"},
     "america first credit union": {"america first", "afcu"},
     "vivint smart home": {"vivint", "nrg", "nrg energy"},
     "instructure": {"canvas lms"},
@@ -767,8 +820,8 @@ ALIASES = {
     "fidelity investments": {"fidelity", "fmr"},
     "fis": {"fis global", "fidelity national information services"},
     "vanguard": {"the vanguard group", "vanguard group"},
-    "freddie mac": {"federal home loan mortgage corporation"},
-    "fannie mae": {"federal national mortgage association"},
+    "freddie mac": {"federal home loan mortgage corporation", "freddiemac", "fhlmc"},
+    "fannie mae": {"federal national mortgage association", "fanniemae", "fnma"},
 }
 def _variants(name):
     base = _norm(re.sub(r"\(.*?\)", " ", name or ""))
@@ -989,6 +1042,7 @@ def selftest():
         ("Fiduciary Risk Analyst", "Salt Lake City, UT"), ("Administrative Systems Analyst", "Salt Lake City, UT"),
         ("Data Analyst, New Grad", "San Juan (Puerto Rico); Salt Lake City, UT"),
         ("Future Leaders Program Rotation - Data and Analytics Track", "San Antonio, TX"),
+        ("Technology Early Talent Pipeline", "Atlanta, GA"),   # an employer renamed its program postings to this
     ]
     must_drop = [
         ("Staff Software Engineer", "Lehi, UT"), ("Senior Data Analyst", "Lehi, UT"),
@@ -1016,6 +1070,7 @@ def selftest():
         ("Associate Director, Product Manager", "Lehi, UT"),
         ("Data Analyst, New Grad", "Chennai, TN (India, abroad)"), ("Summer Fiduciary Associate", "New York, NY"),
         ("Administrative Associate", "Malvern, PA"), ("Associate Wealth Banking Specialist", "Scottsdale, AZ"), ("Strategy Consulting Analyst", "Riga (Latvia, abroad)"),
+        ("Early Talent Recruiter", "Lehi, UT"), ("Talent Analyst", "Lehi, UT"),
     ]
     bad = [f"should KEEP: {t} ({l}) -> {_classify(t,l)[1]}" for t, l in must_keep if not classify(t, l)]
     bad += [f"should DROP: {t} ({l})" for t, l in must_drop if classify(t, l)]
@@ -1054,6 +1109,16 @@ def selftest():
         (sheet_status("Denied, experience") == "rejected" and sheet_status("HireView done") == "interview"
          and sheet_status("") == "pending", "a Result column becomes a status"),
         (degree_flag("Currently enrolled in a Bachelor's or accelerated Master's degree") is None, "a bare degree line is not a bar"),
+        (degree_flag("degree in a quantitative or technical discipline (e.g., Computer Science, Data Science, Mathematics or Statistics)") == "technical majors",
+         "'e.g.' inside the majors list does not end it"),
+        (moved_links({"https://x/jobs/1"}, [("Zions Bancorporation", "Cybersecurity Analyst - GRC", "https://x/jobs/1")],
+                     {"Zions Bancorporation": [("Cybersecurity Analyst - GRC", "Midvale, UT", "https://x/jobs/9")]}) == {"https://x/jobs/1": ("Cybersecurity Analyst - GRC", "https://x/jobs/9")},
+         "a dead link whose title is still on the feed is a moved link"),
+        (moved_links({"https://x/jobs/1"}, [("Zions Bancorporation", "Cybersecurity Analyst", "https://x/jobs/1")],
+                     {"Zions Bancorporation": [("Senior Cybersecurity Analyst", "Midvale, UT", "https://x/jobs/9")]}) == {},
+         "a senior sibling does not make a dead link a moved link"),
+        (board_openings('\n  "Acme": {\n    status: "open-now",\n    note: "x",\n    openings: [{ title: "Data &amp; AI Analyst", loc: "Lehi, UT", url: "https://x/1" }]\n  },\n')
+         == [("Acme", "Data & AI Analyst", "https://x/1")], "board openings are read with their company"),
     ]
     bad += [f"check failed: {why}" for ok, why in checks if not ok]
     print("\n".join(bad) if bad else f"selftest passed: {len(must_keep)} kept, {len(must_drop)} dropped, {len(checks)} checks")
@@ -1081,6 +1146,8 @@ def main():
     with concurrent.futures.ThreadPoolExecutor(max_workers=8) as ex:
         for url, state in ex.map(check_link, urls):
             if state == "dead": dead.append(("gone", url))
+    moved = moved_links({u for _, u in dead}, board_openings(html), raw)
+    dead = [("moved" if u in moved else code, u) for code, u in dead]
 
     prev = json.load(open(STATE)) if os.path.exists(STATE) else {}
     rebaseline = bool(prev) and prev.get("filter_version") != FILTER_VERSION
@@ -1160,8 +1227,8 @@ def main():
             for co in sorted(gone_roles) for t in sorted(gone_roles[co])]
     block(f"CLOSED SINCE LAST RUN ({len(rows)})", rows)
 
-    rows = [f"{code}  {u}" for code, u in dead]
-    block(f"DEAD LINKS ON YOUR BOARD ({len(dead)})", rows)
+    rows = [f"{code:5}  {u}" + (f"\n         same title is still posted at  {moved[u][1]}" if code == "moved" else "") for code, u in dead]
+    block(f"DEAD LINKS ON YOUR BOARD ({len(dead)})" + ("   'moved' = the title is still on the feed under a new link; re-point it rather than dropping it" if moved else ""), rows)
 
     # Openings on the board carry the closing date they were published with. Once it passes, the card
     # shows the opening struck through, and this list says which ones to take off.

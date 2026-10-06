@@ -81,8 +81,9 @@ your network, and if you track applications (below) that includes your
 4. Drop in a PDF, a Word file or a text file, or paste the resume text.
 5. Click **Tailor the board**.
 
-The run takes one to three minutes on the default settings. Claude's reasoning
-streams into the panel while it works, and a Stop button cancels at any time.
+The run takes a few minutes on the default settings (Claude Sonnet 5.5 at high
+effort). Claude's reasoning streams into the panel while it works, a timer shows
+the elapsed time, and a Stop button cancels at any time.
 
 When it finishes, the board is rewritten for that person and saved as a profile.
 A dropdown appears in the header to switch between saved profiles and the
@@ -136,17 +137,21 @@ resume identifies a University of Utah student.
 
 Each run bills the API key you paste. Rough cost per run:
 
-| Model and effort | Typical cost | Typical time |
+| Model and effort | Typical cost | Basis |
 | --- | --- | --- |
-| Sonnet 5, medium (default) | about $0.15 | about a minute |
-| Sonnet 5, low | under $0.10 | well under a minute |
-| Opus 5, high | $0.50 to $1.50 | several minutes |
-| Fable 5.1 | $1.00 to $3.00 | slowest |
+| Sonnet 5.5, high (default) | about $0.30 | Measured on this board: 19,000 output tokens, 7,900 of them thinking |
+| Sonnet 5.5, medium or low | less | Fewer thinking tokens; normally enough for this board |
+| Opus 5.5, high | roughly $0.60 to $1.20 | Estimate: twice Sonnet 5.5's price per token, and it thinks longer |
+| Fable 5.1 | $1.50 and up | Estimate: five times Sonnet 5.5's price per token, and the slowest |
 
-Effort matters more than the model. Thinking is billed as output, so most of the
-cost of a high-effort run is reasoning rather than the answer. Opus 5 at high
-effort was only a third of the way through the board after four minutes, which is
-why the defaults are Sonnet 5 at medium effort.
+Only the first row is measured, so trust the completion toast over this table:
+it reports what the run you just made actually cost, priced at the model that
+served it.
+
+Effort matters as much as the model. Thinking is billed as output, so much of
+the cost of a high-effort run is reasoning rather than the answer. Opus 5.5 at
+medium effort is close to its high-effort quality for this task and noticeably
+cheaper.
 
 The model is asked for one score and one boolean per employer. Tiers and badges
 are derived in the page from those scores and the board's own data, which removes
@@ -244,10 +249,11 @@ on the shared `myworkdaysite.com` host, such as Fidelity and Wells Fargo),
 BambooHR, Oracle Recruiting Cloud (JPMorgan, American Express), Avature
 (Bloomberg), iCIMS sitemaps (Cotiviti, America First), a SuccessFactors feed
 (Vivint), JazzHR (Cicero), Taleo behind SelectMinds (Zions), Eightfold and Oleeo
-(Morgan Stanley), and the GraphQL service behind Goldman's campus site. Three
-employers still have to be checked by hand: Deloitte, whose search is rendered in
-the browser and whose RSS feed ignores the search, and EY and KPMG, which publish
-no feed. Links to their postings are still verified.
+(Morgan Stanley), ADP WorkforceNow (Sunwest Bank), and the GraphQL service behind
+Goldman's campus site. Four employers still have to be checked by hand: Deloitte,
+whose search is rendered in the browser and whose RSS feed ignores the search, EY
+and KPMG, which publish no feed, and Datafy, which lists openings on its own site
+and takes resumes by email. Links to their postings are still verified.
 
 **Workday and Oracle jobs are read in full.** Their job lists say "3 Locations"
 for a multi-city job, which hides a Salt Lake City seat, and never give a closing
@@ -282,6 +288,12 @@ by date, and any opening on the board **past its closing date**. Employers diffe
 on whether a scheduled end date is the last day or the day after (Wells Fargo's is
 the day after), so apply a day early.
 
+**A dead link is not always a closed role.** When the same title is still on
+the employer's feed, the report marks the link `moved` and gives the new one,
+so the opening is re-pointed rather than dropped. Zions re-indexed its whole
+careers site in October 2026 and every link changed; Fidelity reposts its Leap
+and FidYOU classes under new requisition numbers.
+
 **Dead links are judged by the hiring system, not by the page.** For Greenhouse,
 Lever, Ashby, Workday, Workable, Oracle and Goldman links the script asks the
 system itself whether the job still exists; Deloitte and KPMG pages are judged by
@@ -296,7 +308,11 @@ dropped it, or it has since closed. A board that could not be read that day is
 reported as "could not check", never as "closed".
 
 After a refresh, update the openings in `index.html` and change `REFRESH_DATE`
-plus the footer date to match.
+plus the footer date to match. Give every opening that first appeared in this
+run `added: "<the new REFRESH_DATE>"` (and a new employer the same field in
+`COMPANIES`); that is all the **New this week** flag needs. Check the posting
+date first: a role that was live before the previous refresh but missing from
+the board, or a repost of a program already listed, gets no `added`.
 
 ## Printing
 
@@ -326,11 +342,12 @@ employer scoring on its merits.
 
 ### Opening tags
 
-Each listed opening can carry up to five small tags, all read from the opening
-itself rather than from the company:
+Each listed opening can carry a few small tags, all read from the opening itself
+rather than from the company:
 
 | Tag | Meaning |
 | --- | --- |
+| new | The opening first appeared on the board in the latest refresh (its `added` date equals `REFRESH_DATE`) |
 | new-grad program | The title names a structured program or an explicitly new-grad requisition |
 | relocate | The opening is neither in the Salt Lake area nor remote, even if the company has a Salt Lake office |
 | closes Sep 25 | The posting's own closing date. It turns red within a week, and once the date has passed (by this browser's clock) it reads "closed" and is struck through |
@@ -348,6 +365,18 @@ majors or demands a master's. `refresh.py` marks both in its report, `[SWE]` and
 where it can see one. The **Hide weak fits** chip takes them off the board, and
 **Hide applied** does the same for openings you have already applied to; each
 card says how many of its openings are hidden.
+
+**New this week.** An opening that the employer posted since the previous
+refresh carries an amber **new** tag, and an employer added in the latest
+refresh carries a **New on the board** badge. A role the board had merely
+overlooked, or a program reposted under a new requisition number, is not new,
+because the tag is meant to say "this just opened, move", not "this is new to
+the page". The **New this week** chip, first in the Timing row, shows only the
+employers that have something new and, on each card, only its new openings; the
+number on the chip is how many new openings and employers there are. Nothing has
+to be cleaned up later: the tag compares each opening's `added` date with
+`REFRESH_DATE`, so the next refresh retires last week's tags by itself. An
+opening that passes its closing date stops counting as new.
 
 The **New-grad programs elsewhere** filter shows employers with at least one
 program outside the Salt Lake area. It and the relocate tag are Salt Lake-relative,
@@ -378,7 +407,8 @@ apply to programs that have ended.
 ```js
 COMPANIES[]      // name, location, locType, industry[], roles[], score, tier,
                  // badges[], why, careers, linkedin, and optional alumni signals
-APPLY_STATUS{}   // per company: status, note, openings[{title, loc, url, yrs?, closes?, program?}]
+APPLY_STATUS{}   // per company: status, note, openings[{title, loc, url, yrs?, closes?, program?,
+                 //   degree?, swe?, added?}]   added = the REFRESH_DATE it first appeared on
 FAIRS[]          // University of Utah career fairs, rendered with live countdowns
 REFRESH_DATE     // drives the "Verified live" label on every card
 ```
@@ -404,8 +434,11 @@ Notable choices:
 - **Adaptive thinking**, streamed with summaries visible in the panel.
 - **Prompt caching** on the board data, which is the large, stable part of the
   request.
-- **Server-side fallback**, so a request declined by a safety classifier is
-  retried automatically on another model instead of failing.
+- **Server-side fallback** on all three models, so a request declined by a
+  safety classifier is retried automatically on another model instead of
+  failing. Not every decline is routed (Sonnet 5.5 keeps `bio`,
+  `reasoning_extraction` and `general_harms`), so the error message names the
+  category and says whether a backup model was tried.
 - **Everything Claude returns is treated as untrusted.** Scores are clamped,
   unknown enum values are dropped, unknown companies are ignored, duplicates are
   removed, strings are length-capped, and anything rendered as HTML is escaped.

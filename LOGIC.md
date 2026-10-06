@@ -37,6 +37,11 @@ score, highest first.
 **Filters:** a filter chip that would match nothing is hidden, so you never land
 on an empty board.
 
+**New this week:** the first chip in the Timing row. It shows only employers
+with an opening added in the latest refresh (or added to the board in it), and on
+each card only the new openings. The number on the chip counts those new
+openings and employers.
+
 ## 2. Rules the page applies on every load
 
 These run in your browser using today's date, so a board that has not been
@@ -53,6 +58,7 @@ refreshed for a while still tells the truth about deadlines.
 
 | Tag | Shown when |
 | --- | --- |
+| new | The employer posted it since the previous refresh (its `added` date is the board's current refresh date) and it has not passed its closing date. A repost of a program already listed, or a role the board had overlooked, is not tagged. The next refresh retires the tag by itself |
 | new-grad program | The title names a program ("new grad", "rotational", "2027", "analyst program"...) and does not say intern, senior, manager or director |
 | relocate | The opening is not in Utah and not remote |
 | N+ yrs | The posting asks for 2 or more years of experience |
@@ -224,6 +230,8 @@ pasted straight out of Excel.
   "the", "of" and "and" are ignored.
 - If an employer posts the same title in two cities, the city you recorded
   decides which one you applied to.
+- If an employer posts the same title for two graduating classes (Verkada's
+  University Graduate 2026 and 2027), the year in the title you recorded decides.
 
 **Job titles in `refresh.py`** (a little looser)
 
@@ -244,6 +252,10 @@ pasted straight out of Excel.
 5. Flags weak fits: `[SWE]` for a software-engineering ladder, and
    `[technical majors]` or `[MS/PhD]` where the posting's own degree line says so.
 6. Writes everything to `refresh-report.txt`.
+
+The script only reports. Putting a new opening on the board is a hand edit to
+`index.html`: add it with `added` set to the new refresh date, and it shows as
+**new** until the refresh after that.
 
 It reads your applications from `applications.json`, or straight from your
 spreadsheet if you name it `applications.csv`, `applications.tsv` or
@@ -291,7 +303,7 @@ Utah first, then remote, then elsewhere.
 7. Dead links on the board
 8. Openings on the board past their closing date
 9. Your applications, and whether the script could have found each one
-10. Employers to check by hand (Deloitte, EY, KPMG)
+10. Employers to check by hand (Deloitte, EY, KPMG, Datafy)
 11. Boards that failed or were read only in part
 
 ### Safety rules
@@ -308,3 +320,7 @@ These stop the report from crying wolf.
   the hiring system's own API says it no longer exists, or the job page says it
   was closed or not found. Anything unclear, such as a blocked request or a
   CAPTCHA, counts as unknown and is never reported.
+- **A dead link whose title is still on the employer's feed is reported as
+  moved**, with the new link, not as a closed role. Some careers sites hand every
+  posting a new address when they re-index (Zions did in October 2026), and
+  employers repost a program under a new requisition number.
