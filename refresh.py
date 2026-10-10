@@ -2043,7 +2043,12 @@ def db_export(con, today, path=None, dead=()):
     leads = {src for src, kind in con.execute("SELECT source, kind FROM sources") if lead_source(kind)}
     extra = [dict(j, agg=1) if j.get("src", j["co"]) in leads else j
              for j in jobs if j.get("src", j["co"]) in agg and job_key(j["url"]) not in keys and not read_directly(j["co"])]
-    jobs = own + extra
+    # A job bank often lists one job several times. One lead is enough: the newest.
+    newest = {}
+    for j in extra:
+        k = (_norm(j["co"]), _norm(j["title"]), _norm(j["loc"])) if j.get("agg") else ("", j["url"], "")
+        if k not in newest or (j.get("posted") or "") > (newest[k].get("posted") or ""): newest[k] = j
+    jobs = own + list(newest.values())
     jobs.sort(key=lambda j: (j["co"].lower(), j["title"].lower(), j["loc"]))
     entry = [j for j in jobs if j["sig"] != "senior" and not j.get("int")]
     out = {"date": today, "prev": prev, "sources": con.execute("SELECT COUNT(*) FROM sources WHERE last_read=?", (today,)).fetchone()[0],
@@ -2059,16 +2064,23 @@ def why(query):
         print("No jobs.db yet. Run python3 refresh.py once to build it."); return 1
     con = db_open()
     q = f"%{query.strip()}%"
-    rows = con.execute("SELECT company, title, loc, url, signal, geo, dropped, yrs, degree, internal, closes, posted, first_seen, last_seen, gone_on "
+    rows = con.execute("SELECT company, title, loc, url, signal, geo, dropped, yrs, degree, internal, closes, posted, first_seen, last_seen, gone_on, source "
                        "FROM jobs WHERE title LIKE ? OR url LIKE ? OR company LIKE ? ORDER BY gone_on IS NOT NULL, company, title LIMIT 60", (q, q, q)).fetchall()
+    agg = {src for src, kind in con.execute("SELECT source, kind FROM sources") if aggregator(kind)}
+    # The employers this script reads itself, as db_export() works them out: every source that is not a
+    # relisting board, and every employer name those sources' own rows carry.
+    direct = {src for (src,) in con.execute("SELECT source FROM sources WHERE last_read IS NOT NULL") if src not in agg}
+    direct |= {co for co, src in con.execute("SELECT DISTINCT company, source FROM jobs WHERE gone_on IS NULL") if co and src not in agg}
     n_src = con.execute("SELECT COUNT(*) FROM sources WHERE last_read IS NOT NULL").fetchone()[0]
     if not rows:
         print(f'Nothing matching "{query}" has ever been returned by the {n_src} feeds this script reads.')
         print("That means the employer is not a source. Find its careers page, work out which hiring system it uses,")
         print("and add it to MORE (or BOARDS) at the top of refresh.py; the kinds and their slug formats are listed there.")
         return 0
-    for (company, title, loc, url, signal, geo, dropped, yrs, degree, internal, closes, posted, first_seen, last_seen, gone_on) in rows:
+    for (company, title, loc, url, signal, geo, dropped, yrs, degree, internal, closes, posted, first_seen, last_seen, gone_on, source) in rows:
         if gone_on: verdict = f"no longer on the feed (last seen {last_seen})"
+        elif source in agg and signal and any(same_company(company, d) for d in direct):
+            verdict = f"a copy listed on {source}: NOT published, because this employer's own feed is read and is the truth about its jobs"
         elif internal and signal: verdict = "on the feed and published, but open to internal applicants only: the page lists it under its Internal only chip"
         elif signal == "senior": verdict = f"on the feed and published as an experienced-level role ({dropped}): the page lists it under Level > Experienced" + (f", asks {yrs}+ years" if yrs else "")
         elif signal: verdict = f"KEPT and published as {signal}, {geo}" + (f", asks {yrs}+ years" if yrs else "") + (f", degree bar: {degree}" if degree else "")

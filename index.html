@@ -4521,7 +4521,8 @@ Leave out openings that do not fit rather than padding the list. Use only ids fr
   };
   // The list is sent in a fixed order (by key), so the cached copy survives a second run on the same day.
   function jobsForPrompt() {
-    const live = allJobs().filter(j => !jobClosed(j) && !j.web && !j.int && !(j.sig === 'senior' && jobGap(j) >= 2));
+    // the same openings the list shows this person: no internal-only postings, and experienced titles only for someone with the years
+    const live = allJobs().filter(j => !jobClosed(j) && !j.web && !j.int && !(j.sig === 'senior' && (jobYears() < 2 || jobGap(j) >= 2)));
     const top = live.length > RANK_MAX ? live.map(j => ({ j, h: heuristicScore(j) })).sort((a, b) => b.h - a.h).slice(0, RANK_MAX).map(x => x.j) : live;
     return top.slice().sort((a, b) => (a.key < b.key ? -1 : a.key > b.key ? 1 : 0));
   }
