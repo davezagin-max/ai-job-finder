@@ -142,7 +142,7 @@
   <div class="wrap">
     <a class="backlink" href="index.html">&larr; Back to the board</a>
     <h1>How the AI Job Finder works</h1>
-    <p class="sub">A plain guide to using the board, and to what actually happens when you upload a resume.</p>
+    <p class="sub">A plain guide to the board, the list of every opening, and what actually happens when you upload a resume or search deeper.</p>
   </div>
 </header>
 
@@ -151,6 +151,8 @@
     <strong>On this page</strong>
     <ol>
       <li><a href="#board">Reading the board</a></li>
+      <li><a href="#openings">Seeing every opening</a></li>
+      <li><a href="#deeper">Searching deeper</a></li>
       <li><a href="#upload">Uploading a resume</a></li>
       <li><a href="#pipeline">What happens on a run</a></li>
       <li><a href="#scoring">How scoring works</a></li>
@@ -165,6 +167,10 @@
   <h2 id="board"><span class="num">1</span>Reading the board</h2>
   <p class="lede">About eighty employers, sorted by whether you can act on them today.</p>
 
+  <p>The page has two tabs above the filters. <strong>Employers</strong> is the board: one hand-researched
+  card per employer, and the subject of this section. <strong>All openings</strong> is one row per job, and
+  is covered in <a href="#openings">the next section</a>.</p>
+
   <p>The board opens with no filters applied, so you see everything at once. Cards are grouped by
   timing first and by match score second, which means the roles you can apply to this week sit at the top.</p>
 
@@ -176,7 +182,8 @@
     <li><span class="dot d-green"></span><strong>Live roles right now.</strong> A real opening was confirmed
       open on the date in the footer. Apply this week.</li>
     <li><span class="dot d-purple"></span><strong>Suggested for your city.</strong> Only appears after you
-      upload a resume from outside Salt Lake. These come from Claude's knowledge and are not verified.</li>
+      upload a resume from outside Salt Lake, or from a field this board does not hire for. These come from
+      Claude's knowledge and are not verified.</li>
     <li><span class="dot d-gold"></span><strong>Opens later this fall.</strong> The program is real and dated,
       but applications are not open yet. Set a reminder.</li>
     <li><span class="dot d-cyan"></span><strong>Watch list.</strong> The company hires, and their board is live,
@@ -184,6 +191,18 @@
     <li><span class="dot d-red"></span><strong>Wrong cohort.</strong> The timing does not fit the graduation
       window. This group is hidden when it is empty.</li>
   </ul>
+
+  <h3>The openings on each card</h3>
+  <p>A card lists the openings that were read by hand, under the date they were verified. Where the
+  employer's own job feed has more, a button under them reads, for example,
+  <strong>+ 12 more openings on their job feed &middot; 3 new &rarr;</strong>. Click it to open All openings
+  on that employer alone. A script read the extra ones from the feed at the last refresh; nobody read them
+  by hand.</p>
+
+  <p>A link the employer has taken down is struck out and tagged <strong>no longer posted</strong>. The
+  refresh script, <code>refresh.py</code>, asks the employer's own system about every link on the board each
+  time it runs, so the strike appears as soon as the openings database is refreshed and does not wait for
+  someone to edit the card. An opening whose closing date has passed is struck out the same way.</p>
 
   <h3>The number on each card</h3>
   <p>That circle is a match score from 60 to 100. On the default board it rates fit for a new grad
@@ -195,8 +214,211 @@
   the same row swaps rather than stacks. Any filter that would return nothing is hidden, so you can never
   land on an empty board. Search covers company names, cities, the explanation text and job titles.</p>
 
-  <h2 id="upload"><span class="num">2</span>Uploading a resume</h2>
-  <p class="lede">Five steps, a few minutes, about thirty cents.</p>
+  <h2 id="openings"><span class="num">2</span>Seeing every opening</h2>
+  <p class="lede">One row per job, from about 360 job feeds instead of about eighty cards. No API key needed.</p>
+
+  <p>The board can only show an employer somebody wrote a card for. Click <strong>All openings</strong> and
+  you get the other half: every entry-level opening the refresh script found on employers' own job feeds,
+  whether or not the employer has a card. You can filter, sort and search it without a key and without
+  uploading anything.</p>
+
+  <h3>Where the rows come from</h3>
+  <p>The list is built from three places, and each job appears once.</p>
+  <ul>
+    <li><strong>Employers' own job feeds.</strong> <code>refresh.py</code> reads about 360 feeds: nearly
+      every employer on the board, a larger number of employers that have no card, Utah's state job
+      bank, and the federal job site, USAJOBS. It records what every feed returns in a database, then
+      publishes the live rows its title rules keep as <code>jobs.json</code>, which the page loads. The
+      line beside the tabs gives the date the feeds were read. It counts the employers that have an
+      opening in the list, so its number is smaller than the number of feeds.</li>
+    <li><strong>The board's own openings.</strong> These were read by hand. Where the same job is also on a
+      feed, the hand-read years, degree bar and closing date win.</li>
+    <li><strong>Web finds.</strong> Openings Claude found on the web for the profile on screen, if a web
+      search has been run for it. See <a href="#deeper">Searching deeper</a>.</li>
+  </ul>
+
+  <p>Not every employer can be read. Before the script reads a site it asks that site's
+  <code>robots.txt</code>, and it stays out of any path closed to all crawlers. That rules out several
+  common hiring systems. Those employers are not forgotten: the script publishes their names and careers
+  pages, and a web search starts with them.</p>
+
+  <p>Until Claude has ranked the list, rows are ordered by a plain keyword match against the profile on
+  screen: place, level, field, words from the profile that appear in the title, and how far the years asked
+  for exceed what the profile has. That is a sort order, not a score, so the circle beside a row shows a dot
+  and no number until Claude has scored that opening.</p>
+
+  <h3>What the tags mean</h3>
+  <div class="scroller">
+  <table>
+      <thead>
+    <tr><th>Tag</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+    <tr><td>new</td><td>Posted, or first seen on its employer's feed, in the seven days before the database was
+      refreshed. Counted from the refresh date, not from today, so a stale page does not keep calling old jobs new.
+      An opening read by hand is also new when it was put on the board in the six days up to the latest refresh.
+      The page shows this tag in capitals.</td></tr>
+    <tr><td>new-grad program</td><td>A structured new-grad program, or a requisition that says it is for new graduates.</td></tr>
+    <tr><td>closes Oct 16</td><td>The posting's own closing date. Rows past that date drop out of the list.</td></tr>
+    <tr><td>~3+ yrs</td><td>The posting asks for at least that many years. Shown from two years up. The tilde
+      means nobody read the number by hand: a program took it from the posting text, or on a web find Claude
+      did. Open the posting to confirm. No tilde means it was read by hand.</td></tr>
+    <tr><td>leans SWE</td><td>A software-engineering ladder, where you are judged against computer-science graduates.</td></tr>
+    <tr><td>wants &hellip;</td><td>The posting's own degree bar, such as a technical major or an MS or PhD.</td></tr>
+    <tr><td>level not stated</td><td>No level word in the title, so the posting may ask for experience. Kept for jobs in Utah only.</td></tr>
+    <tr><td>experienced</td><td>A senior, lead or architect title, or a numbered level above one. Not an entry-level opening.</td></tr>
+    <tr><td>internal applicants only</td><td>The posting says it is open only to people who already work for that employer.</td></tr>
+    <tr><td>applied Oct 2</td><td>It matches an entry in your own applications list.</td></tr>
+    <tr><td>on the board</td><td>The employer also has a hand-researched card.</td></tr>
+    <tr><td>state job bank lead</td><td>A listing from Utah's state job bank, not read from the employer. See below.</td></tr>
+    <tr><td>found on the web</td><td>Saved by Claude during a web search for this profile. It adds
+      <strong>not opened</strong> when Claude saw the link in search results and no page read is on record.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>A title that reads entry-level can still ask for experience. That is what the years tag is for, and
+  the <strong>Out of reach</strong> chip hides every opening asking two or more years beyond what the
+  profile has. No years tag does not mean no experience is asked for: it means no figure of two or more was
+  read.</p>
+
+  <h3>What is tucked away, and why</h3>
+  <p>Two kinds of posting are real but wrong for most readers of this page. Each sits behind its own chip
+  and stays out of the list until you ask for it.</p>
+  <ul>
+    <li><strong>Experienced</strong>, in the Level row. Senior, lead and architect titles in Utah, and
+      numbered levels above one. They are not entry-level, so listing them by default would bury the jobs a new graduate can get.
+      They appear when you turn the chip on, when you type in the search box, or on their own when the
+      profile on screen has two or more years of experience. Manager and executive roles are not published
+      at all.</li>
+    <li><strong>Internal only</strong>, in the Show row. Postings open only to people who already work for
+      the employer. An outside applicant cannot apply, so they are shown only with the chip on, and the chip
+      appears only when the database holds some.</li>
+  </ul>
+
+  <h3>State job bank leads</h3>
+  <p>Rows from Utah's state job bank are different in kind. The Department of Workforce Services runs it
+  at jobs.utah.gov, and it lists jobs at hundreds of employers, including ones the script cannot read
+  directly. A row from it is a lead, not a posting. Its link opens the job bank, which asks for a free
+  UtahID sign-in before it shows the details. A long title arrives cut short, usually at 40 characters,
+  and ends in an ellipsis.</p>
+  <p>So these rows are published only for employers the script does not read itself. Each is tagged
+  <strong>state job bank lead</strong> and has a <strong>find the employer's posting</strong> link beside
+  it, which runs a web search for that title and employer.</p>
+
+  <h3>Narrowing the list</h3>
+  <p>The filter rows are Show, Where, Level, Field, Source and Hide, and they combine the way the board's
+  filters do. Chips in the Where, Level and Field rows are hidden when the list holds nothing they would
+  match, and so are New this week, Internal only, State job bank and Found on the web. Sort offers Best match,
+  Newest, Closing soonest and Employer A&ndash;Z. The search box covers job titles, employers, places and
+  field names.</p>
+
+  <h2 id="deeper"><span class="num">3</span>Searching deeper</h2>
+  <p class="lede">Two optional steps for one person: Claude ranks every opening, then searches the web for ones the database does not have. Both need an Anthropic API key.</p>
+
+  <p>Uploading a resume re-scores the same eighty or so employers, so on its own it can never show you a
+  job at an employer nobody added to the board. These two steps are what look past that list.</p>
+
+  <ol class="steps">
+    <li>Open <strong>All openings</strong> and click <strong>Search deeper</strong>. The upload dialog opens,
+      set to search deeper for the profile on screen, with no resume needed.</li>
+    <li>Paste an Anthropic API key if the dialog does not already have one. See
+      <a href="#upload">Uploading a resume</a> for where to get it and how to pick a model.</li>
+    <li>Under <strong>How far to look</strong>, tick one step or both, and pick a depth for the web search.</li>
+    <li>Click <strong>Search deeper</strong> at the foot of the dialog. When it finishes, the results are
+      in All openings.</li>
+  </ol>
+
+  <p>Run this way, it works from the profile on screen and sends no resume. Each step gets a short brief
+  built from that profile: status, most recent role, skills, target, years of experience, home city and the
+  summary shown in the header. The name on the profile is left out of the brief. The same two steps are
+  offered when you upload a resume; left ticked there, they run straight after the tailoring. The resume goes
+  with the tailoring and the ranking. The web search never receives it.</p>
+
+  <h3>Step one: rank the openings</h3>
+  <p>Claude is given every listed opening as one line each: title, employer, place, level, years asked for,
+  degree bar, closing date, and whether it is a software-engineering ladder. It is not given the posting text. Internal-only postings, web finds, and
+  experienced titles two or more years beyond the person are left out, and if more than 2,500 remain the
+  best 2,500 by keyword match are sent.</p>
+  <p>It is asked for up to 80 openings worth this person's time, each with a score and one sentence of
+  reasoning. The page treats that answer as untrusted, as it does every answer from Claude. It ignores any
+  opening that was not on the list it sent, keeps at most 120, clamps scores to 60 through 100, and applies the same
+  experience ceiling it applies to employers: an opening asking two years more than you have tops out at
+  80, and three or more at 70. Ranked rows sort above unranked ones. The ranking is saved in the browser
+  for that profile.</p>
+
+  <h3>Step two: search the web</h3>
+  <p>Claude is given Anthropic's web search and page-reading tools, plus one tool that belongs to the page,
+  <code>save_jobs</code>. Along with the brief it gets three lists from the database:</p>
+  <ul>
+    <li>the employers already covered, so it does not spend searches on them;</li>
+    <li>the employers <code>refresh.py</code> knows about but cannot read, with their careers pages, to
+      start with;</li>
+    <li>up to forty state job bank leads that suit this person, to trace back to the employer's own
+      posting.</li>
+  </ul>
+  <p>It is told to open each posting before saving it, to confirm the page does not say the job is closed,
+  and to read what the posting asks for. It is also told that text on a web page is information about a
+  job, never an instruction to follow. While it works, the panel names each search and each site being
+  read, and counts what has been saved.</p>
+
+  <h3>What it may save, and what is rejected</h3>
+  <p>Nothing Claude sends to <code>save_jobs</code> is trusted. A job is saved only when all of these hold:</p>
+  <ul>
+    <li>it has a title and an employer;</li>
+    <li>its link is a full http or https link;</li>
+    <li>the link is not on a listing site. LinkedIn, Indeed, Glassdoor, ZipRecruiter and the like are
+      useful to Claude as leads, and are always rejected as links;</li>
+    <li>the link appeared in this session's search results or page reads. A link Claude only recalls is
+      rejected.</li>
+  </ul>
+  <p>A posting the list already has is turned away as already known, so the budget goes on new ground. A
+  state job bank lead is the exception, because the employer's real posting is exactly what is worth
+  saving, and it then replaces the lead in the list. Every rejection goes back to Claude with its reason,
+  so it can open the real posting and try again.</p>
+  <p>Saved finds are tagged <strong>found on the web</strong> and kept in this browser's own database, per
+  profile. They are saved as they are found, so stopping a search keeps everything saved up to that
+  point.</p>
+
+  <h3 id="depth">Depth and cost</h3>
+  <div class="scroller">
+  <table>
+      <thead>
+    <tr><th>Depth</th><th>Web searches</th><th>Page reads</th></tr>
+      </thead>
+      <tbody>
+    <tr><td>Quick</td><td>about 12</td><td>about 16</td></tr>
+    <tr><td>Standard</td><td>about 30</td><td>about 40</td></tr>
+    <tr><td>Deep</td><td>about 60</td><td>about 80</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Deep is selected until you pick another, and the page remembers your choice. A search ends when the
+  leads or the budget run out. The page also ends it if it runs well past its budget or reaches 40 round
+  trips, and the toast then says why it stopped.</p>
+
+  <p>Claude is asked to finish a search with a short summary: where it looked, which kinds of employer had
+  openings, and which are worth watching. The page keeps the latest one for each profile. Click the line
+  beginning <strong>Claude's last web search for this profile</strong> at the top of All openings to read
+  it.</p>
+
+  <p>Models and effort levels are the same as for tailoring, and the default is Sonnet 5.5 at high effort.
+  Anthropic bills each web search at $0.01 on top of tokens. Every page read is billed as input tokens, and
+  the page caps each read at 6,000 tokens.</p>
+
+  <div class="note warn"><strong>These costs are estimates.</strong> Both steps were tested against a
+  scripted stand-in for the API, not the live API, so none of these figures has been measured. From list
+  prices on Sonnet 5.5: ranking about $0.50, and a Deep web search a few dollars and ten minutes or more.
+  Quick and Standard do less and cost less. The toast at the end of a run reports what it actually
+  cost.</div>
+
+  <p>Web search has to be switched on for your organization in the Anthropic Console before step two will
+  run. Ranking does not need it. If the API refuses the search, see
+  <a href="#trouble">When something goes wrong</a>.</p>
+
+  <h2 id="upload"><span class="num">4</span>Uploading a resume</h2>
+  <p class="lede">Six steps. Tailoring alone takes a few minutes and about thirty cents.</p>
 
   <ol class="steps">
     <li>Click <strong>Upload a resume</strong>.</li>
@@ -205,11 +427,16 @@
       It is saved in your browser so you only do this once.</li>
     <li>Pick a model and effort level, or keep the defaults.</li>
     <li>Drop in a PDF, a Word file or a text file. You can also paste the text.</li>
-    <li>Click <strong>Tailor the board</strong> and watch it think.</li>
+    <li>Under <strong>How far to look</strong>, decide whether the two
+      <a href="#deeper">Searching deeper</a> steps should run straight after. Both are ticked when the dialog
+      first opens, with the web search set to Deep. Untick them to tailor the board and nothing else.</li>
+    <li>Click <strong>Tailor, then search deeper</strong>, or <strong>Tailor the board</strong> if you
+      unticked both, and watch it think.</li>
   </ol>
 
   <p>Claude's reasoning streams into the panel while it works, and a counter tracks how many companies it
-  has written. Stop cancels at any point and leaves the board untouched.</p>
+  has written. Stop cancels at any point. Stopped during the tailoring, the board is left untouched;
+  stopped during a later step, everything already finished is kept.</p>
 
   <div class="card">
     <h3>What it costs</h3>
@@ -230,16 +457,22 @@
     run on a big model spends much of its money reasoning rather than writing. Only the first row is
     measured on this board; the others are estimates from list prices, which is why the defaults
     are Sonnet 5.5 at high.</p>
+    <p>These figures are for tailoring alone. The two Searching deeper steps are billed on top when they
+    are ticked, and neither has been measured against the live API. As estimates on Sonnet 5.5, ranking
+    adds about $0.50 and a Deep web search a few dollars. See <a href="#depth">Depth and cost</a>.</p>
     <p style="margin-bottom:0">The toast at the end reports what the run actually cost.</p>
   </div>
 
   <h3>Saved profiles</h3>
-  <p>Every finished run is saved as a profile and a dropdown appears in the header. Switch between people
-  freely, or pick <strong>Original board</strong> to go back to the untouched version. Profiles live in that one
-  browser and never sync anywhere.</p>
+  <p>Every finished tailoring run is saved as a profile and a dropdown appears in the header. Switch between people
+  freely, or pick <strong>Sample board (Jordan Kim)</strong> to go back to the version scored for the made-up sample candidate. Profiles live in that one
+  browser and never sync anywhere. Rankings and web finds are kept per profile, so switching profiles
+  switches them too. Tailoring a resume with the same name again replaces that person's profile and keeps
+  the ranking and web finds already saved for them. Removing a profile, with the &times; button beside the
+  dropdown, removes its ranking and web finds too.</p>
 
-  <h2 id="pipeline"><span class="num">3</span>What happens on a run</h2>
-  <p class="lede">One request, sent straight from your browser to Anthropic. There is no server in the middle.</p>
+  <h2 id="pipeline"><span class="num">5</span>What happens on a run</h2>
+  <p class="lede">Tailoring is one request, sent straight from your browser to Anthropic. There is no server in the middle.</p>
 
   <figure>
     <svg viewBox="0 0 860 430" xmlns="http://www.w3.org/2000/svg" role="img"
@@ -318,10 +551,15 @@
 
       <rect class="bx" x="20" y="352" width="820" height="56"/>
       <text class="t" x="36" y="376">The resume itself is never stored.</text>
-      <text class="s" x="36" y="396">It is read, sent once, and discarded. Only Claude's answer is saved, and only on your machine.</text>
+      <text class="s" x="36" y="396">It is read, sent for that one run, and discarded. Only Claude's answer is saved, and only on your machine.</text>
     </svg>
-    <figcaption>One round trip. Nothing is uploaded to any server belonging to this project, because there isn't one.</figcaption>
+    <figcaption>Tailoring is one round trip. Nothing is uploaded to any server belonging to this project, because there isn't one.</figcaption>
   </figure>
+
+  <p>The two <a href="#deeper">Searching deeper</a> steps, when they are ticked, follow as further requests
+  to the same place. Ranking is one more request. A web search is a series of them, because Claude searches,
+  reads and saves in turns. When the steps follow an upload, the resume is included in each request and
+  discarded when the run ends.</p>
 
   <h3>Why the answer is always the right shape</h3>
   <p>The request pins Claude to a JSON schema, so it cannot reply with prose or invent extra fields. The page
@@ -329,7 +567,7 @@
   dropped, companies that are not on the board are ignored, duplicates are removed, and anything shown as text
   is escaped. A reply covering fewer than 80% of the companies is rejected rather than half applied.</p>
 
-  <h2 id="scoring"><span class="num">4</span>How scoring works</h2>
+  <h2 id="scoring"><span class="num">6</span>How scoring works</h2>
   <p class="lede">A score answers one question: how strong is this person's case for an entry-level hire here?</p>
 
   <div class="scroller">
@@ -355,7 +593,8 @@
   the rest lines up. Each listed opening was checked against the live posting for what it actually requires,
   and anything wanting two years or more is tagged on the card. The page then caps the score itself rather
   than asking the model nicely: three years beyond your experience caps an employer at 70, two years caps it
-  at 80, and if even the easiest opening there is out of reach the company moves to the watch list.</p>
+  at 80, and if even the easiest opening there is out of reach the company moves to the watch list. The same
+  two caps apply to each row when Claude ranks All openings.</p>
   <p>One reachable role rescues a company. An employer listing a new-grad programme alongside a senior role
   is judged on the new-grad one, because that is the door you can actually walk through.</p>
 
@@ -373,7 +612,7 @@
   is on site. Timing only moves when graduation dates genuinely conflict, such as a program that starts before
   the person finishes school.</p>
 
-  <h2 id="location"><span class="num">5</span>How location works</h2>
+  <h2 id="location"><span class="num">7</span>How location works</h2>
   <p class="lede">The board was built around Salt Lake City, so every location is re-read relative to whoever uploaded a resume.</p>
 
   <div class="scroller">
@@ -400,10 +639,10 @@
   rather than the city and appears only for a University of Utah student, and suggested employers, which
   appear for anyone whose field falls outside what this board hires for, Salt Lake resident or not.</div>
 
-  <h2 id="suggested"><span class="num">6</span>Suggested employers</h2>
+  <h2 id="suggested"><span class="num">8</span>Suggested employers</h2>
   <p class="lede">The escape hatch for when this particular board is the wrong board.</p>
 
-  <p>Sixty-odd hand-picked employers are only useful if they are employers you could actually work for. Two things
+  <p>About eighty hand-picked employers are only useful if they are employers you could actually work for. Two things
   break that. You might live somewhere else, in which case the Utah companies are unreachable. Or you might
   work in a different field, in which case they are irrelevant even from across town: nearly all of them hire data,
   analytics or software people.</p>
@@ -414,8 +653,8 @@
   the board's fields gets no suggestions, because for them the researched list is already the right answer.</p>
 
   <p>When your field is the mismatch, the suggestions move to the top of the page and the board drops beneath
-  them. A nurse in Salt Lake City should see hospitals first, not nineteen software companies with genuinely
-  open roles she cannot apply for. The board says so in the group heading rather than quietly reordering.</p>
+  them. A nurse in Salt Lake City should see hospitals first, not dozens of data and software employers with
+  genuinely open roles she cannot apply for. The board says so in the group heading rather than quietly reordering.</p>
 
   <p>They are handled differently from the researched board in three ways, all deliberate:</p>
   <ul>
@@ -428,7 +667,11 @@
   <p>The rules tell Claude to name a hiring program only when it is certain of the exact name, and otherwise to
   describe what to search for. Fewer good suggestions beat a padded list.</p>
 
-  <h2 id="trust"><span class="num">7</span>What is verified, what is not</h2>
+  <p>A suggested employer is not a web find. A suggestion is an employer Claude recalled, with no posting
+  behind it. A web find, from <a href="#deeper">Searching deeper</a>, is a posting whose link Claude came
+  across in a search.</p>
+
+  <h2 id="trust"><span class="num">9</span>What is verified, what is not</h2>
   <p class="lede">The single most important distinction on the page.</p>
 
   <div class="scroller">
@@ -438,37 +681,71 @@
       </thead>
       <tbody>
     <tr><td>The ~80 employers</td><td>Hand researched. Real companies with real early-career hiring.</td></tr>
-    <tr><td>Openings and links</td><td>Checked against each company's hiring system on the date in the footer. Jobs close, so recheck.</td></tr>
+    <tr><td>Openings on a card</td><td>Read by hand and checked against each company's hiring system on the date in the footer.
+      A link that system no longer recognizes is struck out at the next refresh. Jobs close, so recheck.</td></tr>
     <tr><td>Timing status</td><td>Verified on that same date.</td></tr>
-    <tr><td>Scores and explanations</td><td>Claude's judgment about you. Useful, arguable, not fact.</td></tr>
+    <tr><td>Feed rows in All openings</td><td>Read by a script from the employer's own hiring system on the date shown beside
+      the tabs. Nobody read the posting. Level and field are worked out from the title by rules, so check the
+      posting before you count on either.</td></tr>
+    <tr><td>Years with a tilde</td><td>Read from the posting text by a program, or by Claude on a web find. Either can
+      misread. Open the posting to confirm. A figure without a tilde was read by hand.</td></tr>
+    <tr><td>State job bank leads</td><td>A listing on the state job bank, not read from the employer. No employer link, and
+      long titles are cut short. Find the employer's own posting before you rely on one.</td></tr>
+    <tr><td>Web finds</td><td>A link Claude came across in that search, with Claude's own reading of what the page asks
+      for. <strong>Not opened</strong> means no page read is on record. <code>refresh.py</code> never re-checks
+      them, so one can stay listed after the job closes.</td></tr>
+    <tr><td>Scores and explanations</td><td>Claude's judgment about you. Useful, arguable, not fact. A ranking score in
+      All openings is judged from one line per job, not from the posting.</td></tr>
     <tr><td>Suggested employers</td><td>Unverified leads. Confirm each one yourself.</td></tr>
+    <tr><td>Searching deeper costs</td><td>Estimates. Those steps were tested against a scripted stand-in, not the live API.
+      The toast after a run is the real number.</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="note warn"><strong>A tailoring run does not re-check the job market.</strong> It re-scores and
-  re-explains the existing research. It cannot tell you a job closed yesterday. To actually refresh the
-  openings, run <code>refresh.py</code>, which queries every company's hiring system directly.</div>
+  re-explains the existing research. It cannot tell you a job closed yesterday. Neither can a ranking, which
+  scores the database as it stood when the feeds were last read. A web search looks for postings the
+  database lacks and does not re-check the ones it has. To actually refresh the openings, run
+  <code>python3 refresh.py</code>. It reads every feed again, re-tests every link on the board and rebuilds
+  <code>jobs.json</code>.</div>
 
-  <h2 id="privacy"><span class="num">8</span>Where your data goes</h2>
-  <p class="lede">Short version: your resume goes to Anthropic once and nowhere else, and nothing reaches this project's author.</p>
+  <h2 id="privacy"><span class="num">10</span>Where your data goes</h2>
+  <p class="lede">Short version: your resume goes to Anthropic for the run you start and nowhere else, and nothing reaches this project's author.</p>
 
   <ul>
-    <li><strong>The resume is never stored.</strong> It is read in your browser, included in one request, and
-      discarded. Only Claude's answer is kept.</li>
+    <li><strong>The resume is never stored.</strong> It is read in your browser, included in the requests of
+      the one run you start, and discarded. Only Claude's answers are kept.</li>
+    <li><strong>Searching deeper sends a brief, not the resume.</strong> Run on its own, it sends a few lines
+      built from the profile on screen: status, most recent role, skills, target, years of experience, home
+      city and summary. The name on the profile is left out. The resume goes along only when the steps follow an
+      upload in the same run.</li>
+    <li><strong>Web searches run at Anthropic.</strong> Claude's searches and page reads are carried out by
+      Anthropic's own tools, not by your browser. The profile's home city is passed to the search tool as an
+      approximate location. Claude writes the search queries itself from what it was sent, so a query can
+      name a city and a kind of work. The brief leaves the name out for that reason.</li>
     <li><strong>Your API key</strong> is stored in your browser and sent only to Anthropic. This project has no
       server that could receive it.</li>
     <li><strong>Saved profiles</strong> stay in that one browser. They do not sync, and clearing site data
       deletes them.</li>
+    <li><strong>Rankings and web finds</strong> stay in that one browser too, kept per profile, along with
+      Claude's summary of its last web search. Removing a profile removes them with it, and clearing site
+      data removes everything. In a private window the browser may offer no database, and web finds then
+      last only until the page is closed.</li>
+    <li><strong>The openings database is public data.</strong> <code>jobs.json</code> holds job postings and
+      nothing about you. The page fetches it from the site it was loaded from.</li>
     <li><strong>Each person pays their own way.</strong> Runs bill the key that was pasted in, so sharing the
       link costs you nothing.</li>
   </ul>
 
+  <p>The page itself contacts three kinds of place in all: the site it was loaded from, the public code
+  libraries a run needs, and Anthropic. Of those, only Anthropic receives anything about you.</p>
+
   <p>The tradeoff for having no server is that your key sits in your browser. Only paste it on a machine you
   trust, and remember that anyone using your computer could open the page.</p>
 
-  <h2 id="trouble"><span class="num">9</span>When something goes wrong</h2>
-  <p class="lede">Errors appear in the panel rather than the console, and each one names its own fix.</p>
+  <h2 id="trouble"><span class="num">11</span>When something goes wrong</h2>
+  <p class="lede">Errors appear on the page rather than in the console, and each one names its own fix.</p>
 
   <div class="scroller">
   <table>
@@ -477,17 +754,39 @@
       </thead>
       <tbody>
     <tr><td>Rejected that API key</td><td>The key is wrong or was revoked. Make a new one.</td></tr>
-    <tr><td>Not allowed to use this model</td><td>That account cannot reach that model. Try Sonnet 5.5.</td></tr>
+    <tr><td>Not allowed to do this (403)</td><td>The key's account is not permitted to use something the run asked for,
+      such as the model. Anthropic's own message follows and says what. Try Sonnet 5.5.</td></tr>
     <tr><td>Rate limited</td><td>Wait a minute and run it again.</td></tr>
     <tr><td>Could not reach Anthropic</td><td>Usually a VPN, an ad blocker or an offline connection.</td></tr>
     <tr><td>Ran out of output room</td><td>Thinking used the budget. Rerun at a lower effort.</td></tr>
     <tr><td>Not valid JSON</td><td>A rare bad reply. Just run it again.</td></tr>
-    <tr><td>Only returned N of 60</td><td>Claude stopped early. Run it again.</td></tr>
+    <tr><td>Only returned some companies</td><td>Claude stopped early. Run it again.</td></tr>
     <tr><td>Could not be saved</td><td>Browser storage is full. Delete an old profile.</td></tr>
     <tr><td>Nothing happens at all</td><td>Serve the folder over http rather than opening the file directly.</td></tr>
+    <tr><td>Database could not be loaded</td><td>All openings says this when the page was opened straight from disk,
+      because some browsers block a page opened that way from fetching <code>jobs.json</code>. The tab then
+      lists only the board's own openings. Serve the folder instead, with the command below. If
+      <code>jobs.json</code> is missing, run <code>python3 refresh.py</code> to build it.</td></tr>
+    <tr><td>Rejected the request (400)</td><td>When the message mentions web search, the usual cause is that your
+      organization has not switched web search on. That is done per organization, under Privacy controls in
+      the Anthropic Console. Until then, untick the web search step. Ranking still runs.</td></tr>
+    <tr><td>Web search stopped early</td><td>The toast says why: it used its search budget, reached the limit on round trips,
+      a reply was cut off, or Claude declined to continue. Everything saved up to that point is kept.</td></tr>
+    <tr><td>A job you know of is missing</td><td>Ask the refresh script, with the second command below. It says whether
+      the job was kept, listed as experienced or internal only, dropped by the title rules and why, gone, or
+      never returned by any feed, which means its employer is not a source. It reads the local database, <code>jobs.db</code>, which
+      <code>python3 refresh.py</code> builds, so run that once first.</td></tr>
       </tbody>
     </table>
   </div>
+
+  <p>To serve the folder, run this inside it, then open <code>http://localhost:8765/index.html</code>:</p>
+  <pre><code>python3 -m http.server 8765 --bind 127.0.0.1</code></pre>
+  <p>To ask why a job is missing, give the script part of its title, or its employer's name:</p>
+  <pre><code>python3 refresh.py --why "business intelligence analyst"</code></pre>
+
+  <p>A run with several steps saves each step as it finishes. If a later step fails, the message starts
+  with what was already done, and only the failed step is lost.</p>
 
   <p>If the button itself is missing or dead, the most likely cause is an extension blocking the code library
   the page loads on first use. The full technical write-up lives in the
