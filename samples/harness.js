@@ -108,10 +108,12 @@
     ok('rule: a chip that would match nothing is hidden', !emptyChipShown.length, emptyChipShown.map(c => c.textContent.trim()).join(', '));
 
     // --- new this week ---
-    const wantNew = shown.reduce((k, c) => k + c.apply.openings.filter(isNewOpening).length + (c.added === REFRESH_DATE ? 1 : 0), 0);
+    // "New" is anything added in the six days up to the latest refresh (README, "New this week").
+    const thisWeek = d => /^\d{4}-\d{2}-\d{2}$/.test(d || '') && d <= REFRESH_DATE && Math.round((new Date(REFRESH_DATE + 'T00:00:00') - new Date(d + 'T00:00:00')) / 86400000) <= 6;
+    const wantNew = shown.reduce((k, c) => k + c.apply.openings.filter(o => thisWeek(o.added) && !isClosed(o)).length + (thisWeek(c.added) ? 1 : 0), 0);
     const chipText = $('new-chip').innerText.replace(/\s+/g, ' ');
     ok('rule: the New this week count covers only shown employers', (wantNew ? chipText.includes(`(${wantNew})`) : $('new-chip').hidden), `${chipText} vs ${wantNew}`);
-    ok('rule: NEW tags render for every new opening on shown employers', document.querySelectorAll('.otag.new').length === shown.reduce((k, c) => k + c.apply.openings.filter(isNewOpening).length, 0));
+    ok('rule: NEW tags render for every new opening on shown employers', document.querySelectorAll('#grid .otag.new').length === shown.reduce((k, c) => k + c.apply.openings.filter(isNewOpening).length, 0));
 
     // --- untailored employers ---
     const hidden = COMPANIES.filter(c => c.untailored).map(c => c.name);

@@ -566,6 +566,15 @@
    "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Datafy: data employer, away from the candidate."
   },
   {
+   "name": "University of Utah",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at University of Utah: health employer, away from the candidate."
+  },
+  {
    "name": "Verkada",
    "score": 65,
    "toolsMatch": true,
@@ -702,7 +711,7 @@
   },
   {
    "name": "Wells Fargo",
-   "score": 84,
+   "score": 77,
    "toolsMatch": true,
    "status": "keep",
    "locType": "far",

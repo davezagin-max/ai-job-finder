@@ -559,6 +559,15 @@
    "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Datafy: data employer, local to the candidate."
   },
   {
+   "name": "University of Utah",
+   "score": 96,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at University of Utah: health employer, local to the candidate."
+  },
+  {
    "name": "Verkada",
    "score": 71,
    "toolsMatch": true,
@@ -695,7 +704,7 @@
   },
   {
    "name": "Wells Fargo",
-   "score": 88,
+   "score": 81,
    "toolsMatch": true,
    "status": "keep",
    "locType": "keep",

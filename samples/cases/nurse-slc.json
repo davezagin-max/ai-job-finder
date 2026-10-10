@@ -566,6 +566,15 @@
    "why": "**Synthetic fixture.** A made-up fit explanation for Kendra at Datafy: data employer, local to the candidate."
   },
   {
+   "name": "University of Utah",
+   "score": 80,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Kendra at University of Utah: health employer, local to the candidate."
+  },
+  {
    "name": "Verkada",
    "score": 60,
    "toolsMatch": false,
@@ -702,7 +711,7 @@
   },
   {
    "name": "Wells Fargo",
-   "score": 64,
+   "score": 60,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",

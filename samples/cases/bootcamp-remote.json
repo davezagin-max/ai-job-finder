@@ -559,6 +559,15 @@
    "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at Datafy: data employer, away from the candidate."
   },
   {
+   "name": "University of Utah",
+   "score": 71,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tessa at University of Utah: health employer, away from the candidate."
+  },
+  {
    "name": "Verkada",
    "score": 70,
    "toolsMatch": true,
@@ -695,7 +704,7 @@
   },
   {
    "name": "Wells Fargo",
-   "score": 80,
+   "score": 73,
    "toolsMatch": true,
    "status": "keep",
    "locType": "far",

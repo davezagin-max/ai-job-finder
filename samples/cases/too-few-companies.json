@@ -537,6 +537,15 @@
    "locType": "far",
    "note": "",
    "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Zions Bancorporation: fintech employer, away from the candidate."
+  },
+  {
+   "name": "America First Credit Union",
+   "score": 68,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at America First Credit Union: fintech employer, away from the candidate."
   }
  ],
  "suggested": [

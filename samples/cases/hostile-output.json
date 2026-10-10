@@ -559,6 +559,15 @@
    "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Datafy: data employer, local to the candidate."
   },
   {
+   "name": "University of Utah",
+   "score": 81,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at University of Utah: health employer, local to the candidate."
+  },
+  {
    "name": "Verkada",
    "score": 71,
    "toolsMatch": false,
@@ -695,7 +704,7 @@
   },
   {
    "name": "Wells Fargo",
-   "score": 84,
+   "score": 77,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",

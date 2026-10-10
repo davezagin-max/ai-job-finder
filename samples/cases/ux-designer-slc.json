@@ -559,6 +559,15 @@
    "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Datafy: data employer, local to the candidate."
   },
   {
+   "name": "University of Utah",
+   "score": 79,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at University of Utah: health employer, local to the candidate."
+  },
+  {
    "name": "Verkada",
    "score": 63,
    "toolsMatch": true,
@@ -695,7 +704,7 @@
   },
   {
    "name": "Wells Fargo",
-   "score": 64,
+   "score": 60,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",

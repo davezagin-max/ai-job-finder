@@ -27,3 +27,11 @@ venv/
 
 # macOS
 .DS_Store
+
+# The job database refresh.py builds. It is rebuilt from the feeds, so it is not committed;
+# jobs.json, the published slice the page reads, is.
+jobs.db
+jobs.db-journal
+
+# Local preview settings: machine-specific paths
+.claude/launch.json
