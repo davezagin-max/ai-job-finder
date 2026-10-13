@@ -330,6 +330,11 @@
   .feed-more:hover, .feed-more:focus-visible { border-style: solid; border-color: var(--accent-2); outline: none; }
   .openings .otag.gone { text-decoration: none; }
   .jfind { color: var(--accent-2); font-size: 12px; }
+  /* Every block ends with a plain link to its posting, pinned to the bottom so a row of blocks lines up. */
+  .jrow .jlinks { margin-top: auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .jrow .jopen { display: inline-block; padding: 7px 12px; border-radius: 9px; font-size: 12.5px; font-weight: 600; text-decoration: none;
+                 color: #fff; background: rgba(124,92,255,0.22); border: 1px solid var(--accent); }
+  .jrow .jopen:hover, .jrow .jopen:focus-visible { background: rgba(124,92,255,0.40); outline: none; }
   .jnote { color: var(--text-dim); font-size: 12.5px; padding: 10px 12px; border: 1px dashed var(--border); border-radius: 10px; }
   .jsort { background: rgba(255,255,255,0.04); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 4px 8px; font: inherit; font-size: 12px; }
   .mcheck { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text); margin: 6px 0; cursor: pointer; }
@@ -3658,7 +3663,8 @@ function jobRowHtml(j) {
     <div class="jtags">${tags}</div>
     ${applied}
     <dl class="jfacts">${facts}</dl>
-    ${why}${findIt}</div>`;
+    ${why}
+    <div class="jlinks"><a class="jopen" href="${href}" target="_blank" rel="noopener noreferrer"${j.agg ? ' title="Opens the state job bank, which asks for a free UtahID sign-in"' : ''}>${j.agg ? 'Open on the state job bank' : 'Open the job posting'} &rarr;</a>${findIt}</div></div>`;
 }
 function renderJobs() {
   const list = document.getElementById('joblist');
