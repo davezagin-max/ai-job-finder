@@ -94,7 +94,7 @@ your network, and if you track applications (below) that includes your
 ## All openings
 
 Two tabs sit above the filters. **Employers** is the board, one card per
-employer. **All openings** is one row per job, and it needs no API key.
+employer. **All openings** is one block per job, with the employer's name in bold, the title, and what the posting asks for (experience, field, dates, source). An opening you have applied to is shaded green. It needs no API key.
 
 It is one list, built from three places:
 
@@ -128,9 +128,11 @@ has saved something. The list shows 60 rows at a time.
 
 **Two kinds of posting are real but left out of the list unless you ask.** A
 posting open only to the employer's current staff appears only with the
-**Internal only** chip on. An **Experienced** title (senior, lead, architect, a
-numbered level above one) appears with that Level chip on, when you type in the
-search box, or when the profile on screen has two or more years of experience.
+**Internal only** chip on. An **Experienced** opening (a senior, lead, architect or
+numbered-level title, or any posting that asks for three or more years beyond the
+profile on screen) appears only with that Level chip on. A search does not bring
+it back. The one exception is an opening you have applied to, which stays listed
+and highlighted so you can follow it.
 Neither is an entry-level opening, so neither belongs in the default list, but
 both are published so that a real posting never looks as if the page missed it.
 
@@ -199,7 +201,7 @@ native documents, so layout and columns are read correctly.
 | Suggested employers | Up to fifteen in the candidate's own metro and field (the page keeps at most twenty), whenever the board's geography or its subject matter does not fit them |
 | Footer | Which live roles to apply to first, and what to watch for later in the season |
 | Career fair strip | Hidden by default; appears only for a University of Utah student |
-| All openings tab | Re-ordered for the new profile: by a keyword match against its skills, target and most recent role, or by Claude's scores when the ranking step ran. Experienced titles join the list for a profile with two or more years |
+| All openings tab | Re-ordered for the new profile: by a keyword match against its skills, target and most recent role, or by Claude's scores when the ranking step ran. Experienced titles join the list for a profile with two or more years, and a posting stays out while it asks for three or more years beyond the profile |
 
 ### About the suggested employers
 

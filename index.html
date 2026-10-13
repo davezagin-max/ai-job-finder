@@ -263,6 +263,7 @@
     background: rgba(255,255,255,0.03); border: 1px solid var(--border);
   }
   .openings li a { color: var(--text); font-weight: 500; }
+  .openings li.applied { background: rgba(52,211,153,0.09); border-color: rgba(52,211,153,0.50); border-left: 3px solid #34d399; }
   .openings .oyrs {
     font-size: 10px; padding: 1px 6px; border-radius: 4px; white-space: nowrap;
     color: #fca5a5; background: rgba(248,113,113,0.12); border: 1px solid rgba(248,113,113,0.35);
@@ -283,21 +284,37 @@
   .vtab:focus-visible, .jmore:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; }
   .view-tabs .vhint { color: var(--text-dim); font-size: 12px; flex: 1 1 260px; min-width: 0; }
   .view-tabs .vfind { margin-left: auto; }
-  .joblist { display: flex; flex-direction: column; gap: 8px; }
-  .jrow { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; padding: 11px 13px; border-radius: 10px;
-          background: var(--card, rgba(255,255,255,0.03)); border: 1px solid var(--border); }
+  .joblist { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 14px; align-items: stretch; }
+  .joblist > .jnote, .joblist > .jmore { grid-column: 1 / -1; }
+  .joblist > .jmore { justify-self: center; }
+  /* One block per opening, laid out like an employer card: who, what, then the facts read from the posting. */
+  .jrow { display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; border-radius: 14px; min-width: 0;
+          background: var(--card, rgba(255,255,255,0.03)); border: 1px solid var(--border); border-top: 3px solid rgba(124,92,255,0.45); }
   .jrow.web { border-style: dashed; border-color: rgba(124,92,255,0.55); }
-  .jrow .jscore { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 13px;
+  /* An opening already applied to is a different colour from top to bottom, so it reads at a glance. */
+  .jrow.applied { border-color: rgba(52,211,153,0.55); border-top-color: #34d399; background: rgba(52,211,153,0.07); }
+  .jrow .jhead { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .jrow .jco { font-size: 16px; font-weight: 800; color: #fff; line-height: 1.25; overflow-wrap: anywhere; }
+  .jrow .jloc { color: var(--text-dim); font-size: 12px; margin-top: 2px; overflow-wrap: anywhere; }
+  .jrow .jtags { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .jrow .jtags:empty { display: none; }
+  .jrow .jfacts { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0; padding: 10px 12px; border-radius: 10px;
+                  background: rgba(255,255,255,0.03); border: 1px solid var(--border); font-size: 12.5px; }
+  .jrow .jfacts dt { color: var(--text-dim); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; align-self: center; }
+  .jrow .jfacts dd { margin: 0; color: var(--text); overflow-wrap: anywhere; }
+  .jrow .jmine { padding: 8px 12px; border-radius: 10px; font-size: 12.5px; color: #a7f3d0;
+                 background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.45); }
+  .jrow .jmine strong { color: #d1fae5; }
+  .jrow .jscore { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 13px;
                   color: #fff; background: conic-gradient(var(--accent) var(--p, 0%), rgba(255,255,255,0.08) 0); position: relative; }
   .jrow .jscore span { position: relative; z-index: 1; }
   .jrow .jscore::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: #171a33; }
   .jrow .jscore.none { background: rgba(255,255,255,0.05); color: var(--text-dim); font-weight: 400; font-size: 16px; }
   .jrow .jscore.none::after { display: none; }
-  .jrow .jtitle { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 600; }
+  .jrow .jtitle { font-size: 14px; font-weight: 500; line-height: 1.35; overflow-wrap: anywhere; }
   .jrow .jtitle a { color: #fff; text-decoration: none; }
   .jrow .jtitle a:hover { text-decoration: underline; }
-  .jrow .jmeta { color: var(--text-dim); font-size: 12px; margin-top: 3px; overflow-wrap: anywhere; }
-  .jrow .jwhy { color: var(--text); font-size: 12.5px; margin-top: 5px; line-height: 1.45; }
+  .jrow .jwhy { color: var(--text); font-size: 12.5px; line-height: 1.45; }
   .jrow .otag, .jrow .oyrs { font-size: 10.5px; padding: 1px 6px; border-radius: 5px; border: 1px solid var(--border); white-space: nowrap; }
   .jrow .otag.new { color: #1a1205; background: #fbbf24; border-color: #fbbf24; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
   .jrow .otag.prog { color: #c4b5fd; background: rgba(124,92,255,0.12); border-color: rgba(124,92,255,0.40); }
@@ -312,14 +329,14 @@
     background: transparent; color: var(--accent-2); font: inherit; font-size: 12px; }
   .feed-more:hover, .feed-more:focus-visible { border-style: solid; border-color: var(--accent-2); outline: none; }
   .openings .otag.gone { text-decoration: none; }
-  .jfind { margin-left: 8px; color: var(--accent-2); font-size: 12px; white-space: nowrap; }
+  .jfind { color: var(--accent-2); font-size: 12px; }
   .jnote { color: var(--text-dim); font-size: 12.5px; padding: 10px 12px; border: 1px dashed var(--border); border-radius: 10px; }
   .jsort { background: rgba(255,255,255,0.04); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 4px 8px; font: inherit; font-size: 12px; }
   .mcheck { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text); margin: 6px 0; cursor: pointer; }
   .mcheck input { margin-top: 3px; }
   .mcheck select { margin-left: 6px; }
   .mode-row { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; }
-  @media (max-width: 640px) { .jrow { grid-template-columns: 1fr; } .jrow .jscore { display: none; } }
+  @media (max-width: 640px) { .joblist { grid-template-columns: 1fr; } }
   @media print { .view-tabs, #job-filters, .jmore, .feed-more { display: none !important; } }
   .openings .otag.new { color: #1a1205; background: #fbbf24; border-color: #fbbf24; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
   .chip.new-chip { border-color: rgba(251,191,36,0.55); color: #fcd34d; }
@@ -626,7 +643,8 @@
     .header-links { display: none; }
     .tailor-btn, .apps-btn, .profile-switch, .modal-backdrop, .toast, a[href="guide.html"] { display: none !important; }
     /* your application history stays on screen: a printed or shared copy never carries it */
-    .my-apps, .otag.applied, #mine-group { display: none !important; }
+    .my-apps, .otag.applied, .jmine, #mine-group { display: none !important; }
+    .jrow.applied, .openings li.applied { background: transparent; border-color: var(--border); }
     .search input { color: var(--text-dim); }
     .grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .card {
@@ -818,7 +836,7 @@
       <span class="chip" data-jf="level" data-value="program" title="A structured new-grad program or an explicitly new-grad requisition">New-grad programs</span>
       <span class="chip" data-jf="level" data-value="entry" title="Entry-level wording in the title: analyst, associate, junior, I">Entry-level titles</span>
       <span class="chip" data-jf="level" data-value="unleveled" title="No level word in the title. Kept in Utah only; read the posting">No level stated</span>
-      <span class="chip" data-jf="level" data-value="senior" title="Senior, lead, architect and numbered-level titles in Utah. Not entry-level: left out of the list unless this is on, you search, or the profile has two or more years of experience">Experienced</span>
+      <span class="chip" data-jf="level" data-value="senior" title="Senior, lead and architect titles, and any posting that asks for three or more years beyond this profile. Not entry-level: left out of the list, the counts and a search unless this is on">Experienced</span>
     </div>
     <div class="filter-group">
       <span class="label">Field</span>
@@ -2780,7 +2798,8 @@ function render() {
         <div><strong>${cohort(APPLY_LABEL[c.apply.status])}</strong> &middot; ${c.apply.note}</div>
       </div>
       ${(() => {
-        const all = c.apply.openings;
+        // An opening that asks for three or more years beyond this person is not listed, unless they applied to it.
+        const all = c.apply.openings.filter(o => !openingExperienced(o) || appliedTo(c, o));
         // Everything else this employer's own feed lists today that the title rules keep. The hand-read
         // openings above are the ones worth a first look; this is the rest, one click away.
         let extra = [];
@@ -2949,7 +2968,7 @@ function openingHtml(c, o) {
     PROFILE.slc && openingGeo(o) === 'relocate' ? '<span class="otag move" title="This opening is not in the Salt Lake area and is not remote">relocate</span>' : '',
     mine ? `<span class="otag applied" title="${escHtml(mine.status)}${mine.note ? ' · ' + escHtml(mine.note) : ''}">applied ${escHtml(shortDate(mine.applied))}</span>` : '',
   ].join('');
-  return `<li${isClosed(o) ? ' class="closed"' : ''}><span class="otitle"><a href="${o.url}" target="_blank" rel="noopener">${o.title}</a>${tags}</span><span class="oloc">${o.loc}</span></li>`;
+  return `<li${isClosed(o) || mine ? ` class="${[isClosed(o) ? 'closed' : '', mine ? 'applied' : ''].filter(Boolean).join(' ')}"` : ''}><span class="otitle"><a href="${o.url}" target="_blank" rel="noopener">${o.title}</a>${tags}</span><span class="oloc">${o.loc}</span></li>`;
 }
 
 // === MY APPLICATIONS ===
@@ -3490,7 +3509,7 @@ const FIELD_RULES = [
 ];
 function guessField(title) { const hit = FIELD_RULES.find(([, rx]) => rx.test(title || '')); return hit ? hit[0] : 'other'; }
 // What an employer's own feed lists beyond the openings hand-read onto its card.
-function feedExtras(name) { return allJobs().filter(j => j.card === name && !j.hand && !j.web && !j.int && !jobClosed(j) && !(j.sig === 'senior' && jobYears() < 2)); }
+function feedExtras(name) { return allJobs().filter(j => j.card === name && !j.hand && !j.web && !j.int && !jobClosed(j) && !jobExperienced(j)); }
 function openEmployerJobs(name) {
   Object.keys(jstate).forEach(k => { if (k !== 'sort' && k !== 'shown') jstate[k] = null; });
   document.querySelectorAll('#job-filters .chip[data-jf].active').forEach(ch => ch.classList.remove('active'));
@@ -3520,6 +3539,14 @@ const jobDegree = j => j.degHand || (j.deg === 'MS/PhD' ? 'an MS or PhD' : j.deg
 const jobWeak = j => jobSwe(j) || !!jobDegree(j);
 // A senior, lead or architect title with no number read from its posting is taken to ask for four years.
 const jobGap = j => (typeof j.yrs === 'number' ? j.yrs : j.sig === 'senior' ? 4 : 0) - jobYears();
+// Not an entry-level opening for this person: an experienced title, or a posting that asks for three or
+// more years beyond what they have. These stay out of the list, the counts and a search.
+const REACH_YEARS = 3;
+const jobExperienced = j => (j.sig === 'senior' && jobYears() < 2) || jobGap(j) >= REACH_YEARS;
+// The same rule for an opening hand-read onto a card. render() first runs before the profile exists.
+function openingExperienced(o) {
+  try { return typeof o.yrs === 'number' && o.yrs - jobYears() >= REACH_YEARS; } catch (e) { return typeof o.yrs === 'number' && o.yrs >= 3; }
+}
 function jobApplied(j) {
   return APPS.find(a => sameCompany(a.company, j.card || j.co) && titleOverlap(a.title, j.title) >= 0.8 &&
     (!a.location || !j.loc || [...placeWords(a.location)].some(w => placeWords(j.loc).has(w)) ||
@@ -3569,19 +3596,20 @@ function rankedScore(j) {
 
 // --- filtering and drawing ---
 // What is in the list before any filter. Two kinds of posting are real but not for most readers, so
-// each sits behind its own chip: ones open to current employees only, and experienced-level titles,
-// which appear on their own for a profile with two or more years, or when the reader searches.
+// each sits behind its own chip: ones open to current employees only, and experienced openings (a
+// senior title, or three or more years beyond this person), which a search does not bring back either.
+// An opening already applied to always stays, so its outcome can be followed.
 function jobVisible(j, q) {
   if (jobClosed(j)) return false;
   if (j.int ? !jstate.internal : !!jstate.internal) return false;
-  if (j.sig === 'senior' && jstate.level !== 'senior' && !q && !jstate.internal && jobYears() < 2) return false;
+  if (jstate.level === 'senior' ? !jobExperienced(j) : (jobExperienced(j) && !jstate.internal && !jobApplied(j))) return false;
   return true;
 }
 function jobPasses(j, q) {
   if (!jobVisible(j, q)) return false;
   if (jstate.co && j.card !== jstate.co) return false;
   if (jstate.where && j.geo !== jstate.where) return false;
-  if (jstate.level && j.sig !== jstate.level) return false;
+  if (jstate.level && jstate.level !== 'senior' && j.sig !== jstate.level) return false;
   if (jstate.field && j.field !== jstate.field) return false;
   if (jstate.source && jobSource(j) !== jstate.source) return false;
   if (jstate.fresh && !isNewJob(j)) return false;
@@ -3599,28 +3627,38 @@ function jobRowHtml(j) {
     isNewJob(j) ? `<span class="otag new" title="${j.posted ? 'Posted ' + escHtml(shortDate(j.posted)) : 'First seen on this employer&apos;s feed ' + escHtml(shortDate(j.seen || j.added))}">new</span>` : '',
     j.sig === 'program' ? '<span class="otag prog" title="A structured new-grad program or an explicitly new-grad requisition">new-grad program</span>' : '',
     closesTag({ closes: j.closes }),
-    typeof j.yrs === 'number' && j.yrs >= 2 ? `<span class="oyrs" title="${j.hand ? 'The posting asks for this many years, read by hand' : 'Read automatically from the posting text, so open the posting to confirm'}">${j.hand ? '' : '~'}${j.yrs}+ yrs</span>` : '',
     jobSwe(j) ? '<span class="otag weak" title="A software-engineering ladder, judged against computer-science graduates">leans SWE</span>' : '',
     deg ? `<span class="otag weak" title="The posting&apos;s own degree bar">wants ${escHtml(deg)}</span>` : '',
-    j.sig === 'unleveled' ? '<span class="otag src" title="No level word in the title, so the posting may ask for experience">level not stated</span>' : '',
-    j.sig === 'senior' ? '<span class="otag src" title="A senior, lead, architect or numbered-level title: not an entry-level opening">experienced</span>' : '',
+    jobExperienced(j) ? '<span class="otag weak" title="A senior, lead or architect title, or a posting that asks for three or more years beyond this profile: not an entry-level opening">experienced</span>' : '',
     j.int ? '<span class="otag weak" title="The posting says it is open only to people who already work for this employer">internal applicants only</span>' : '',
-    mine ? `<span class="otag applied" title="${escHtml(mine.status)}">applied ${escHtml(shortDate(mine.applied))}</span>` : '',
     j.web ? `<span class="otag webtag" title="${j.read ? 'Claude opened this posting' : 'Claude found this link but no page read is on record'}${j.foundAt ? ' on ' + escHtml(shortDate(j.foundAt)) : ''}. Not checked by refresh.py.">found on the web${j.read ? '' : ' · not opened'}</span>` : '',
     j.card && VIEW === 'jobs' ? '<span class="otag src" title="This employer has a hand-researched card on the board">on the board</span>' : '',
     j.agg ? '<span class="otag src" title="A lead from Utah&apos;s state job bank (jobs.utah.gov), not read from the employer. Its link opens the job bank, which asks for a free UtahID sign-in.">state job bank lead</span>' : '',
   ].join('');
   // A job bank row has no link to the employer, so offer the shortest way to one.
-  const findIt = j.agg ? ` <a class="jfind" href="https://www.google.com/search?q=${encodeURIComponent(`"${String(j.title).replace(/\u2026$/, '')}" ${j.co} careers`)}" target="_blank" rel="noopener noreferrer" title="Search the web for this job on the employer&apos;s own site">find the employer&apos;s posting &rarr;</a>` : '';
-  const meta = [escHtml(j.co), escHtml(j.loc || (j.geo === 'remote' ? 'Remote' : '')), escHtml(FIELD_LABEL[j.field] || ''), when && !isNewJob(j) ? 'posted ' + escHtml(shortDate(when)) : '']
-    .filter(Boolean).join(' &middot; ');
+  const findIt = j.agg ? `<a class="jfind" href="https://www.google.com/search?q=${encodeURIComponent(`"${String(j.title).replace(/\u2026$/, '')}" ${j.co} careers`)}" target="_blank" rel="noopener noreferrer" title="Search the web for this job on the employer&apos;s own site">find the employer&apos;s posting &rarr;</a>` : '';
+  // What the posting asks for, in words: a number where one was read, the title's level where not.
+  const years = typeof j.yrs === 'number'
+    ? `<span${j.yrs >= 2 ? ' class="oyrs"' : ''} title="${j.hand ? 'Read from the posting by hand' : 'Read automatically from the posting text, so open the posting to confirm'}">${j.yrs === 0 ? 'None asked for' : `${j.hand ? '' : 'about '}${j.yrs}+ year${j.yrs === 1 ? '' : 's'}`}</span>`
+    : j.sig === 'program' ? 'New graduates' : j.sig === 'entry' ? 'Entry-level title, years not stated' : j.sig === 'senior' ? 'Experienced title' : 'Not stated, so read the posting';
+  const closes = j.closes && /^\d{4}-\d{2}-\d{2}$/.test(j.closes) ? escHtml(shortDate(j.closes)) : '';
+  const source = j.web ? 'Found on the web by Claude' : j.agg ? 'Utah state job bank' : j.hand ? 'Read by hand for the board' : 'The employer&apos;s own job feed';
+  const facts = [['Experience', years], ['Field', escHtml(FIELD_LABEL[j.field] || '')], [j.posted ? 'Posted' : 'First seen', when ? escHtml(shortDate(when)) : ''], ['Closes', closes], ['Source', source]]
+    .filter(f => f[1]).map(f => `<dt>${f[0]}</dt><dd>${f[1]}</dd>`).join('');
+  const applied = mine ? `<div class="jmine">&#x2713; <strong>You applied${mine.applied ? ' ' + escHtml(shortDate(mine.applied)) : ''}</strong><span class="st ${escHtml(mine.status)}">${escHtml(mine.status)}</span>${mine.note ? ' ' + escHtml(mine.note) : ''}</div>` : '';
   const why = r && r.why ? `<div class="jwhy">${escHtml(r.why)}${gap >= 2 && r.s <= 80 ? ' <em>Capped: the posting asks for more experience.</em>' : ''}</div>`
     : j.web && j.evidence ? `<div class="jwhy">${escHtml(j.evidence)}</div>` : '';
   const href = /^https?:\/\//i.test(j.url) ? escHtml(j.url) : '#';
-  return `<div class="jrow${j.web ? ' web' : ''}">
-    <div class="jscore${r ? '' : ' none'}"${r ? ` style="--p:${r.s}%" title="Claude's fit score for this resume"` : ' title="Not scored yet. Use Search deeper to have Claude rank the database for this resume."'}><span>${r ? r.s : '&middot;'}</span></div>
-    <div><div class="jtitle"><a href="${href}" target="_blank" rel="noopener noreferrer">${escHtml(j.title)}</a>${tags}</div>
-    <div class="jmeta">${meta}${findIt}</div>${why}</div></div>`;
+  return `<div class="jrow${j.web ? ' web' : ''}${mine ? ' applied' : ''}">
+    <div class="jhead">
+      <div><div class="jco">${escHtml(j.co)}</div><div class="jloc">${escHtml(j.loc || (j.geo === 'remote' ? 'Remote' : ''))}</div></div>
+      <div class="jscore${r ? '' : ' none'}"${r ? ` style="--p:${r.s}%" title="Claude's fit score for this resume"` : ' title="Not scored yet. Use Search deeper to have Claude rank the database for this resume."'}><span>${r ? r.s : '&middot;'}</span></div>
+    </div>
+    <div class="jtitle"><a href="${href}" target="_blank" rel="noopener noreferrer">${escHtml(j.title)}</a></div>
+    <div class="jtags">${tags}</div>
+    ${applied}
+    <dl class="jfacts">${facts}</dl>
+    ${why}${findIt}</div>`;
 }
 function renderJobs() {
   const list = document.getElementById('joblist');
@@ -3658,13 +3696,13 @@ function renderJobs() {
 }
 function syncJobChrome() {
   const live = allJobs().filter(j => !jobClosed(j));
-  const listed = live.filter(j => !j.int && !(j.sig === 'senior' && jobYears() < 2)).length;
+  const listed = live.filter(j => !j.int && !(jobExperienced(j) && !jobApplied(j))).length;
   document.getElementById('tab-jobs-n').textContent = listed ? listed.toLocaleString() : '';
   const intChip = document.getElementById('jint-chip');
   intChip.hidden = !live.some(j => j.int);
   if (intChip.hidden && jstate.internal) { jstate.internal = null; intChip.classList.remove('active'); }
   document.getElementById('tab-employers-n').textContent = String(COMPANIES.filter(c => !c.untailored).length + SUGGESTED.length);
-  const n = live.filter(j => isNewJob(j) && !j.int && !(j.sig === 'senior' && jobYears() < 2)).length;
+  const n = live.filter(j => isNewJob(j) && !j.int && !jobExperienced(j)).length;
   document.getElementById('jnew-count').textContent = n ? `(${n})` : '';
   document.getElementById('jnew-chip').hidden = !n;
   if (!n && jstate.fresh) { jstate.fresh = null; document.getElementById('jnew-chip').classList.remove('active'); }
@@ -3679,7 +3717,8 @@ function syncJobChrome() {
   if (!FOUND.length && jstate.source === 'web') { jstate.source = null; webChip.classList.remove('active'); }
   document.querySelectorAll('#job-filters .chip[data-jf="field"], #job-filters .chip[data-jf="where"], #job-filters .chip[data-jf="level"]').forEach(ch => {
     const f = ch.dataset.jf, v = ch.dataset.value;
-    const has = live.some(j => (f === 'field' ? j.field : f === 'where' ? j.geo : j.sig) === v);
+    const has = f === 'level' && v === 'senior' ? live.some(j => !j.int && jobExperienced(j))
+      : live.some(j => !j.int && !jobExperienced(j) && (f === 'field' ? j.field : f === 'where' ? j.geo : j.sig) === v);
     ch.hidden = !has;
     if (!has && jstate[f] === v) { jstate[f] = null; ch.classList.remove('active'); }
   });
@@ -3796,7 +3835,7 @@ const loadJobs = () => fetch('jobs.json', { cache: 'no-cache' }).then(r => (r.ok
 loadJobs();
 loadFound();
 try { if (localStorage.getItem(VIEW_KEY) === 'jobs') VIEW = 'jobs'; } catch (e) {}
-window.JobFinderJobs = { all: allJobs, key: jobKey, isNew: isNewJob, score: heuristicScore, ranked: rankedScore, setView, state: jstate, refresh: refreshJobs,
+window.JobFinderJobs = { all: allJobs, experienced: jobExperienced, applied: jobApplied, key: jobKey, isNew: isNewJob, score: heuristicScore, ranked: rankedScore, setView, state: jstate, refresh: refreshJobs,
   found: () => FOUND.slice(), FoundDB, loadFound, saveRank, guessField, feedExtras, openEmployer: openEmployerJobs,
   passes: jobPasses, closed: jobClosed, source: jobSource, setData: useJobs, reload: loadJobs, data: () => JOBS };
 
@@ -4521,8 +4560,8 @@ Leave out openings that do not fit rather than padding the list. Use only ids fr
   };
   // The list is sent in a fixed order (by key), so the cached copy survives a second run on the same day.
   function jobsForPrompt() {
-    // the same openings the list shows this person: no internal-only postings, and experienced titles only for someone with the years
-    const live = allJobs().filter(j => !jobClosed(j) && !j.web && !j.int && !(j.sig === 'senior' && (jobYears() < 2 || jobGap(j) >= 2)));
+    // the same openings the list shows this person: no internal-only postings, and nothing experienced
+    const live = allJobs().filter(j => !jobClosed(j) && !j.web && !j.int && !jobExperienced(j) && !(j.sig === 'senior' && jobGap(j) >= 2));
     const top = live.length > RANK_MAX ? live.map(j => ({ j, h: heuristicScore(j) })).sort((a, b) => b.h - a.h).slice(0, RANK_MAX).map(x => x.j) : live;
     return top.slice().sort((a, b) => (a.key < b.key ? -1 : a.key > b.key ? 1 : 0));
   }

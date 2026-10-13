@@ -693,24 +693,27 @@ them.
   and the list then shows nothing else. They are real postings, but an outside
   applicant cannot apply to them.
 - **Experienced titles** (senior, lead, architect and numbered levels above one,
-  in Utah) are listed when the Experienced chip is on, when you type in the
-  search box, or when the profile on screen has two or more years of experience.
+  in Utah), and any posting that asks for three or more years beyond the profile
+  on screen (`jobExperienced()`), are listed only when the Experienced chip is on.
+  A search does not bring them back, and they are not counted or sent to Claude.
+  An opening the reader has applied to is the exception: it stays, shaded green.
   They are not entry-level, so a new graduate's list is clearer without them.
 
 The count on the tab leaves the last two out in the same way.
 
-### Tags on each row
+### Tags and facts on each block
+
+Each opening is one block: the employer's name in bold, the place, the title, its tags, then a short table of facts (Experience, Field, Posted or First seen, Closes, Source). A block you have applied to is shaded green and says when you applied and how it stands.
 
 | Tag | Shown when |
 | --- | --- |
 | new | See How "new" is measured, below |
 | new-grad program | The row is a structured new-grad program or an explicitly new-grad requisition |
 | closes Sep 25 | The posting gives a closing date. Red at 7 days or less |
-| ~N+ yrs | The posting asks for 2 or more years. The tilde means the number was not read by hand: `refresh.py` read it from the posting text, or Claude reported it for a web find. Open the posting to confirm. No tilde means it was read by hand for the board |
+| Experience (a fact, not a tag) | The years the posting asks for, in red at 2 or more. "about" means the number was not read by hand: `refresh.py` read it from the posting text, or Claude reported it for a web find. Open the posting to confirm. Where no number was read it says what the title implies: new graduates, an entry-level title, or not stated |
 | leans SWE | The title is a software-engineering ladder |
 | wants a technical major | The posting's own degree bar. It reads "wants an MS or PhD" where that is the bar. An opening hand-read onto a card keeps the wording recorded for it there, and a web find shows the requirement Claude reported |
-| level not stated | No level word in the title, so the posting may ask for experience |
-| experienced | A senior, lead, architect or numbered-level title |
+| experienced | A senior, lead, architect or numbered-level title, or a posting that asks for three or more years beyond the profile |
 | internal applicants only | The posting is open only to people who already work there |
 | applied | It matches something in My applications |
 | found on the web | Claude saved it in a web search. "not opened" is added when no page read is on record for the link |

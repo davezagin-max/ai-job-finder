@@ -118,19 +118,22 @@
     ok('new', 'a posting past its closing date is closed, never new', J().closed(find(7)) && !J().isNew(find(7)));
     const st = J().state, count = set => { Object.keys(st).forEach(x => { if (x !== 'sort' && x !== 'shown') st[x] = null; }); Object.assign(st, set); return all().filter(j => J().passes(j, '')).length; };
     const live = count({});
-    ok('filter', 'closed postings never pass', live === all().filter(j => !J().closed(j) && !j.int && j.sig !== 'senior').length && !J().passes(find(7), ''));
-    ok('filter', 'Where narrows to remote', count({ where: 'remote' }) === all().filter(j => !J().closed(j) && j.geo === 'remote').length && count({ where: 'remote' }) >= 3);
-    ok('filter', 'Level narrows to new-grad programs', all().filter(j => J().passes(j, '')).length >= 0 && count({ level: 'program' }) === all().filter(j => !J().closed(j) && j.sig === 'program').length);
+    // an experienced opening is listed only where the person running this has applied to it
+    const out = j => J().experienced(j) && !J().applied(j);
+    ok('filter', 'closed postings never pass', live === all().filter(j => !J().closed(j) && !j.int && !out(j)).length && !J().passes(find(7), ''));
+    ok('filter', 'Where narrows to remote', count({ where: 'remote' }) === all().filter(j => !J().closed(j) && !out(j) && j.geo === 'remote').length && count({ where: 'remote' }) >= 2);
+    ok('filter', 'Level narrows to new-grad programs', all().filter(j => J().passes(j, '')).length >= 0 && count({ level: 'program' }) === all().filter(j => !J().closed(j) && !out(j) && j.sig === 'program').length);
     ok('filter', 'Field narrows to one field', count({ field: 'research' }) === 1);
-    ok('filter', 'Source separates feed-only employers from the board\'s', count({ source: 'feed' }) === 8 && count({ source: 'bank' }) === 1 && count({ source: 'board' }) === live - 9, `${count({ source: 'feed' })} feed, ${count({ source: 'bank' })} bank, ${live} live`);
-    ok('filter', 'Out of reach hides a posting two or more years beyond the candidate', count({ reach: 'on' }) < live && (() => { count({ reach: 'on' }); return !J().passes(find(5), '') && !J().passes(find(9), '') && J().passes(find(6), ''); })());
+    ok('filter', 'Source separates feed-only employers from the board\'s', count({ source: 'feed' }) === 7 && count({ source: 'bank' }) === 1 && count({ source: 'board' }) === live - 8, `${count({ source: 'feed' })} feed, ${count({ source: 'bank' })} bank, ${live} live`);
+    ok('filter', 'Out of reach hides a posting two or more years beyond the candidate', count({ reach: 'on' }) < live && (() => { count({ reach: 'on' }); return !J().passes(find(9), '') && J().passes(find(6), ''); })());
+    ok('filter', 'a posting three or more years beyond the candidate is not listed at all', (() => { count({}); return J().experienced(find(5)) && !J().passes(find(5), '') && J().passes(find(9), ''); })());
     ok('filter', 'Weak fits hides software ladders and degree bars', (() => { count({ hideWeak: 'on' }); return !J().passes(find(8), '') && !J().passes(find(9), '') && J().passes(find(1), ''); })());
     ok('filter', 'New this week keeps only new postings', (() => { count({ fresh: 'on' }); return J().passes(find(1), '') && !J().passes(find(2), ''); })());
     ok('filter', 'the search box matches title, employer and place', (() => { count({}); return J().passes(find(8), 'boise') && J().passes(find(8), 'wasatch ledger') && !J().passes(find(8), 'zzzz'); })());
     // ---------- postings that are real but not for most readers ----------
     ok('classes', 'experienced-level titles and internal-only postings are left out of the default list', (() => { count({}); return !J().passes(find(10), '') && !J().passes(find(11), ''); })());
-    ok('classes', 'the Experienced chip lists experienced titles alone', (() => { const n = count({ level: 'senior' }); return n === 1 && J().passes(find(10), ''); })());
-    ok('classes', 'a search reaches experienced titles too', (() => { count({}); return J().passes(find(10), 'architect') && !J().passes(find(11), 'reporting'); })());
+    ok('classes', 'the Experienced chip lists experienced openings alone: senior titles and postings three or more years away', (() => { const n = count({ level: 'senior' }); return n === all().filter(j => !J().closed(j) && !j.int && J().experienced(j)).length && J().passes(find(10), '') && J().passes(find(5), '') && !J().passes(find(1), ''); })());
+    ok('classes', 'a search does not bring experienced or internal-only postings back', (() => { count({}); return !J().passes(find(10), 'architect') && !J().passes(find(5), 'fixture analyst 5') && !J().passes(find(11), 'reporting'); })());
     ok('classes', 'the Internal only chip lists those postings and nothing else', (() => { const n = count({ internal: 'on' }); return n === 1 && J().passes(find(11), '') && !J().passes(find(1), ''); })());
     ok('classes', 'an experienced title with no years stated counts as four years away', (() => { count({ level: 'senior', reach: 'on' }); return !J().passes(find(10), ''); })());
     count({});
@@ -162,28 +165,28 @@
     const btn2 = Array.from(document.querySelectorAll('#grid .feed-more')).find(b => b.dataset.co === c0.name);
     if (btn2) btn2.click(); await sleep(80);
     const shownCount = parseInt(($('results-count').textContent.match(/^([\d,]+) of/) || [])[1] || '-1', 10);
-    const wantCo = all().filter(j => j.card === c0.name && !J().closed(j)).length;
+    const wantCo = all().filter(j => j.card === c0.name && !J().closed(j) && !out(j)).length;
     ok('cards', 'clicking it opens All openings on that employer alone', J().state.co === c0.name && !$('joblist').hidden && shownCount === wantCo && !$('jco-chip').hidden, `${shownCount} shown, want ${wantCo}`);
     $('jco-chip').click(); await sleep(40);
     ok('cards', 'the employer chip clears the filter', J().state.co === null && $('jco-chip').hidden);
 
     // ---------- Claude's ranking is checked like everything else it returns ----------
     const list = T().jobsForPrompt();
-    ok('rank', 'the list sent to Claude is every listed opening, closed ones left out, in a fixed order', list.length === all().filter(j => !J().closed(j) && !j.web && !j.int && j.sig !== 'senior').length && list.every((j, i) => i === 0 || list[i - 1].key <= j.key));
+    ok('rank', 'the list sent to Claude is every listed opening, closed ones left out, in a fixed order', list.length === all().filter(j => !J().closed(j) && !j.web && !j.int && !J().experienced(j)).length && list.every((j, i) => i === 0 || list[i - 1].key <= j.key));
     const brief = T().candidateBrief(null);
     const rp = T().buildRankParams('claude-sonnet-5-5', 'high', brief, null, list);
     ok('rank', 'the request asks for structured output with adaptive thinking and caches the list', rp.model === 'claude-sonnet-5-5' && rp.thinking.type === 'adaptive' && rp.output_config.effort === 'high' && rp.output_config.format.type === 'json_schema' && rp.system[1].cache_control && !('temperature' in rp) && !('tool_choice' in rp));
-    ok('rank', 'each opening is one JSON line carrying what the judgement needs', rp.system[1].text.split('\n').length === list.length + 1 && /"lvl":"program"/.test(rp.system[1].text) && /"yrs":3/.test(rp.system[1].text));
-    const i5 = list.findIndex(j => j.url === find(5).url), i9 = list.findIndex(j => j.url === find(9).url), i1 = list.findIndex(j => j.url === find(1).url);
+    ok('rank', 'each opening is one JSON line carrying what the judgement needs', rp.system[1].text.split('\n').length === list.length + 1 && /"lvl":"program"/.test(rp.system[1].text) && /"yrs":2/.test(rp.system[1].text) && !/"yrs":3/.test(rp.system[1].text));
+    const i5 = list.findIndex(j => j.url === find(6).url), i9 = list.findIndex(j => j.url === find(9).url), i1 = list.findIndex(j => j.url === find(1).url);
     const items = T().applyRank({ ranked: [{ id: i5, score: 150, why: 'x'.repeat(400) }, { id: i5, score: 61, why: 'duplicate' }, { id: 9999, score: 90, why: 'no such id' },
       { id: 1.5, score: 90, why: 'not an integer' }, { id: i9, score: 97, why: 'two short' }, { id: i1, score: 12, why: 'low' }, null, 'junk'] }, list);
-    ok('rank', 'unknown ids, repeats and junk are dropped; scores are clamped to 60-100 and text is capped', Object.keys(items).length === 3 && items[find(5).key].s === 100 && items[find(5).key].why.length === 300 && items[find(1).key].s === 60, JSON.stringify(Object.keys(items)));
+    ok('rank', 'unknown ids, repeats and junk are dropped; scores are clamped to 60-100 and text is capped', Object.keys(items).length === 3 && items[find(6).key].s === 100 && items[find(6).key].why.length === 300 && !list.includes(find(5)) && items[find(1).key].s === 60, JSON.stringify(Object.keys(items)));
     ok('rank', 'a reply that is not a ranking yields nothing rather than an error', Object.keys(T().applyRank(null, list)).length === 0 && Object.keys(T().applyRank({ ranked: 'no' }, list)).length === 0);
     J().saveRank('default', items, { date: DAY }); J().refresh(); await sleep(40);
-    ok('rank', 'the seniority ceiling applies to a single job: three years short tops out at 70, two at 80', J().ranked(find(5)).s === 70 && J().ranked(find(9)).s === 80 && J().ranked(find(1)).s === 60, JSON.stringify([J().ranked(find(5)), J().ranked(find(9))]));
+    ok('rank', 'the seniority ceiling applies to a single job: two years short tops out at 80', J().ranked(find(6)).s === 100 && J().ranked(find(9)).s === 80 && J().ranked(find(1)).s === 60, JSON.stringify([J().ranked(find(6)), J().ranked(find(9))]));
     J().setView('jobs', false); await sleep(60);
     const firstRow = document.querySelector('#joblist .jrow .jtitle a');
-    ok('rank', 'ranked openings sort above unranked ones', firstRow && [find(9).url, find(5).url].includes(firstRow.getAttribute('href')), firstRow && firstRow.getAttribute('href'));
+    ok('rank', 'ranked openings sort above unranked ones', firstRow && [find(9).url, find(6).url].includes(firstRow.getAttribute('href')), firstRow && firstRow.getAttribute('href'));
 
     // ---------- the web search request ----------
     const D = T().DEPTHS;
