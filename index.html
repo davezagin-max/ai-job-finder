@@ -827,6 +827,7 @@
       <span class="label">Show</span>
       <span class="chip new-chip" data-jf="fresh" data-value="on" id="jnew-chip" title="Posted, or first seen on its employer's feed, in the seven days before the database was last refreshed">&#x2728; New this week <span class="new-count" id="jnew-count"></span></span>
       <span class="chip" data-jf="soon" data-value="on" title="The posting's own closing date is within 14 days">Closing soon</span>
+      <span class="chip" data-jf="unchecked" data-value="on" id="junc-chip" title="Openings whose posting text could not be read, so the experience they ask for is not checked: state job bank leads and a few hiring systems that publish titles only. Left out of the list unless this is on." hidden>Experience not checked <span class="new-count" id="junc-count"></span></span>
       <span class="chip" data-jf="internal" data-value="on" id="jint-chip" title="Postings open only to people who already work for the employer. Left out of the list unless this is on." hidden>Internal only</span>
       <span class="chip active" id="jco-chip" title="Showing one employer. Click to show every employer again." hidden></span>
     </div>
@@ -860,7 +861,7 @@
       <span class="label">Source</span>
       <span class="chip" data-jf="source" data-value="board" title="Employers that have a hand-researched card on the board">On the board</span>
       <span class="chip" data-jf="source" data-value="feed" title="Read from an employer's own job feed; the employer has no card on the board">Feeds only</span>
-      <span class="chip" data-jf="source" data-value="bank" title="Leads from Utah's state job bank (jobs.utah.gov), at employers whose own job sites are not read. The job bank asks for a free UtahID sign-in to show a posting, so each row also has a search link for the employer's own posting.">State job bank</span>
+      <span class="chip" data-jf="source" data-value="bank" title="Leads from Utah's state job bank (jobs.utah.gov), at employers whose own job sites are not read. Nobody has read these postings, so the experience they ask for is not checked. The job bank asks for a free UtahID sign-in to show a posting, so each one also has a search link for the employer's own posting.">State job bank</span>
       <span class="chip" data-jf="source" data-value="web" title="Found by Claude on the web for the profile shown, and saved in this browser">Found on the web</span>
     </div>
     <div class="filter-group">
@@ -2789,7 +2790,7 @@ function render() {
       <div class="card-head">
         <div>
           <h3>${c.suggested ? escHtml(c.name) : c.name}</h3>
-          <div class="location">${c.suggested ? escHtml(c.location) : c.location}</div>
+          <div class="location">${shownPlace(c.suggested ? escHtml(c.location) : c.location)}</div>
         </div>
         <div class="score" style="--p: ${shownScore(c)}%" title="${PROFILE.uofu && c.alumni ? 'Includes +' + ALUMNI_BONUS[c.alumni] + ' for a verified University of Utah hiring pipeline' : 'Resume-alignment score'}"><span>${shownScore(c)}</span></div>
       </div>
@@ -2899,10 +2900,14 @@ const PROGRAM_RE = /new[ -]?grad|new college grad|\bgraduate\b|early[- ]career|e
 const NOT_PROGRAM_RE = /\binterns?(?:hip)?\b|\bco-?op\b|\bsenior\b|\bmanager\b|\bdirector\b/i;
 // The entry rung of product management carries the word "manager" (kept in step with refresh.py).
 const ENTRY_MANAGER_RE = /\b(?:associate|junior|jr\.?)\s+(?:product|program|project)\s+manager\b|\bAPM\b/gi;
+// A job that can be done remotely is remote, whatever offices its posting also lists, and its place
+// reads "Remote" and nothing else.
+function saysRemote(loc) { return /\bremote\b|\bwfh\b|work(?:ing)? (?:from|at) home|work from anywhere|\boffsite\b/i.test(String(loc || '')); }
+function shownPlace(loc) { return saysRemote(loc) ? 'Remote' : loc; }
 function openingGeo(o) {
   if (o.geo) return o.geo;
   const l = o.loc || '';
-  return HOME_RE.test(l) ? 'home' : /\bremote\b/i.test(l) ? 'remote' : 'relocate';
+  return saysRemote(l) ? 'remote' : HOME_RE.test(l) ? 'home' : 'relocate';
 }
 const isProgram = o => {
   if (o.program === true || o.program === false) return o.program;
@@ -2973,7 +2978,7 @@ function openingHtml(c, o) {
     PROFILE.slc && openingGeo(o) === 'relocate' ? '<span class="otag move" title="This opening is not in the Salt Lake area and is not remote">relocate</span>' : '',
     mine ? `<span class="otag applied" title="${escHtml(mine.status)}${mine.note ? ' · ' + escHtml(mine.note) : ''}">applied ${escHtml(shortDate(mine.applied))}</span>` : '',
   ].join('');
-  return `<li${isClosed(o) || mine ? ` class="${[isClosed(o) ? 'closed' : '', mine ? 'applied' : ''].filter(Boolean).join(' ')}"` : ''}><span class="otitle"><a href="${o.url}" target="_blank" rel="noopener">${o.title}</a>${tags}</span><span class="oloc">${o.loc}</span></li>`;
+  return `<li${isClosed(o) || mine ? ` class="${[isClosed(o) ? 'closed' : '', mine ? 'applied' : ''].filter(Boolean).join(' ')}"` : ''}><span class="otitle"><a href="${o.url}" target="_blank" rel="noopener">${o.title}</a>${tags}</span><span class="oloc">${shownPlace(o.loc)}</span></li>`;
 }
 
 // === MY APPLICATIONS ===
@@ -3464,6 +3469,7 @@ function allJobs() {
     // (a second source such as "Wells Fargo (Utah)", or a reader in readers/).
     const row = Object.assign({ key: jobKey(j.url) }, j), card = cardName(j.card) || (j.agg ? null : cardName(j.co));
     if (card) row.card = card; else delete row.card;
+    if (saysRemote(row.loc)) row.geo = 'remote';
     map.set(row.key, row);
   });
   // The board's own openings were read by hand, so where one is also in the feed the hand-read facts win.
@@ -3514,7 +3520,7 @@ const FIELD_RULES = [
 ];
 function guessField(title) { const hit = FIELD_RULES.find(([, rx]) => rx.test(title || '')); return hit ? hit[0] : 'other'; }
 // What an employer's own feed lists beyond the openings hand-read onto its card.
-function feedExtras(name) { return allJobs().filter(j => j.card === name && !j.hand && !j.web && !j.int && !jobClosed(j) && !jobExperienced(j)); }
+function feedExtras(name) { return allJobs().filter(j => j.card === name && !j.hand && !j.web && !j.int && !jobClosed(j) && !jobExperienced(j) && !jobUnchecked(j)); }
 function openEmployerJobs(name) {
   Object.keys(jstate).forEach(k => { if (k !== 'sort' && k !== 'shown') jstate[k] = null; });
   document.querySelectorAll('#job-filters .chip[data-jf].active').forEach(ch => ch.classList.remove('active'));
@@ -3543,11 +3549,19 @@ const jobSwe = j => (j.sweHand === true || j.sweHand === false) ? j.sweHand : (!
 const jobDegree = j => j.degHand || (j.deg === 'MS/PhD' ? 'an MS or PhD' : j.deg === 'technical majors' ? 'a technical major' : '');
 const jobWeak = j => jobSwe(j) || !!jobDegree(j);
 // A senior, lead or architect title with no number read from its posting is taken to ask for four years.
-const jobGap = j => (typeof j.yrs === 'number' ? j.yrs : j.sig === 'senior' ? 4 : 0) - jobYears();
+// The years a posting asks for: the number it requires, or failing that the number it says it prefers.
+// A posting that would like five years is not an entry-level opening, whatever word it puts beside the number.
+const jobAsks = j => (typeof j.yrs === 'number' ? j.yrs : typeof j.pref === 'number' ? j.pref : null);
+const jobGap = j => (jobAsks(j) !== null ? jobAsks(j) : j.sig === 'senior' ? 4 : 0) - jobYears();
 // Not an entry-level opening for this person: an experienced title, or a posting that asks for three or
 // more years beyond what they have. These stay out of the list, the counts and a search.
 const REACH_YEARS = 3;
 const jobExperienced = j => (j.sig === 'senior' && jobYears() < 2) || jobGap(j) >= REACH_YEARS;
+// Nobody has read what experience this posting asks for: its feed gives a title and a place but no
+// posting text (a state job bank lead, and a few hiring systems). It is listed only when the reader asks
+// for unchecked openings. A new-grad program is entry-level by definition; the board's own openings were
+// read by hand; a web find was read by Claude.
+const jobUnchecked = j => !j.txt && !j.hand && !j.web && j.sig !== 'program' && jobAsks(j) === null;
 // The same rule for an opening hand-read onto a card. render() first runs before the profile exists.
 function openingExperienced(o) {
   try { return typeof o.yrs === 'number' && o.yrs - jobYears() >= REACH_YEARS; } catch (e) { return typeof o.yrs === 'number' && o.yrs >= 3; }
@@ -3608,6 +3622,7 @@ function jobVisible(j, q) {
   if (jobClosed(j)) return false;
   if (j.int ? !jstate.internal : !!jstate.internal) return false;
   if (jstate.level === 'senior' ? !jobExperienced(j) : (jobExperienced(j) && !jstate.internal && !jobApplied(j))) return false;
+  if (jobUnchecked(j) && !jstate.unchecked && jstate.source !== 'bank' && !jobApplied(j)) return false;
   return true;
 }
 function jobPasses(j, q) {
@@ -3645,7 +3660,11 @@ function jobRowHtml(j) {
   // What the posting asks for, in words: a number where one was read, the title's level where not.
   const years = typeof j.yrs === 'number'
     ? `<span${j.yrs >= 2 ? ' class="oyrs"' : ''} title="${j.hand ? 'Read from the posting by hand' : 'Read automatically from the posting text, so open the posting to confirm'}">${j.yrs === 0 ? 'None asked for' : `${j.hand ? '' : 'about '}${j.yrs}+ year${j.yrs === 1 ? '' : 's'}`}</span>`
-    : j.sig === 'program' ? 'New graduates' : j.sig === 'entry' ? 'Entry-level title, years not stated' : j.sig === 'senior' ? 'Experienced title' : 'Not stated, so read the posting';
+    : typeof j.pref === 'number' ? `<span${j.pref >= 2 ? ' class="oyrs"' : ''} title="The posting requires no set number of years but says it prefers this many. Read automatically, so open the posting to confirm">prefers about ${j.pref}+ year${j.pref === 1 ? '' : 's'}</span>`
+    : j.sig === 'program' ? 'New graduates'
+    : j.hand ? 'Entry-level, read by hand for the board'
+    : j.txt || j.web ? 'No years asked for in the posting'
+    : '<span class="oyrs" title="This feed gives no posting text, so nobody has read what experience it asks for">Not checked: read the posting</span>';
   const closes = j.closes && /^\d{4}-\d{2}-\d{2}$/.test(j.closes) ? escHtml(shortDate(j.closes)) : '';
   const source = j.web ? 'Found on the web by Claude' : j.agg ? 'Utah state job bank' : j.hand ? 'Read by hand for the board' : 'The employer&apos;s own job feed';
   const facts = [['Experience', years], ['Field', escHtml(FIELD_LABEL[j.field] || '')], [j.posted ? 'Posted' : 'First seen', when ? escHtml(shortDate(when)) : ''], ['Closes', closes], ['Source', source]]
@@ -3656,7 +3675,7 @@ function jobRowHtml(j) {
   const href = /^https?:\/\//i.test(j.url) ? escHtml(j.url) : '#';
   return `<div class="jrow${j.web ? ' web' : ''}${mine ? ' applied' : ''}">
     <div class="jhead">
-      <div><div class="jco">${escHtml(j.co)}</div><div class="jloc">${escHtml(j.loc || (j.geo === 'remote' ? 'Remote' : ''))}</div></div>
+      <div><div class="jco">${escHtml(j.co)}</div><div class="jloc">${j.geo === 'remote' ? 'Remote' : escHtml(j.loc || '')}</div></div>
       <div class="jscore${r ? '' : ' none'}"${r ? ` style="--p:${r.s}%" title="Claude's fit score for this resume"` : ' title="Not scored yet. Use Search deeper to have Claude rank the database for this resume."'}><span>${r ? r.s : '&middot;'}</span></div>
     </div>
     <div class="jtitle"><a href="${href}" target="_blank" rel="noopener noreferrer">${escHtml(j.title)}</a></div>
@@ -3702,16 +3721,19 @@ function renderJobs() {
 }
 function syncJobChrome() {
   const live = allJobs().filter(j => !jobClosed(j));
-  const listed = live.filter(j => !j.int && !(jobExperienced(j) && !jobApplied(j))).length;
+  const listed = live.filter(j => !j.int && !((jobExperienced(j) || jobUnchecked(j)) && !jobApplied(j))).length;
   document.getElementById('tab-jobs-n').textContent = listed ? listed.toLocaleString() : '';
   const intChip = document.getElementById('jint-chip');
   intChip.hidden = !live.some(j => j.int);
   if (intChip.hidden && jstate.internal) { jstate.internal = null; intChip.classList.remove('active'); }
   document.getElementById('tab-employers-n').textContent = String(COMPANIES.filter(c => !c.untailored).length + SUGGESTED.length);
-  const n = live.filter(j => isNewJob(j) && !j.int && !jobExperienced(j)).length;
+  const n = live.filter(j => isNewJob(j) && !j.int && !jobExperienced(j) && !jobUnchecked(j)).length;
   document.getElementById('jnew-count').textContent = n ? `(${n})` : '';
   document.getElementById('jnew-chip').hidden = !n;
   if (!n && jstate.fresh) { jstate.fresh = null; document.getElementById('jnew-chip').classList.remove('active'); }
+  const uncChip = document.getElementById('junc-chip'), unc = live.filter(j => !j.int && jobUnchecked(j) && !jobExperienced(j)).length;
+  uncChip.hidden = !unc; document.getElementById('junc-count').textContent = unc ? `(${unc.toLocaleString()})` : '';
+  if (!unc && jstate.unchecked) { jstate.unchecked = null; uncChip.classList.remove('active'); }
   const coChip = document.getElementById('jco-chip');
   coChip.hidden = !jstate.co; coChip.className = 'chip active';
   coChip.textContent = jstate.co ? `Only ${jstate.co.replace(/\s*\(.*?\)\s*/g, ' ').trim()} \u2715` : '';
@@ -3841,7 +3863,7 @@ const loadJobs = () => fetch('jobs.json', { cache: 'no-cache' }).then(r => (r.ok
 loadJobs();
 loadFound();
 try { if (localStorage.getItem(VIEW_KEY) === 'jobs') VIEW = 'jobs'; } catch (e) {}
-window.JobFinderJobs = { all: allJobs, experienced: jobExperienced, applied: jobApplied, key: jobKey, isNew: isNewJob, score: heuristicScore, ranked: rankedScore, setView, state: jstate, refresh: refreshJobs,
+window.JobFinderJobs = { all: allJobs, asks: jobAsks, unchecked: jobUnchecked, experienced: jobExperienced, applied: jobApplied, key: jobKey, isNew: isNewJob, score: heuristicScore, ranked: rankedScore, setView, state: jstate, refresh: refreshJobs,
   found: () => FOUND.slice(), FoundDB, loadFound, saveRank, guessField, feedExtras, openEmployer: openEmployerJobs,
   passes: jobPasses, closed: jobClosed, source: jobSource, setData: useJobs, reload: loadJobs, data: () => JOBS };
 
@@ -4567,13 +4589,13 @@ Leave out openings that do not fit rather than padding the list. Use only ids fr
   // The list is sent in a fixed order (by key), so the cached copy survives a second run on the same day.
   function jobsForPrompt() {
     // the same openings the list shows this person: no internal-only postings, and nothing experienced
-    const live = allJobs().filter(j => !jobClosed(j) && !j.web && !j.int && !jobExperienced(j) && !(j.sig === 'senior' && jobGap(j) >= 2));
+    const live = allJobs().filter(j => !jobClosed(j) && !j.web && !j.int && !jobExperienced(j) && !jobUnchecked(j) && !(j.sig === 'senior' && jobGap(j) >= 2));
     const top = live.length > RANK_MAX ? live.map(j => ({ j, h: heuristicScore(j) })).sort((a, b) => b.h - a.h).slice(0, RANK_MAX).map(x => x.j) : live;
     return top.slice().sort((a, b) => (a.key < b.key ? -1 : a.key > b.key ? 1 : 0));
   }
   function buildRankParams(model, effort, brief, resumeBlock, list) {
     const rows = list.map((j, i) => JSON.stringify({ id: i, t: j.title, co: j.co, loc: j.loc || undefined, geo: j.geo, lvl: j.sig,
-      yrs: typeof j.yrs === 'number' ? j.yrs : undefined, deg: jobDegree(j) || undefined, swe: jobSwe(j) || undefined, closes: j.closes || undefined })).join('\n');
+      yrs: jobAsks(j) !== null ? jobAsks(j) : undefined, deg: jobDegree(j) || undefined, swe: jobSwe(j) || undefined, closes: j.closes || undefined })).join('\n');
     return {
       model, max_tokens: 32000,
       thinking: { type: 'adaptive', display: 'summarized' },
@@ -4734,7 +4756,7 @@ Scores use the board's scale: 95-100 bullseye, 85-94 strong, 75-84 solid, 65-74 
       const yrs = Number.isInteger(r.years_required) && r.years_required >= 0 && r.years_required <= 20 ? r.years_required : null;
       const date = v => (/^\d{4}-\d{2}-\d{2}$/.test(String(v || '')) ? String(v) : '');
       const rec = { id: `${ctx.profile}|${key}`, profile: ctx.profile, key, title, co, loc, url,
-        geo: r.work_mode === 'remote' || /\bremote\b/i.test(loc) ? 'remote' : HOME_RE.test(loc) ? 'home' : 'elsewhere',
+        geo: r.work_mode === 'remote' || saysRemote(loc) ? 'remote' : HOME_RE.test(loc) ? 'home' : 'elsewhere',
         score: clamp(Math.round(Number(r.score) || 60), 60, 100), why: String(r.why || '').slice(0, 300), evidence: String(r.evidence || '').slice(0, 300),
         read, foundAt: localISODate(), model: ctx.model };
       if (yrs !== null) rec.yrs = yrs;

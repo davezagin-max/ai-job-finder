@@ -158,7 +158,7 @@ def fetch(slug):
         # No dates. The site shows none, and the posting page's structured data gives every job the first
         # and the last day of the current month ("Oct 1, 2026" to "Oct 31, 2026"), which says nothing.
         rows.append((title, _home_first(places) or loc, POSTING + jid, None, R.degree_flag(text),
-                     {"posted": None, "yrs": R.min_years(text), "internal": False, "company": None}))
+                     {"posted": None, "yrs": R.read_years(text), "internal": False, "company": None}))
     return R._dedupe(rows)
 
 def link_state(url):

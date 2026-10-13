@@ -136,7 +136,7 @@ def fetch(slug):
             text = _raw(it, "description")                     # the whole posting, as HTML
             # The feed lists public postings only: the internal board is a separate address that robots.txt closes.
             rows.append((title, loc, url, None, R.degree_flag(text),
-                         {"posted": _day(_text(it, "pubDate")), "yrs": R.min_years(text), "internal": False, "company": None}))
+                         {"posted": _day(_text(it, "pubDate")), "yrs": R.read_years(text), "internal": False, "company": None}))
         # A page of nothing but jobs already read means the offset was ignored, and asking on would never end.
         R.need(fresh, "the feed repeated a page")
         off += len(items)                                      # by what arrived, whatever size the page was

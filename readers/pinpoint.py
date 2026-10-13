@@ -72,7 +72,7 @@ def fetch(slug):
                        for k in ("description", "key_responsibilities", "skills_knowledge_expertise"))
         title = re.sub(r"\s+", " ", j["title"]).strip()
         rows.append((title, _place(j), j["url"], _day(j.get("deadline_at")), R.degree_flag(text),
-                     {"posted": None, "yrs": R.min_years(text), "internal": bool(_INTERNAL.search(title)), "company": None}))
+                     {"posted": None, "yrs": R.read_years(text), "internal": bool(_INTERNAL.search(title)), "company": None}))
     rows = R._dedupe(rows)
     kept = [i for i, r in enumerate(rows) if R.classify(r[0], r[1], KIND) or R.experienced(r[0], r[1], KIND)]
     kept.sort(key=lambda i: R.where(rows[i][1]) != "home")      # if the cap cuts the reads short, it cuts roles away from home

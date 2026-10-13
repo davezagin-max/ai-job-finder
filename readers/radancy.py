@@ -173,7 +173,7 @@ def fetch(slug):
         if places and loc.startswith("Remote"): places.append("Remote")     # the list's work-setting flag still holds
         days = [x for x in (posted, extra["posted"]) if x]
         rows[i] = (title, _where(places, tags[url]) if places else loc, url, closes,
-                   R.degree_flag(text), dict(extra, posted=min(days, default=None), yrs=R.min_years(text) or None))
+                   R.degree_flag(text), dict(extra, posted=min(days, default=None), yrs=R.read_years(text)))
     if unread: notes.append(f"{unread} posting page(s) could not be read, so their years and degree are unknown")
     if notes: R.PARTIAL[slug] = "; ".join(notes)
     return R._dedupe(rows)

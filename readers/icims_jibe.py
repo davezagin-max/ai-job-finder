@@ -81,7 +81,7 @@ def fetch(slug):
         tags = [str(t) for k, v in j.items() if k.startswith("tags") and isinstance(v, list) for t in v]
         rows.append((title, loc, f"https://{host}/jobs/{j['slug']}",
                      _day(j.get("posting_expiry_date")), R.degree_flag(text),
-                     {"posted": _day(j.get("posted_date")), "yrs": R.min_years(text),
+                     {"posted": _day(j.get("posted_date")), "yrs": R.read_years(text),
                       # EchoStar tags a posting "Internal / Pathfinder Only" and still shows it to everyone
                       "internal": bool(j.get("internal")) or any(_INTERNAL.match(t) for t in tags),
                       "company": None}))

@@ -60,7 +60,7 @@ def fetch(slug):
                      j.get("url") or f"https://{slug}.breezy.hr/p/{j.get('friendly_id') or j['id']}",
                      None,                                   # Breezy has no closing date
                      R.degree_flag(text),
-                     {"posted": day.group(0) if day else None, "yrs": R.min_years(text), "internal": False, "company": None}))
+                     {"posted": day.group(0) if day else None, "yrs": R.read_years(text), "internal": False, "company": None}))
     return R._dedupe(rows)
 
 BREEZY_LINK = re.compile(r"https://([\w-]+)\.breezy\.hr/p/([0-9a-f]{8,})")

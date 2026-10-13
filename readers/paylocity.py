@@ -118,7 +118,7 @@ def fetch(slug):
             # turning the script away, and asking for fifty more would only press it.
             if failed == 3: unread += len(kept[:60]) - n; break
         if not text: unread += 1; continue
-        r[4], r[5]["yrs"] = R.degree_flag(text), R.min_years(text)
+        r[4], r[5]["yrs"] = R.degree_flag(text), R.read_years(text)
     if len(kept) > 60: notes.append(f"read details for the first 60 of {len(kept)} kept roles")
     if unread: notes.append(f"could not read the posting page of {unread} of {min(len(kept), 60)} kept roles")
     if notes: R.PARTIAL[slug] = "; ".join(notes)

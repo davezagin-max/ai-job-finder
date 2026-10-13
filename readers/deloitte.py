@@ -178,7 +178,7 @@ def fetch(slug):
         places.sort(key=lambda p: not R.HOME.search(p))   # a stable sort: a national role lists up to eighty offices, and the one here is the point
         # A row whose page was not read stays as the site lists it, "Multiple Locations" included.
         rows.append((title, "; ".join(places) or loc, url, closes, R.degree_flag(text),
-                     {"posted": posted, "yrs": R.min_years(text), "internal": False, "company": None}))
+                     {"posted": posted, "yrs": R.read_years(text), "internal": False, "company": None}))
     return R._dedupe(rows)
 
 # No link_state here: refresh.py already checks these links itself (DELOITTE_LINK). A posting that is gone

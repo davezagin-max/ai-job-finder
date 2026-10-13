@@ -55,7 +55,7 @@ def _amazon_row(j, state):
     quals = j.get("basic_qualifications") or ""
     title = re.sub(r"\s+", " ", re.sub(r"\s+,", ",", j["title"])).strip()   # the feed joins title and team as "Title , Team"
     row = (title, loc, "https://www.amazon.jobs" + j["job_path"], None, R.degree_flag(quals),
-           {"posted": posted, "yrs": R.min_years("Basic qualifications<br/>" + quals) if quals else None,
+           {"posted": posted, "yrs": R.read_years("Basic qualifications<br/>" + quals) if quals else None,
             "internal": False, "company": None})       # the search only returns externally posted jobs
     # Judged on the location as written, so a feed that changes shape cannot pass as jobs in the state.
     return row, any(p.endswith(here) for p in places) or state in loc

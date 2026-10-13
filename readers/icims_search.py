@@ -192,7 +192,7 @@ def fetch(slug):
         if not got: continue
         text, posted, closes, places = got
         r[3], r[4] = closes, R.degree_flag(text)
-        r[5]["posted"], r[5]["yrs"] = r[5]["posted"] or posted, R.min_years(text)
+        r[5]["posted"], r[5]["yrs"] = r[5]["posted"] or posted, R.read_years(text)
         if r[2] in unplaced and R.placed(places): r[1] = places      # the page says where; the assumption is dropped
     return R._dedupe([tuple(r) for r in rows])
 

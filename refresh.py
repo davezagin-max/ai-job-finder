@@ -519,7 +519,7 @@ _YEARS  = re.compile(r"(?<![\d$.,/])\b(" + _NUM + r")\s*(?:\(\d{1,2}\)\s*)?(?:\+
                      r"(?:or more\s+|plus\s+)?(?:years?|yrs?)\b", re.I)
 _SOFT   = re.compile(r"prefer|a plus|is a plus|nice to have|bonus|ideal|desired|helpful|advantage|\bor more is\b", re.I)
 _UPPER  = re.compile(r"(?:no more than|not more than|up to|less than|fewer than|under|at most|maximum of|within)\s*$", re.I)
-_NOT_EXPERIENCE = re.compile(r"years? (?:old|of age)|\byear[- ]over[- ]year|years? in a row|over the (?:past|last)|"
+_NOT_EXPERIENCE = re.compile(r"years? (?:old|of age)|years? of (?:employment|service|continuous)|\byear[- ]over[- ]year|years? in a row|over the (?:past|last)|"
                              r"for (?:over|more than|nearly|the past|the last)|\bfounded\b|anniversar|warranty|\bterm\b|"
                              r"-year\b|year (?:program|rotation|contract|term)|years? (?:degree|college|university|accredited)|every \d|"
                              r"\b(?:past|last|next|first|prior|previous)\s+(?:\d{1,2}|one|two|three|four|five|six|ten)\b", re.I)
@@ -529,7 +529,7 @@ _THIRD_PARTY = re.compile(r"(?:\b(?:team|company|firm|organi[sz]ation|leaders?|e
                           r"(?:over |more than |nearly |about |a combined )?$", re.I)
 # What follows a bare number of years when it is a requirement ("2-4 years in sales operations") rather
 # than a window ("2 years within receiving your bachelor's")
-_BARE_OK = re.compile(r"^['\u2019]?\s*(?:of |in |as |working|conducting|designing|building|doing|performing|supporting|managing|leading|developing|writing)", re.I)
+_BARE_OK = re.compile(r"^['\u2019]?\s*(?:of |in |as |working|conducting|designing|building|doing|performing|supporting|managing|leading|developing|writing|turning|specializing|specialising)", re.I)
 # "one year of experience for one year of education" states an exchange rate, not a requirement
 _EQUIV_BEFORE = re.compile(r"substitut\w*[^.]{0,45}$|equivalent to[^.]{0,20}$|defined as[^.]{0,20}$|in lieu of[^.]{0,30}$|"
                            r"generally\s*$|\bper\s*$|\bfor (?:each|every)\s*$|(?:years?|yrs?)[^.]{0,25}\b(?:for|per|equals?|=)\s*$|"
@@ -538,7 +538,7 @@ _EQUIV_AFTER  = re.compile(r"^\s*(?:of\s+)?(?:(?:directly |relevant |related |wo
                            r"(?:per\b|for (?:each|every|one|1|a)\b|of (?:education|college|school|study|coursework|higher education)|"
                            r"(?:can|may) (?:be )?substitut|equals?\b|=)", re.I)
 _REQ_HEAD = re.compile(r"minimum qualifications|basic qualifications|required qualifications|requirements|qualifications|"
-                       r"what you(?:.ll)? (?:bring|need|have)|who you are|you have\b|about you|must have|what we(?:.re| are) looking for", re.I)
+                       r"what you(?:.ll| should| will)? (?:bring|need|have)|what it takes|skills (?:&|and) experience|experience (?:&|and) skills|who you are|you have\b|about you|must have|what we(?:.re| are) looking for", re.I)
 # Section headings. A posting's "Preferred Qualifications" list is not a bar, whatever number is in it.
 _SOFT_HEADING = re.compile(r"^\W*(?:preferred|desired|nice[- ]to[- ]haves?|bonus|pluses|plus points|preferences|extra credit|"
                            r"what would be (?:great|nice)|good to have|it.s a plus|even better|additional (?:qualifications|skills))\b[^.]{0,50}$|"
@@ -555,37 +555,84 @@ def _items(text):
     raw = re.sub(r"[ \t ​]+", " ", raw)
     return [p.strip() for p in re.split(r"(?<=[.;!?])\s+|\s*[•·▪●◦]\s*|\s\*\s", raw) if p and p.strip()]
 
-def min_years(text):
+class Years(int):
+    """What a posting's text says about experience. The number is the years it requires, or -1 when the
+    text was read and requires none. "pref" is the first number of years it mentions at all, preferred
+    ones included, or None. A posting whose text was never read has no Years: its "yrs" is None."""
+    pref = None
+def read_years(text):
+    """min_years for a reader: it also records that the text was read, and the years it merely prefers,
+    so the page can tell "asks for nothing" from "nobody looked"."""
+    if not text or not re.sub(r"<[^>]+>|\s+", "", str(text)): return None
+    n = min_years(text)
+    # A labelled field settles it: "Required Experience: 5+ years" outranks whatever the prose seemed to say.
+    flat = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", str(text)))
+    stated = [int(x) for x in re.findall(r"(?:required|minimum) experience:?\s*(\d{1,2})\s*\+?\s*(?:years?|yrs?)", flat, re.I)]
+    if stated and (n is None or max(stated) > n): n = max(stated)
+    y = Years(-1 if n is None else n)
+    y.pref = min_years(text, soft=True)
+    if n is None and y.pref is None: y.pref = _loose_years(text)
+    return y
+
+_ALT_ROUTE = re.compile(r"\blevel\b|principal|senior|\b(?:I{2,3}|IV)\b|\bT0\d|degree|master|ph\.?d|diploma|lieu|substitut|equivalen|\bor\b", re.I)
+_LIEU = re.compile(r"in lieu of|substitut|equivalen|instead of a degree|without a degree", re.I)
+def _loose_years(text):
+    """The safety net under min_years. When the careful reading finds no number at all, any plain mention
+    of three or more years of experience is taken as what the posting wants, however it is phrased
+    ("Experience. 8 years in investment management"). A wrong catch hides one job behind a chip; a miss
+    lists a job a new graduate cannot get."""
+    flat = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", str(text))))
+    for m in _YEARS.finditer(flat):
+        g = m.group(1).lower()
+        n = _WORDNUM.get(g) or int(g)
+        if n < 3 or n > 20: continue
+        before, after = flat[max(0, m.start() - 110): m.start()], flat[m.end(): m.end() + 90]
+        around = flat[max(0, m.start() - 40): m.end() + 30]
+        if _NOT_EXPERIENCE.search(around) or _THIRD_PARTY.search(before[-60:]) or _LIEU.search(before[-90:] + after): continue
+        if _BARE_OK.search(after) or re.search(r"experience|background|track record", before[-60:] + after[:60], re.I): return n
+    return None
+
+def min_years(text, soft=False):
     """Years of experience the posting asks for, 0 for an explicit "no experience required" or an upper
-    bound, or None when the text does not say."""
+    bound, or None when the text does not say. With soft=True a number that is only preferred counts too."""
     if not text: return None
     items = _items(text)
     if re.search(r"no (?:prior |previous )?(?:work )?experience (?:is )?(?:required|necessary|needed)|little to no (?:related )?experience", " ".join(items), re.I):
         return 0
-    start = next((i for i, it in enumerate(items) if _REQ_HEAD.search(it)), None)
+    # a heading is short: "eligibility requirements will be provided at the time of offer" is not one
+    start = next((i for i, it in enumerate(items) if len(it) <= 70 and _REQ_HEAD.search(it)), None)
+    soft_too = soft
     # Under a requirements heading a bare "2-4 years in sales operations" is a requirement; anywhere else
     # in the posting a number of years only counts when the sentence is about experience.
     for scope, strict in ([(items[start:], False), (items, True)] if start is not None else [(items, True)]):
-        soft = False
+        soft, found = False, None
         for it in scope:
             if len(it) <= 70 and not _YEARS.search(it):
                 if _SOFT_HEADING.search(it): soft = True; continue
                 if _HARD_HEADING.search(it): soft = False; continue
-            if soft: continue
+            if soft and not soft_too: continue
             about_experience = bool(re.search(r"experience|background in|track record", it, re.I))
             if strict and not about_experience: continue
             for m in _YEARS.finditer(it):
                 before, after = it[max(0, m.start() - 60): m.start()], it[m.end(): m.end() + 60]
                 around = it[max(0, m.start() - 40): m.end() + 30]
-                if _NOT_EXPERIENCE.search(around) or _THIRD_PARTY.search(before) or _EQUIV_BEFORE.search(before) or _EQUIV_AFTER.search(after): continue
+                if _NOT_EXPERIENCE.search(around) or _THIRD_PARTY.search(before) or _EQUIV_BEFORE.search(before) or _EQUIV_AFTER.search(after) or re.search(r"in lieu of", after, re.I): continue
                 if not about_experience and not _BARE_OK.search(after): continue
                 # "2+ years in a customer-facing role, ideally in SaaS" is a firm two years: a soft word only
                 # softens the number when it sits in the same clause.
-                if _SOFT.search(before) or _SOFT.search(re.split(r"[,;(]", it[m.end(): m.end() + 120], 1)[0]): continue
+                # "a degree preferred, plus 3-5 years of experience": the soft word belongs to the clause before
+                if not soft_too and (_SOFT.search(re.split(r"[,;(]|\bplus\b", before)[-1]) or _SOFT.search(re.split(r"[,;(]", it[m.end(): m.end() + 120], 1)[0])): continue
                 g = m.group(1).lower()
                 n = _WORDNUM.get(g) or int(g)
                 if n > 20: continue
-                return 0 if _UPPER.search(before[-40:]) else n
+                if _UPPER.search(before[-40:]): return 0
+                if soft_too: return n
+                # The bar is the first number, unless a later plain requirement asks for more ("2+ years of
+                # related experience" and then "3+ years executing SEO campaigns"). A line that names a level, a
+                # degree or a substitute is an alternative route, not a higher bar.
+                if found is None: found = n
+                elif n > found and not _ALT_ROUTE.search(it): found = n
+        if found is not None: return found
     return None
 
 # Written by the Workday reader when a requisition's own country code is not the US. It is checked
@@ -902,7 +949,7 @@ def fetch(kind, slug):
             loc = (j.get("location") or {}).get("name", "")
             text = j.get("content") if (classify(j["title"], loc) or experienced(j["title"], loc)) else None   # only read what will be published
             rows.append((j["title"], loc, j["absolute_url"], None, degree_flag(text),
-                         {"posted": (j.get("first_published") or j.get("updated_at") or "")[:10] or None, "yrs": min_years(text)}))
+                         {"posted": (j.get("first_published") or j.get("updated_at") or "")[:10] or None, "yrs": read_years(text)}))
         return rows
     if kind == "lever":
         d = curl(f"https://api.lever.co/v0/postings/{slug}?mode=json")
@@ -914,7 +961,7 @@ def fetch(kind, slug):
             if classify(j["text"], loc) or experienced(j["text"], loc):
                 text = "\n".join([j.get("descriptionPlain") or ""] + [f"{l.get('text','')}:\n{l.get('content','')}" for l in j.get("lists") or []])
             posted = datetime.date.fromtimestamp(j["createdAt"] / 1000).isoformat() if isinstance(j.get("createdAt"), (int, float)) else None
-            rows.append((j["text"], loc, j["hostedUrl"], None, degree_flag(text), {"posted": posted, "yrs": min_years(text)}))
+            rows.append((j["text"], loc, j["hostedUrl"], None, degree_flag(text), {"posted": posted, "yrs": read_years(text)}))
         return rows
     if kind == "ashby":
         d = curl(f"https://api.ashbyhq.com/posting-api/job-board/{slug}")
@@ -932,7 +979,7 @@ def fetch(kind, slug):
             if j.get("workplaceType") == "Remote" and not REMOTE.search(loc): loc = (loc + "; " if loc else "") + "Remote"
             text = (j.get("descriptionPlain") or j.get("descriptionHtml")) if (classify(j["title"], loc) or experienced(j["title"], loc)) else None
             rows.append((j["title"], loc, j.get("jobUrl", ""), None, degree_flag(text),
-                         {"posted": (j.get("publishedAt") or "")[:10] or None, "yrs": min_years(text)}))
+                         {"posted": (j.get("publishedAt") or "")[:10] or None, "yrs": read_years(text)}))
         return rows
     if kind == "directemployers":
         return _directemployers(slug)
@@ -1049,7 +1096,7 @@ def fetch(kind, slug):
             if url in where_hint and not any(placed(c) for c in cities): cities = [f"{c} ({where_hint[url]})" for c in cities] or [where_hint[url]]
             return (title, "; ".join(cities) or loc, url, (info.get("endDate") or "")[:10] or None,
                     degree_flag(info.get("jobDescription")),
-                    {"posted": (info.get("startDate") or "")[:10] or None, "yrs": min_years(info.get("jobDescription"))})
+                    {"posted": (info.get("startDate") or "")[:10] or None, "yrs": read_years(info.get("jobDescription"))})
         wanted = lambda r: classify(r[0], r[1]) or (hidden.match(r[1] or "") and classify(r[0], HOME_NAME))
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as ex:
             rows = list(ex.map(lambda r: detail(r) if wanted(r) else r, out))
@@ -1092,7 +1139,7 @@ def fetch(kind, slug):
                 text = " ".join(str(it.get(k) or "") for k in ("ExternalDescriptionStr", "ExternalQualificationsStr"))
                 return row + (datetime.datetime.fromisoformat(end).astimezone().date().isoformat() if end else None,
                               degree_flag(text),
-                              {"posted": (it.get("ExternalPostedStartDate") or "")[:10] or None, "yrs": min_years(text)})
+                              {"posted": (it.get("ExternalPostedStartDate") or "")[:10] or None, "yrs": read_years(text)})
             except Exception:
                 return row
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as ex:
@@ -1166,7 +1213,7 @@ def fetch(kind, slug):
             if g("status") and g("status").lower() != "open": continue
             title, loc = g("title"), city_state(g("city"), g("state"))
             text = g("description") if (classify(title, loc) or experienced(title, loc)) else None
-            out.append((title, loc, g("url").replace("http://", "https://"), None, degree_flag(text), {"posted": None, "yrs": min_years(text)}))
+            out.append((title, loc, g("url").replace("http://", "https://"), None, degree_flag(text), {"posted": None, "yrs": read_years(text)}))
         return out
     if kind == "selectminds":
         # Oracle Taleo behind SelectMinds: no feed of any kind, only server-rendered pages of ten.
@@ -1291,10 +1338,11 @@ def _directemployers(slug):
                 nums = [int(n) for n in re.findall(r"(?:bachelor.s|degree)[^.]{0,60}?\+\s*(\d{1,2})\s+years?", quals)]
                 nums += [int(n) for n in re.findall(r"(?:at least|Requires|and)\s+(\d{1,2})\+?\s*(?:-\s*\d{1,2}\s*)?years?", quals)]
                 if re.search(r"little to no|with up to \d|no (?:related )?experience", quals, re.I): nums.append(0)
-                yrs = min(nums) if nums else min_years(quals)
+                yrs = read_years(quals)
+                if nums and yrs is not None: pref = yrs.pref; yrs = Years(min(nums)); yrs.pref = pref
             else:
                 # University of Utah Health postings are a markdown list: keep the line breaks, drop the markers
-                yrs = min_years(re.sub(r"[*_]+|^\s*\+\s+", "", desc, flags=re.M))
+                yrs = read_years(re.sub(r"[*_]+|^\s*\+\s+", "", desc, flags=re.M))
             loc = j.get("location_exact") or ", ".join(x for x in (j.get("city_exact"), j.get("state_short")) if x)
             # date_new is when the listing was last synced, not when the job opened, so only a stated Open Date counts
             extra = {"posted": _de_date(field("Open Date")), "yrs": yrs,
@@ -1328,7 +1376,7 @@ def scan(item):
         if c: hits.append({"title": t.strip(), "loc": (l or "").strip(), "url": u,
                            "closes": r[3] if len(r) > 3 else None,
                            "degree": r[4] if len(r) > 4 else None,
-                           "posted": x.get("posted"), "yrs": x.get("yrs"), "internal": bool(x.get("internal")),
+                           "posted": x.get("posted"), "yrs": _years_fields(x.get("yrs"))["yrs"], "internal": bool(x.get("internal")),
                            "company": x.get("company"), "field": field_of(t),
                            "swe": bool(SWE_LEAN.search(t)), **c})
     # raw keeps every row the feed returned, kept or not: the database records why each one was dropped
@@ -1824,6 +1872,19 @@ def selftest():
         (min_years("<p>Reporting tools, preferably Tableau</p><p>Minimum Qualifications</p><ul><li>Bachelor's degree</li><li>2 years of experience in data engineering</li>"
                    "<li>Generally, equivalent experience is defined as 1 year of experience for 1 year of education.</li></ul><p>Preferred Qualifications</p><ul><li>5+ years of Python</li></ul>") == 2,
          "one list item is never read with the next, an exchange rate is not a requirement, and a Preferred list is not a bar"),
+        (min_years("Qualifications\nBachelor's in Engineering Technology preferred, plus 3-5 years field service experience") == 3, "a soft word in the clause before does not soften the years"),
+        (read_years("") is None and read_years("<p> </p>") is None and read_years("Analyze data. Bachelor's degree.") == -1 and read_years("Analyze data.").pref is None, "a posting that was read and asks for nothing is told apart from one nobody read"),
+        (read_years("Qualifications\nBachelor's degree\n5 years of experience building pipelines is preferred") == -1 and read_years("Qualifications\nBachelor's degree\n5 years of experience building pipelines is preferred").pref == 5
+         and read_years("Requirements: 2+ years of experience in support. Bonus: 5 years of SQL.") == 2, "years that are only preferred are kept apart from years required"),
+        (_years_fields(None) == dict(yrs=None, pref=None, txt=0) and _years_fields(3) == dict(yrs=3, pref=None, txt=1) and _years_fields(read_years("Preferred: 4 years of experience in audit")) == dict(yrs=None, pref=4, txt=1), "what is stored says whether the text was read"),
+        (min_years("What it takes\nExperience. 8 years in investment management; 4 + years specializing in credit") == 8 and min_years("Skills & Experience\n8+ years in a Post-Sales technical role") == 8, "more headings count as requirements"),
+        (read_years("No experience required for the training course. Required Experience: 5+ years related experience") == 5, "a labelled Required Experience field outranks the prose"),
+        (min_years("Minimum Qualifications:\nBachelor's degree and 2+ years of related experience.\nDepartment Specific Minimum Qualifications:\n3+ years of experience in executing SEO campaigns.") == 3
+         and min_years("Basic Qualifications\nLevel 2: Bachelor's degree with 2 years of experience\nLevel 3: Bachelor's degree with 5 years of experience") == 2
+         and min_years("Requirements\n1 year of experience in support\nPreferred\n3 years of experience in Java") == 1, "a later plain requirement raises the bar; another level or a preference does not"),
+        (min_years("What you should bring\nMinimum 3 years' experience of IT support experience\nMinimum 2 years' experience supporting users\nSpecific benefits and eligibility requirements will be provided at the time of offer.\nFollowing two (2) years of employment, caregivers may receive leave") == 3, "a sentence is not a heading, and years of employment are not experience"),
+        (read_years("We want someone great.\nYou bring 4-6 years turning data into insight in an analytical role.").pref == 4 and read_years("Learn from leaders with 20+ years of experience. A background check is renewed every 5 years.").pref is None
+         and read_years("A degree. 6+ years of related experience may be accepted in lieu of degree.").pref is None, "the safety net catches a plain mention of years and ignores the usual false ones"),
         (min_years("Qualifications\n2+ years of experience in a customer-facing role, ideally within a SaaS company") == 2 and
          min_years("Qualifications\nA degree\n5 years of experience building pipelines is preferred") is None, "a soft word only softens the number in its own clause"),
         (min_years("Who you are:\nAt least 2 - 4 years in sales operations or consulting") == 2 and min_years("Qualifications\nTwo (2) years of experience in accounting") == 2
@@ -1892,7 +1953,13 @@ def selftest():
 # That is what lets the page say "new this week" for a job rather than for a hand-edited card, what
 # keeps a job's history when its link changes, and what answers "why did the board not show me this?"
 # (python3 refresh.py --why "title"). jobs.json is the published slice: live rows the title rules keep.
-import sqlite3
+import sqlite3, html
+def _years_fields(y):
+    """A reader's "yrs" as the three columns kept for it. A plain number from an older reader counts as read."""
+    if y is None: return dict(yrs=None, pref=None, txt=0)
+    n = int(y)
+    pref = getattr(y, "pref", None)
+    return dict(yrs=n if n >= 0 else None, pref=int(pref) if pref is not None and n < 0 else None, txt=1)
 def db_open(path=None):
     con = sqlite3.connect(path or DB)
     con.executescript("""
@@ -1906,6 +1973,10 @@ def db_open(path=None):
         last_count INTEGER, last_error TEXT);
       CREATE TABLE IF NOT EXISTS runs(date TEXT PRIMARY KEY, sources INTEGER, rows INTEGER, live_kept INTEGER);
     """)
+    # Added after the first databases were built: the years a posting only prefers, and whether its text was read.
+    have = {r[1] for r in con.execute("PRAGMA table_info(jobs)")}
+    for col in ("pref", "txt"):
+        if col not in have: con.execute(f"ALTER TABLE jobs ADD COLUMN {col} INTEGER")
     return con
 
 _TRACKING_PARAM = re.compile(r"(?:utm.*|mc_.*|_hs.*|source|src|ref|referrer|gh_src|lever-source|trk|trackingid|fbclid|gclid|cmp|icid)$", re.I)
@@ -1978,7 +2049,7 @@ def db_sync(con, today, sources, raw, errors, prev_state=None):
                           geo=kept["geo"] if kept else ("home" if senior else None),
                           signal=kept["signal"] if kept else ("senior" if senior else None), dropped=None if kept else why,
                           field=field_of(title),
-                          swe=int(bool(SWE_LEAN.search(title))), degree=r[4] if len(r) > 4 else None, yrs=x.get("yrs"),
+                          swe=int(bool(SWE_LEAN.search(title))), degree=r[4] if len(r) > 4 else None, **_years_fields(x.get("yrs")),
                           internal=int(bool(x.get("internal"))), closes=r[3] if len(r) > 3 else None, posted=x.get("posted"))
             if url in before or con.execute("SELECT 1 FROM jobs WHERE url=?", (url,)).fetchone():
                 con.execute("UPDATE jobs SET " + ", ".join(f"{k}=COALESCE(:{k}, {k})" if k in ("posted", "degree", "closes") else f"{k}=:{k}" for k in fields) +
@@ -2013,10 +2084,10 @@ def db_export(con, today, path=None, dead=()):
     first read its source, because that says when this script arrived, not when the job did. "dead" is the
     board's own links that failed today's check, so the page can strike them out without a hand edit."""
     prev = con.execute("SELECT MAX(date) FROM runs WHERE date < ?", (today,)).fetchone()[0]
-    cols = "url, source, company, title, loc, geo, signal, field, swe, degree, yrs, closes, posted, first_seen, seeded, internal"
+    cols = "url, source, company, title, loc, geo, signal, field, swe, degree, yrs, closes, posted, first_seen, seeded, internal, pref, txt"
     jobs = []
     cards = {r[0] for r in con.execute("SELECT source FROM sources WHERE card=1")}
-    for (url, source, company, title, loc, geo, signal, field, swe, degree, yrs, closes, posted, first_seen, seeded, internal) in con.execute(
+    for (url, source, company, title, loc, geo, signal, field, swe, degree, yrs, closes, posted, first_seen, seeded, internal, pref, txt) in con.execute(
             f"SELECT {cols} FROM jobs WHERE gone_on IS NULL AND signal IS NOT NULL "
             "AND (closes IS NULL OR closes >= ?) ORDER BY company, title, loc", (today,)):
         j = {"co": company, "title": title, "loc": loc, "url": url, "geo": geo, "sig": signal, "field": field}
@@ -2026,6 +2097,8 @@ def db_export(con, today, path=None, dead=()):
         if swe: j["swe"] = 1
         if degree: j["deg"] = degree
         if yrs is not None: j["yrs"] = yrs
+        elif pref is not None: j["pref"] = pref
+        if txt: j["txt"] = 1
         if closes: j["closes"] = closes
         if posted: j["posted"] = posted
         if first_seen and not seeded: j["seen"] = first_seen

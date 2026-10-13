@@ -91,7 +91,7 @@ def fetch(slug):
     if failed: notes.append(f"{failed} of {min(len(kept), MAX_DETAILS)} postings could not be read")
     if notes: R.PARTIAL[slug] = "; ".join(notes)
     return R._dedupe([(title, loc, url, closes, R.degree_flag(texts.get(url)),
-                       {"posted": posted, "yrs": R.min_years(texts.get(url)), "internal": False, "company": None})
+                       {"posted": posted, "yrs": R.read_years(texts.get(url)), "internal": False, "company": None})
                       for title, loc, url, closes, posted in listed])
 
 def link_state(url):

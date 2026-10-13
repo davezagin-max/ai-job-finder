@@ -128,7 +128,7 @@ def fetch(slug):
     for url, (title, loc) in found.items():
         places, posted, text = info.get(url) or ([], None, None)
         rows.append((title, "; ".join(places) or loc, url, None, R.degree_flag(text),      # no closing date is stated
-                     {"posted": posted, "yrs": R.min_years(text), "internal": False, "company": None}))
+                     {"posted": posted, "yrs": R.read_years(text), "internal": False, "company": None}))
     return R._dedupe(rows)
 
 def link_state(url):

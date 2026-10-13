@@ -130,7 +130,7 @@ def fetch(slug):
                 # the mark where() reads. A place in Utah is never marked, whatever the country field says.
                 if abroad: loc = "; ".join(p if R.HOME.search(p) else f"{p} ({abroad}, abroad)" for p in loc.split("; "))
         rows.append((title, loc, url, None, R.degree_flag(text),
-                     {"posted": posted, "yrs": R.min_years(text), "internal": False, "company": None}))
+                     {"posted": posted, "yrs": R.read_years(text), "internal": False, "company": None}))
     notes = [f"could not tell where {lost} multi-location job(s) are"] if lost else []
     if kept > _CAP: notes.append(f"read details for the first {_CAP} of {kept} kept roles")
     if notes: R.PARTIAL[slug] = "; ".join(notes)

@@ -49,7 +49,8 @@ profile on screen.
 | new | Posted, or first seen on the employer's feed, in the seven days before the database was refreshed |
 | ~3+ yrs | The posting asks for that many years. The `~` means the number was read automatically from the posting text, so open the posting to confirm. No `~` means it was read by hand |
 | level not stated | No level word in the title, so the posting may ask for experience. Kept in Utah only |
-| experienced | A senior, lead, architect or numbered-level title, or a posting that asks for three or more years beyond the profile. Left out unless you pick the Experienced chip or have applied to it |
+| experienced | A senior, lead, architect or numbered-level title, or a posting that asks for (or prefers) three or more years beyond the profile. Left out unless you pick the Experienced chip or have applied to it |
+| Experience not checked | A chip, not a tag: openings whose posting text could not be read, such as state job bank leads. Left out unless you turn it on |
 | internal applicants only | Open to current employees only. Shown only with the Internal only chip on |
 | on the board | The employer has a hand-researched card |
 | state job bank lead | Listed by the state job bank (jobs.utah.gov), not read from the employer. Its link asks for a free UtahID sign-in, so use the "find the employer's posting" link beside it |

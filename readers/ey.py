@@ -169,7 +169,7 @@ def fetch(slug):
             rest = sorted((p for p in offices if p not in home), key=lambda p: (p != jobs[jid][2], p))
             loc = _joined(home + rest[:1], len(rest) - 1) if home and len(offices) > SHOWN else _joined(home + rest)
         rows.append((title, loc, url, None, R.degree_flag(text),          # the site states no closing date
-                     {"posted": posted, "yrs": R.min_years(_for_years(text)), "internal": False, "company": None}))
+                     {"posted": posted, "yrs": R.read_years(_for_years(text)), "internal": False, "company": None}))
     R.need(unnamed * 2 <= len(info), "job pages that do not name the place their search was for")
     return R._dedupe(rows)
 

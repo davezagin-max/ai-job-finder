@@ -141,7 +141,7 @@ def fetch(slug):
         text = j["ad"] or j["text"]
         said = R.html_unescape(re.sub(r"<[^>]+>", " ", " . ".join((j["title"], j["text"], j["ad"]))))
         rows.append((j["title"], j["loc"], j["url"], j["closes"], R.degree_flag(text),
-                     {"posted": j["posted"], "yrs": R.min_years(_bar(text)), "internal": bool(INTERNAL.search(said)), "company": None}))
+                     {"posted": j["posted"], "yrs": R.read_years(_bar(text)), "internal": bool(INTERNAL.search(said)), "company": None}))
     return R._dedupe(rows)
 
 def link_state(url):

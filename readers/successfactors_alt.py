@@ -130,7 +130,7 @@ def fetch(slug):
         # The feed's own g:expiration_date is the same day on every job (thirty days from today), so it is
         # not read as a closing date.
         rows.append((title, loc, url, closes, R.degree_flag(text),
-                     {"posted": posted, "yrs": R.min_years(text), "internal": False, "company": None}))
+                     {"posted": posted, "yrs": R.read_years(text), "internal": False, "company": None}))
     return R._dedupe(rows)
 
 def link_state(url):

@@ -107,7 +107,7 @@ def fetch(slug):
         text = _text(a.get("job_description"), texts)
         # The posting's own page answers at this short link whatever its title becomes.
         rows.append((title, "; ".join(p for p in dict.fromkeys(places) if p), f"{SITE}{name}/{j['id']}", _day(j.get("end_at")),
-                     R.degree_flag(text), {"posted": _day(j.get("launch_at")), "yrs": R.min_years(text),
+                     R.degree_flag(text), {"posted": _day(j.get("launch_at")), "yrs": R.read_years(text),
                                            "internal": j.get("kind") == "internal", "company": None}))
     rows, notes = R._dedupe(rows), []
     if len(rows) > 6000: notes.append(f"read the first 6,000 of the {len(rows):,} jobs on the page"); rows = rows[:6000]

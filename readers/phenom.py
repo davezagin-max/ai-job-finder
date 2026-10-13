@@ -146,7 +146,7 @@ def fetch(slug):
         text = (records.get(url) or {}).get("description")
         seen_by = [str(v).lower() for v in j.get("jobVisibility") or []] if isinstance(j.get("jobVisibility"), list) else []
         rows.append((title, loc, url, None, R.degree_flag(text),      # Phenom states no closing date
-                     {"posted": (re.match(r"\d{4}-\d\d-\d\d", j.get("postedDate") or "") or [None])[0], "yrs": R.min_years(text),
+                     {"posted": (re.match(r"\d{4}-\d\d-\d\d", j.get("postedDate") or "") or [None])[0], "yrs": R.read_years(text),
                       "internal": bool(seen_by) and "external" not in seen_by, "company": None}))
     return R._dedupe(rows)
 

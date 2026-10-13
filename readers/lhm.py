@@ -93,7 +93,7 @@ def _senior_health(page):
         duties, asks = str(j.get("descriptionDetails") or ""), str(j.get("requirements") or "")
         text = duties + ("<p>Job Requirements:</p>" + asks if asks else "") or None
         rows.append((title, _place(_text(j.get("location")), _text(j.get("state"))), POSTING + link.group(1), None,
-                     R.degree_flag(text), {"posted": _day(j.get("createdDate")), "yrs": R.min_years(text),
+                     R.degree_flag(text), {"posted": _day(j.get("createdDate")), "yrs": R.read_years(text),
                                            "internal": False, "company": SENIOR_HEALTH}))
     return rows
 

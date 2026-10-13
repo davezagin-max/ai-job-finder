@@ -86,7 +86,7 @@ def fetch(slug):
                 # last whole day the posting is open, not the UTC date, which is a day late.
                 rows.append((title, loc, f"{HOST}/en-US/{ns}/{board}/jobs/{j['jobPostingId']}",
                              _day(j.get("postingExpiryTimestampUTC"), back=12), R.degree_flag(text),
-                             {"posted": _day(j.get("postingStartTimestampUTC")), "yrs": R.min_years(text),
+                             {"posted": _day(j.get("postingStartTimestampUTC")), "yrs": R.read_years(text),
                               "internal": False, "company": None}))
             start += len(posts)
             if not posts or start >= total: break

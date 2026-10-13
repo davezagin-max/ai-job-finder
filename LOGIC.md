@@ -697,6 +697,16 @@ them.
   on screen (`jobExperienced()`), are listed only when the Experienced chip is on.
   A search does not bring them back, and they are not counted or sent to Claude.
   An opening the reader has applied to is the exception: it stays, shaded green.
+  Years a posting only prefers count when it requires none (`jobAsks()`):
+  `refresh.py` stores them as `pref`, read by `min_years(text, soft=True)`.
+- **Unchecked openings** (`jobUnchecked()`): no years, no preferred years and no
+  `txt` flag, which `refresh.py` sets when a reader handed it posting text. They
+  are state job bank leads and rows from hiring systems that publish titles
+  only. They are listed only with the **Experience not checked** chip on (or the
+  State job bank source chip). New-grad programs, the board's hand-read openings
+  and web finds are never unchecked.
+- **Remote** (`saysRemote()`): a place that says remote, work from home or
+  offsite is filed under Remote and shown as "Remote" alone, on cards and blocks.
   They are not entry-level, so a new graduate's list is clearer without them.
 
 The count on the tab leaves the last two out in the same way.

@@ -113,7 +113,7 @@ def fetch(slug):
         try: text = R.patient(_posting, base, url.rsplit("=", 1)[1], tries=2, slots=R._DETAIL_SLOTS)   # two tries keep a bad day under 150 requests
         except Exception: text = None
         if text is None: unread += 1; continue
-        rows[i] = (title, loc, url, closes, R.degree_flag(text), dict(extra, yrs=R.min_years(text)))
+        rows[i] = (title, loc, url, closes, R.degree_flag(text), dict(extra, yrs=R.read_years(text)))
     notes = [f"read details for the first 60 of {len(kept)} kept roles"] if len(kept) > 60 else []
     if unread: notes.append(f"could not read the posting text of {unread} of {min(len(kept), 60)} kept roles")
     if notes: R.PARTIAL[slug] = "; ".join(notes)

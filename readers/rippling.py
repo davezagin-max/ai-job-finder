@@ -101,7 +101,7 @@ def fetch(slug):
         text = (info.get("description") or {}).get("role")
         # createdOn carries the site's own UTC offset, so its first ten characters are the day as posted.
         rows.append((title, loc, url, None, R.degree_flag(text),      # Rippling states no closing date
-                     {"posted": (info.get("createdOn") or "")[:10] or None, "yrs": R.min_years(text),
+                     {"posted": (info.get("createdOn") or "")[:10] or None, "yrs": R.read_years(text),
                       "internal": False, "company": None}))
     return R._dedupe(rows)
 

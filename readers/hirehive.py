@@ -62,7 +62,7 @@ def fetch(slug):
         rows.append((re.sub(r"\s+", " ", j["title"]).strip(), _place(j), j["hostedUrl"],
                      None,                                   # HireHive has no closing date
                      R.degree_flag(text),
-                     {"posted": _day(j.get("publishedDate") or j.get("createdDate")), "yrs": R.min_years(text), "internal": False, "company": None}))
+                     {"posted": _day(j.get("publishedDate") or j.get("createdDate")), "yrs": R.read_years(text), "internal": False, "company": None}))
     return R._dedupe(rows)
 
 # A posting link ends in a six-character id ("product-analyst-draper-Jr5HUI"). Every id seen has a capital

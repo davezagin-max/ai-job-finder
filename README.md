@@ -132,7 +132,15 @@ posting open only to the employer's current staff appears only with the
 numbered-level title, or any posting that asks for three or more years beyond the
 profile on screen) appears only with that Level chip on. A search does not bring
 it back. The one exception is an opening you have applied to, which stays listed
-and highlighted so you can follow it.
+and highlighted so you can follow it. A posting that requires no set number of
+years but says it *prefers* three or more is treated the same way.
+
+**Openings nobody has read are left out too.** Some feeds give a title and a
+place but no posting text: Utah's state job bank, and a few hiring systems. The
+experience those postings ask for has not been checked, so they stay out of the
+list until you turn on **Experience not checked**. New-grad programs are the
+exception, since they are entry-level by definition. A remote job shows "Remote"
+as its place and is filed under Remote, whatever offices its posting also lists.
 Neither is an entry-level opening, so neither belongs in the default list, but
 both are published so that a real posting never looks as if the page missed it.
 
@@ -700,6 +708,7 @@ internal-only. About four rows in ten were state job bank leads.
 | --- | --- |
 | `date`, `prev` | The day of this refresh and of the one before it. "New" in All openings is measured from `date` |
 | `sources`, `employers` | Feeds read on `date`, and distinct employers among the rows |
+| `yrs`, `pref`, `txt` (per job) | Years the posting requires; years it only prefers (given when it requires none); 1 when the posting text was read. A job with none of the three has not been checked for experience |
 | `entry`, `senior`, `internal`, `leads` | Row counts: entry-level, experienced-level, internal-only, state job bank leads |
 | `dead` | Links on the board that failed this run's check |
 | `unread` | Employers known but not read, each as `{co, url, why}` |

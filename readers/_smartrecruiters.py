@@ -109,7 +109,7 @@ def fetch(slug):
             if streak == 3: missed += len(todo) - i - 1; break
             continue
         streak, text = 0, _text(d)
-        r[4], r[5]["yrs"] = R.degree_flag(text), R.min_years(text)
+        r[4], r[5]["yrs"] = R.degree_flag(text), R.read_years(text)
         time.sleep(0.2)
     if len(kept) > _MAX_DETAILS: notes.append(f"read details for the first {_MAX_DETAILS} of {len(kept)} kept roles")
     if missed: notes.append(f"the posting text of {missed} kept role{'s' if missed > 1 else ''} could not be read")

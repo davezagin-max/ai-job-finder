@@ -163,7 +163,7 @@ def fetch(slug):
         # t_create is the day the job was first listed. The "datePosted" inside the posting page moves with
         # every later edit, so it is not that. isPrivate marks a job kept off the public search.
         rows.append((title, loc, url, _deadline(record), R.degree_flag(text),
-                     {"posted": _day(j.get("t_create")), "yrs": R.min_years(text), "internal": bool(j.get("isPrivate")), "company": None}))
+                     {"posted": _day(j.get("t_create")), "yrs": R.read_years(text), "internal": bool(j.get("isPrivate")), "company": None}))
     return R._dedupe(rows)
 
 def link_state(url):

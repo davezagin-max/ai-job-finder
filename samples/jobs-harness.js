@@ -67,14 +67,14 @@
     const withOpening = COMPANIES.filter(c => !c.suggested && c.apply.openings.some(o => !isClosed(o)));
     const c0 = withOpening[0], o0 = c0.apply.openings.find(o => !isClosed(o));
     const c1 = withOpening.find(c => c !== c0), o1 = c1.apply.openings.find(o => !isClosed(o));
-    const row = (n, extra) => Object.assign({ co: 'Wasatch Ledger Co-op', title: `Fixture Analyst ${n}`, loc: 'Salt Lake City, UT', url: `https://jobs.example.test/ledger/${n}`, geo: 'home', sig: 'entry', field: 'data' }, extra);
+    const row = (n, extra) => Object.assign({ co: 'Wasatch Ledger Co-op', title: `Fixture Analyst ${n}`, loc: 'Salt Lake City, UT', url: `https://jobs.example.test/ledger/${n}`, geo: 'home', sig: 'entry', field: 'data', txt: 1 }, extra);
     const fixture = {
       date: DAY, prev: '2031-03-03', employers: 3, dead: [o1.url],
       unread: [{ co: 'Granite Peak College', url: 'https://jobs.example.test/granite', why: 'it has no public job feed' },
         { co: 'Shut Gate University', url: 'https://jobs.example.test/shut', why: 'its hiring system asks scripts to stay out' }, { co: 'No Link College', url: 'javascript:alert(1)' }],
       jobs: [
-        { co: c0.name, card: c0.name, title: plain(o0.title).toUpperCase(), loc: plain(o0.loc), url: o0.url, geo: 'home', sig: 'entry', field: 'data', yrs: 9 },
-        { co: c0.name, card: `${c0.name.replace(/\s*\(.*?\)\s*/g, ' ').trim()} (Fixture Office)`, title: 'Fixture Quality Zebra Coordinator', loc: 'Lehi, UT', url: 'https://jobs.example.test/board/extra-1', geo: 'home', sig: 'entry', field: 'business', posted: '2031-03-08' },
+        { co: c0.name, card: c0.name, title: plain(o0.title).toUpperCase(), loc: plain(o0.loc), url: o0.url, geo: 'home', sig: 'entry', field: 'data', yrs: 9, txt: 1 },
+        { co: c0.name, card: `${c0.name.replace(/\s*\(.*?\)\s*/g, ' ').trim()} (Fixture Office)`, title: 'Fixture Quality Zebra Coordinator', loc: 'Lehi, UT', url: 'https://jobs.example.test/board/extra-1', geo: 'home', sig: 'entry', field: 'business', posted: '2031-03-08', txt: 1 },
         row(1, { sig: 'program', field: 'finance', posted: '2031-03-07', closes: '2099-01-01' }),
         row(2, { posted: '2031-02-01' }),
         row(3, { seen: DAY, geo: 'remote', loc: 'Remote, US' }),
@@ -86,7 +86,9 @@
         row(9, { geo: 'elsewhere', loc: 'Denver, CO', deg: 'MS/PhD', field: 'research', yrs: 2 }),
         row(10, { sig: 'senior', title: 'Fixture Senior Data Architect 10', posted: '2031-03-09' }),
         row(11, { int: 1, title: 'Fixture Reporting Analysts 11' }),
-        row(12, { agg: 1, co: 'Canyon Grid Power', src: 'Fixture job bank', title: 'Harness Data Analyst 700', url: 'https://jobbank.example.test/single-job?j=12' }),
+        row(13, { pref: 5, title: 'Fixture Analyst 13 Prefers Five' }),
+        row(14, { txt: 0, title: 'Fixture Analyst 14 Unread' }),
+        row(12, { agg: 1, txt: 0, co: 'Canyon Grid Power', src: 'Fixture job bank', title: 'Harness Data Analyst 700', url: 'https://jobbank.example.test/single-job?j=12' }),
         { co: 'No Link Inc', title: 'Missing url' }, null,
       ],
     };
@@ -119,12 +121,12 @@
     const st = J().state, count = set => { Object.keys(st).forEach(x => { if (x !== 'sort' && x !== 'shown') st[x] = null; }); Object.assign(st, set); return all().filter(j => J().passes(j, '')).length; };
     const live = count({});
     // an experienced opening is listed only where the person running this has applied to it
-    const out = j => J().experienced(j) && !J().applied(j);
+    const out = j => (J().experienced(j) || J().unchecked(j)) && !J().applied(j);
     ok('filter', 'closed postings never pass', live === all().filter(j => !J().closed(j) && !j.int && !out(j)).length && !J().passes(find(7), ''));
     ok('filter', 'Where narrows to remote', count({ where: 'remote' }) === all().filter(j => !J().closed(j) && !out(j) && j.geo === 'remote').length && count({ where: 'remote' }) >= 2);
     ok('filter', 'Level narrows to new-grad programs', all().filter(j => J().passes(j, '')).length >= 0 && count({ level: 'program' }) === all().filter(j => !J().closed(j) && !out(j) && j.sig === 'program').length);
     ok('filter', 'Field narrows to one field', count({ field: 'research' }) === 1);
-    ok('filter', 'Source separates feed-only employers from the board\'s', count({ source: 'feed' }) === 7 && count({ source: 'bank' }) === 1 && count({ source: 'board' }) === live - 8, `${count({ source: 'feed' })} feed, ${count({ source: 'bank' })} bank, ${live} live`);
+    ok('filter', 'Source separates feed-only employers from the board\'s', count({ source: 'feed' }) === 7 && count({ source: 'bank' }) === 1 && count({ source: 'board' }) === live - 7, `${count({ source: 'feed' })} feed, ${count({ source: 'bank' })} bank, ${live} live`);
     ok('filter', 'Out of reach hides a posting two or more years beyond the candidate', count({ reach: 'on' }) < live && (() => { count({ reach: 'on' }); return !J().passes(find(9), '') && J().passes(find(6), ''); })());
     ok('filter', 'a posting three or more years beyond the candidate is not listed at all', (() => { count({}); return J().experienced(find(5)) && !J().passes(find(5), '') && J().passes(find(9), ''); })());
     ok('filter', 'Weak fits hides software ladders and degree bars', (() => { count({ hideWeak: 'on' }); return !J().passes(find(8), '') && !J().passes(find(9), '') && J().passes(find(1), ''); })());
@@ -139,9 +141,11 @@
     count({});
     ok('classes', 'neither class is sent to Claude for a new graduate', !T().jobsForPrompt().some(j => j.url === find(10).url || j.url === find(11).url));
 
+    ok('classes', 'a posting that only prefers five years is treated as asking for five', J().asks(find(13)) === 5 && J().experienced(find(13)) && !J().passes(find(13), ''));
+    ok('classes', 'a posting nobody read is left out until Experience not checked is on', (() => { count({}); const off = J().unchecked(find(14)) && !J().passes(find(14), ''); count({ unchecked: 'on' }); const on = J().passes(find(14), '') && J().passes(find(1), ''); count({}); return off && on; })());
     // ---------- leads from a relisting job bank ----------
     const lead = () => all().find(j => j.url === 'https://jobbank.example.test/single-job?j=12');
-    ok('leads', 'a job bank row is its own source, not an employer feed', lead() && J().source(lead()) === 'bank' && J().passes(lead(), ''));
+    ok('leads', 'a job bank row is its own source, not an employer feed', lead() && J().source(lead()) === 'bank' && J().unchecked(lead()) && !J().passes(lead(), '') && (() => { count({ source: 'bank' }); const on = J().passes(lead(), ''); count({}); return on; })());
     J().setView('jobs', false); count({ source: 'bank' }); J().refresh(); await sleep(60);
     const leadRow = document.querySelector('#joblist .jrow');
     ok('leads', 'it is tagged as a lead and offers a search for the employer\'s own posting', leadRow && /state job bank lead/.test(leadRow.textContent) && !!leadRow.querySelector('a.jfind[href^="https://www.google.com/search?q="]') && /Canyon%20Grid%20Power/.test(leadRow.querySelector('a.jfind').getAttribute('href')), leadRow && leadRow.textContent.slice(0, 200));
@@ -172,7 +176,7 @@
 
     // ---------- Claude's ranking is checked like everything else it returns ----------
     const list = T().jobsForPrompt();
-    ok('rank', 'the list sent to Claude is every listed opening, closed ones left out, in a fixed order', list.length === all().filter(j => !J().closed(j) && !j.web && !j.int && !J().experienced(j)).length && list.every((j, i) => i === 0 || list[i - 1].key <= j.key));
+    ok('rank', 'the list sent to Claude is every listed opening, closed ones left out, in a fixed order', list.length === all().filter(j => !J().closed(j) && !j.web && !j.int && !J().experienced(j) && !J().unchecked(j)).length && list.every((j, i) => i === 0 || list[i - 1].key <= j.key));
     const brief = T().candidateBrief(null);
     const rp = T().buildRankParams('claude-sonnet-5-5', 'high', brief, null, list);
     ok('rank', 'the request asks for structured output with adaptive thinking and caches the list', rp.model === 'claude-sonnet-5-5' && rp.thinking.type === 'adaptive' && rp.output_config.effort === 'high' && rp.output_config.format.type === 'json_schema' && rp.system[1].cache_control && !('temperature' in rp) && !('tool_choice' in rp));

@@ -73,7 +73,7 @@ def fetch(slug):
                      j["url_comeet_hosted_page"], None, R.degree_flag(text),
                      # time_updated is the day of the last edit, not of the posting, so it is not passed off
                      # as the posted date.
-                     {"posted": None, "yrs": R.min_years(text), "internal": bool(j.get("is_internal")), "company": None}))
+                     {"posted": None, "yrs": R.read_years(text), "internal": bool(j.get("is_internal")), "company": None}))
     return R._dedupe(rows)
 
 def link_state(url):

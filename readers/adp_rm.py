@@ -106,7 +106,7 @@ def fetch(slug):
                 except Exception: missed += 1
                 time.sleep(0.3)
         rows.append((title, loc, f"{SITE}/{slug}/cx/job-details?reqId={j['reqId']}", closes, R.degree_flag(text),
-                     {"posted": posted, "yrs": R.min_years(text), "internal": internal, "company": None}))
+                     {"posted": posted, "yrs": R.read_years(text), "internal": internal, "company": None}))
     if dated < kept:
         note = f"read details for the first 60 of {kept} kept roles" if not missed else f"read details for {dated} of {kept} kept roles"
         R.PARTIAL[slug] = f"{R.PARTIAL[slug]}; {note}" if total > 6000 else note       # a cut-short list stays in the note

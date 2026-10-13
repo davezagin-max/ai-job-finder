@@ -109,7 +109,7 @@ def fetch(slug):
         try: body = R.patient(text, ids[i], slots=R._DETAIL_SLOTS)
         except Exception: failed += 1; continue    # a failed read keeps the row as listed
         t, loc, url, closes, _, extra = rows[i]
-        rows[i] = (t, loc, url, closes, R.degree_flag(body), dict(extra, yrs=R.min_years(body) or None))
+        rows[i] = (t, loc, url, closes, R.degree_flag(body), dict(extra, yrs=R.read_years(body)))
         read += 1; time.sleep(0.3)
     if failed: notes.append(f"read details for {read} of {len(kept)} kept roles")
     elif len(kept) > 60: notes.append(f"read details for the first 60 of {len(kept)} kept roles")
