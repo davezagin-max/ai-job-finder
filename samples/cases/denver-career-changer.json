@@ -107,6 +107,15 @@
    "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Adobe (Lehi Campus): data employer, away from the candidate."
   },
   {
+   "name": "Sandbox Startup Residency",
+   "score": 66,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Sandbox Startup Residency: ai-lab employer, away from the candidate."
+  },
+  {
    "name": "Ancestry",
    "score": 67,
    "toolsMatch": true,
@@ -135,7 +144,7 @@
   },
   {
    "name": "Galileo Financial Technologies",
-   "score": 67,
+   "score": 74,
    "toolsMatch": true,
    "status": "keep",
    "locType": "far",
@@ -288,7 +297,7 @@
   },
   {
    "name": "Cotiviti",
-   "score": 70,
+   "score": 77,
    "toolsMatch": true,
    "status": "keep",
    "locType": "far",
@@ -317,7 +326,7 @@
    "name": "Mastercard",
    "score": 68,
    "toolsMatch": true,
-   "status": "wrong-cohort",
+   "status": "keep",
    "locType": "far",
    "note": "",
    "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Mastercard: fintech employer, away from the candidate."
@@ -459,9 +468,9 @@
   },
   {
    "name": "Okta",
-   "score": 66,
+   "score": 60,
    "toolsMatch": true,
-   "status": "wrong-cohort",
+   "status": "keep",
    "locType": "remote",
    "note": "",
    "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Okta: cyber employer, away from the candidate."
@@ -531,7 +540,7 @@
   },
   {
    "name": "Zions Bancorporation",
-   "score": 74,
+   "score": 67,
    "toolsMatch": true,
    "status": "keep",
    "locType": "far",
@@ -621,7 +630,7 @@
   },
   {
    "name": "Cicero Group (MGT)",
-   "score": 78,
+   "score": 71,
    "toolsMatch": true,
    "status": "keep",
    "locType": "far",
@@ -639,9 +648,9 @@
   },
   {
    "name": "Fannie Mae",
-   "score": 80,
+   "score": 73,
    "toolsMatch": true,
-   "status": "wrong-cohort",
+   "status": "keep",
    "locType": "far",
    "note": "",
    "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Fannie Mae: fintech employer, away from the candidate."
@@ -695,7 +704,7 @@
    "name": "FIS",
    "score": 81,
    "toolsMatch": true,
-   "status": "keep",
+   "status": "wrong-cohort",
    "locType": "far",
    "note": "",
    "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at FIS: fintech employer, away from the candidate."
@@ -749,7 +758,7 @@
    "name": "KPMG",
    "score": 90,
    "toolsMatch": true,
-   "status": "wrong-cohort",
+   "status": "keep",
    "locType": "far",
    "note": "",
    "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at KPMG: data employer, away from the candidate."
@@ -765,9 +774,9 @@
   },
   {
    "name": "Accenture",
-   "score": 80,
+   "score": 73,
    "toolsMatch": true,
-   "status": "wrong-cohort",
+   "status": "keep",
    "locType": "far",
    "note": "",
    "why": "**Synthetic fixture.** A made-up fit explanation for Caleb at Accenture: data employer, away from the candidate."

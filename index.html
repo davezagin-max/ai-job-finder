@@ -1163,6 +1163,22 @@ const COMPANIES = [
     careers: "https://careers.adobe.com/us/en/university",
     linkedin: "https://www.linkedin.com/company/adobe/jobs/"
   },
+  {
+    // Added 2026-10-27. pinned: a tailored profile never hides it, even one saved before it was added.
+    name: "Sandbox Startup Residency",
+    location: "Utah intensive, then NYC / SF",
+    locType: "far",
+    industry: ["ai-lab"],
+    roles: ["ml", "data", "product", "swe"],
+    score: 95,
+    tier: 1,
+    pinned: true,
+    scoringNote: "A four-month residency program, not an ordinary employer: Sandbox places each resident in a paid startup internship (February to April 2027) after a January AI intensive in Utah. Score it on whether the candidate builds things with AI or data (shipped projects, Python, SQL, automation) and whether a January 2027 start fits their timing; students and recent graduates both qualify. Do not mark it down for relocation, since travel to the intensive and the startup placement are part of the program, and do not mark it down for the role family, since residents work in data, product, engineering and AI roles. A December 2026 graduate with real AI or data projects is a bullseye.",
+    badges: ["ai-native"],
+    why: "<strong>Built for someone graduating in December.</strong> A four-month residency: a January 2027 AI build intensive in Utah, a week touring San Francisco startups, then a paid February&ndash;April internship at a venture-backed startup with real ownership, with a stipend and college credit. Alumni went on to LangChain, Cerebras, Figma and Databricks, and partner startups are hiring from this cohort. A strong fit for a data or analytics builder who has shipped a real AI project.",
+    careers: "https://sandbox.ing/residency",
+    linkedin: "https://www.linkedin.com/search/results/all/?keywords=Sandbox%20Startup%20Residency"
+  },
 
   // ===== TIER 2 STRONG MATCHES =====
   {
@@ -2252,6 +2268,11 @@ const APPLY_STATUS = {
     status: "watch",
     note: "All 14 live reqs are senior/director computational biology. Submit the general application and watch for their data/engineering intern-to-FT pipeline.",
     openings: [{ title: "General application (\"Don't see what you're looking for?\")", loc: "Salt Lake City", url: "https://job-boards.greenhouse.io/recursionpharmaceuticals/jobs/3955652" }]
+  },
+  "Sandbox Startup Residency": {
+    status: "open-now",
+    note: "<strong>January 2027 cohort, recruiting now.</strong> The process is a written application, a 1&ndash;2 minute video on the most impressive thing you have built with AI (how you chose it, the tools, the impact), then two to three behavioral interviews. Afterwards residents can join their startup full-time, go back to school, or extend at another startup.",
+    openings: [{ title: "Startup Residency, January 2027 cohort", loc: "Utah, then NYC / SF", url: "https://sandbox.ing/residency", program: true, added: "2026-10-27" }]
   },
   "Domo": {
     status: "watch",
@@ -3974,7 +3995,7 @@ setView(VIEW, false);
     const model = (MODELS[p.model] || {}).label || p.model;
     const changed = COMPANIES.some(c => { const t = p.companies[c.name]; return t && t.factSig && t.factSig !== factSigOf(BASE[c.name]); });
     const stale = profileBoardDate(p) < REFRESH_DATE || changed;
-    const hidden = COMPANIES.filter(c => !p.companies[c.name]).map(c => c.name);
+    const hidden = COMPANIES.filter(c => !p.companies[c.name] && !c.pinned).map(c => c.name);
     return `Built for ${esc(p.name)} &middot; Tailored ${esc(when)} with ${esc(model)} &middot; Board data verified ${REFRESH_DATE}
       ${stale ? `<br><strong style="color: var(--gold);">The board was re-verified${profileBoardDate(p) < REFRESH_DATE ? ` on ${REFRESH_DATE}` : ''} after this profile was tailored.</strong> Each card's status and openings are current; the two lines below were written on ${esc(when)}, so re-run the tailoring for fresh advice.` : ''}
       ${hidden.length ? `<br>${hidden.length} employer${hidden.length === 1 ? ' was' : 's were'} not scored for this profile and ${hidden.length === 1 ? 'is' : 'are'} hidden (${esc(hidden.slice(0, 6).join(', '))}${hidden.length > 6 ? ', …' : ''}). Switch to the original board to see ${hidden.length === 1 ? 'it' : 'them'}, or re-run the tailoring to include ${hidden.length === 1 ? 'it' : 'them'}.` : ''}
@@ -4010,7 +4031,8 @@ setView(VIEW, false);
       const t = custom ? p.companies[c.name] : null;
       // An employer this profile never scored (added to the board later, or skipped by the model) is
       // hidden rather than shown with the sample candidate's score, text and home-city badge.
-      c.untailored = custom && !t;
+      // A pinned employer is the exception: it stays on every profile, on the board's own score and text if unscored.
+      c.untailored = custom && !t && !c.pinned;
       c.score = t ? t.score : b.score;
       c.tier = t ? t.tier : b.tier;
       c.badges = (t ? t.badges : b.badges).slice();
@@ -4033,6 +4055,12 @@ setView(VIEW, false);
         } else {
           c.score = raw;
         }
+      }
+      // A pinned employer this profile never scored stays visible, but on a neutral score rather than the
+      // board's own, which was written for the board's audience and not for this person.
+      if (custom && !t && c.pinned) {
+        c.score = Math.min(b.score, 70);
+        c.why = b.why + ' <em>Not scored for this resume yet: re-run the tailoring to score it.</em>';
       }
       // A company with no listed openings is never a live role for a tailored candidate.
       if (t && boardNewer && c.apply.status === 'open-now' && !(b.openings || []).length) c.apply.status = 'watch';
@@ -4126,6 +4154,8 @@ Scores (60-100) measure how well THIS candidate fits THIS employer for an entry-
 Seniority is a gate, not a tiebreaker, and it outranks every other factor including domain and geography. First work out how much full-time professional experience this person will actually have on a realistic start date. For someone finishing an undergraduate degree that is normally none; internships, part-time jobs and coursework are not full-time years, however good they are. Then check what each employer is asking for. Some openings carry a "yearsRequired" number that was read off the live posting, and the timing notes often state it in words, so the evidence is usually there: use it. An opening asking three or more years cannot be a strong match for a new graduate no matter how perfectly the domain lines up. Cap that employer at 70 and let the why name the gap in the first clause. Two years caps it at 80. Only give 85 or more when there is a genuine route in at this person's level, meaning a new-grad or graduate programme, an internship-to-full-time pipeline, or a posting that says zero to one years or that internships count, and only give 95 to 100 when such a route is open right now and the domain and geography line up too. Titles are weak evidence: "Analyst I", "Associate" and "New Grad" usually mean entry-level, while "Senior", "Staff", "Lead", "Principal" and anything numbered II or higher do not. When a listed opening is out of reach on experience, say so plainly rather than suggesting they apply anyway.
 
 This board is narrow on purpose. Every employer on it hires into a few role families and no others: AI and machine learning, software engineering, data and analytics, product, and the technology side of audit, risk and assurance (IT audit, technology controls, data assurance). So the question to settle first is not what industry the candidate is in, it is whether a recruiter would plausibly put this person in one of those seats for an entry-level hire. Judge that on the evidence in the resume, not on the prestige of the degree. A chemistry or biology major with no programming, no SQL and no analytics projects does not belong in a data seat just because a couple of these employers work on health problems, and a business major whose experience is all retail shifts does not belong in a product seat. If the answer is no, do not stretch these companies to fit them. Score the board low and honestly, let each why name the gap in plain words rather than hunting for a tenuous link, open the summary by saying the board is aimed at data and AI work and this candidate is not, and put the real recommendations in the suggested list instead. A short board of honest 62s with twelve genuinely relevant suggested employers is a far better answer than sixty forced 80s. Never describe someone as a data candidate because the board is a data board.
+
+A few entries carry a "scoringNote". Follow it: it says how that entry differs from an ordinary employer and what its score should rest on.
 
 Do not rank or categorise the board yourself beyond the score: tiers and badges are derived from your scores and the board's own data, so there is nothing to decide there. The one exception is toolsMatch, a simple true or false per employer: true only when that employer's stack clearly overlaps a tool named on the resume, false otherwise. Do not deliberate over it; if you are unsure, it is false.
 
@@ -4233,6 +4263,7 @@ Header fields describe the CANDIDATE, so take their vocabulary from the resume a
         name: c.name, location: c.location, locType: b.locType, industry: c.industry, roles: c.roles,
         about: stripHtml(b.why),
         uofuHiringNote: c.alumniNote ? stripHtml(c.alumniNote) : undefined,
+        scoringNote: c.scoringNote || undefined,
         timing: { status: b.status, note: stripHtml(c.apply.note) },
         openings: c.apply.openings.filter(o => !isClosed(o)).map(o => ({ title: stripHtml(o.title), loc: o.loc, yearsRequired: o.yrs, closes: o.closes })),
       };

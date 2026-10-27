@@ -100,6 +100,15 @@
    "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Adobe (Lehi Campus): data employer, local to the candidate."
   },
   {
+   "name": "Sandbox Startup Residency",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nadia at Sandbox Startup Residency: ai-lab employer, away from the candidate."
+  },
+  {
    "name": "Ancestry",
    "score": 60,
    "toolsMatch": false,
@@ -128,7 +137,7 @@
   },
   {
    "name": "Galileo Financial Technologies",
-   "score": 65,
+   "score": 72,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",
@@ -281,7 +290,7 @@
   },
   {
    "name": "Cotiviti",
-   "score": 64,
+   "score": 71,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",
@@ -524,7 +533,7 @@
   },
   {
    "name": "Zions Bancorporation",
-   "score": 72,
+   "score": 65,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",
@@ -614,7 +623,7 @@
   },
   {
    "name": "Cicero Group (MGT)",
-   "score": 66,
+   "score": 60,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",

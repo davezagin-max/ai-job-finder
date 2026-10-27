@@ -107,6 +107,15 @@
    "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Adobe (Lehi Campus): data employer, away from the candidate."
   },
   {
+   "name": "Sandbox Startup Residency",
+   "score": 87,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Tobias at Sandbox Startup Residency: ai-lab employer, away from the candidate."
+  },
+  {
    "name": "Ancestry",
    "score": 72,
    "toolsMatch": true,
@@ -135,7 +144,7 @@
   },
   {
    "name": "Galileo Financial Technologies",
-   "score": 69,
+   "score": 76,
    "toolsMatch": true,
    "status": "keep",
    "locType": "far",
@@ -288,7 +297,7 @@
   },
   {
    "name": "Cotiviti",
-   "score": 60,
+   "score": 66,
    "toolsMatch": false,
    "status": "keep",
    "locType": "far",
@@ -459,7 +468,7 @@
   },
   {
    "name": "Okta",
-   "score": 72,
+   "score": 65,
    "toolsMatch": true,
    "status": "keep",
    "locType": "remote",
@@ -531,7 +540,7 @@
   },
   {
    "name": "Zions Bancorporation",
-   "score": 76,
+   "score": 69,
    "toolsMatch": true,
    "status": "keep",
    "locType": "far",

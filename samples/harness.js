@@ -117,8 +117,10 @@
 
     // --- untailored employers ---
     const hidden = COMPANIES.filter(c => c.untailored).map(c => c.name);
-    const wantHidden = COMPANIES.filter(c => !byName[c.name] && !data.companies.some(r => r.name.trim().toLowerCase() === c.name.toLowerCase())).map(c => c.name);
+    const wantHidden = COMPANIES.filter(c => !c.pinned && !byName[c.name] && !data.companies.some(r => r.name.trim().toLowerCase() === c.name.toLowerCase())).map(c => c.name);
     ok('rule: employers the profile never scored are hidden, not shown with the owner\'s text', JSON.stringify(hidden) === JSON.stringify(wantHidden), `${hidden} vs ${wantHidden}`);
+    const pinnedUnscored = COMPANIES.filter(c => c.pinned && !byName[c.name] && !data.companies.some(r => r.name.trim().toLowerCase() === c.name.toLowerCase()));
+    if (pinnedUnscored.length) ok('rule: a pinned employer the profile never scored shows on a neutral score with a re-run note', pinnedUnscored.every(c => !c.untailored && c.score <= 70 && /Not scored for this resume/.test(c.why)), pinnedUnscored.map(c => `${c.name}: ${c.score}`).join(', '));
     if (hidden.length) ok('rule: the footer names the hidden employers', hidden.every(h => document.querySelector('footer').innerText.includes(h)));
 
     // --- rendering details ---
@@ -219,7 +221,9 @@
       // a stale profile: once the board is newer, the board's status wins except wrong-cohort
       const stale = { ...p, boardDate: '2000-01-01' };
       T().applyProfile(stale); await sleep(120);
-      const wrong = COMPANIES.filter(c => !c.untailored && c.apply.status !== (p.companies[c.name].status === 'wrong-cohort' ? 'wrong-cohort' : (p.companies[c.name].status === 'open-now' && !BASE[c.name].openings.length ? 'watch' : BASE[c.name].status)) && !(BASE[c.name].openings.length && expectedCap(c, p.yearsExperience).demote));
+      const wrong = COMPANIES.filter(c => !c.untailored && p.companies[c.name] && c.apply.status !== (p.companies[c.name].status === 'wrong-cohort' ? 'wrong-cohort' : (p.companies[c.name].status === 'open-now' && !BASE[c.name].openings.length ? 'watch' : BASE[c.name].status)) && !(BASE[c.name].openings.length && expectedCap(c, p.yearsExperience).demote));
+      const pinnedGone = COMPANIES.filter(c => c.pinned && c.untailored);
+      ok(name, 'rule: a pinned employer stays on the board even when the profile never scored it', !pinnedGone.length, pinnedGone.map(c => c.name).join(', '));
       ok(name, 'rule: after a newer refresh the board status wins, only wrong-cohort survives', !wrong.length, wrong.map(c => `${c.name}: ${c.apply.status}`).slice(0, 4).join(' | '));
       ok(name, 'rule: the footer warns that the profile predates the re-verification', /re-verified/.test(document.querySelector('footer').innerText));
     }

@@ -100,6 +100,15 @@
    "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Adobe (Lehi Campus): data employer, local to the candidate."
   },
   {
+   "name": "Sandbox Startup Residency",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Camille at Sandbox Startup Residency: ai-lab employer, away from the candidate."
+  },
+  {
    "name": "Ancestry",
    "score": 70,
    "toolsMatch": false,
@@ -128,7 +137,7 @@
   },
   {
    "name": "Galileo Financial Technologies",
-   "score": 85,
+   "score": 92,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",
@@ -281,7 +290,7 @@
   },
   {
    "name": "Cotiviti",
-   "score": 71,
+   "score": 78,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",
@@ -452,7 +461,7 @@
   },
   {
    "name": "Okta",
-   "score": 72,
+   "score": 65,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",
@@ -524,7 +533,7 @@
   },
   {
    "name": "Zions Bancorporation",
-   "score": 92,
+   "score": 85,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",
@@ -614,7 +623,7 @@
   },
   {
    "name": "Cicero Group (MGT)",
-   "score": 80,
+   "score": 73,
    "toolsMatch": false,
    "status": "wrong-cohort",
    "locType": "keep",
@@ -632,7 +641,7 @@
   },
   {
    "name": "Fannie Mae",
-   "score": 74,
+   "score": 67,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",
@@ -758,7 +767,7 @@
   },
   {
    "name": "Accenture",
-   "score": 68,
+   "score": 61,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",

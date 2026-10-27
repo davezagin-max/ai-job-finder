@@ -100,6 +100,15 @@
    "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Adobe (Lehi Campus): data employer, local to the candidate."
   },
   {
+   "name": "Sandbox Startup Residency",
+   "score": 76,
+   "toolsMatch": true,
+   "status": "wrong-cohort",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Sandbox Startup Residency: ai-lab employer, away from the candidate."
+  },
+  {
    "name": "Ancestry",
    "score": 89,
    "toolsMatch": true,
@@ -128,7 +137,7 @@
   },
   {
    "name": "Galileo Financial Technologies",
-   "score": 89,
+   "score": 96,
    "toolsMatch": true,
    "status": "keep",
    "locType": "keep",
@@ -281,7 +290,7 @@
   },
   {
    "name": "Cotiviti",
-   "score": 84,
+   "score": 91,
    "toolsMatch": true,
    "status": "keep",
    "locType": "keep",
@@ -310,7 +319,7 @@
    "name": "Mastercard",
    "score": 89,
    "toolsMatch": true,
-   "status": "wrong-cohort",
+   "status": "keep",
    "locType": "keep",
    "note": "",
    "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Mastercard: fintech employer, local to the candidate."
@@ -452,9 +461,9 @@
   },
   {
    "name": "Okta",
-   "score": 72,
+   "score": 65,
    "toolsMatch": true,
-   "status": "wrong-cohort",
+   "status": "keep",
    "locType": "keep",
    "note": "",
    "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Okta: cyber employer, away from the candidate."
@@ -524,7 +533,7 @@
   },
   {
    "name": "Zions Bancorporation",
-   "score": 96,
+   "score": 89,
    "toolsMatch": true,
    "status": "keep",
    "locType": "keep",
@@ -614,7 +623,7 @@
   },
   {
    "name": "Cicero Group (MGT)",
-   "score": 93,
+   "score": 86,
    "toolsMatch": true,
    "status": "keep",
    "locType": "keep",
@@ -632,9 +641,9 @@
   },
   {
    "name": "Fannie Mae",
-   "score": 86,
+   "score": 79,
    "toolsMatch": true,
-   "status": "wrong-cohort",
+   "status": "keep",
    "locType": "keep",
    "note": "",
    "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Fannie Mae: fintech employer, away from the candidate."
@@ -688,7 +697,7 @@
    "name": "FIS",
    "score": 83,
    "toolsMatch": true,
-   "status": "keep",
+   "status": "wrong-cohort",
    "locType": "keep",
    "note": "",
    "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at FIS: fintech employer, away from the candidate."
@@ -742,7 +751,7 @@
    "name": "KPMG",
    "score": 92,
    "toolsMatch": true,
-   "status": "wrong-cohort",
+   "status": "keep",
    "locType": "keep",
    "note": "",
    "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at KPMG: data employer, away from the candidate."
@@ -758,9 +767,9 @@
   },
   {
    "name": "Accenture",
-   "score": 81,
+   "score": 74,
    "toolsMatch": true,
-   "status": "wrong-cohort",
+   "status": "keep",
    "locType": "keep",
    "note": "",
    "why": "**Synthetic fixture.** A made-up fit explanation for Bronwyn at Accenture: data employer, away from the candidate."

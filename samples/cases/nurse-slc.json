@@ -107,6 +107,15 @@
    "why": "**Synthetic fixture.** A made-up fit explanation for Kendra at Adobe (Lehi Campus): data employer, local to the candidate."
   },
   {
+   "name": "Sandbox Startup Residency",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Kendra at Sandbox Startup Residency: ai-lab employer, away from the candidate."
+  },
+  {
    "name": "Ancestry",
    "score": 62,
    "toolsMatch": false,
@@ -135,7 +144,7 @@
   },
   {
    "name": "Galileo Financial Technologies",
-   "score": 71,
+   "score": 78,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",
@@ -288,7 +297,7 @@
   },
   {
    "name": "Cotiviti",
-   "score": 66,
+   "score": 73,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",
@@ -531,7 +540,7 @@
   },
   {
    "name": "Zions Bancorporation",
-   "score": 78,
+   "score": 71,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",
@@ -621,7 +630,7 @@
   },
   {
    "name": "Cicero Group (MGT)",
-   "score": 70,
+   "score": 63,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",
@@ -639,7 +648,7 @@
   },
   {
    "name": "Fannie Mae",
-   "score": 62,
+   "score": 60,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",

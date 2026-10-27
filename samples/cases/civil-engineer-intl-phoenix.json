@@ -100,6 +100,15 @@
    "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Adobe (Lehi Campus): data employer, away from the candidate."
   },
   {
+   "name": "Sandbox Startup Residency",
+   "score": 60,
+   "toolsMatch": false,
+   "status": "keep",
+   "locType": "far",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Nikhil at Sandbox Startup Residency: ai-lab employer, away from the candidate."
+  },
+  {
    "name": "Ancestry",
    "score": 60,
    "toolsMatch": false,

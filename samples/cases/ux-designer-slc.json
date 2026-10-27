@@ -100,6 +100,15 @@
    "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Adobe (Lehi Campus): data employer, local to the candidate."
   },
   {
+   "name": "Sandbox Startup Residency",
+   "score": 67,
+   "toolsMatch": true,
+   "status": "keep",
+   "locType": "keep",
+   "note": "",
+   "why": "**Synthetic fixture.** A made-up fit explanation for Rowan at Sandbox Startup Residency: ai-lab employer, away from the candidate."
+  },
+  {
    "name": "Ancestry",
    "score": 72,
    "toolsMatch": false,
@@ -128,7 +137,7 @@
   },
   {
    "name": "Galileo Financial Technologies",
-   "score": 77,
+   "score": 84,
    "toolsMatch": true,
    "status": "keep",
    "locType": "keep",
@@ -281,7 +290,7 @@
   },
   {
    "name": "Cotiviti",
-   "score": 63,
+   "score": 70,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",
@@ -452,7 +461,7 @@
   },
   {
    "name": "Okta",
-   "score": 64,
+   "score": 60,
    "toolsMatch": true,
    "status": "keep",
    "locType": "keep",
@@ -524,7 +533,7 @@
   },
   {
    "name": "Zions Bancorporation",
-   "score": 84,
+   "score": 77,
    "toolsMatch": true,
    "status": "keep",
    "locType": "keep",
@@ -614,7 +623,7 @@
   },
   {
    "name": "Cicero Group (MGT)",
-   "score": 85,
+   "score": 78,
    "toolsMatch": true,
    "status": "keep",
    "locType": "keep",
@@ -632,7 +641,7 @@
   },
   {
    "name": "Fannie Mae",
-   "score": 66,
+   "score": 60,
    "toolsMatch": false,
    "status": "keep",
    "locType": "keep",
@@ -758,7 +767,7 @@
   },
   {
    "name": "Accenture",
-   "score": 73,
+   "score": 66,
    "toolsMatch": true,
    "status": "keep",
    "locType": "keep",
