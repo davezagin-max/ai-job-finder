@@ -3041,6 +3041,9 @@ const NAME_ALIASES = {
   'vanguard': ['the vanguard group', 'vanguard group'],
   'freddie mac': ['federal home loan mortgage corporation', 'freddiemac', 'fhlmc'],
   'fannie mae': ['federal national mortgage association', 'fanniemae', 'fnma'],
+  'university of utah': ['u of utah', 'u of u', 'uofu', 'u of u health', 'university of utah health', 'university of utah hospitals'],
+  'galileo financial technologies': ['galileo', 'gallileo'],
+  'sandbox startup residency': ['sandbox', 'sandbox education'],
 };
 function nameVariants(name) {
   const base = appNorm(String(name || '').replace(/\(.*?\)/g, ' '));
@@ -3058,10 +3061,21 @@ function closeName(a, b) {
 }
 // "Zions" matches "Zions Bancorporation" and "MGT" matches "Cicero Group (MGT)", but "Pattern Energy"
 // is not Pattern, "Canvas Credit Union" is not Instructure (Canvas), and "Capital One" is not iCapital.
+// A tracker often writes "U of Utah - Hematology" or "SoFi / Galileo": each part is tried on its own.
+const nameParts = n => { const s = String(n || ''); const parts = s.split(/\s+-\s+|\s*\/\s*/).filter(x => appNorm(x).length > 1); return parts.length > 1 ? [s, ...parts] : [s]; };
+const SAME_CO = new Map();
 function sameCompany(a, b) {
-  const A = nameVariants(a), B = nameVariants(b);
-  for (const x of A) for (const y of B) if (closeName(x, y)) return true;
-  return false;
+  const k = a + '\u0001' + b;
+  if (SAME_CO.has(k)) return SAME_CO.get(k);
+  let hit = false;
+  for (const pa of nameParts(a)) for (const pb of nameParts(b)) {
+    const A = nameVariants(pa), B = nameVariants(pb);
+    for (const x of A) for (const y of B) if (closeName(x, y)) { hit = true; break; }
+    if (hit) break;
+  }
+  if (SAME_CO.size > 200000) SAME_CO.clear();
+  SAME_CO.set(k, hit);
+  return hit;
 }
 // Abbreviations people use in their own tracker, so "Sr Ops Mgmt Analyst" still matches the
 // posting's "Master Data Management Analyst". Only unambiguous ones.
@@ -3080,7 +3094,7 @@ const appsFor = c => c.suggested ? [] : APPS.filter(a => sameCompany(a.company, 
 // 0.8, so a sibling posting that adds a word is not mistaken for the one actually applied to
 const placeWords = s => new Set(appNorm(s).split(' ').filter(w => w.length > 2 && !['and', 'more', 'other', 'offices', 'incl', 'area', 'usa'].includes(w)));
 const yearIn = t => (String(t || '').match(/\b20[2-3]\d\b/) || [''])[0];
-const appliedTo = (c, o) => appsFor(c).find(a => {
+const strictAppliedTo = (c, o) => appsFor(c).find(a => {
   if (titleOverlap(a.title, o.title) < 0.8) return false;
   const twins = c.apply.openings.filter(x => x !== o && titleOverlap(x.title, o.title) >= 0.8);
   if (!twins.length) return true;
@@ -3093,6 +3107,80 @@ const appliedTo = (c, o) => appsFor(c).find(a => {
   const here = placeWords(o.loc);
   return [...placeWords(a.location)].some(w => here.has(w));
 }) || null;
+// A tracker row in shorthand ("New Analyst - SLC Ops", "Campus Undergrad Analyst - Data&Anlytics") rarely
+// reaches the 0.8 overlap above. So an application that matches no posting that way is given to the
+// posting at that employer whose title covers the most of its words, allowing abbreviations, prefixes
+// ("Undergrad", "Transform") and a one-letter typo. A tie the application's own location cannot settle
+// is left untagged rather than guessed.
+const FUZZY_STOP = new Set(['the', 'of', 'and', 'a', 'an', 'for', 'in', 'at', 'to', 'with', 'us']);
+const FUZZY_SENIOR = new Set(['senior', 'sr', 'lead', 'principal', 'staff', 'manager', 'director', 'head', 'ii', 'iii', 'iv', '2', '3', 'experienced']);
+const FUZZY_SYN = { slc: ['salt'], ft: ['full', 'fulltime'], pt: ['part'], fwd: ['forward'], intl: ['international'] };
+const fuzzyYear = t => { const y = yearIn(t); if (y) return y; const m = String(t || '').match(/(?:^|[^0-9])(2[5-9])(?:\s*(?:grad|class|cohort|start))/i); return m ? '20' + m[1] : ''; };
+const fuzzyTokens = t => appNorm(String(t || '').replace(/<[^>]+>/g, ' ').replace(/\b(?:fka|aka|formerly)\b[\s\S]*$/i, ' '))
+  .split(' ').filter(w => w && !FUZZY_STOP.has(w) && !/^(?:20)?2[5-9]$/.test(w)).map(w => TITLE_ABBREV[w] || MONTHS[w] || w);
+function oneEdit(a, b) {   // equal, or one insertion, deletion, substitution or swap of neighbours apart
+  if (a === b) return true;
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0; while (i < a.length && a[i] === b[i]) i++;
+  if (a.length === b.length) return a.slice(i + 1) === b.slice(i + 1) || (a[i] === b[i + 1] && a[i + 1] === b[i] && a.slice(i + 2) === b.slice(i + 2));
+  return a.length > b.length ? a.slice(i + 1) === b.slice(i) : a.slice(i) === b.slice(i + 1);
+}
+const fuzzyHit = (w, P) => P.has(w) || (FUZZY_SYN[w] || []).some(x => P.has(x)) ||
+  (w.length >= 3 && [...P].some(p => p.startsWith(w))) || (w.length >= 5 && [...P].some(p => p.length >= 5 && oneEdit(w, p)));
+let FUZZY = { key: null, map: new Map() };
+const appId = a => a.company + '\u0001' + a.title + '\u0001' + (a.location || '');
+function fuzzyApplied(url) {
+  if (!url || !APPS.length) return null;
+  let jobs = [];
+  try { jobs = (JOBS && JOBS.jobs) || []; } catch (e) { /* the openings list is declared further down and not loaded yet */ }
+  const key = APPS.length + '|' + jobs.length + '|' + COMPANIES.length + '|' + APPS.reduce((n, a) => n + '|' + a.company + '/' + a.title + '/' + (a.location || ''), '').length;
+  if (FUZZY.key !== key) {
+    const map = new Map(), byCo = new Map();
+    const push = (co, title, loc, u, posted) => { if (!u) return; if (!byCo.has(co)) byCo.set(co, []); byCo.get(co).push({ title, loc: loc || '', url: u, posted: posted || '' }); };
+    COMPANIES.forEach(c => (c.apply.openings || []).forEach(o => { if (o) push(c.name, o.title, o.loc, o.url); }));
+    jobs.forEach(j => { if (j && !j.web) push(j.card || j.co, j.title, j.loc, j.url, j.posted); });
+    APPS.forEach(a => {
+      const cands = [];
+      byCo.forEach((list, co) => { if (sameCompany(a.company, co)) cands.push(...list); });
+      if (!cands.length || cands.some(x => titleOverlap(a.title, x.title) >= 0.8)) return;   // the strict rule has it
+      const toks = fuzzyTokens(a.title), ay = fuzzyYear(a.title);
+      if (!toks.length) return;
+      const scored = cands.map(x => {
+        if (ay && fuzzyYear(x.title) && fuzzyYear(x.title) !== ay) return null;
+        // posted more than a few days after the application: not the job applied to
+        if (a.applied && x.posted && (new Date(x.posted) - new Date(a.applied)) / 86400000 > 3) return null;
+        const P = new Set(fuzzyTokens(x.title));
+        // a posting that adds seniority the applied title does not have is a different job
+        if ([...P].some(w => FUZZY_SENIOR.has(w) && !toks.includes(w))) return null;
+        const hit = toks.filter(w => fuzzyHit(w, P)).length;
+        const ok = hit / toks.length >= 0.75 && (hit >= 2 || (toks.length === 1 && toks[0].length >= 6));
+        return ok ? { ...x, cov: hit / toks.length, fit: hit / (toks.length + P.size - hit) } : null;
+      }).filter(Boolean);
+      if (!scored.length) return;
+      const sameTitle = x => fuzzyTokens(x.title).sort().join(' ');
+      const nearApp = x => { const here = placeWords(x.loc + ' ' + x.title); return [...placeWords(a.location || '')].some(w => here.has(w)); };   // Citi names Dallas in the title, Irving in the location
+      let top = scored.filter(x => x.cov === Math.max(...scored.map(y => y.cov)));
+      if (a.location) {
+        const near = top.filter(nearApp);
+        if (near.length) top = near;
+        // It names a city none of these are in: only a job the employer posts once can still be it.
+        else if (new Set(scored.map(sameTitle)).size > 1) return;
+      }
+      // Several look-alike titles: an application naming several cities ("Dallas and Tampa") applied to
+      // each one it names; otherwise the closest title wins, and an even tie is left untagged.
+      if (new Set(top.map(sameTitle)).size > 1 && !(a.location && top.every(nearApp))) {
+        const best = Math.max(...top.map(x => x.fit));
+        top = top.filter(x => x.fit === best);
+        if (new Set(top.map(sameTitle)).size > 1) return;
+      }
+      top.forEach(x => { if (!map.has(x.url)) map.set(x.url, appId(a)); });
+    });
+    FUZZY = { key, map };
+  }
+  const id = FUZZY.map.get(url);   // stored by identity, so an edited status shows at once
+  return id ? APPS.find(a => appId(a) === id) || null : null;
+}
+const appliedTo = (c, o) => strictAppliedTo(c, o) || (c.suggested ? null : fuzzyApplied(o.url));
 const shortDate = iso => { const d = new Date(String(iso || '') + 'T00:00:00'); return isNaN(d) ? '' : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); };
 const localISODate = (d = new Date()) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 function myAppsHtml(c) {
@@ -3340,6 +3428,8 @@ function myAppsHtml(c) {
       // "not yet" in the date column means a job on the shortlist, not an application.
       if (dateText && !parseSheetDate(dateText)) { skipped.push(`${company} — ${title}`); return; }
       const result = get('note');
+      // A row whose result says it was never sent ("NOT APPLIED", "didn't apply") is not an application.
+      if (/^\s*(?:not\s+applied|did\s*n[o']?t\s+apply|never\s+applied|not\s+yet)\b/i.test(result)) { skipped.push(`${company} — ${title}`); return; }
       list.push({ company, title, location: get('location'), applied: parseSheetDate(dateText), status: statusFromResult(result), note: result });
     });
     return { list, skipped };
@@ -3593,6 +3683,9 @@ function openingExperienced(o) {
   try { return typeof o.yrs === 'number' && o.yrs - jobYears() >= REACH_YEARS; } catch (e) { return typeof o.yrs === 'number' && o.yrs >= 3; }
 }
 function jobApplied(j) {
+  return strictJobApplied(j) || (j.web ? null : fuzzyApplied(j.url));
+}
+function strictJobApplied(j) {
   return APPS.find(a => sameCompany(a.company, j.card || j.co) && titleOverlap(a.title, j.title) >= 0.8 &&
     (!a.location || !j.loc || [...placeWords(a.location)].some(w => placeWords(j.loc).has(w)) ||
      !allJobs().some(x => x !== j && sameCompany(x.co, j.co) && titleOverlap(x.title, j.title) >= 0.8))) || null;

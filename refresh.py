@@ -1552,6 +1552,9 @@ ALIASES = {
     "vanguard": {"the vanguard group", "vanguard group"},
     "freddie mac": {"federal home loan mortgage corporation", "freddiemac", "fhlmc"},
     "fannie mae": {"federal national mortgage association", "fanniemae", "fnma"},
+    "university of utah": {"u of utah", "u of u", "uofu", "u of u health", "university of utah health", "university of utah hospitals"},
+    "galileo financial technologies": {"galileo", "gallileo"},
+    "sandbox startup residency": {"sandbox", "sandbox education"},
 }
 def _variants(name):
     base = _norm(re.sub(r"\(.*?\)", " ", name or ""))
@@ -1567,7 +1570,13 @@ def same_company(a, b):
     """'Zions' matches 'Zions Bancorporation' and 'MGT' matches 'Cicero Group (MGT)', but
     'Pattern Energy' is not Pattern, 'Canvas Credit Union' is not Instructure (Canvas), and
     'Capital One' is not iCapital."""
-    return any(_close(x, y) for x in _variants(a) for y in _variants(b))
+    return any(_close(x, y) for pa in _name_parts(a) for pb in _name_parts(b)
+               for x in _variants(pa) for y in _variants(pb))
+def _name_parts(n):
+    """A tracker often writes 'U of Utah - Hematology' or 'SoFi / Galileo': each part is tried on its own.
+    Kept in step with nameParts() in index.html."""
+    parts = [x for x in re.split(r"\s+-\s+|\s*/\s*", n or "") if len(_norm(x)) > 1]
+    return [n, *parts] if len(parts) > 1 else [n]
 
 _MONTHS = {"jan":"january","feb":"february","mar":"march","apr":"april","jun":"june","jul":"july","aug":"august",
            "sep":"september","sept":"september","oct":"october","nov":"november","dec":"december"}

@@ -253,6 +253,39 @@
       try { T().buildProfile(data, META); } catch (e) { threw = true; msg = e.message; }
       ok('too-few-companies', 'rule: a run with under 80% of the employers is rejected', threw && /only returned/.test(msg), msg);
     }
+    // --- applied tags from a tracker written in shorthand (LOGIC.md, "Tracking your applications") ---
+    {
+      const keep = JobFinderApps.list();
+      const app = (title, location = '', applied = '2026-10-01') => ({ company: 'Harness Bank - Treasury', title, location, applied, status: 'pending', note: '' });
+      JobFinderApps.clear();
+      JobFinderApps.merge([app('New Analyst - SLC Ops'), app('Internal Audit - FT Analyst', 'Dallas, TX and Tampa, FL'),
+        app('Tech Assurance Associate - NC', 'Charlotte, NC'), app('Data Analyst'), app('Campus Undergrad Analyst - Data&Anlytics', 'Phoenix, AZ')]);
+      const u = 'https://example.test/';
+      const co = { name: 'Harness Bank (Test)', apply: { status: 'open-now', note: '', openings: [
+        { title: '2027 | Americas | Salt Lake City | Operations | New Analyst', loc: 'Salt Lake City, UT', url: u + 'ops' },
+        { title: '2027 | Americas | Salt Lake City | Engineering | New Analyst', loc: 'Salt Lake City, UT', url: u + 'eng' },
+        { title: 'Internal Audit, Full-Time Analyst, Dallas, 2027', loc: 'Irving, TX', url: u + 'ia-dal' },
+        { title: 'Internal Audit, Full-Time Analyst, Tampa, 2027', loc: 'Tampa, FL', url: u + 'ia-tpa' },
+        { title: 'Technology Assurance Associate (Summer 2027)', loc: 'Boston, MA', url: u + 'ta-bos' },
+        { title: 'Technology Assurance Associate | Multiple Locations 2027', loc: 'Omaha, NE', url: u + 'ta-oma' },
+        { title: 'Senior Data Analyst', loc: 'Salt Lake City, UT', url: u + 'sda' },
+        { title: 'Campus Undergraduate Full-Time Analyst - 2027 Data & Analytics', loc: 'Phoenix, AZ', url: u + 'amex' }] } };
+      COMPANIES.push(co);
+      const tagged = key => { const o = co.apply.openings.find(x => x.url === u + key); const m = appliedTo(co, o); return m ? m.title : ''; };
+      try {
+        ok('tracker', 'rule: shorthand reaches its posting ("SLC Ops" is the Operations class, not Engineering)', tagged('ops') === 'New Analyst - SLC Ops' && !tagged('eng'), `${tagged('ops')} / ${tagged('eng')}`);
+        ok('tracker', 'rule: an application naming two cities is tagged on both postings', tagged('ia-dal') && tagged('ia-tpa'));
+        ok('tracker', 'rule: a city the employer does not post in is not guessed onto another city', !tagged('ta-bos') && !tagged('ta-oma'));
+        ok('tracker', 'rule: a posting that adds seniority is not the job applied to', !tagged('sda'));
+        ok('tracker', 'rule: abbreviations and a one-letter typo still match ("Undergrad", "Anlytics")', !!tagged('amex'));
+        ok('tracker', 'rule: "U of Utah - Hematology" and "SoFi / Galileo" match their employers', sameCompany('U of Utah - Hematology', 'University of Utah') && sameCompany('SoFi / Gallileo', 'Galileo Financial Technologies') && !sameCompany('Capital One', 'iCapital'));
+        const notSent = JobFinderApps.parseText('Company\tJob\tDate\tResult\nHarness Bank\tData Analyst\t10/13/2026\tNOT APPLIED\nHarness Bank\tRisk Analyst\t10/13/2026\tDenied\n');
+        ok('tracker', 'rule: a row marked NOT APPLIED is skipped, not counted as applied', notSent.list.length === 1 && notSent.skipped.length === 1, JSON.stringify(notSent.skipped));
+      } finally {
+        COMPANIES.splice(COMPANIES.indexOf(co), 1);
+        JobFinderApps.clear(); JobFinderApps.merge(keep);
+      }
+    }
     // --- restore ---
     T().applyProfile(null); await sleep(120);
     ok('restore', 'applyProfile(null) restores the built-in board', document.title === 'AI Job Finder' && $('results-count').textContent.startsWith(`${COMPANIES.length} of ${COMPANIES.length}`) && !COMPANIES.some(c => c.untailored));

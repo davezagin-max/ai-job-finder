@@ -250,6 +250,9 @@ re-verified since, or an employer's facts have changed:
 - Known other names count: Amex, Citibank, Ernst & Young, J.P. Morgan.
 - Extra words that are not endings mean a different company: "Capital One" is
   not iCapital, and "Pattern Energy" is not Pattern.
+- A name with a department or a second company after " - " or "/" is tried
+  part by part: "U of Utah - Hematology" is the University of Utah, and
+  "SoFi / Galileo" matches either.
 
 **Importing a spreadsheet**
 
@@ -264,7 +267,8 @@ pasted straight out of Excel.
 - Dates can be `2026-09-13`, `9/13/2026`, `13-Sep` or an Excel date. A date with
   no year means the most recent one that has already passed.
 - A row whose date says something like "not yet" is a shortlist entry, not an
-  application, so it is skipped and counted in the message.
+  application, so it is skipped and counted in the message. So is a row whose
+  Result says "NOT APPLIED" or "didn't apply".
 - Importing the same sheet twice changes nothing, so re-import after each edit.
 
 **Job titles on the page**
@@ -275,6 +279,25 @@ pasted straight out of Excel.
   decides which one you applied to.
 - If an employer posts the same title for two graduating classes (Verkada's
   University Graduate 2026 and 2027), the year in the title you recorded decides.
+
+**Titles written in shorthand** (only when the rule above finds nothing)
+
+A tracker title like "New Analyst - SLC Ops" or "Campus Undergrad Analyst -
+Data&Anlytics" rarely shares 80% of its words with the posting. So an application
+that matches nothing goes to the posting at that employer that covers the most
+of its words:
+
+- At least three quarters of your title's words must appear in the posting.
+  Abbreviations count ("Ops", "Mngt", "Prog"), so do the starts of words
+  ("Undergrad", "Transform"), "SLC" for Salt Lake City, "FT" for full-time, and
+  a one-letter typo ("Anlytics").
+- The posting cannot add a seniority word (Senior, Lead, II) your title lacks,
+  and cannot have been posted more than three days after you applied.
+- A city you recorded picks between the same job in different cities, and an
+  application that names two cities ("Dallas and Tampa") is tagged on both. If
+  the cities you recorded are not among the postings, nothing is tagged.
+- When two different jobs fit equally well, nothing is tagged: a missing tag is
+  better than telling you that you applied to a job you did not.
 
 **Job titles in `refresh.py`** (a little looser)
 
