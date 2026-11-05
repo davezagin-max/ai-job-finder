@@ -342,6 +342,7 @@ MANUAL = {
   "Young Living":"https://www.youngliving.com/us/en/company/careers",
   "GoTo":"https://www.goto.com/company/careers",
   "Tesla":"https://www.tesla.com/careers/search/",
+  "Larry H. Miller Company":"https://www.lhm.com/careers/",
   # no feed of any kind: a page someone edits by hand, or an app with no list behind it
   "Orem City":"https://jobs.orem.gov/tabs/joblist",
   "Utah State Legislature":"https://le.utah.gov/jobs/jobs.htm",
@@ -357,7 +358,7 @@ MANUAL_WHY = {co: "robots" for co in (
     "Pelion Venture Partners portfolio companies", "Album VC portfolio companies", "Peterson Partners portfolio companies")}
 MANUAL_WHY.update({co: "wall" for co in (
     "HCA Healthcare (MountainStar hospitals)", "Utah Community Credit Union", "Utah Transit Authority", "Delta Air Lines (Salt Lake City hub)",
-    "Parker Hannifin", "Young Living", "GoTo", "Tesla")})
+    "Parker Hannifin", "Young Living", "GoTo", "Tesla", "Larry H. Miller Company")})
 def unread():
     """[{co, url, why}] for jobs.json."""
     words = {"robots": "its hiring system asks scripts to stay out", "wall": "its careers site turns scripts away"}
